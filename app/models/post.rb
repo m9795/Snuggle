@@ -22,4 +22,6 @@ class Post < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
+  
+  has_many_attached :image
 end
