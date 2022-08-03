@@ -1,0 +1,9 @@
+<h3>Post index</h3>
+<% posts.each do |post| %>
+  <%= link_to (post) do %>
+    <%= image_tag post.get_image, class: 'index_image' %><br />
+  <% end %>
+  <%= link_to post.user.name, user_path(post.user) %>
+  <%= link_to post.title, post_path(post) %><br />
+  <%= post.content %><br />
+<% end %>
