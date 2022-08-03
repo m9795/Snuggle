@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   # ユーザ(devise)　新規登録・ログイン
-  devise_for :user, skip: [:passwords], controllers: {
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
