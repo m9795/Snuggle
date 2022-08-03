@@ -1,4 +1,7 @@
-<%= image_tag @post.get_image %>
-<%= link_to @post.user.name, (@post.user) %>
-<%= @post.title %>
-<%= @post.content %>
+<h2>Post detail</h2>
+<%= image_tag @post.get_image, class: 'show_image' %><br />
+<h5>
+    <%= link_to @post.user.name, (@post.user) %>
+    <%= link_to @post.title, post_path(@post) %>
+</h5>
+<%= @post.content %><br />

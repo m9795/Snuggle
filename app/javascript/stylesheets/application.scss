@@ -1,2 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.index_image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+.show_image {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+}
