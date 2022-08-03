@@ -1,9 +1,12 @@
 <h2>User detail</h2>
 <h5><%= @user.name %></h5>
+<% if @user == current_user %>
+  <%= link_to '編集', edit_user_path(@user) %>
+<% end %>
 
 <!--自己紹介文の表示-->
 <p>I want you to know me.</p>
-<%= @user.introduction %><br />
+<p><%= @user.introduction %></p>
 投稿数：<%= @posts.count %><br />
 <%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。<br />
 

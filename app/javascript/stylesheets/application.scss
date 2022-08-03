@@ -12,3 +12,8 @@
   width: 500px;
   object-fit: cover;
 }
+
+// text_areaの入力結果を改行、スペースを持たせ表示させる
+p {
+  white-space: pre-wrap;
+}
