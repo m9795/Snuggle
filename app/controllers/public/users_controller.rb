@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   def index
     @users = User.all
     # ヘッダーに全体数を表示
-    @post_all = Post.all
-    @user_all = User.all
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def show
@@ -11,12 +11,15 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts
     @post_all = Post.all
     # ヘッダーに全体数を表示
-    @post_all = Post.all
-    @user_all = User.all
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def edit
     @user = User.find(params[:id])
+    # ヘッダーに全体数を表示
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def update
