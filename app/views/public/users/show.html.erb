@@ -1,2 +1,14 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h2>User detail</h2>
+
+<%= @user.name %>
+<h5>自己紹介</h5>
+<%= @user.introduction %>
+
+<h5><%= @user.name %>さんの投稿一覧</h5>
+<% @posts.each do |post| %>
+  <%= link_to post do %>
+    <%= image_tag post.get_image, class: 'index_image' %><br />
+    <%= post.title %><br />
+  <% end %>
+  <%= post.content %><br />
+<% end %>
