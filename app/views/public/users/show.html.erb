@@ -1,20 +1,23 @@
 <h2>User detail</h2>
-<h5><%= @user.name %></h5>
+<!--アイコン,名前の表示-->
+<%= image_tag @user.get_image, class: 'user_image' %>
+<%= @user.name %>
+<!--本人のみ編集ボタン表示-->
 <% if @user == current_user %>
   <%= link_to '編集', edit_user_path(@user) %>
 <% end %>
 
 <!--自己紹介文の表示-->
-<p>I want you to know me.</p>
-<p><%= @user.introduction %></p>
+<p>Wellcomr mypage. I want you to know me!</p>
 投稿数：<%= @posts.count %><br />
-<%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。<br />
+<%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。
 
-<h3><%= @user.name %>さんの投稿一覧</h3>
+<p><%= @user.introduction %></p>
+<h3><%= @user.name %>'s post list</h3>
 <% @posts.each do |post| %>
   <%= link_to post do %>
     <%= image_tag post.get_image, class: 'index_image' %><br />
     <%= post.title %><br />
   <% end %>
-  <%= post.content %><br />
+  <p><%= post.content %></p>
 <% end %>

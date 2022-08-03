@@ -1,5 +1,7 @@
 <h2>User edit</h2>
 <%= form_with model: @user do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %><br />
   <%= f.label :name %>
   <%= f.text_field :name %><br />
   <%= f.label :introduction %>

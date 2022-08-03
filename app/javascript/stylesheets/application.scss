@@ -13,6 +13,13 @@
   object-fit: cover;
 }
 
+.user_image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 // text_areaの入力結果を改行、スペースを持たせ表示させる
 p {
   white-space: pre-wrap;

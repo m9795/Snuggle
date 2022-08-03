@@ -15,10 +15,16 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # ヘッダーに全体数を表示
+    @post_all = Post.all
+    @user_all = User.all
   end
 
   def show
     @post = Post.find(params[:id])
+    # ヘッダーに全体数を表示
+    @post_all = Post.all
+    @user_all = User.all
   end
 
   def edit

@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header', post_all: @post_all, user_all: @user_all %>
     <main>
       <p id="notice"><%= notice %></div>
       <%= yield %>

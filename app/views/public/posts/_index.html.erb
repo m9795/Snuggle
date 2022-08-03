@@ -5,5 +5,5 @@
   <% end %>
   <%= link_to post.user.name, user_path(post.user) %>
   <%= link_to post.title, post_path(post) %><br />
-  <%= post.content %><br />
+  <p><%= post.content %></p>
 <% end %>
