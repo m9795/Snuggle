@@ -1,34 +1,32 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :public do
-    get 'posts/new'
-    get 'posts/index'
-    get 'posts/edit'
-    get 'posts/search'
-  end
-  namespace :public do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/unsubscribe'
-    get 'users/search'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # ユーザー用
+  # 管理者(devise) ログインのみ
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+
+  # ユーザ(devise)　新規登録・ログイン
   devise_for :user, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
 
-  # 管理者用
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
+  # 管理者
+  namespace :admin do
+    resources :users, except: [:new, :create, :destroy]
+  end
+
+  # ユーザ
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    resources :users, except: [:new, :create, :destroy]
+    resources :posts
+
+    # ユーザの退会確認ページ
+    get 'unsubscribe' => 'users#unsubscribe'
+    
+    #　ユーザ・投稿の検索結果ページ
+    get 'users/search' => 'users#search'
+    get 'posts/search' => 'posts#search'
+  end
 end
