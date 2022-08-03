@@ -22,6 +22,10 @@ class Post < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
-  
+
   has_many_attached :image
+
+  def get_image
+    (image.attached?) ? image: "no_image.jpg"
+  end
 end
