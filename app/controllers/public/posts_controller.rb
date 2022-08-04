@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     if post.save
       redirect_to posts_path, notice: '投稿しました。'
     else
-      render 'new'
+      render 'new', '入力内容をご確認ください。'
     end
   end
 
@@ -22,18 +22,34 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @user = @post.user
+    if @user == current_user
+      render 'edit'
+    else
+      redirect_to posts_path
+    end
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: '投稿を更新しました。'
+    else
+      render 'edit', notice: '入力内容をご確認ください。'
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: '投稿を削除しました。'
   end
 
   def search
   end
 
-  private
+private
   def post_params
     params.require(:post).permit(:user_id, :image, :title, :content)
   end
