@@ -12,4 +12,6 @@
 <% end %>
 
 <!--コメントアイコン-->
-<i class="far fa-comment-alt fa-lg"></i><br />
+<%= link_to new_post_comment_path(post) do %>
+  <i class="far fa-comment-alt fa-lg"></i><br />
+<% end %>

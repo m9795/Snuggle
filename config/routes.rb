@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :users, except: [:new, :create, :destroy]
     resources :posts do
+      resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
 
