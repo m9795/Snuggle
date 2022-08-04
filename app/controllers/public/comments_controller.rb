@@ -7,10 +7,10 @@ class Public::CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    comment = current_user.comment.new(comment_params)
+    comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
     comment.save
-    redirect_to post_path(post)
+    redirect_to new_post_comment_path(post)qgi
   end
 
   def destroy
@@ -20,6 +20,6 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:comment)
   end
 end
