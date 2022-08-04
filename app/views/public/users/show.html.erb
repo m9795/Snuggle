@@ -14,9 +14,16 @@
 
 <p><%= @user.introduction %></p>
 <h3><%= @user.name %>'s post list</h3>
+
 <% @posts.each do |post| %>
   <%= link_to post do %>
     <%= image_tag post.get_image, class: 'index_image' %><br />
+  <% end %>
+  <!--いいねボタン・コメントアイコン-->
+  <div id="likes_btn_<%= post.id %>">
+    <%= render 'public/likes/btn', post: post %>
+  </div>
+  <%= link_to post do %>
     <%= post.title %><br />
   <% end %>
   <p><%= post.content %></p>

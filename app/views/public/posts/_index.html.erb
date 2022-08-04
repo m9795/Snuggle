@@ -7,20 +7,10 @@
   <%= link_to post do %>
     <%= image_tag post.get_image, class: 'index_image' %><br />
   <% end %>
-
-  <!--いいねボタン（件数非表示）-->
-  <% if post.liked_by?(current_user) %>
-    <%= link_to post_likes_path(post), method: :delete do %>
-      <i class="fas fa-heart fa-lg" aria-hidden="true" style="color: #dc3545;"></i>
-      <%#= post.likes.count %>
-    <% end %>
-  <% else %>
-    <%= link_to post_likes_path(post), method: :post do %>
-      <i class="fas fa-heart fa-lg" aria-hidden="true" style="color: #c0c0c0"></i>
-      <%#= post.likes.count %>
-    <% end %>
-  <% end %>
-  <i class="far fa-comment-alt fa-lg"></i><br />
+  <!--いいねボタン・コメントアイコン-->
+  <div id="likes_btn_<%= post.id %>">
+    <%= render 'public/likes/btn', post: post %>
+  </div>
   <%= link_to post.title, post_path(post) %><br />
   <p><%= post.content %></p>
 <% end %>
