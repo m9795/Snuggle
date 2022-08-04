@@ -1,13 +1,16 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    # ヘッダーに全体数を表示
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id
     if post.save
-      redirect_to posts_path, notice: '投稿しました。'
+      redirect_to post_path(post), notice: '投稿しました。'
     else
       render 'new', '入力内容をご確認ください。'
     end
@@ -15,10 +18,16 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # ヘッダーに全体数を表示
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def show
     @post = Post.find(params[:id])
+    # ヘッダーに全体数を表示
+    # @post_all = Post.all
+    # @user_all = User.all
   end
 
   def edit
@@ -51,6 +60,6 @@ class Public::PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:user_id, :image, :title, :content)
+    params.require(:post).permit(:image, :title, :content)
   end
 end

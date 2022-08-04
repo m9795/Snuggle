@@ -1,2 +1,23 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h2>User detail</h2>
+<!--アイコン,名前の表示-->
+<%= image_tag @user.get_image, class: 'user_image' %>
+<%= @user.name %>
+<!--本人のみ編集ボタン表示-->
+<% if @user == current_user %>
+  <%= link_to '編集', edit_user_path(@user) %>
+<% end %>
+
+<!--自己紹介文の表示-->
+<p>Wellcomr mypage. I want you to know me!</p>
+投稿数：<%= @posts.count %><br />
+<%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。
+
+<p><%= @user.introduction %></p>
+<h3><%= @user.name %>'s post list</h3>
+<% @posts.each do |post| %>
+  <%= link_to post do %>
+    <%= image_tag post.get_image, class: 'index_image' %><br />
+    <%= post.title %><br />
+  <% end %>
+  <p><%= post.content %></p>
+<% end %>
