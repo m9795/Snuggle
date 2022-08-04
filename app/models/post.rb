@@ -31,9 +31,9 @@ class Post < ApplicationRecord
     end
     image
   end
-  
-  def liked_by?(current_user)
+
+  def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
-  
+
 end
