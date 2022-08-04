@@ -8,6 +8,8 @@
 <%= link_to @post.user.name, user_path(@post.user) %><br />
 <%= image_tag @post.get_image, class: 'show_image' %><br />
 <!--いいねボタン・コメントアイコン-->
-<%= render 'public/likes/btn', post: @post %>
+<div id="likes_btn_<%= @post.id %>">
+  <%= render 'public/likes/btn', post: @post %>
+</div>
 <h5><%= link_to @post.title, post_path(@post) %></h5>
 <%= @post.content %><br />
