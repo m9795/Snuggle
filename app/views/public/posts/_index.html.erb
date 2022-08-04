@@ -1,9 +1,12 @@
 <h3>All Posts</h3>
 <% posts.each do |post| %>
+  <%= link_to user_path(post.user) do %>
+    <%= image_tag post.user.get_image, class: 'user_image' %>
+    <%= post.user.name %><br />
+  <% end %>
   <%= link_to post do %>
     <%= image_tag post.get_image, class: 'index_image' %><br />
   <% end %>
-  <%= link_to post.user.name, user_path(post.user) %>
   <%= link_to post.title, post_path(post) %><br />
   <p><%= post.content %></p>
 <% end %>
