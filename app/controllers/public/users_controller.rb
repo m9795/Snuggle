@@ -34,6 +34,13 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @user = current_user
+    @user.update(status: true)
+    sign_out current_user
+    redirect_to root_path, notice: 'ご利用いただきありがとうございました。またのご利用をお待ちしております。'
+  end
+
   def search
   end
 

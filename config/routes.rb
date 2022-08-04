@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     end
 
     # ユーザの退会確認ページ
-    get 'unsubscribe' => 'users#unsubscribe'
-
+    get 'user/unsubscribe' => 'users#unsubscribe'
+    get 'user/withdraw' => 'users#withdraw'
     #　ユーザ・投稿の検索結果ページ
     get 'users/search' => 'users#search'
     get 'posts/search' => 'posts#search'
