@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
     comment.save
-    redirect_to new_post_comment_path(post)qgi
+    redirect_to new_post_comment_path(post)
   end
 
   def destroy
