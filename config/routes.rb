@@ -20,11 +20,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :users, except: [:new, :create, :destroy]
-    resources :posts
+    resources :posts do
+      resource :likes, only: [:create, :destroy]
+    end
 
     # ユーザの退会確認ページ
     get 'unsubscribe' => 'users#unsubscribe'
-    
+
     #　ユーザ・投稿の検索結果ページ
     get 'users/search' => 'users#search'
     get 'posts/search' => 'posts#search'
