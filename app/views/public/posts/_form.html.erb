@@ -1,6 +1,6 @@
 <%= form_with model: post do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %><br />
+  <%= f.text_field :title, autofocus: true %><br />
   <%= f.label :content %>
   <%= f.text_area :content %><br />
   <%= f.label :image %>
