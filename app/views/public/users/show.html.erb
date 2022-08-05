@@ -3,7 +3,7 @@
 <%= image_tag @user.get_image, class: 'user_image' %>
 <%= @user.name %>
 <!--本人のみ編集ボタン表示-->
-<% if @user == current_user %>
+<% if @user == current_user || admin_signed_in? %>
   <%= link_to '編集', edit_user_path(@user) %>
 <% end %>
 
@@ -20,9 +20,11 @@
     <%= image_tag post.get_image, class: 'index_image' %><br />
   <% end %>
   <!--いいねボタン・コメントアイコン-->
-  <div id="likes_btn_<%= post.id %>">
-    <%= render 'public/likes/btn', post: post %>
-  </div>
+  <% if  user_signed_in? %>
+    <div id="likes_btn_<%= post.id %>">
+      <%= render 'public/likes/btn', post: post %>
+    </div>
+  <% end %>
   <%= link_to post do %>
     <%= post.title %><br />
   <% end %>
