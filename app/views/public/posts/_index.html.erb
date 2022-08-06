@@ -16,5 +16,5 @@
     ｜ <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？'} %><br />
   <% end %>
   <%= link_to post.title, post_path(post) %><br />
-  <p><%= post.content %></p>
+  <p><%= render_with_tags(post.content) %></p>
 <% end %>

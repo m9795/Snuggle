@@ -50,9 +50,6 @@ class Public::UsersController < ApplicationController
     redirect_to root_path, notice: 'ご利用いただきありがとうございました。またのご利用をお待ちしております。'
   end
 
-  def search
-  end
-
   private
     def usre_params
       params.require(:user).permit(:image, :name, :introduction, :status)

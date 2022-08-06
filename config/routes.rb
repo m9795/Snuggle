@@ -35,7 +35,6 @@ Rails.application.routes.draw do
     get 'user/withdraw' => 'users#withdraw'
     #　ユーザ・投稿の検索結果ページ
     get 'search' => 'searches#search'
-    # get 'users/search' => 'users#search'
-    # get 'posts/search' => 'posts#search'
+    get 'post/tag/:name' => 'posts#tag'
   end
 end

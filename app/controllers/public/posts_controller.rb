@@ -56,7 +56,9 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿を削除しました。'
   end
 
-  def search
+  def tag
+    @tag = Tag.find_by(name: params[:name])
+    @post = @tag.posts
   end
 
 private
