@@ -46,4 +46,16 @@ class User < ApplicationRecord
       user.name = 'guest user'
     end
   end
+  
+  def self.search_for(content, method)
+    if method == 'partial'
+      User.where('name LIKE?', '%' + content + '%')
+    elsif method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE?', content + '%')
+    else
+      User.where('name LIKE?', '%' + content)
+    end
+  end
 end
