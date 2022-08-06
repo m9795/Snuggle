@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <h3>Keyword search from all posts</h3>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>
+    <%= f.submit '検索' %>
+  <% end %>
+<% end %>

@@ -40,4 +40,11 @@ class Post < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
+  def self.search(search)
+    if search != nil
+      Post.where('title LIKE(?) or content LIKE(?)' , "%#{search}%",  "%#{search}%")
+    else
+      Post.all
+    end
+  end
 end
