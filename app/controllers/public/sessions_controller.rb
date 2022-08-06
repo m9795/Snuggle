@@ -21,15 +21,20 @@ class Public::SessionsController < Devise::SessionsController
     user_path(current_user)
   end
 
-  protected
-  
-  def user_state
-    @user = User.find_by(email: params[:user][:email])
-    return if !@user
-    if @user .valid_password?(params[:user][:password]) && @user.status == true
-      redirect_to new_user_registration_path
-    end
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: 'You are logged in as a guest user.'
   end
+
+  protected
+    def user_state
+      @user = User.find_by(email: params[:user][:email])
+      return if !@user
+      if @user .valid_password?(params[:user][:password]) && @user.status == true
+        redirect_to new_user_registration_path
+      end
+    end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
