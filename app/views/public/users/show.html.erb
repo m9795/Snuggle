@@ -1,5 +1,5 @@
 <h2>User detail</h2>
-<!--アイコン,名前の表示-->
+<!--アイコン,名前-->
 <%= image_tag @user.get_image, class: 'user_image' %>
 <%= @user.name %>
 <!--本人のみ編集ボタン表示-->
@@ -7,27 +7,11 @@
 <% elsif @user == current_user || admin_signed_in? %>
   <%= link_to '編集', edit_user_path(@user) %>
 <% end %>
-
-<!--自己紹介文の表示-->
-<p>Welcome to my page. I want you to know me!</p>
+<!--自己紹介文-->
+<p>Welcome to my page. Get to know me!</p>
 投稿数：<%= @posts.count %><br />
 <%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。
-
 <p><%= @user.introduction %></p>
 <h3><%= @user.name %>'s post list</h3>
-
-<% @posts.each do |post| %>
-  <%= link_to post do %>
-    <%= image_tag post.get_image, class: 'index_image' %><br />
-  <% end %>
-  <!--いいねボタン・コメントアイコン-->
-  <% if  user_signed_in? %>
-    <div id="likes_btn_<%= post.id %>">
-      <%= render 'public/likes/btn', post: post %>
-    </div>
-  <% end %>
-  <%= link_to post do %>
-    <%= post.title %><br />
-  <% end %>
-  <p><%= post.content %></p>
-<% end %>
+<!--ユーザの投稿一覧-->
+<%= render 'public/posts/index', posts: @posts %>

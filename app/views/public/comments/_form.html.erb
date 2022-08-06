@@ -1,8 +1,5 @@
 <%= form_with model: [post, comment], local: false do |f| %>
-  <div id="comments-error">
-    <%= render 'layouts/error_messages', model: f.object %>
-  </div>
-  <%= f.label :comment %><br />
+  <p>コメントは1000文字まで入力可能です。</p>
   <%= f.text_area :comment, autofocus: true, placeholder: 'コメントを追加する' %>
   <%= f.submit %>
 <% end %>

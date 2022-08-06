@@ -9,18 +9,14 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    if @comment.save
-      # flash.now[:notice] = 'コメントを投稿しました。'
-      render 'post_comments'
-    else
-      render 'error'
-    end
+    @comment.save
+    # create失敗時もrender先は同じ
+    render 'post_comments'
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     Comment.find(params[:id]).destroy
-    # flash.now[:alert] = 'コメントを削除しました。'
     render 'post_comments'
   end
 

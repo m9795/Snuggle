@@ -1,9 +1,12 @@
 <% post.comments.each do |post_comment| %>
-  <%= image_tag post_comment.user.get_image, class: 'user_image' %>
-  <%= post_comment.user.name %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-  <%= post_comment.comment %>
-  <% if post_comment.user == current_user %>
-    <%= link_to '削除', post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true %><br />
+  <%= link_to user_path(post_comment.user_id) do %>
+    <%= image_tag post_comment.user.get_image, class: 'user_image' %>
+    <%= post_comment.user.name %>
   <% end %>
+  <%= post_comment.comment %>
+  <%= l post_comment.created_at %>
+  <% if post_comment.user == current_user %>
+    <%= link_to '削除', post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true %>
+  <% end %>
+  <br />
 <% end %>

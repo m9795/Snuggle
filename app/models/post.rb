@@ -62,7 +62,7 @@ class Post < ApplicationRecord
       post.tags << tag
     end
   end
-  
+
  # 検索機能
   def self.search(search)
     if search != nil
