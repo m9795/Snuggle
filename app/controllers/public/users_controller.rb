@@ -35,7 +35,8 @@ class Public::UsersController < ApplicationController
     if user.update(usre_params)
       redirect_to user_path(user), notice: "ユーザ情報を更新しました。"
     else
-      render 'edit'
+      @user = User.find(params[:id])
+      redirect_to edit_user_path(user), alert: '編集内容をご確認ください。'
     end
   end
 

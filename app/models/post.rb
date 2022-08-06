@@ -22,6 +22,10 @@ class Post < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
+
+  validates :title,   presence: true, length: { minimum: 1 , maximum: 140 }
+  validates :content, presence: true, length: { minimum: 1 , maximum: 3000 }
+
   has_one_attached :image
 
   def get_image
