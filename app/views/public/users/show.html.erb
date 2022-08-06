@@ -3,7 +3,8 @@
 <%= image_tag @user.get_image, class: 'user_image' %>
 <%= @user.name %>
 <!--本人のみ編集ボタン表示-->
-<% if @user == current_user || admin_signed_in? %>
+<% if @user.name == 'guest user' %>
+<% elsif @user == current_user || admin_signed_in? %>
   <%= link_to '編集', edit_user_path(@user) %>
 <% end %>
 
