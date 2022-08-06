@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @post = Post.new
     # ヘッダーに全体数を表示
@@ -12,7 +13,7 @@ class Public::PostsController < ApplicationController
     if post.save
       redirect_to post_path(post), notice: '投稿しました。'
     else
-      render 'new', '入力内容をご確認ください。'
+      render 'new', alert: '入力内容をご確認ください。'
     end
   end
 
@@ -36,7 +37,7 @@ class Public::PostsController < ApplicationController
     if @user == current_user
       render 'edit'
     else
-      redirect_to posts_path
+      redirect_to post_path(@post), alert: '本人のみ編集可能です。'
     end
   end
 
@@ -45,7 +46,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: '投稿を更新しました。'
     else
-      render 'edit', notice: '入力内容をご確認ください。'
+      render 'edit', alert: '入力内容をご確認ください。'
     end
   end
 
