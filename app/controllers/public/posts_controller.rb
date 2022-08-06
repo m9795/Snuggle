@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
     if post.save
       redirect_to post_path(post), notice: '投稿しました。'
     else
-      render 'new', alert: '入力内容をご確認ください。'
+      redirect_to new_post_path(post), alert: '入力内容をご確認ください。'
     end
   end
 
@@ -42,11 +42,11 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to post_path(@post), notice: '投稿を更新しました。'
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      redirect_to post_path(post), notice: '投稿内容を更新しました。'
     else
-      render 'edit', alert: '入力内容をご確認ください。'
+      redirect_to edit_post_path(post), alert: '編集内容をご確認ください。'
     end
   end
 

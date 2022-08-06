@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates :name, presence: true, length: { minimum: 1, maximum: 50 }
+
   has_one_attached :image
   def get_image
     unless image.attached?
