@@ -57,11 +57,10 @@ class Public::PostsController < ApplicationController
   end
 
   def tag
-    @user = current_user
     @tag = Tag.find_by(name: params[:name])
     @post = @tag.posts
   end
-  
+
 private
   def post_params
     params.require(:post).permit(:image, :title, :content)
