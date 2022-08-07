@@ -1,2 +1,6 @@
 <h3>My like list</h3>
-<%= render 'public/posts/index', posts: @liked_post %>
+<% if @liked_post.present? %>
+  <%= render 'public/posts/index', posts: @liked_post %>
+<% else %>
+  <p>現在、いいねした投稿はありません。</p>
+<% end %>

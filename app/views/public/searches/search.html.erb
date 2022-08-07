@@ -1,2 +1,6 @@
 <h3>Search results by "<%= @keyword %>"</h3>
-<%= render 'public/posts/index', posts: @post %>
+<% if @post.present? %>
+  <%= render 'public/posts/index', posts: @post %>
+<% else %>
+  <p>現在、一致する投稿はありません。</p>
+<% end %>

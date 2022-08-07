@@ -2,9 +2,6 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   def new
     @post = Post.new
-    # ヘッダーに全体数を表示
-    # @post_all = Post.all
-    # @user_all = User.all
   end
 
   def create
@@ -18,7 +15,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.publish
   end
 
   def show
@@ -52,11 +49,17 @@ class Public::PostsController < ApplicationController
 
   def tag
     @tag = Tag.find_by(name: params[:name])
-    @post = @tag.posts
+    @post = @tag.posts.publish
+  end
+
+  # 非公開投稿ページ
+  def private_post
+    @user = current_user
+    @posts = @user.posts.unpublish
   end
 
 private
   def post_params
-    params.require(:post).permit(:image, :title, :content)
+    params.require(:post).permit(:image, :title, :content, :publish)
   end
 end

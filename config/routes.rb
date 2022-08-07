@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :users, except: [:new, :create, :destroy]
+    resources :users, except: [:new, :create, :destroy] do
+      # 非公開記事一覧ページ
+      get 'private_post' => 'posts#private_post'
+    end
     resources :posts do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
@@ -36,6 +39,7 @@ Rails.application.routes.draw do
 
     # Myいいね一覧
     get 'like_list' => 'likes#like_list'
+
     # ユーザの退会確認ページ
     get 'user/unsubscribe' => 'users#unsubscribe'
     get 'user/withdraw' => 'users#withdraw'

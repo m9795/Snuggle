@@ -11,6 +11,7 @@
     <li>
       <%= link_to 'New post', new_post_path %>
     </li>
+
     <li>
       <%= link_to users_path do %>
         Users(<%= User.where(status: 'false').count %>)
@@ -18,12 +19,17 @@
     </li>
     <li>
       <%= link_to posts_path do %>
-        Posts(<%= Post.all.count %>)
+        Posts(<%= Post.all.publish.count %>)
       <% end %>
     </li>
     <li>
       <%= link_to like_list_path do %>
         My like list(<%= current_user.likes.count %>)
+      <% end %>
+    </li>
+    <li>
+      <%= link_to  user_private_post_path(current_user) do %>
+        My private post(<%= current_user.posts.unpublish.count %>)
       <% end %>
     </li>
     <li>

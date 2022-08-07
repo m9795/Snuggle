@@ -1,0 +1,6 @@
+<h3>My private post</h3>
+<% if @posts.present? %>
+  <%= render 'public/posts/index', posts: @posts %>
+<% else %>
+  <p>現在、非公開投稿はありません。</p>
+<% end %>
