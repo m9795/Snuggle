@@ -27,7 +27,7 @@ class Post < ApplicationRecord
   validates :title,   presence: true, length: { minimum: 1 , maximum: 140 }
   validates :content, presence: true, length: { minimum: 1 , maximum: 3000 }
 
-# 画像設定
+# 投稿画像設定
   has_one_attached :image
   def get_image
     unless image.attached?

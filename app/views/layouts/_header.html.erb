@@ -12,7 +12,7 @@
     </li>
     <li>
       <%= link_to users_path do %>
-        Users(<%= User.all.count %>)
+        Users(<%= User.where(status: 'false').count %>)
       <% end %>
     </li>
     <li>
