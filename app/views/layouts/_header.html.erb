@@ -1,4 +1,5 @@
 <header>
+  <!--ユーザーログイン時-->
   <% if user_signed_in? %>
     <li></li>
     <li>
@@ -23,11 +24,14 @@
     <li>
       <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     </li>
+  <!--アドミンログイン時-->
   <% elsif admin_signed_in? %>
     <li></li>
+    <li><%= link_to 'Users', admin_users_path %></li>
     <li>
       <%= link_to "Lot out", destroy_admin_session_path, method: :delete %>
     </li>
+  <!--未ログイン時-->
   <% else %>
     <li></li>
     <li>
