@@ -8,16 +8,16 @@
       <%= link_to 'My page', user_path(current_user) %>
     </li>
     <li>
-      <%= link_to users_path do %>
-        Users
-      <% end %>
-    </li>
-    <li>
       <%= link_to 'New post', new_post_path %>
     </li>
     <li>
+      <%= link_to users_path do %>
+        Users(<%= User.where(status: 'false').count %>)
+      <% end %>
+    </li>
+    <li>
       <%= link_to posts_path do %>
-        Posts
+        Posts(<%= Post.all.count %>)
       <% end %>
     </li>
     <li>

@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 1, maximum: 50 }
 
+  # アイコン画像設定
   has_one_attached :image
   def get_image
     unless image.attached?
@@ -40,6 +41,7 @@ class User < ApplicationRecord
     image
   end
 
+# ゲストログイン機能
   def self.guest
     find_or_create_by!(name: 'guest user', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
