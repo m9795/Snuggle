@@ -1,0 +1,9 @@
+<h3><%= @user.name %>'s likes(<%= @likes.count %>)</h3>
+<% @likes.each do |like| %>
+  <!--ユーザー名-->
+  <%= like.post.user.name %>
+  <!--タイトル-->
+  <%= like.post.title %>
+  <%= link_to '削除', admin_user_like_path(like.user, like), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  <br />
+<% end %>

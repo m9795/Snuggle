@@ -1,7 +1,22 @@
 <h3>All Users</h3>
 <% @users.each do |user| %>
+  <%= user.id %>
   <%= link_to user.name, admin_user_path(user) %>
-  <%= user.status %>
+  <% if user.status == false %>
+    <%= '有効' %>
+  <% else %>
+    <%= '退会' %>
+  <% end %>
   <%= link_to '編集', edit_admin_user_path(user) %>
-  | <%= link_to '詳細', admin_user_path(user) %>
+  <%= link_to '詳細', admin_user_path(user) %>
+  <%= link_to admin_user_posts_path(user) do %>
+  投稿一覧(<%= user.posts.count %>)
+  <% end %>
+  <%= link_to admin_user_comments_path(user) do %>
+  コメント一覧(<%= user.comments.count %>)
+  <% end %>
+  <%= link_to  admin_user_likes_path(user) do %>
+  いいね一覧(<%= user.likes.count %>)
+  <% end %>
+  <br />
 <% end %>

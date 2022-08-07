@@ -1,8 +1,9 @@
-<h3>User posts</h3>
+<h3><%= @user.name %>'s posts(<%= @posts.count %>)</h3>
 <% @posts.each do |post| %>
-  <%= post.id %>
+  <!--タイトル-->
   <%= post.title  %>
   <%#= post.content %>
   <%= link_to '詳細', admin_user_post_path(post.user, post) %>
   ｜<%= link_to '削除', admin_user_post_path(post.user, post), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  <br />
 <% end %>

@@ -1,5 +1,11 @@
-<h3>User comments</h3>
+<h3><%= @user.name %>'s comments(<%= @comments.count %>)</h3>
 <% @comments.each do |comment| %>
+  <!--ユーザー名-->
+  <%= comment.post.user.name %>
+  <!--タイトル-->
+  <%= comment.post.title %>
+  <!--コメント-->
   <%= comment.comment %>
   <%= link_to '削除', admin_user_comment_path(comment.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  <br />
 <% end %>
