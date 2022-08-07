@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  content    :text             not null
+#  publish    :boolean          default(TRUE), not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -52,7 +53,7 @@ class Post < ApplicationRecord
       post.tags << tag
     end
   end
-
+# タグ機能（投稿更新前に実行する）
   before_update do
     post = Post.find_by(id: self.id)
     post.tags.clear
@@ -71,4 +72,8 @@ class Post < ApplicationRecord
       Post.all
     end
   end
+  
+  # 投稿の公開・非公開設定
+  scope :publish,   -> {where(publish: true)}
+  scope :unpublish, -> {where(publish: false)}
 end
