@@ -10,7 +10,21 @@
 <!--自己紹介文-->
 <p>Welcome to my page. Get to know me!</p>
 投稿数：<%= @posts.count %><br />
-<%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。
+<p><%= @user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+<% if @user == current_user %>
+  <ul>
+    <li>
+      <%= link_to like_list_path do %>
+        My like list(<%= current_user.likes.count %>)
+      <% end %>
+    </li>
+    <li>
+      <%= link_to  user_private_post_path(current_user) do %>
+        My private post(<%= current_user.posts.unpublish.count %>)
+      <% end %>
+    </li>
+  </ul>
+<% end %>
 <p><%= @user.introduction %></p>
 <h3><%= @user.name %>'s post list</h3>
 <!--ユーザの投稿一覧-->
