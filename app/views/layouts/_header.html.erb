@@ -22,6 +22,11 @@
       <% end %>
     </li>
     <li>
+      <%= link_to like_list_path do %>
+        My like list(<%= current_user.likes.count %>)
+      <% end %>
+    </li>
+    <li>
       <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     </li>
   <!--アドミンログイン時-->

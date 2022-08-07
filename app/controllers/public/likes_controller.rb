@@ -1,6 +1,8 @@
 class Public::LikesController < ApplicationController
   before_action :authenticate_user!
-  def liked_post
+  def like_list
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @liked_post = Post.find(likes)
   end
 
   def create
