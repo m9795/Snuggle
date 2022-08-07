@@ -1,5 +1,5 @@
 <h3>User detail</h3>
-<% @comments.each do |comment| %>
-  <%= comment.comment %>
-  <%= link_to '削除', admin_user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-<% end %>
+
+<%= link_to '投稿一覧', admin_user_posts_path(@user) %>
+<%= link_to 'コメント一覧', admin_user_comments_path(@user) %>
+<%= link_to 'いいね一覧', admin_user_likes_path(@user) %>
