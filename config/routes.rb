@@ -33,7 +33,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-
+    
+    # ユーザーのいいねした投稿
+    get 'user/liked_post' => 'likes#liked_post'
     # ユーザの退会確認ページ
     get 'user/unsubscribe' => 'users#unsubscribe'
     get 'user/withdraw' => 'users#withdraw'
