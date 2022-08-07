@@ -22,8 +22,8 @@
       <% end %>
     </li>
     <li>
-      <%= link_to user_liked_post_path do %>
-        Liked post(<%= current_user.likes.count %>)
+      <%= link_to like_list_path do %>
+        My like list(<%= current_user.likes.count %>)
       <% end %>
     </li>
     <li>
