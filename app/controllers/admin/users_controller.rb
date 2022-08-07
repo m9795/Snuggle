@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(user_params)
-    redirect_to admin_users_path
+    redirect_to admin_users_path, notice: 'ユーザー情報を更新しました。'
   end
   def user_params
     params.require(:user).permit(:name, :status)
