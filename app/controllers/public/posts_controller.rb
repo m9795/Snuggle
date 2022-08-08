@@ -14,8 +14,10 @@ class Public::PostsController < ApplicationController
     end
   end
 
+# 退会ユーザーと非公開記事を省いて取得
   def index
-    @posts = Post.publish
+    users = User.where(status: false)
+    @posts = Post.where(user_id: users, publish: true)
   end
 
   def show
@@ -47,9 +49,11 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿を削除しました。'
   end
 
+# タグ検索結果ページ
+# 退会ユーザー投稿と非公開投稿を省いて取得
   def tag
     @tag = Tag.find_by(name: params[:name])
-    @post = @tag.posts.publish
+    @post = @publish_post_all.search(@tag.name)
   end
 
   # 非公開投稿ページ

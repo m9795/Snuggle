@@ -1,6 +1,41 @@
 <h3>My like list</h3>
 <% if @liked_post.present? %>
-  <%= render 'public/posts/index', posts: @liked_post %>
+  <% @liked_post.each do |post| %>
+    <%= link_to user_path(post.post.user) do %>
+      <%= image_tag post.post.user.get_image, class: 'post_user_image' %>
+      <%= post.post.user.name %><br />
+    <% end %>
+    <%= link_to post_path(post.post) do %>
+      <%= image_tag post.post.get_image, class: 'post_image' %><br />
+    <% end %>
+    <div id="likes_btn_<%= post.post.id %>">
+      <!--いいねボタン-->
+      <% if post.post.liked_by?(current_user) %>
+        <%= link_to post_likes_path(post.post), method: :delete, remote: true do %>
+          <i class="fas fa-heart fa-lg" aria-hidden="true" style="color: #dc3545;"></i>
+          <%= post.post.likes.where(user_id: @publish_user_all).count %>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(post.post), method: :post, remote: true do %>
+          <i class="fas fa-heart fa-lg" aria-hidden="true" style="color: #c0c0c0"></i>
+          <%= post.post.likes.where(user_id: @publish_user_all).count %>
+        <% end %>
+      <% end %>
+
+      <!--コメントボタン-->
+      <%= link_to new_post_comment_path(post.post) do %>
+        　<i class="far fa-comment-alt fa-lg"></i>
+        <%= post.post.comments.where(user_id: @publish_user_all).count %><br />
+      <% end %>
+    </div>
+    <% if post.post.user == current_user %>
+      <%= link_to '編集', edit_post_path(post.post) %>
+      ｜ <%= link_to '削除', post_path(post.post), method: :delete, data: { confirm: '本当に削除しますか？'} %><br />
+    <% end %>
+    <%= link_to post.post.title, post_path(post.post) %><br />
+    <p><%= render_with_tags(post.post.content) %></p>
+    <%= l post.post.created_at %><br />
+  <% end %>
 <% else %>
   <p>現在、いいねした投稿はありません。</p>
 <% end %>
