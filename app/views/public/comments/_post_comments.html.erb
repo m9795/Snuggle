@@ -1,6 +1,6 @@
 <% post.comments.each do |post_comment| %>
   <%= link_to user_path(post_comment.user_id) do %>
-    <%= image_tag post_comment.user.get_image, class: 'user_image' %>
+    <%= image_tag post_comment.user.get_image, class: 'post_user_image' %>
     <%= post_comment.user.name %>
   <% end %>
   <%= post_comment.comment %>

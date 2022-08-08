@@ -1,13 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-.index_image {
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
+footer {
+  background-color: #333;
+  height: 14px;
 }
 
-.show_image {
+.post_image {
   height: 500px;
   width: 500px;
   object-fit: cover;
@@ -16,6 +15,13 @@
 .user_image {
   height: 100px;
   width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post_user_image {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   object-fit: cover;
 }

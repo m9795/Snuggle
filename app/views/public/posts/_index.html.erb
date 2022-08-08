@@ -1,10 +1,10 @@
 <% posts.each do |post| %>
   <%= link_to user_path(post.user) do %>
-    <%= image_tag post.user.get_image, class: 'user_image' %>
+    <%= image_tag post.user.get_image, class: 'post_user_image' %>
     <%= post.user.name %><br />
   <% end %>
   <%= link_to post do %>
-    <%= image_tag post.get_image, class: 'index_image' %><br />
+    <%= image_tag post.get_image, class: 'post_image' %><br />
   <% end %>
   <!--いいねボタン・コメントアイコン-->
   <div id="likes_btn_<%= post.id %>">

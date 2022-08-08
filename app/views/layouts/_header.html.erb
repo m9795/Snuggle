@@ -1,58 +1,56 @@
-<header>
-  <!--ユーザーログイン時-->
-  <% if user_signed_in? %>
-    <li></li>
-    <li>
-      <%= link_to 'Logo', root_path %>
-    </li>
-    <li>
-      <%= link_to 'My page', user_path(current_user) %>
-    </li>
-    <li>
-      <%= link_to 'New post', new_post_path %>
-    </li>
-
-    <li>
-      <%= link_to users_path do %>
-        Users(<%= User.where(status: 'false').count %>)
-      <% end %>
-    </li>
-    <li>
-      <%= link_to posts_path do %>
-        Posts(<%= Post.all.publish.count %>)
-      <% end %>
-    </li>
-    <li>
-      <%= link_to like_list_path do %>
-        My like list(<%= current_user.likes.count %>)
-      <% end %>
-    </li>
-    <li>
-      <%= link_to  user_private_post_path(current_user) do %>
-        My private post(<%= current_user.posts.unpublish.count %>)
-      <% end %>
-    </li>
-    <li>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-    </li>
-  <!--アドミンログイン時-->
-  <% elsif admin_signed_in? %>
-    <li></li>
-    <li><%= link_to 'Users', admin_users_path %></li>
-    <li>
-      <%= link_to "Lot out", destroy_admin_session_path, method: :delete %>
-    </li>
-  <!--未ログイン時-->
-  <% else %>
-    <li></li>
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "Log in", new_user_session_path %>
-    </li>
-    <li>
-      <%= link_to "Admin Log in", admin_session_path %>
-    </li>
-  <% end %>
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Snuggle</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <!--ユーザーログイン時-->
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'My page', user_path(current_user), class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to 'New post', new_post_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to users_path, class: 'nav-link text-light' do %>
+              Users(<%= User.where(status: 'false').count %>)
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path, class: 'nav-link text-light' do %>
+              Posts(<%= Post.all.publish.count %>)
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+          <%= render 'public/searches/form' %>
+        <!--アドミンログイン時-->
+        <% elsif admin_signed_in? %>
+          <li><%= link_to 'Users', admin_users_path, class: 'nav-link text-light' %></li>
+          <li>
+            <%= link_to "Lot out", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <!--未ログイン時-->
+        <% else %>
+          <li>
+            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%= link_to "Admin Log in", admin_session_path, class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 </header>
