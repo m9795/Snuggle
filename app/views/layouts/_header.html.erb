@@ -17,12 +17,12 @@
           </li>
           <li>
             <%= link_to users_path, class: 'nav-link text-light' do %>
-              Users(<%= User.where(status: 'false').count %>)
+              Users(<%= @publish_user_all.count %>)
             <% end %>
           </li>
           <li>
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              Posts(<%= Post.all.publish.count %>)
+              Posts(<%= @publish_post_all.count %>)
             <% end %>
           </li>
           <li>

@@ -15,7 +15,7 @@
   <ul>
     <li>
       <%= link_to like_list_path do %>
-        My like list(<%= current_user.likes.count %>)
+        My like list(<%= @liked_post.count %>)
       <% end %>
     </li>
     <li>

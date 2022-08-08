@@ -3,12 +3,13 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.where(status: 'false')
+    @users = User.where(status: false)
   end
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.publish
+    @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
 
   def edit

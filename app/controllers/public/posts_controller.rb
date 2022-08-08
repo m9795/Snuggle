@@ -14,8 +14,10 @@ class Public::PostsController < ApplicationController
     end
   end
 
+# 退会ユーザーと非公開記事を省いて表示
   def index
-    @posts = Post.publish
+    users = User.where(status: false)
+    @posts = Post.where(user_id: users, publish: true)
   end
 
   def show
