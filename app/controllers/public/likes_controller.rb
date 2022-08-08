@@ -1,7 +1,8 @@
 class Public::LikesController < ApplicationController
   before_action :authenticate_user!
   
-  # 退会ユーザーの非公開投稿を省いて表示
+  # Myいいね一覧ページ
+  # 退会ユーザーの非公開投稿を省いて取得
   def like_list
     users = User.where(status: false)
     posts = Post.where(user_id: users, publish: true)
