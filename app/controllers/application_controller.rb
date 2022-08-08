@@ -7,4 +7,3 @@ class ApplicationController < ActionController::Base
     @publish_post_all = Post.where(user_id: @publish_user_all, publish: true)
   end
 end
-q
