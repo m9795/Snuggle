@@ -14,5 +14,5 @@
 <!--コメントボタン-->
 <%= link_to new_post_comment_path(post) do %>
   　<i class="far fa-comment-alt fa-lg"></i>
-  <%= post.comments.count %><br />
+  <%= post.comments.where(user_id: @publish_user_all).count %><br />
 <% end %>
