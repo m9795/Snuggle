@@ -14,18 +14,18 @@
 <p>Welcome to my page. Get to know me!</p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
-<% if user == current_user %>
   <ul>
     <li>
-      <%= link_to like_list_path do %>
-        My like list(<%= liked_post.count %>)
+      <%= link_to user_like_list_path(user) do %>
+        Like list(<%= liked_post.count %>)
       <% end %>
     </li>
-    <li>
-      <%= link_to  user_private_post_path(current_user) do %>
-        My private post(<%= current_user.posts.unpublish.count %>)
-      <% end %>
-    </li>
+    <% if user == current_user %>
+      <li>
+        <%= link_to  user_private_post_path(current_user) do %>
+          My private post(<%= current_user.posts.unpublish.count %>)
+        <% end %>
+      </li>
+    <% end %>
   </ul>
-<% end %>
 <p><%= user.introduction %></p>

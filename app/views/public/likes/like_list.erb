@@ -1,4 +1,4 @@
-<h3>My like list</h3>
+<h3>Like list</h3>
 <% if @liked_post.present? %>
   <% @liked_post.each do |post| %>
     <%= link_to user_path(post.post.user) do %>

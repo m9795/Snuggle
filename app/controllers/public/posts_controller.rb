@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @posts = @user.posts.publish
-    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    @liked_post = @user.likes.where(post_id: @publish_post_all)
   end
 
   def edit
