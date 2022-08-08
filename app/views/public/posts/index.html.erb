@@ -1,2 +1,10 @@
-<h3>All Posts</h3>
-<%= render 'index', posts: @posts %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
+    </div>
+    <div class="col-6 pl-4">
+      <%= render 'index', posts: @posts %>
+    </div>
+  </div>
+</div>

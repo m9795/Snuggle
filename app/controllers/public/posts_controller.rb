@@ -18,10 +18,14 @@ class Public::PostsController < ApplicationController
   def index
     users = User.where(status: false)
     @posts = Post.where(user_id: users, publish: true)
+    @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @posts = @user.posts.publish
+    @liked_post = @user.likes.where(post_id: @publish_post_all)
   end
 
   def edit

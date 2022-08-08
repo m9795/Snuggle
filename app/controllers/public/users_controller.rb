@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.publish
-    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    @liked_post = @user.likes.where(post_id: @publish_post_all)
   end
 
   def edit

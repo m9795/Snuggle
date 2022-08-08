@@ -1,7 +1,9 @@
 <% users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= image_tag user.get_image, class: 'user_image' %>
-    <%= user.name %>
-  <% end %>
-  <p><%= user.introduction %></p>
+  <div class="container border pt-2 my-2">
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.get_image, class: 'user_image' %>
+      <%= user.name %>
+    <% end %>
+    <p><%= user.introduction %></p>
+  </div>
 <% end %>

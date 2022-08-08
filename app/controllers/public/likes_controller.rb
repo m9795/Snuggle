@@ -1,12 +1,13 @@
 class Public::LikesController < ApplicationController
   before_action :authenticate_user!
-  
-  # Myいいね一覧ページ
+
+  # いいね一覧ページ
   # 退会ユーザーの非公開投稿を省いて取得
   def like_list
     users = User.where(status: false)
     posts = Post.where(user_id: users, publish: true)
-    @liked_post = current_user.likes.where(post_id: posts)
+    user = User.find(params[:user_id])
+    @liked_post = user.likes.where(post_id: posts)
   end
 
   def create
