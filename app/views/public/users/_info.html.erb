@@ -1,31 +1,31 @@
+<!--タイトル-->
 <% if user == current_user %>
-  <h2>Profile</h2>
+  <h2>Profile <span>
+  <!--編集ボタン(ゲストユーザー省く)-->
+  <% if user.name == 'guest user' %>
+  <% elsif user == current_user || admin_signed_in? %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-dark" do %>
+      <i class="fas fa-user-edit fa-xs d-flex"></i>
+    <% end %>
+  <% end %>
+  </span>
+</h2>
 <% else %>
   <h2>User detaile</h2>
 <% end %>
 <%= image_tag user.get_image, class: 'user_image' %>
-<%= user.name %>
-<!--本人のみ編集ボタン表示-->
-<% if user.name == 'guest user' %>
-<% elsif user == current_user || admin_signed_in? %>
-  <%= link_to '編集', edit_user_path(user) %>
-<% end %>
+<%= user.name %><br />
+
 <!--自己紹介文-->
 <p>Welcome to my page. Get to know me!</p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
-  <ul>
-    <li>
-      <%= link_to user_like_list_path(user) do %>
-        Like list(<%= liked_post.count %>)
-      <% end %>
-    </li>
-    <% if user == current_user %>
-      <li>
-        <%= link_to  user_private_post_path(current_user) do %>
-          My private post(<%= current_user.posts.unpublish.count %>)
-        <% end %>
-      </li>
+<%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
+  Like list(<%= liked_post.count %>)
+<% end %>
+<% if user == current_user %>
+    <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
+      My private post(<%= current_user.posts.unpublish.count %>)
     <% end %>
-  </ul>
+<% end %>
 <p><%= user.introduction %></p>
