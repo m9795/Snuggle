@@ -1,6 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+footer {
+  background-color: #333;
+  height: 14px;
+}
+
 .post_image {
   height: 500px;
   width: 500px;
