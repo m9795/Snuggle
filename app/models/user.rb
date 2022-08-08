@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 1, maximum: 50 }
+  validates :introduction, length: { maximum: 160 }
 
   # アイコン画像設定
   has_one_attached :image
