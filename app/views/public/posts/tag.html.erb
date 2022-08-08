@@ -1,6 +1,15 @@
-<h3>"#<%= @tag.name %>" search results(<%= @post.count %>)</h3>
-<% if @post.present? %>
-  <%= render 'public/posts/index', posts: @post %>
-<% else %>
-  <p>現在、一致する投稿はありません。</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
+    </div>
+    <div class="col-6 pl-4">
+      <h3>"#<%= @tag.name %>" search results(<%= @post.count %>)</h3>
+      <% if @post.present? %>
+        <%= render 'public/posts/index', posts: @post %>
+      <% else %>
+        <p>現在、一致する投稿はありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
