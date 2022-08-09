@@ -7,11 +7,12 @@ footer {
   border-top: 1px solid #545b64;
 }
 
-.post_image {
-  height: 500px;
-  width: 500px;
-  object-fit: cover;
-}
+// レスポンシブ非対応だったため一旦コメントアウト
+// .post_image {
+//   height: 500px;
+//   width: 500px;
+//   object-fit: cover;
+// }
 
 .user_image {
   height: 100px;
