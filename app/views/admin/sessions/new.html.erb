@@ -1,26 +1,29 @@
-<h2>Log in</h2>
+<div class="container my-5 py-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-4 form-group border py-4">
+      <h2 class="text-center"><span><i class="fas fa-cog"></i></span> Admin login</h2>
+      <%= form_with model: resource, url: admin_session_path do |f| %>
+        <div class="field mt-3">
+          <span><i class="fas fa-envelope"></i></span> <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+        </div>
 
-<%= form_with model: resource, url: admin_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="field mt-3">
+          <span><i class="fas fa-lock"></i></span> <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="actions">
+          <%= f.submit "Log in", class: "form-control mt-3 btn btn-outline-primary" %>
+        </div>
+      <% end %>
+      <%= render "admin/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-4 form-group border py-3">
+      <%= render "admin/shared/links" %>
+      <h5>Administrators<br />can manage user information.</h5>
+    </div>
+  </div>
+</div>
