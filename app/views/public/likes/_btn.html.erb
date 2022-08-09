@@ -12,7 +12,7 @@
 <% end %>
 
 <!--コメントボタン-->
-<%= link_to new_post_comment_path(post) do %>
+<%= link_to new_post_comment_path(post), data: {"turbolinks" => false} do %>
   　<i class="far fa-comment-alt fa-lg"></i>
   <%= post.comments.where(user_id: @publish_user_all).count %><br />
 <% end %>
