@@ -10,23 +10,29 @@
         <!--ユーザーログイン時-->
         <% if user_signed_in? %>
           <li>
-            <%= link_to 'My page', user_path(current_user), class: 'nav-link text-light' %>
+            <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> My page
+            <% end %>
           </li>
           <li>
-            <%= link_to 'New post', new_post_path, class: 'nav-link text-light' %>
+            <%= link_to  new_post_path, class: 'nav-link text-light' do %>
+              <span><i class="fas fa-plus-circle"></i></span> New post
+            <% end %>
           </li>
           <li>
             <%= link_to users_path, class: 'nav-link text-light' do %>
-              Users(<%= @publish_user_all.count %>)
+              <span><i class="fas fa-user-friends"></i></span> Users (<%= @publish_user_all.count %>)
             <% end %>
           </li>
           <li>
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              Posts(<%= @publish_post_all.count %>)
+              <span><i class="far fa-images"></i></span> Posts (<%= @publish_post_all.count %>)
             <% end %>
           </li>
           <li>
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> Log out
+            <% end %>
           </li>
           <%= render 'public/searches/form' %>
         <!--アドミンログイン時-->

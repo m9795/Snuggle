@@ -1,4 +1,4 @@
-<h3>All Users</h3>
+<h3>All Users <span><i class="fas fa-users-cog"></i></span></h3>
 <% @users.each do |user| %>
   <%= user.id %>
   <%= link_to user.name, admin_user_path(user) %>

@@ -1,8 +1,10 @@
-<h2>Post detail</h2>
+<h2 class="mb-4"><span><i class="far fa-image"></i></span> Post detail</h2>
 <div class="container border mb-3 py-2">
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
   <%= link_to post.user.name, user_path(post.user) %>
-  <%= image_tag post.get_image, class: 'post_image' %>
+  <%= link_to post_path(post) do %>
+    <%= image_tag post.get_image, class: 'img-fluid post_image' %>
+  <% end %>
   <!--いいね・コメントの表示-->
   <div id="likes_btn_<%= post.id %>">
     <%= render 'public/likes/btn', post: post %>

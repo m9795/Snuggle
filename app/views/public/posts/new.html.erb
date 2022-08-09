@@ -1,2 +1,13 @@
-<h3>New post</h3>
-<%= render 'form', post: @post %>
+<div class="container mb-3 pb-5">
+  <div class="row mx-2 d-flex justify-content-center">
+    <div class="col-lg-5 py-4 px-5 form-group border">
+      <h2 class="text-center">New post <span><i class="far fa-image fa-xs"></i></span></h2>
+      <%= render 'form', post: @post %>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4">
+      <%= link_to '< Back', :back, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,17 @@
 <% post.comments.where(user_id: @publish_user_all).each do |post_comment| %>
-  <%= link_to user_path(post_comment.user_id) do %>
-    <%= image_tag post_comment.user.get_image, class: 'post_user_image' %>
-    <%= post_comment.user.name %>
-  <% end %>
-  <%= post_comment.comment %>
-  <%= l post_comment.created_at %>
-  <% if post_comment.user == current_user %>
-    <%= link_to '削除', post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true %>
-  <% end %>
-  <br />
+  <div class="row mt-3 px-3">
+    <%= link_to user_path(post_comment.user_id) do %>
+      <%= image_tag post_comment.user.get_image, class: 'post_user_image' %>
+      <%= post_comment.user.name %>
+    <% end %>
+  </div>
+  <div class="row px-3">
+    <p><%= post_comment.comment %></p>
+  </div>
+  <div class="row px-3">
+    <%= l post_comment.created_at %>
+    <% if post_comment.user == current_user %>
+      <%= link_to '削除', post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true %>
+    <% end %>
+  </div>
 <% end %>

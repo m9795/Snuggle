@@ -11,9 +11,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <main>
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
+    <main class="py-3">
+      <p id="notice" class="d-flex justify-content-center"><%= notice %></p>
+      <p id="alert" class="d-flex justify-content-center"><%= alert %></p>
       <%= yield %>
     </main>
     <footer></footer>
