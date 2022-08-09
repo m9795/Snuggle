@@ -4,7 +4,7 @@
       <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-6 pl-4">
-      <h3>Search results by "<%= @keyword %>"</h3>
+      <h2 class="mb-4"><span><i class="fas fa-search fa-xs"></i></span> Search results by "<%= @keyword %>" (<%= @post.count %>)</h2>
       <% if @post.present? %>
         <%= render 'public/posts/index', posts: @post %>
       <% else %>

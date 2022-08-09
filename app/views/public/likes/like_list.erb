@@ -4,7 +4,11 @@
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-6 pl-4">
-      <h3>Like list</h3>
+      <% if @user == current_user %>
+        <h2 class="mb-4"><span><i class="fas fa-heart fa-xs"></i></span> My like list (<%= @liked_post.count %>) </h2>
+      <% else %>
+        <h2 class="mb-4"><span><i class="fas fa-heart"></i></span> <%= @user.name %>'s like list (<%= @liked_post.count %>)</h2>
+      <% end %>
       <% if @liked_post.present? %>
         <% @liked_post.each do |post| %>
           <div class="container border mb-3 py-2 ">
