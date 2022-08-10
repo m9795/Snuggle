@@ -1,5 +1,10 @@
 <h2 class="mb-4"><span><i class="far fa-image"></i></span> Post detail</h2>
-<div class="container border mb-3 py-2">
+<div class="container border mb-3 pb-2">
+  <div class="row">
+    <% if post.publish == false %>
+      <b class="px-3 mb-2 bg-danger text-white">非公開</b>
+    <% end %>
+  </div>
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
   <%= link_to post.user.name, user_path(post.user) %>
   <%= link_to post_path(post) do %>

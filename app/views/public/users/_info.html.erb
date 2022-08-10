@@ -21,6 +21,7 @@
 <p>Welcome to my page. Get to know me!</p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+<p><%= user.introduction %></p>
 <%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <% if user == current_user %>
     <i class="fas fa-heart"></i> My like list (<%= liked_post.count %>)
@@ -33,4 +34,3 @@
       <i class="fas fa-lock"></i> My private post (<%= current_user.posts.unpublish.count %>)
     <% end %>
 <% end %>
-<p><%= user.introduction %></p>
