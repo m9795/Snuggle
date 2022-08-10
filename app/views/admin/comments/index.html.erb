@@ -1,11 +1,46 @@
-<h3><%= @user.name %>'s comments(<%= @comments.count %>)</h3>
-<% @comments.each do |comment| %>
-  PostID:<%= comment.post.id %>
-  PostTitle:<%= comment.post.title %>
-  UserID:<%= comment.user.id %>
-  <%= comment.post.user.name %>
-  CommentID:<%= comment.id %>
-  <%= comment.comment %>
-  <%= link_to '削除', admin_user_comment_path(comment.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-  <br />
-<% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s comments(<%= @comments.count %>) <span><i class="far fa-comment-alt fa-lg"></i></span></h2>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <div class="text-secondary">Post id：<%= comment.post.id %></div>
+          <div class="container border pb-2 mb-3">
+            <div class="row">
+              <% if comment.post.publish == true %>
+                <b class="px-3 mb-2 bg-success text-white">公開中</b>
+              <% else %>
+                <b class="px-3 mb-2 bg-danger text-white">非公開</b>
+              <% end %>
+              <div class="ml-2"><%= comment.post.title %></div>
+              <div class="ml-3">by: <%= comment.post.user.name %></div>
+              <div class="ml-3"><%= l comment.post.created_at %></div>
+            </div>
+            <div class="row d-flex justify-content-between border-bottom">
+              <div class="col py-3">
+                <%= image_tag comment.post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
+                コメント内容：<%= comment.comment %>
+                <%= l comment.created_at %>
+              </div>
+            </div>
+            <div class="row pt-3 pb-2">
+              <div class="col-xl-4 mt-1">
+                いいね数　 <i class="fas fa-heart fa-lg" style="color: #dc3545;"></i><%= comment.post.likes.count %><br />
+                コメント数 <i class="far fa-comment-alt fa-lg"></i><%= comment.post.comments.count %>
+              </div>
+              <div class="col-xl-4 mt-1">
+                <%= link_to '詳細', admin_user_post_path(comment.post.user, comment.post), class: "col-auto btn btn-block btn-outline-dark"  %>
+              </div>
+              <div class="col-xl-4 mt-1">
+                <%= link_to '削除', admin_user_comment_path(comment.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "col-auto btn btn-block btn-outline-danger" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>現在、<%= @user.name %>さんのコメントはありません。</p>
+      <% end %>
+      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>

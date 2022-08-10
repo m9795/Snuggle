@@ -5,5 +5,6 @@
   <%= f.label :status, "有効", value: false %>
   <%= f.radio_button :status, "true" %>
   <%= f.label :status, "退会", value: true %>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-outline-success" %>
 <% end %>
+<%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
