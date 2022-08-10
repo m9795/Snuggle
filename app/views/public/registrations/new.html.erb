@@ -6,7 +6,7 @@
       <%= form_with model: resource, url: user_registration_path do |f| %>
         <div class="field mt-2">
           <span><i class="fas fa-user-circle"></i></span> <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネーム", class: "form-control" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネーム（最大20文字）", class: "form-control", minilength: "1", maxlength: "20"  %>
         </div>
 
         <div class="field mt-2">
@@ -16,14 +16,11 @@
 
         <div class="field mt-2">
           <span><i class="fas fa-lock"></i></span> <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", class: "form-control" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（最小6文字）", class: "form-control" %>
         </div>
 
         <div class="field mt-2">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認)", class: "form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認）", class: "form-control" %>
         </div>
 
         <div class="actions">

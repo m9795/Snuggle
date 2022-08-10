@@ -5,8 +5,17 @@ class Admin::PostsController < ApplicationController
     @posts = @user.posts
   end
 
+  def show
+    # @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+  end
+
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to admin_user_posts_path, notice: '投稿を削除しました。'
+    @user = User.find(params[:id])
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to request.referer, notice: '投稿を削除しました。'
   end
 end

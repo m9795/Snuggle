@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create, :destroy] do
       resources :posts, only: [:show, :index, :destroy]
       resources :comments, only: [:index, :destroy]
-      resources  :likes, only: [:index, :destroy]
     end
   end
 
@@ -38,7 +37,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-    
+
     # ユーザの退会確認ページ
     get 'user/unsubscribe' => 'users#unsubscribe'
     get 'user/withdraw' => 'users#withdraw'
