@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-6">
+    <div class="col-lg-6">
       <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s comments(<%= @comments.count %>) <span><i class="far fa-comment-alt fa-lg"></i></span></h2>
       <% if @comments.present? %>
         <% @comments.each do |comment| %>
@@ -19,7 +19,7 @@
             <div class="row d-flex justify-content-between border-bottom">
               <div class="col py-3">
                 <%= image_tag comment.post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
-                コメント内容：<%= comment.comment %>
+                <p>コメント内容：<%= comment.comment %></p>
                 <%= l comment.created_at %>
               </div>
             </div>
@@ -40,7 +40,7 @@
       <% else %>
         <p>現在、<%= @user.name %>さんのコメントはありません。</p>
       <% end %>
-      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+      <%= render 'admin/users/all-users.btn' %>
     </div>
   </div>
 </div>

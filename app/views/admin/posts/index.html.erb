@@ -15,7 +15,9 @@
           <div class="row d-flex justify-content-between border-bottom">
             <div class="col py-3">
               <%= image_tag post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
-              <%= post.title  %>
+              <div><i class="fas fa-tag"></i><span>Title</span></div>
+              <p><%= post.title  %></p>
+              <div><span><i class="far fa-file-alt"></i></span>Content</div>
               <p><%= post.content %></p>
               <%= l post.created_at %>
             </div>
@@ -34,7 +36,7 @@
           </div>
         </div>
       <% end %>
-      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+      <%= render 'admin/users/all-users.btn' %>
     </div>
   </div>
 </div>

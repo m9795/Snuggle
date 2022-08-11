@@ -11,27 +11,23 @@
         Created　<%= l @post.created_at %><br />
         Updated　<%= l @post.updated_at %>
       </div>
-      <%= link_to admin_user_posts_path(@post.user), class: "btn btn-outline-dark" do %>
-        < <%= @post.user.name %>'s posts へ
-      <% end %><br />
-      <%= link_to admin_user_comments_path(@post.user), class: "mt-2 btn btn-outline-dark" do %>
-       <div class="customization-text"> < <%= @post.user.name %>'s comments へ</div>
-      <% end %>
+
     </div>
     <div class="col-lg-7 offset-lg-1 mt-3 mb-5">
       <h2 class="mb-4">To comment <span><i class="far fa-comment-alt fa-xs"></i></span></h2>
       <div id="comments_area">
         <% if @comments.present? %>
           <% @comments.each do |comment| %>
-            <%= image_tag comment.user.get_image, class: 'user_image' %>
+            <%= image_tag comment.user.get_image, class: 'post_user_image' %>
             <p><%= comment.post.user.name %></p>
             <p><%= comment.comment %></p>
             <%= link_to '削除', admin_user_comment_path(@post.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-            <br />
+            <hr></hr>
           <% end %>
         <% else %>
             <p>現在、コメントはありません。</p>
         <% end %>
+          <%= render 'admin/posts/back.btn' %>
       </div>
     </div>
   </div>

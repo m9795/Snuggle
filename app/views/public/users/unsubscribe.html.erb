@@ -1,10 +1,21 @@
-<h3>Confirmation screen</h3>
-<p>本当に退会しますか？
-退会前に下記項目をご確認ください。
+<div class="contaner d-flex justify-content-center">
+  <div class="row my-5">
+    <div class="col text-center">
+      <h2 class="mb-3">Confirmation screen</h2>
+      <div class="col">
+      <p>
+      本当に退会しますか？
+      退会前に下記項目をご確認ください。
 
-・ご登録いただいたアカウント情報の閲覧ができなくなります。
-・投稿やいいね・コメントの閲覧ができなくなります。
-・同じメールアドレスでの再登録はできなくなります。</p>
-<%= link_to '退会する', user_withdraw_path, data: {confirm: "本当に退会しますか？"}  %>
-|
-<%= link_to '退会しない', edit_user_path(current_user) %>
+      ・ご登録いただいたアカウント情報の閲覧ができなくなります。
+      ・投稿、いいね、コメントの閲覧ができなくなります。
+      ・同じメールアドレスでの再登録はできなくなります。
+      </p>
+      </div>
+      <div class="col mb-3">
+        <%= link_to '退会しない', edit_user_path(current_user), class: "btn btn-outline-success" %>
+        <%= link_to '退会する', user_withdraw_path, data: {confirm: "本当に退会しますか？"}, class: "ml-5 btn btn-outline-danger px-4" %>
+      </div>
+    </div>
+  </div>
+</div>
