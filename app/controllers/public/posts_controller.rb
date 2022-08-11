@@ -16,8 +16,7 @@ class Public::PostsController < ApplicationController
 
 # 退会ユーザーと非公開記事を省いて取得
   def index
-    users = User.where(status: false)
-    @posts = current_user.posts.where(user_id: users, publish: true)
+    @posts = @publish_post_all
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
 
@@ -50,7 +49,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: '投稿を削除しました。'
+    redirect_to user_path(current_user), notice: '投稿を削除しました。'
   end
 
 # タグ検索結果ページ

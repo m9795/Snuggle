@@ -37,4 +37,13 @@ footer {
 // text_areaの入力結果を改行、スペースを持たせ表示させる
 p {
   white-space: pre-wrap;
+  word-break: break-all;
+}
+
+h2 {
+  word-break: break-all;
+}
+
+.link-btn .user-index-text .user-info-text {
+  word-break: break-all;
 }

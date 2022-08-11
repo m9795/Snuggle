@@ -14,8 +14,10 @@
         <div class="row d-flex justify-content-between border-bottom">
           <div class="col py-3">
             <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %><br />
-            <i class="fas fa-user-circle"></i> <%= @user.name %><br />
-            <i class="far fa-file-alt"></i> <%= @user.introduction %>
+            <i class="fas fa-user-circle"></i> name
+            <p><%= @user.name %></p>
+            <i class="far fa-file-alt"></i> introduction
+            <p><%= @user.introduction %></p>
           </div>
         </div>
         <div class="row pt-3 pb-2">
