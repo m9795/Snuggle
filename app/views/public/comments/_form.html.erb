@@ -1,7 +1,7 @@
 <div class="border px-3 pt-3 pb-2">
   <%= form_with model: [post, comment], local: false do |f| %>
     <div class="form-group">
-      <div class="customization-text"><%= f.label :comment, "コメント" %></div>
+      <%= f.label :comment, "コメント" %>
       <%= f.text_area :comment, autofocus: true, placeholder: '1000文字まで入力可能', class: "js-text form-control", rows: '3', maxlength: "1000" %>
       <div id="form-count">
         <%= render "public/comments/count" %>

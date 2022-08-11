@@ -6,7 +6,7 @@
     <%= link_to '退会する >', user_unsubscribe_path, class: "form-control mt-2 btn btn-outline-danger" %>
   </div>
 <% else %>
-<div class="col-lg-7 d-md-none">
+<div class="col-lg-7 mb-3 d-md-none">
   <% unless current_page?(user_path(user)) %>
     <%= link_to  user_path(user), class: "form-control mt-2 btn btn-outline-dark" do %>
       <% if user == current_user %>
