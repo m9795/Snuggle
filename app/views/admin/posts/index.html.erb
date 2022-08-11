@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-6">
+    <div class="col-lg-6">
       <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s posts(<%= @posts.count %>) <span><i class="far fa-images fa-xs"></i></span></h2>
       <% @posts.each do |post| %>
         <div class="text-secondary">Post id：<%= post.id %></div>

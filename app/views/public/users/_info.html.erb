@@ -24,7 +24,7 @@
 <p><%= user.introduction %></p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
-<%= link_to user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+<%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <% if user == current_user %>
     <div class="link-btn"><span><i class="far fa-images fa-xs"></i></span> My post list (<%= posts.count %>)</div>
   <% else %>
