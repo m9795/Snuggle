@@ -46,9 +46,13 @@
             <%= link_to post.post.title, post_path(post.post) %><br />
             <p><%= render_with_tags(post.post.content) %></p>
             <%= l post.post.created_at %><br />
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% else %>
         <p>現在、いいねした投稿はありません。</p>
       <% end %>
+      <%= render 'public/users/mypage.btn', user: @user %>
     </div>
+  </div>
+</div>
+
