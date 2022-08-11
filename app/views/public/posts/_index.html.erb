@@ -1,5 +1,10 @@
 <% posts.each do |post| %>
-  <div class="container border mb-3 py-2">
+  <div class="container border mb-3 pb-2">
+    <div class="row">
+      <% if post.publish == false %>
+        <b class="px-3 mb-2 bg-danger text-white">非公開</b>
+      <% end %>
+    </div>
     <%= link_to user_path(post.user) do %>
       <%= image_tag post.user.get_image, class: 'post_user_image' %>
       <%= post.user.name %><br />
@@ -9,7 +14,7 @@
     <% end %>
     <!--いいね・コメントの表示-->
     <div id="likes_btn_<%= post.id %>">
-      <%= render 'public/likes/btn', post: post  %>
+      <%= render 'public/likes/btn', post: post %>
     </div>
     <%= link_to post.title, post_path(post) %><br />
     <p><%= render_with_tags(post.content) %></p>

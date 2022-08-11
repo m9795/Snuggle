@@ -1,22 +1,50 @@
-<h3>All Users <span><i class="fas fa-users-cog"></i></span></h3>
-<% @users.each do |user| %>
-  <%= user.id %>
-  <%= link_to user.name, admin_user_path(user) %>
-  <% if user.status == false %>
-    <%= '有効' %>
-  <% else %>
-    <%= '退会' %>
-  <% end %>
-  <%= link_to '編集', edit_admin_user_path(user) %>
-  <%= link_to '詳細', admin_user_path(user) %>
-  <%= link_to admin_user_posts_path(user) do %>
-  投稿一覧(<%= user.posts.count %>)
-  <% end %>
-  <%= link_to admin_user_comments_path(user) do %>
-  コメント一覧(<%= user.comments.count %>)
-  <% end %>
-  <%= link_to  admin_user_likes_path(user) do %>
-  いいね一覧(<%= user.likes.count %>)
-  <% end %>
-  <br />
-<% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="mb-4"><span><i class="fas fa-users-cog fas-xs"></i></span> All Users (<%= @publish_user_all.count %>)</h2>
+      <% if @users.present? %>
+        <% @users.each do |user| %>
+          <div class="text-secondary">User id：<%= user.id %></div>
+          <div class="container border pb-2 mb-3">
+            <div class="row">
+              <% if user.status == false %>
+                <b class="px-3 mb-2 bg-success text-white">有効</b>
+              <% else %>
+                <b class="px-3 mb-2 bg-danger text-white">退会</b>
+              <% end %>
+            </div>
+            <div class="row d-flex justify-content-between border-bottom">
+              <div class="col py-3">
+                <%= link_to admin_user_path(user) do %>
+                  <%= image_tag user.get_image, class: "mr-3 mb-3 user_image" %>
+                  <%= user.name %><br />
+                <% end %>
+                <p><%= user.introduction %></p>
+              </div>
+            </div>
+            <div class="row pt-3 pb-2">
+              <div class="col-xl-2 mt-1">
+                <%= link_to '編集', edit_admin_user_path(user), class: "btn btn-block btn-outline-success" %>
+              </div>
+              <div class="col-xl-2 mt-1">
+                <%= link_to '詳細', admin_user_path(user), class: "btn btn-block btn-outline-dark" %>
+              </div>
+              <div class="col-xl-4 mt-1">
+                <%= link_to admin_user_posts_path(user), class: "btn btn-block btn-outline-dark" do %>
+                  投稿一覧(<%= user.posts.count %>)
+                <% end %>
+              </div>
+              <div class="col-xl-4 mt-1">
+                <%= link_to admin_user_comments_path(user), class: "btn btn-block btn-outline-dark" do %>
+                  コメント一覧(<%= user.comments.count %>)
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        現在、登録ユーザーはいません。
+      <% end %>
+    </div>
+  </div>
+</div>

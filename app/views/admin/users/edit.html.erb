@@ -1,9 +1,39 @@
-<h3>User edit</h3>
-<%= form_with model: @user, url: admin_user_path(@user), method: :PATCH do |f| %>
-  <%= label :status , 'status' %><br />
-  <%= f.radio_button :status, "false" %>
-  <%= f.label :status, "有効", value: false %>
-  <%= f.radio_button :status, "true" %>
-  <%= f.label :status, "退会", value: true %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="mb-4"><span><i class="fas fa-user-cog"></i></span> User edit</h2>
+      <div class="text-secondary">User id：<%= @user.id %></div>
+      <div class="container border pb-2 mb-3">
+        <div class="row">
+          <% if @user.status == false %>
+            <b class="px-3 mb-2 bg-success text-white">有効</b>
+          <% else %>
+            <b class="px-3 mb-2 bg-danger text-white">退会</b>
+          <% end %>
+        </div>
+        <div class="row d-flex justify-content-between border-bottom">
+          <div class="col py-3">
+            <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %><br />
+            <i class="fas fa-user-circle"></i> name
+            <p><%= @user.name %></p>
+            <i class="far fa-file-alt"></i> introduction
+            <p><%= @user.introduction %></p>
+          </div>
+        </div>
+        <div class="row pt-3 pb-2">
+          <div class="col">
+            <%= form_with model: @user, url: admin_user_path(@user), method: :PATCH do |f| %>
+              <i class="fas fa-cog"></i> <%= label :status , 'status' %><br />
+              <%= f.radio_button :status, "false" %>
+              <%= f.label :status, "有効", value: false %>
+              <%= f.radio_button :status, "true" %>
+              <%= f.label :status, "退会", value: true %>
+              <%= f.submit class: "btn btn-outline-success btn-block" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>

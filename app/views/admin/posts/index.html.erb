@@ -1,9 +1,40 @@
-<h3><%= @user.name %>'s posts(<%= @posts.count %>)</h3>
-<% @posts.each do |post| %>
-  <!--タイトル-->
-  <%= post.title  %>
-  <%#= post.content %>
-  <%= link_to '詳細', admin_user_post_path(post.user, post) %>
-  ｜<%= link_to '削除', admin_user_post_path(post.user, post), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-  <br />
-<% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s posts(<%= @posts.count %>) <span><i class="far fa-images fa-xs"></i></span></h2>
+      <% @posts.each do |post| %>
+        <div class="text-secondary">Post id：<%= post.id %></div>
+        <div class="container border pb-2 mb-3">
+          <div class="row">
+            <% if post.publish == true %>
+              <b class="px-3 mb-2 bg-success text-white">公開中</b>
+            <% else %>
+              <b class="px-3 mb-2 bg-danger text-white">非公開</b>
+            <% end %>
+          </div>
+          <div class="row d-flex justify-content-between border-bottom">
+            <div class="col py-3">
+              <%= image_tag post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
+              <%= post.title  %>
+              <p><%= post.content %></p>
+              <%= l post.created_at %>
+            </div>
+          </div>
+          <div class="row pt-3 pb-2">
+            <div class="col-xl-4 mt-1">
+              いいね数　 <i class="fas fa-heart fa-lg" style="color: #dc3545;"></i><%= post.likes.count %><br />
+              コメント数 <i class="far fa-comment-alt fa-lg"></i><%= post.comments.count %>
+            </div>
+            <div class="col-xl-4 mt-1">
+              <%= link_to '詳細', admin_user_post_path(post.user, post), class: "col-auto btn btn-block btn-outline-dark"  %>
+            </div>
+            <div class="col-xl-4 mt-1">
+              <%= link_to '削除', admin_user_post_path(post.user, post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "col-auto btn btn-block btn-outline-danger" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+    </div>
+  </div>
+</div>

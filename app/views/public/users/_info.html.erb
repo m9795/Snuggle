@@ -12,25 +12,36 @@
 <% else %>
   <h2 class="mb-4">User detaile</h2>
 <% end %>
-<%= link_to user_path(user) do %>
-  <%= image_tag user.get_image, class: 'user_image' %>
-  <%= user.name %><br />
-<% end %>
+  <%#= link_to user_path(user) do %>
+    <%= image_tag user.get_image, class: 'user_image' %>
+    <div class="user-info-text"><i class="fas fa-user-circle"></i> <%= user.name %></div>
+  <%# end %>
+
 
 <!--自己紹介文-->
 <p>Welcome to my page. Get to know me!</p>
+
+<p><%= user.introduction %></p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
-<%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
+<%= link_to user_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <% if user == current_user %>
-    <i class="fas fa-heart"></i> My like list (<%= liked_post.count %>)
+    <div class="link-btn"><span><i class="far fa-images fa-xs"></i></span> My post list (<%= posts.count %>)</div>
   <% else %>
-    <%= user.name %>'s like list (<%= liked_post.count %>)
+    <div class="link-btn"><span><i class="far fa-images fa-xs"></i></span> <%= user.name %>'s post list (<%= posts.count %>)</div>
   <% end %>
 <% end %>
+
+<%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
+  <% if user == current_user %>
+    <div class="link-btn"><span><i class="fas fa-heart"></i></span> My like list (<%= liked_post.count %>)</div>
+  <% else %>
+    <div class="link-btn"><span><i class="fas fa-heart"></i></span> <%= user.name %>'s like list (<%= liked_post.count %>)</div>
+  <% end %>
+<% end %>
+
 <% if user == current_user %>
     <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
-      <i class="fas fa-lock"></i> My private post (<%= current_user.posts.unpublish.count %>)
+      <div class="link-btn"><span><i class="fas fa-lock"></i></span> My private post (<%= current_user.posts.unpublish.count %>)</div>
     <% end %>
 <% end %>
-<p><%= user.introduction %></p>

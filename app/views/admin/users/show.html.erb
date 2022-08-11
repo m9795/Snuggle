@@ -1,5 +1,37 @@
-<h3>User detail</h3>
-
-<%= link_to '投稿一覧', admin_user_posts_path(@user) %>
-<%= link_to 'コメント一覧', admin_user_comments_path(@user) %>
-<%= link_to 'いいね一覧', admin_user_likes_path(@user) %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="mb-4"><span><i class="far fa-address-card"></i></span> User detail</h2>
+      <div class="text-secondary">User id：<%= @user.id %></div>
+      <div class="container border pb-2 mb-3">
+        <div class="row">
+          <% if @user.status == false %>
+            <b class="px-3 mb-2 bg-success text-white">有効</b>
+          <% else %>
+            <b class="px-3 mb-2 bg-danger text-white">退会</b>
+          <% end %>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col py-3">
+            <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %>
+            <p><%= @user.name %></p>
+            <p><%= @user.introduction %></p>
+          </div>
+        </div>
+        <div class="row pt-3 pb-2">
+          <div class="col">
+            <%= link_to admin_user_posts_path(@user), class: "btn btn-outline-dark btn-block" do %>
+              投稿一覧 (<%= @user.posts.count %>)
+            <% end %>
+            <%= link_to admin_user_comments_path(@user), class: "btn btn-outline-dark btn-block" do %>
+              コメント一覧 (<%= @user.comments.count %>)
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 mt-1">
+        <%= link_to "< All Users へ戻る", admin_users_path, class: "py-2 btn btn-outline-dark btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>

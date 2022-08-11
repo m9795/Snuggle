@@ -5,10 +5,10 @@
     </div>
     <div class="col-6 pl-4">
       <h2 class="mb-4"><span><i class="fas fa-lock fa-xs"></i></span> My private post (<%= current_user.posts.unpublish.count %>)</h2>
-      <% if @posts.present? %>
+      <% if @unpublish_posts.present? %>
         <%= render 'public/posts/index', posts: @unpublish_posts %>
       <% else %>
-        <p>現在、非公開投稿はありません。</p>
+        <p>現在、非公開での投稿はありません。</p>
       <% end %>
     </div>
   </div>

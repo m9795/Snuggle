@@ -28,7 +28,22 @@ footer {
   object-fit: cover;
 }
 
+.admin-userpost-image {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
 // text_areaの入力結果を改行、スペースを持たせ表示させる
 p {
   white-space: pre-wrap;
+  word-break: break-all;
+}
+
+h2 {
+  word-break: break-all;
+}
+
+.link-btn .user-index-text .user-info-text .count-text .customization-text {
+  word-break: break-all;
 }

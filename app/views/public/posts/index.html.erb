@@ -5,7 +5,11 @@
     </div>
     <div class="col-6 pl-4">
       <h2 class="mb-4"><span><i class="far fa-images fa-xs"></i></span> All Posts (<%= @publish_post_all.count %>)</h2>
-      <%= render 'index', posts: @publish_post_all %>
+      <% if @posts.present? %>
+        <%= render 'index', posts: @posts %>
+      <% else %>
+        <p>現在、投稿はありません。</p>
+      <% end %>
     </div>
   </div>
 </div>
