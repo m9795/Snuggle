@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-lg-4 d-none d-lg-block mb-3">
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
-    <div class="col-6 pl-4">
+    <div class="col-lg-7 offset-md-1">
       <%= render 'public/posts/show', post: @post %>
+      <%= render 'public/posts/all-posts.btn' %>
     </div>
   </div>
 </div>

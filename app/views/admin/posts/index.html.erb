@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-6">
+    <div class="col-lg-6">
       <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s posts(<%= @posts.count %>) <span><i class="far fa-images fa-xs"></i></span></h2>
       <% @posts.each do |post| %>
         <div class="text-secondary">Post id：<%= post.id %></div>
@@ -15,7 +15,9 @@
           <div class="row d-flex justify-content-between border-bottom">
             <div class="col py-3">
               <%= image_tag post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
-              <%= post.title  %>
+              <div><i class="fas fa-tag"></i><span>Title</span></div>
+              <p><%= post.title  %></p>
+              <div><span><i class="far fa-file-alt"></i></span>Content</div>
               <p><%= post.content %></p>
               <%= l post.created_at %>
             </div>
@@ -34,7 +36,7 @@
           </div>
         </div>
       <% end %>
-      <%= link_to "< All Users へ戻る", admin_users_path, class: "btn btn-outline-dark" %>
+      <%= render 'admin/users/all-users.btn' %>
     </div>
   </div>
 </div>

@@ -28,21 +28,24 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :users, except: [:new, :create, :destroy] do
-      # 非公開記事一覧ページ
-      get 'private_post' => 'posts#private_post'
+      # ユーザーの投稿一覧
+      get 'posts' => 'users#posts'
       # いいね一覧
       get 'like_list' => 'likes#like_list'
+      # 非公開記事一覧ページ
+      get 'private_post' => 'posts#private_post'
     end
+    # ユーザの退会確認ページ
+    get 'user/unsubscribe' => 'users#unsubscribe'
+    get 'user/withdraw' => 'users#withdraw'
+    # キーワード検索結果ページ
+    get 'search' => 'searches#search'
+    # タグ検索結果ページ
+    get 'post/tag/:name' => 'posts#tag'
+    
     resources :posts do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-
-    # ユーザの退会確認ページ
-    get 'user/unsubscribe' => 'users#unsubscribe'
-    get 'user/withdraw' => 'users#withdraw'
-    # ユーザ・投稿の検索結果ページ
-    get 'search' => 'searches#search'
-    get 'post/tag/:name' => 'posts#tag'
   end
 end

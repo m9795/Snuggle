@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4 d-none d-md-block">
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
-    <div class="col-6 pl-4">
+    <div class="col-md-7 offset-md-1">
       <h2 class="mb-4"><span><i class="fas fa-lock fa-xs"></i></span> My private post (<%= current_user.posts.unpublish.count %>)</h2>
       <% if @unpublish_posts.present? %>
         <%= render 'public/posts/index', posts: @unpublish_posts %>
       <% else %>
         <p>現在、非公開での投稿はありません。</p>
       <% end %>
+      <%= render 'public/users/mypage.btn', user: @user %>
     </div>
   </div>
 </div>

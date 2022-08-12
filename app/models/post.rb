@@ -26,7 +26,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggings
 
   validates :title,   presence: true, length: { minimum: 1 , maximum: 140 }
-  validates :content, presence: true, length: { minimum: 1 , maximum: 3000 }
+  validates :content, presence: true, length: { minimum: 1 , maximum: 1000 }
 
 # 投稿画像設定
   has_one_attached :image
@@ -72,7 +72,7 @@ class Post < ApplicationRecord
       Post.all
     end
   end
-  
+
   # 投稿の公開・非公開設定
   scope :publish,   -> {where(publish: true)}
   scope :unpublish, -> {where(publish: false)}

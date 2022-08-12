@@ -1,0 +1,11 @@
+<% if user == current_user %>
+  <h2 class="mb-4"><span><i class="far fa-images fa-xs"></i></span> My post list (<%= posts.count %>)</h2>
+<% else %>
+  <h2 class="mb-4"><span><i class="far fa-images fa-xs"></i></span> <%= user.name %>'s post list (<%= @posts.count %>)</h2>
+<% end %>
+<% if posts.present? %>
+  <%= render 'public/posts/index', posts: posts %>
+<% else %>
+  <p>現在、投稿はありません。</p>
+<% end %>
+<%= render 'public/users/mypage.btn', user: user %>

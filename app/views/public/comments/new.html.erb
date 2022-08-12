@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-4 my-3">
+    <div class="col-lg-4 my-3">
       <h2 class="mb-4">Post detail <span><i class="fas fa-camera fa-xs"></i></span></h2>
-      <div class="container border mb-5 py-3">
+      <div class="container border mb-5 pb-3">
         <%= image_tag @post.user.get_image, class: 'post_user_image' %>
         <%= link_to @post.user.name, user_path(@post.user) %>
         <%= link_to post_path(@post) do %>
@@ -13,13 +13,15 @@
         Created　<%= l @post.created_at %><br />
         Updated　<%= l @post.updated_at %>
       </div>
+      <%= render 'public/posts/all-posts.btn' %>
     </div>
-    <div class="col-5 offset-1 mt-3 mb-5">
+    <div class="col-lg-6 offset-lg-1 mt-3">
       <h2 class="mb-4">To comment <span><i class="far fa-comment-alt fa-xs"></i></span></h2>
       <%= render 'public/comments/form', post: @post, comment: @comment %>
       <div id="comments_area">
         <%= render 'public/comments/post_comments', post: @post %>
       </div>
+      <%= render 'public/posts/back.btn' %>
     </div>
   </div>
 </div>
