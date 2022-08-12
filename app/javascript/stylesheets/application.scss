@@ -2,9 +2,14 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 footer {
-  background-color: #333;
   height: 50px;
+  line-height: 50px;
   border-top: 1px solid #545b64;
+  background-color: #333;
+}
+
+.main-height {
+  height: 100vh;
 }
 
 // レスポンシブ非対応だったため一旦コメントアウト

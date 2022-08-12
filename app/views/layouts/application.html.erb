@@ -11,13 +11,19 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <main>
-      <p id="notice" class="d-flex justify-content-center"><%= notice %></p>
-      <p id="alert" class="d-flex justify-content-center"><%= alert %></p>
-      <%= yield %>
-    </main>
-    <footer>
-      <p>Copyright © 2020 SHAKE Inc.</p>
-    </footer>
+    <% if user_signed_in? && %w[new_post edit_post edit_user user_unsubscribe].any? {|name| current_page?(send("#{name}_path")) } %>
+      <main>
+        <%= render 'layouts/main' %>
+      </main>
+    <% elsif user_signed_in? && %w[new_post edit_post edit_user user_unsubscribe].any? {|name| current_page?(send("#{name}_path")) } %>
+      <main class="main-height">
+        <%= render 'layouts/main' %>
+      </main>
+    <% else %>
+      <main class="main-height">
+        <%= render 'layouts/main' %>
+      </main>
+    <% end %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
