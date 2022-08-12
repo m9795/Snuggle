@@ -2,9 +2,14 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 footer {
-  background-color: #333;
   height: 50px;
+  line-height: 50px;
+  background-color: #333;
   border-top: 1px solid #545b64;
+}
+
+.flash-messages {
+  height: 30px;
 }
 
 // レスポンシブ非対応だったため一旦コメントアウト
@@ -26,6 +31,7 @@ footer {
   width: 50px;
   border-radius: 50%;
   object-fit: cover;
+  margin: 12px 5px 5px 0;
 }
 
 .admin-userpost-image {

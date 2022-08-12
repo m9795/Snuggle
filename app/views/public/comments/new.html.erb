@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-4 my-3">
       <h2 class="mb-4">Post detail <span><i class="fas fa-camera fa-xs"></i></span></h2>
-      <div class="container border mb-5 py-3">
+      <div class="container border mb-5 pb-3">
         <%= image_tag @post.user.get_image, class: 'post_user_image' %>
         <%= link_to @post.user.name, user_path(@post.user) %>
         <%= link_to post_path(@post) do %>

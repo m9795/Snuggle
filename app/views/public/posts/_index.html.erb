@@ -5,12 +5,10 @@
         <b class="px-3 mb-2 bg-danger text-white">非公開</b>
       <% end %>
     </div>
-    <div class="col py-2">
-      <%= link_to user_path(post.user) do %>
-        <%= image_tag post.user.get_image, class: 'post_user_image' %>
-        <%= post.user.name %><br />
-      <% end %>
-    </div>
+    <%= link_to user_path(post.user) do %>
+      <%= image_tag post.user.get_image, class: 'post_user_image' %>
+      <%= post.user.name %><br />
+    <% end %>
     <%= link_to post do %>
       <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %><br />
     <% end %>
