@@ -1,12 +1,11 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :post_choice, only: [:new, :create, :destroy]
   def new
-    @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     @comment.save
@@ -15,7 +14,6 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     Comment.find(params[:id]).destroy
     render 'post_comments'
   end
@@ -23,5 +21,9 @@ class Public::CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(:comment)
+    end
+
+    def post_choice
+      @post = Post.find(params[:post_id])
     end
 end
