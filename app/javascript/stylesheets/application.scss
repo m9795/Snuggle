@@ -12,13 +12,6 @@ footer {
   height: 30px;
 }
 
-// レスポンシブ非対応だったため一旦コメントアウト
-// .post_image {
-//   height: 500px;
-//   width: 500px;
-//   object-fit: cover;
-// }
-
 .user_image {
   height: 100px;
   width: 100px;
@@ -49,3 +42,44 @@ p {
 h2 {
   word-break: break-all;
 }
+
+ul.navbar-nav.ml-auto {
+  font-size: 14px;
+}
+
+.search-form-text {
+  font-size: 8px;
+}
+
+.search-btn:not(:disabled):not(.disabled) {
+  font-size: 4px;
+  padding: 4px;
+  margin-left: 3px;
+}
+
+// 最終的に背景色つけるか検討する
+// body {
+  // 薄水色 #cdd
+  // 白練 #eee
+  // #dc9
+  // #dcc894 △
+  // #d2b48c 〇
+  // background-color: #d2b48c;
+// }
+
+// レスポンシブ非対応だったため一旦コメントアウト
+// .post_image {
+//   height: 500px;
+//   width: 500px;
+//   object-fit: cover;
+// }
+
+// 現状576がブレークポイント。340にしたい
+// @media (min-width: 340px)
+// .search-fom-group {
+//   display: flex;
+//   flex: 0 0 auto;
+//   flex-flow: row wrap;
+//   align-items: center;
+//   margin-bottom: 0;
+// }
