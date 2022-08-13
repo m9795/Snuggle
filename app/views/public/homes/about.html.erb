@@ -1,2 +1,25 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="contaier mt-3">
+  <h1 class="mb-5 d-flex justify-content-center text-secondary">ようこそ、Snuggleへ！</h1>
+  <h3 class="d-flex justify-content-center text-secondary">カフェ　X　学習のコミュニティサイト</h3>
+  <h3 class="d-flex justify-content-center text-secondary">カフェに立ち寄るように、仲間と気軽に集まれる場所に</h3>
+  <h3 class="mt-5 d-flex justify-content-center text-secondary">Snuggleでは以下のことができます。</h3>
+  <div class="row mt-3 pt-5 justify-content-center">
+    <div class="col-lg-3 mx-3 p-lg-5 form-group border">
+      <b>学習の仲間作り</b>
+      <p>学習を頑張りたい！<br />そんなあなたの思いを応援します。</p>
+      <p class="small">Snuggleで高めあえる仲間を見つけよう！</p>
+      <%= link_to 'Snuggleの登録ユーザーを見る', users_path, class: "btn btn-outline-primary" %>
+    </div>
+    <div class="col-lg-3 mx-3 p-lg-5 form-group border">
+      <b>学習におすすめのカフェを共有</b>
+      <p>学習にぴったりなカフェが見つかるかも？</p>
+      <p class="small">あなたのおすすめカフェを共有してみよう！</p>
+      <%= link_to 'お気に入りのカフェを投稿する', new_post_path, class: "btn btn-outline-success align-bottom" %>
+    </div>
+    <div class="col-lg-3 mx-3 p-lg-5 form-group border">
+      <b>学習の息抜きやリラックスに</b>
+      <p>学習に息詰まったな...<br />そんな時はSnuggleでみんなのおすすめのカフェを見て癒されませんか？</p>
+      <%= link_to 'みんなの投稿一覧を見る', posts_path, class: "btn btn-outline-info" %>
+    </div>
+  </div>
+</div>

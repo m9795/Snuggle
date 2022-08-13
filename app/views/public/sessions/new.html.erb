@@ -4,13 +4,13 @@
       <h2 class="text-center">Log in <span><i class="fas fa-user-circle fa-xs"></i></span></h2>
       <%= form_with model: resource, url: user_session_path do |f| %>
         <div class="field mt-3">
-          <span><i class="fas fa-envelope"></i></span> <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+          <span><i class="fas fa-envelope"></i></span> <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control login-form-text" %>
         </div>
 
         <div class="field mt-3">
-          <span><i class="fas fa-lock"></i></span> <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+          <span><i class="fas fa-lock"></i></span> <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control login-form-text" %>
         </div>
 
         <div class="actions">

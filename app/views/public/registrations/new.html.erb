@@ -1,36 +1,32 @@
 <div class="container py-3">
-  <%= render "public/shared/error_messages", resource: resource %>
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex flex-column align-content-center">
+    <div class="col-lg-5 ml-5">
+      <%= render "public/shared/error_messages", resource: resource %>
+    </div>
     <div class="col-lg-5 mx-3 p-5 form-group border">
       <h2 class="text-center">Sign up <span><i class="fas fa-address-card fa-xs"></i></span></h2>
       <%= form_with model: resource, url: user_registration_path do |f| %>
         <div class="field mt-3">
-          <span><i class="fas fa-user-circle"></i></span> <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネーム（最大20文字）", class: "form-control", minilength: "1", maxlength: "20"  %>
+          <span><i class="fas fa-user-circle"></i></span> <%= f.label :name %>(1~20文字)
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネームを入力", class: "form-control signin-form-text", minilength: "1", maxlength: "20"  %>
         </div>
-
         <div class="field mt-2">
-          <span><i class="fas fa-envelope"></i></span> <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+          <span><i class="fas fa-envelope"></i></span> <%= f.label :email %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレスを入力", class: "form-control signin-form-text" %>
         </div>
-
         <div class="field mt-2">
-          <span><i class="fas fa-lock"></i></span> <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（最小6文字）", class: "form-control" %>
+          <span><i class="fas fa-lock"></i></span> <%= f.label :password %>(6文字以上)
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワードを入力", class: "form-control signin-form-text" %>
         </div>
-
         <div class="field mt-2">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認）", class: "form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", class: "form-control signin-form-text" %>
         </div>
-
         <div class="actions">
           <%= f.submit "Sign up", class: "form-control mt-4 btn btn-outline-success" %>
         </div>
       <% end %>
       </div>
-  </div>
-  <div class="row d-flex justify-content-center text-center">
-    <div class="col-lg-5 form-group border mx-3 px-5 py-3">
+    <div class="col-lg-5 text-center form-group border mx-3 px-5 py-3">
       <p>Already have an account?</p>
       <%= render "public/shared/links" %>
     </div>

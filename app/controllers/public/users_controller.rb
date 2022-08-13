@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
   before_action :user_choice, only: [:post_choice, :posts, :show, :update]
-  before_action :post_choice, only: [:posts, :show]
+  before_action :info_count, only: [:posts, :show]
 
   def index
   end
@@ -27,11 +27,11 @@ class Public::UsersController < ApplicationController
   # レスポンシブ時ユーザー情報のみ表示
   def show
   end
-  
+
   # レスポンシブ時ユーザーの投稿一覧のみ表示
   def posts
   end
-  
+
   # 退会確認ページ
   def unsubscribe
   end
@@ -64,7 +64,7 @@ class Public::UsersController < ApplicationController
       end
     end
 
-    def post_choice
+    def info_count
       @posts = @user.posts.publish
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end

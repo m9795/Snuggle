@@ -10,15 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <main>
-      <!--<div class="header-back"></div>-->
-      <div class="flash-messages mt-5">
-        <span id="notice" class="d-flex justify-content-center"><%= notice %></span>
-        <span id="alert" class="d-flex justify-content-center"><%= alert %></span>
-      </div>
-      <%= yield %>
-    </main>
-    <%= render 'layouts/footer' %>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      <main>
+        <div class="flash-messages mt-5">
+          <span id="notice" class="d-flex justify-content-center"><%= notice %></span>
+          <span id="alert" class="d-flex justify-content-center"><%= alert %></span>
+        </div>
+        <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

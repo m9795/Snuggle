@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :post_choice, only: [:show, :edit, :update, :destroy]
   def new
     @post = Post.new
   end
@@ -21,14 +22,12 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = @post.user
     @posts = @user.posts.publish
     @liked_post = @user.likes.where(post_id: @publish_post_all)
   end
 
   def edit
-    @post = Post.find(params[:id])
     @user = @post.user
     if @user == current_user
       render 'edit'
@@ -38,16 +37,14 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-      redirect_to post_path(post), notice: '投稿内容を更新しました。'
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: '投稿内容を更新しました。'
     else
-      redirect_to edit_post_path(post), alert: '編集内容をご確認ください。'
+      redirect_to edit_post_path(@post), alert: '編集内容をご確認ください。'
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(current_user), notice: '投稿を削除しました。'
   end
@@ -74,5 +71,13 @@ class Public::PostsController < ApplicationController
 private
   def post_params
     params.require(:post).permit(:image, :title, :content, :publish)
+  end
+
+  def post_choice
+    if (params[:id]).present?
+      @post = Post.find(params[:id])
+    else
+      @post = Post.find(params[:post_id])
+    end
   end
 end

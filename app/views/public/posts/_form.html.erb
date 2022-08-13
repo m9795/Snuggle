@@ -1,12 +1,12 @@
 <%= form_with model: post do |f| %>
   <i class="far fa-image"></i> <%= f.label :image %><br />
   <div class="col">
-    <%= f.file_field :image, accept: 'image/*', class: "custom-file-input", id:"inputFile" %><br />
+    <%= f.file_field :image, accept: 'image/*', class: "custom-file-input", id: "inputFile" %>
     <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
   </div>
 
   <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="title"></span>
-  <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "タイトルを入力(必須)" %><br />
+  <%= f.text_field :title, autofocus: true, class: "title-input form-control", placeholder: "タイトルを入力(必須)" %><br />
   <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大1000文字)' %> <span class="content"></span>
   <%= f.text_area :content, class: "form-control", rows: "4", placeholder: "本文を入力(必須)" %><br />
   <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
@@ -16,16 +16,16 @@
 <!--タイトルと内容の入力文字数表示用-->
 <script>
   document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group input');
+    let t=e.target.closest('.form-group .title-input');
     if(t){
-      t.closest('.form-group').querySelector('span.title').textContent=t.value.length;
+      t.closest('.form-group').querySelector('.title').textContent=t.value.length;
     }
   });
 
   document.addEventListener('input',e=>{
     let t=e.target.closest('.form-group textarea');
     if(t){
-      t.closest('.form-group').querySelector('span.content').textContent=t.value.length;
+      t.closest('.form-group').querySelector('.content').textContent=t.value.length;
     }
   });
 </script>
