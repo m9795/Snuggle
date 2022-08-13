@@ -19,7 +19,7 @@
       <h2 class="mb-4">To comment <span><i class="far fa-comment-alt fa-xs"></i></span></h2>
       <%= render 'public/comments/form', post: @post, comment: @comment %>
       <div id="comments_area">
-        <%= render 'public/comments/post_comments', post: @post %>
+        <%= render 'public/comments/post_comments', post_comments: @post_comments %>
       </div>
       <%= render 'public/posts/back.btn' %>
     </div>
