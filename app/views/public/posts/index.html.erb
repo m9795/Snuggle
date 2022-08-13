@@ -8,9 +8,11 @@
       <% if @publish_post_all.present? %>
         <%= render 'index', posts: @publish_post_all %>
       <% else %>
-        <p>現在、投稿はありません。</p>
+        <div class="page-margin">
+          <p>現在、投稿はありません。</p>
+          <%= render 'public/users/mypage.btn', user: current_user %>
+        </div>
       <% end %>
-      <%= render 'public/users/mypage.btn', user: current_user %>
     </div>
   </div>
 </div>

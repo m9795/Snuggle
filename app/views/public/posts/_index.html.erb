@@ -9,9 +9,11 @@
       <%= image_tag post.user.get_image, class: 'post_user_image' %>
       <%= post.user.name %><br />
     <% end %>
-    <%= link_to post do %>
-      <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %><br />
-    <% end %>
+    <div class="post_image-wrapper">
+      <%= link_to post do %>
+        <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %><br />
+      <% end %>
+    </div>
     <!--いいね・コメントの表示-->
     <div id="likes_btn_<%= post.id %>">
       <%= render 'public/likes/btn', post: post %>

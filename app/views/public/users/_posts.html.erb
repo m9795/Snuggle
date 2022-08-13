@@ -6,6 +6,8 @@
 <% if posts.present? %>
   <%= render 'public/posts/index', posts: posts %>
 <% else %>
-  <p>現在、投稿はありません。</p>
+  <div class="page-margin">
+    <p>現在、投稿はありません。</p>
+    <%= render 'public/users/mypage.btn', user: user %>
+  </div>
 <% end %>
-<%= render 'public/users/mypage.btn', user: user %>

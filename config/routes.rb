@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get 'search' => 'searches#search'
     # タグ検索結果ページ
     get 'post/tag/:name' => 'posts#tag'
-    
+
     resources :posts do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]

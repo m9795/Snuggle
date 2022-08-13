@@ -1,9 +1,13 @@
+<!--画面サイズ768以下はユーザー情報非表示-->
 <div class="container">
   <div class="row">
     <div class="col-md-4 mb-3 d-none d-md-block">
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
-    <div class="col-md-7 offset-md-1">
+    <div class="col-md-7 offset-md-1 d-none d-md-block">
+      <%= render 'public/users/posts', user: @user, posts: @posts %>
+    </div>
+    <div class="col-md-7 offset-md-1 d-block d-md-none">
       <%= render 'public/users/posts', user: @user, posts: @posts %>
     </div>
   </div>

@@ -49,9 +49,11 @@
           </div>
         <% end %>
       <% else %>
-        <p>現在、いいねした投稿はありません。</p>
+        <div class="page-margin">
+          <p>現在、いいねした投稿はありません。</p>
+          <%= render 'public/users/mypage.btn', user: @user %>
+        </div>
       <% end %>
-      <%= render 'public/users/mypage.btn', user: @user %>
     </div>
   </div>
 </div>

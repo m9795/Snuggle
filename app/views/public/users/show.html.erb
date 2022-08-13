@@ -1,7 +1,15 @@
+<!--画面サイズ768以下はユーザー情報のみ表示-->
+<!--それ以上はユーザー情報とユーザーの投稿一覧を表示-->
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3 d-none d-md-block">
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
+    </div>
+    <!--divに幅を持たせているので76以下でフッターがめり込むのを防ぐ-->
+    <div class="col-md-4 mb-3 d-block d-md-none">
+      <div class="page-margin">
+        <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
+      </div>
     </div>
     <div class="col-md-7 offset-md-1 d-none d-md-block">
       <%= render 'public/users/posts', user: @user, posts: @posts %>

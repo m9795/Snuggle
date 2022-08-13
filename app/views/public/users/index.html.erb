@@ -2,7 +2,13 @@
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
       <h2 class="mb-4"><span><i class="fas fa-user-friends fa-xs"></i></span> All Users (<%= @publish_user_all.count %>)</h2>
-      <%= render 'index', users: @publish_user_all %>
+      <% if @publish_user_all.count <= 3 %>
+        <div class="userpage-margin">
+          <%= render 'index', users: @publish_user_all %>
+        </div>
+      <% else %>
+        <%= render 'index', users: @publish_user_all %>
+      <% end %>
     </div>
   </div>
 </div>
