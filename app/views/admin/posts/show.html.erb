@@ -5,7 +5,9 @@
       <div class="container border mb-5 py-3">
         <%= image_tag @post.user.get_image, class: 'post_user_image' %>
         <p><%= @post.user.name %></p>
-        <%= image_tag @post.get_image, class: 'img-fluid post_image' %>
+        <div class="post_image_wrapper">
+          <%= image_tag @post.get_image, class: 'img-fluid post_image' %>
+        </div>
         <h5><%= @post.title %></h5>
         <p><%= @post.content %></p>
         Created　<%= l @post.created_at %><br />
