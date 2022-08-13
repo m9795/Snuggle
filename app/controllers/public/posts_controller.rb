@@ -74,6 +74,10 @@ private
   end
 
   def post_choice
-    @post = Post.find(params[:id])
+    if (params[:id]).present?
+      @post = Post.find(params[:id])
+    else
+      @post = Post.find(params[:post_id])
+    end
   end
 end
