@@ -1,6 +1,28 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+ul.navbar-nav.ml-auto {
+  font-size: 14px;
+}
+
+.search-form-text {
+  font-size: 8px;
+}
+
+.search-btn:not(:disabled):not(.disabled) {
+  font-size: 4px;
+  padding: 4px;
+  margin-left: 3px;
+}
+
+.flash-messages {
+  height: 30px;
+}
+
+.signin-form-text, .login-form-text, .admin-login-form-text {
+  font-size: 12px;
+}
+
 footer {
   height: 50px;
   line-height: 50px;
@@ -8,8 +30,14 @@ footer {
   border-top: 1px solid #545b64;
 }
 
-.flash-messages {
-  height: 30px;
+h2 {
+  word-break: break-all;
+}
+
+// text_areaの入力結果を改行、スペースを持たせ表示させる
+p {
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .user_image {
@@ -31,30 +59,6 @@ footer {
   height: 50px;
   width: 50px;
   object-fit: cover;
-}
-
-// text_areaの入力結果を改行、スペースを持たせ表示させる
-p {
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-h2 {
-  word-break: break-all;
-}
-
-ul.navbar-nav.ml-auto {
-  font-size: 14px;
-}
-
-.search-form-text {
-  font-size: 8px;
-}
-
-.search-btn:not(:disabled):not(.disabled) {
-  font-size: 4px;
-  padding: 4px;
-  margin-left: 3px;
 }
 
 // 最終的に背景色つけるか検討する
