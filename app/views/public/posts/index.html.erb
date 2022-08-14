@@ -6,7 +6,7 @@
     <div class="col-md-7 offset-md-1">
       <h2 class="mb-4"><span><i class="far fa-images fa-xs"></i></span> All Posts (<%= @publish_post_all.count %>)</h2>
       <% if @publish_post_all.present? %>
-        <%= render 'index', posts: @publish_post_all %>
+        <%= render 'index', posts: @posts %>
       <% else %>
         <p>現在、投稿はありません。</p>
       <% end %>
