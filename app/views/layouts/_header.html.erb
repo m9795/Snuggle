@@ -1,11 +1,11 @@
 <header class="sticky-top">
   <nav class="navbar navbar-expand-xl navbar-light" style="background-color: #fff;">
     <% if user_signed_in? %>
-      <a class="navbar-brand ml-5" href="/about"><%= image_tag('Logo.jpg') %></a>
+      <a class="navbar-brand ml-5" href="/about"><%= image_tag('snuggle.logo.svg') %></a>
     <% elsif admin_signed_in? %>
-      <a class="navbar-brand" href="/admin/users"><%= image_tag('Logo.jpg') %></a>
+      <a class="navbar-brand" href="/admin/users"><%= image_tag('snuggle.logo.svg') %></a>
     <% else %>
-      <a class="navbar-brand" href="/"><%= image_tag('Logo.jpg') %></a>
+      <a class="navbar-brand" href="/"><%= image_tag('snuggle.logo.svg') %></a>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
