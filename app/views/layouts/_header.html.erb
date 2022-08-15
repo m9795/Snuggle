@@ -77,4 +77,7 @@
       </ul>
     </div>
   </nav>
+  <% if user_signed_in? %>
+    <div class="pb-3 d-flex justify-content-end bg-white"><%= render 'public/searches/form' %></div>
+  <% end %>
 </header>
