@@ -65,6 +65,7 @@ class Public::PostsController < ApplicationController
   def private_post
     @user = current_user
     @unpublish_posts = @user.posts.unpublish
+    @page_unpublish_posts = @unpublish_posts.page(params[:page]).per(5)
     users = User.where(status: false)
     @posts = current_user.posts.where(user_id: users, publish: true)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)

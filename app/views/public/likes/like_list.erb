@@ -9,8 +9,8 @@
       <% else %>
         <h2 class="mb-4"><span><i class="fas fa-heart"></i></span> <%= @user.name %>'s like list (<%= @liked_post.count %>)</h2>
       <% end %>
-      <% if @liked_post.present? %>
-        <% @liked_post.each do |post| %>
+      <% if @page_liked_post.present? %>
+        <% @page_liked_post.each do |post| %>
           <div class="container border mb-3 py-2 ">
             <%= link_to user_path(post.post.user) do %>
               <%= image_tag post.post.user.get_image, class: 'post_user_image' %>
@@ -50,6 +50,7 @@
             <%= l post.post.created_at %><br />
           </div>
         <% end %>
+        <%= paginate @page_liked_post %>
       <% else %>
         <p>現在、いいねした投稿はありません。</p>
       <% end %>
