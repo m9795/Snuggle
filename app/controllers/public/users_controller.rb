@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :info_count, only: [:posts, :show]
 
   def index
+    @users = @publish_user_all.page(params[:page]).per(10)
   end
 
   def edit
@@ -66,6 +67,7 @@ class Public::UsersController < ApplicationController
 
     def info_count
       @posts = @user.posts.publish
+      @page_posts = @posts.page(params[:page]).per(5)
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end
 end

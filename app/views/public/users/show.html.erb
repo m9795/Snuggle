@@ -4,7 +4,7 @@
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-md-7 offset-md-1 d-none d-md-block">
-      <%= render 'public/users/posts', user: @user, posts: @posts %>
+      <%= render 'public/users/posts', user: @user, posts: @posts, page_posts: @page_posts %>
     </div>
   </div>
 </div>

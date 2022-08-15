@@ -8,6 +8,7 @@ class Public::LikesController < ApplicationController
     posts = Post.where(user_id: users, publish: true)
     user = User.find(params[:user_id])
     @liked_post = user.likes.where(post_id: posts)
+    @page_liked_post = user.likes.where(post_id: posts).page(params[:page]).per(5)
     @posts = current_user.posts.publish
     @user = User.find(params[:user_id])
   end

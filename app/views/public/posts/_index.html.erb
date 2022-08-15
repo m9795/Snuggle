@@ -1,4 +1,4 @@
-<% posts.each do |post| %>
+<% page_posts.each do |post| %>
   <div class="container border mb-3 pb-2">
     <div class="row">
       <% if post.publish == false %>
@@ -18,7 +18,7 @@
     <div id="likes_btn_<%= post.id %>">
       <%= render 'public/likes/btn', post: post %>
     </div>
-    <p><%= link_to post.title, post_path(post) %></p>
+    <b><%= link_to post.title, post_path(post) %></b>
     <p><%= render_with_tags(post.content) %></p>
     Created　<%= l post.created_at %>｜Updated　<%= l post.updated_at %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
@@ -28,3 +28,4 @@
     <% end %>
   </div>
 <% end %>
+<%= paginate page_posts %>

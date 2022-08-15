@@ -12,6 +12,9 @@
   <body>
     <div class="wrapper">
       <%= render 'layouts/header' %>
+      <% if user_signed_in? %>
+        <div class="d-flex justify-content-end"><%= render 'public/searches/form' %></div>
+      <% end %>
       <main>
         <div class="flash-messages mt-5">
           <span id="notice" class="d-flex justify-content-center"><%= notice %></span>

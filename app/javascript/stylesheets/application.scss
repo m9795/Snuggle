@@ -23,6 +23,10 @@ ul.navbar-nav.ml-auto {
   font-size: 12px;
 }
 
+header {
+  border-bottom: 1px solid #dee2e6;
+}
+
 footer {
   position: absolute; /* 絶対位置を指定 起点はページ全体 */
   bottom: 0; /* ページの最下部に配置 */
@@ -30,7 +34,7 @@ footer {
   width: 100%;
   text-align: center;
   line-height: 50px;
-  background-color: #333;
+  background-color: #fff;
   border-top: 1px solid #545b64;
 }
 

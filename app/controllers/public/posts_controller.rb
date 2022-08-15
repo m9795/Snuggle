@@ -17,6 +17,8 @@ class Public::PostsController < ApplicationController
 
 # 退会ユーザーと非公開記事を省いて取得
   def index
+    @posts = @publish_post_all
+    @page_posts = @posts.page(params[:page]).per(5)
     @current_user_posts = current_user.posts.where(id: @publish_post_all)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
@@ -56,6 +58,7 @@ class Public::PostsController < ApplicationController
     @post = @publish_post_all.search(@tag.name)
     users = User.where(status: false)
     @posts = current_user.posts.where(user_id: users, publish: true)
+    @page_posts = current_user.posts.where(user_id: users, publish: true).page(params[:page]).per(5)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
 
@@ -63,6 +66,7 @@ class Public::PostsController < ApplicationController
   def private_post
     @user = current_user
     @unpublish_posts = @user.posts.unpublish
+    @page_unpublish_posts = @unpublish_posts.page(params[:page]).per(5)
     users = User.where(status: false)
     @posts = current_user.posts.where(user_id: users, publish: true)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)

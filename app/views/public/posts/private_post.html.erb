@@ -6,7 +6,7 @@
     <div class="col-md-7 offset-md-1">
       <h2 class="mb-4"><span><i class="fas fa-lock fa-xs"></i></span> My private post (<%= current_user.posts.unpublish.count %>)</h2>
       <% if @unpublish_posts.present? %>
-        <%= render 'public/posts/index', posts: @unpublish_posts %>
+        <%= render 'public/posts/index', posts: @unpublish_posts, page_posts: @page_unpublish_posts %>
       <% else %>
         <p>現在、非公開での投稿はありません。</p>
       <% end %>
