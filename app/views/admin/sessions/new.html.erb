@@ -1,6 +1,6 @@
 <div class="container py-3">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-5 mx-3 p-5 form-group border">
+    <div class="col-lg-5 mx-3 p-5 form-group border bg-white">
       <h2 class="text-center"><span><i class="fas fa-cog"></i></span> Admin login</h2>
       <%= form_with model: resource, url: admin_session_path do |f| %>
         <div class="field mt-3">
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="row d-flex justify-content-center text-center">
-    <div class="col-md-5 form-group border mx-3 py-3">
+    <div class="col-md-5 form-group border bg-white mx-3 py-3">
       <%= render "admin/shared/links" %>
       <h5>Administrators<br />can manage user information.</h5>
     </div>

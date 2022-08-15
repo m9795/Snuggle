@@ -1,5 +1,5 @@
 <% page_posts.each do |post| %>
-  <div class="container border mb-3 pb-2">
+  <div class="container border bg-white mb-3 pb-2">
     <div class="row">
       <% if post.publish == false %>
         <b class="px-3 mb-2 bg-danger text-white">非公開</b>
@@ -20,7 +20,7 @@
     </div>
     <b><%= link_to post.title, post_path(post) %></b>
     <p><%= render_with_tags(post.content) %></p>
-    Created　<%= l post.created_at %>｜Updated　<%= l post.updated_at %><br />
+    作成日時：<%= l post.created_at %>｜更新日時：<%= l post.updated_at %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
     <% if post.user == current_user %>
       <%= link_to '編集', edit_post_path(post) %>

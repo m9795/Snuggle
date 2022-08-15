@@ -12,32 +12,34 @@
   <h2 class="mb-4">User detaile</h2>
 <% end %>
 
-<%= image_tag user.get_image, class: 'user_image' %>
-<div><i class="fas fa-user-circle"></i> <%= user.name %></div>
+<div class="border bg-white p-3">
+  <%= image_tag user.get_image, class: 'user_image' %>
+  <div><i class="fas fa-user-circle"></i> <%= user.name %></div>
 
-<!--自己紹介文-->
-<p>Welcome to my page. Get to know me!</p>
-<p><i class="far fa-file-alt"></i> <%= user.introduction %></p>
-投稿数：<%= posts.count %><br />
-<p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
-<%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
-  <% if user == current_user %>
-    <i class="far fa-images fa-xs"></i> My post list (<%= posts.count %>)
-  <% else %>
-    <i class="far fa-images fa-xs"></i> <%= user.name %>'s post list (<%= posts.count %>)
-  <% end %>
-<% end %>
-
-<%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
-  <% if user == current_user %>
-    <i class="fas fa-heart"></i> My like list (<%= liked_post.count %>)
-  <% else %>
-    <i class="fas fa-heart"></i> <%= user.name %>'s like list (<%= liked_post.count %>)
-  <% end %>
-<% end %>
-
-<% if user == current_user %>
-    <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
-      <i class="fas fa-lock"></i> My private post (<%= current_user.posts.unpublish.count %>)
+  <!--自己紹介文-->
+  <p>Welcome to my page. Get to know me!</p>
+  <p><i class="far fa-file-alt"></i> <%= user.introduction %></p>
+  投稿数：<%= posts.count %><br />
+  <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+  <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <% if user == current_user %>
+      <i class="far fa-images fa-xs"></i> 投稿一覧 (<%= posts.count %>)
+    <% else %>
+      <i class="far fa-images fa-xs"></i> <%= user.name %>'s 投稿一覧 (<%= posts.count %>)
     <% end %>
-<% end %>
+  <% end %>
+
+  <%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <% if user == current_user %>
+      <i class="fas fa-heart"></i> いいね一覧 (<%= liked_post.count %>)
+    <% else %>
+      <i class="fas fa-heart"></i> <%= user.name %>'s いいね一覧 (<%= liked_post.count %>)
+    <% end %>
+  <% end %>
+
+  <% if user == current_user %>
+      <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
+        <i class="fas fa-lock"></i> 非公開一覧 (<%= current_user.posts.unpublish.count %>)
+      <% end %>
+  <% end %>
+</div>

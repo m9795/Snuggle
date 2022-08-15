@@ -4,7 +4,7 @@
     <% if users.present? %>
     <!--公開ユーザー全員のデータを取り出す-->
       <% users.each do |user| %>
-        <dif class="col border py-2 my-2">
+        <dif class="col border bg-white py-2 my-2">
           <%= link_to user_path(user) do %>
             <%= image_tag user.get_image, class: 'user_image' %>
             <%= user.name %>
