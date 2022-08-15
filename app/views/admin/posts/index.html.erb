@@ -15,11 +15,12 @@
           <div class="row d-flex justify-content-between border-bottom">
             <div class="col py-3">
               <%= image_tag post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
-              <div><i class="fas fa-tag"></i><span>Title</span></div>
+              <div><i class="fas fa-tag"></i> タイトル</div>
               <p><%= post.title  %></p>
-              <div><span><i class="far fa-file-alt"></i></span>Content</div>
+              <div><span><i class="far fa-file-alt"></i> 本文</div>
               <p><%= post.content %></p>
-              <%= l post.created_at %>
+              <div>作成日時：<%= l post.created_at %></div>
+              <div>更新日時：<%= l post.updated_at %></div>
             </div>
           </div>
           <div class="row pt-3 pb-2">

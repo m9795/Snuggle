@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: 'DESC')
   end
 
   def destroy

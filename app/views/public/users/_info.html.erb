@@ -17,7 +17,7 @@
 
 <!--自己紹介文-->
 <p>Welcome to my page. Get to know me!</p>
-<p><%= user.introduction %></p>
+<p><i class="far fa-file-alt"></i> <%= user.introduction %></p>
 投稿数：<%= posts.count %><br />
 <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
 <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>

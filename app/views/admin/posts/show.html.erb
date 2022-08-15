@@ -21,9 +21,10 @@
         <% if @comments.present? %>
           <% @comments.each do |comment| %>
             <%= image_tag comment.user.get_image, class: 'post_user_image' %>
-            <p><%= comment.post.user.name %></p>
+            <p><i class="fas fa-user-circle"></i> <%= comment.post.user.name %></p>
             <p><%= comment.comment %></p>
-            <%= link_to '削除', admin_user_comment_path(@post.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+            <div><%= l comment.created_at %>｜<%= link_to '削除', admin_user_comment_path(@post.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %></div>
+
             <hr></hr>
           <% end %>
         <% else %>
