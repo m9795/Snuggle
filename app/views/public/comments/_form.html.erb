@@ -15,7 +15,7 @@
   document.addEventListener('input',e=>{
     let t=e.target.closest('.form-group textarea');
     if(t){
-      t.closest('.form-group').querySelector('div span').textContent=t.value.length;
+      t.closest('.form-group').querySelector('span').textContent=t.value.length;
     }
   });
 </script>
