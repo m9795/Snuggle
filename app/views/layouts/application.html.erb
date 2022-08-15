@@ -9,11 +9,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="bg-light">
     <div class="wrapper">
       <%= render 'layouts/header' %>
       <main>
-        <div class="flash-messages mt-5">
+        <div class="flash-messages mt-2">
           <span id="notice" class="d-flex justify-content-center"><%= notice %></span>
           <span id="alert" class="d-flex justify-content-center"><%= alert %></span>
         </div>
