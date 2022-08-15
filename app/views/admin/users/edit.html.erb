@@ -16,12 +16,16 @@
             <%= image_tag @user.get_image, class: "user_image" %><br />
           </div>
           <div class="col-12">
-            <i class="fas fa-user-circle"></i> name
+            <i class="fas fa-user-circle"></i> 名前
             <p><%= @user.name %></p>
           </div>
           <div class="col-12">
-            <i class="far fa-file-alt"></i> introduction
+            <i class="far fa-file-alt"></i> 紹介文
             <p><%= @user.introduction %></p>
+          </div>
+          <div class="col-12">
+            <i class="fas fa-envelope"></i> メールアドレス
+            <p><%= @user.email %></p>
           </div>
         </div>
         <div class="row pt-2 pb-2">

@@ -20,7 +20,8 @@
     </div>
     <b><%= link_to post.title, post_path(post) %></b>
     <p><%= render_with_tags(post.content) %></p>
-    作成日時：<%= l post.created_at %>｜更新日時：<%= l post.updated_at %><br />
+    作成日時：<%= l post.created_at %><br />
+    更新日時：<%= l post.updated_at %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
     <% if post.user == current_user %>
       <%= link_to '編集', edit_post_path(post) %>

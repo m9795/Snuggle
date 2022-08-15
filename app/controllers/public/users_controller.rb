@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(status: true)
     sign_out current_user
-    redirect_to root_path, notice: 'ご利用いただきありがとうございました！またのご利用をお待ちしております。'
+    redirect_to root_path, notice: 'ご利用いただきありがとうございました！', alert: 'またのご利用をお待ちしております。'
   end
 
   private

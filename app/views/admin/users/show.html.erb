@@ -13,12 +13,12 @@
         </div>
         <div class="row d-flex justify-content-between">
           <div class="col py-3">
-            <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %>
-            <p><i class="fas fa-user-circle"></i> 名前</p>
+            <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %><br />
+            <i class="fas fa-user-circle"></i> 名前
             <p><%= @user.name %></p>
-            <p><i class="far fa-file-alt"></i> 自己紹介文</p>
+            <i class="far fa-file-alt"></i> 自己紹介文
             <p><%= @user.introduction %></p>
-            <p><i class="fas fa-envelope"></i> メールアドレス</p>
+            <i class="fas fa-envelope"></i> メールアドレス
             <p><%= @user.email %></p>
           </div>
         </div>
