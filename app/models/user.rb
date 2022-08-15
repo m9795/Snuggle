@@ -49,4 +49,8 @@ class User < ApplicationRecord
       user.name = 'guest user'
     end
   end
+
+  # 有効・退会の絞り込み
+  scope :publish, -> {where(statue: false)}
+  scope :unpublish, -> {where(status: true)}
 end

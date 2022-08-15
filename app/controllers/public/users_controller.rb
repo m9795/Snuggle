@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :info_count, only: [:posts, :show]
 
   def index
-    @users = @publish_user_all.page(params[:page]).per(10)
+    @users = @publish_user_all.page(params[:page])
   end
 
   def edit
