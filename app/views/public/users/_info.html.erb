@@ -4,7 +4,7 @@
     <% if user.name == 'guest user' %>
     <% elsif user == current_user || admin_signed_in? %>
       <%= link_to edit_user_path(user), class: "btn btn-outline-dark" do %>
-         <span><i class="fas fa-user-edit fa-xs d-flex"></i></span>
+        <i class="fas fa-user-edit fa-xs d-flex"></i>
       <% end %>
     <% end %>
   </h2>

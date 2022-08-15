@@ -1,68 +1,66 @@
 <header class="sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <% if user_signed_in? %>
-        <a class="navbar-brand" href="/about"><span>Snuggle</span></a>
-      <% elsif admin_signed_in? %>
-        <a class="navbar-brand" href="/admin/users"><span>Snuggle</span></a>
-      <% else %>
-        <a class="navbar-brand" href="/"><span>Snuggle</span></a>
-      <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+  <nav class="navbar navbar-expand-xl navbar-light" style="background-color: #fff;">
+    <% if user_signed_in? %>
+      <a class="navbar-brand ml-5" href="/about"><%= image_tag('Logo.jpg') %></a>
+    <% elsif admin_signed_in? %>
+      <a class="navbar-brand" href="/admin/users"><span>Snuggle</span></a>
+    <% else %>
+      <a class="navbar-brand" href="/"><span>Snuggle</span></a>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto text-center">
         <!--ユーザーログイン時-->
         <% if user_signed_in? %>
-          <li>
-            <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> My page
+          <li class="border rounded text-secondary font-italic px-4 py-3 m-2">
+            <%= link_to user_path(current_user), class: 'nav-link' do %>
+              <i class="fas fa-home"></i>マイページ
             <% end %>
           </li>
-          <li>
-            <%= link_to  new_post_path, class: 'nav-link text-light' do %>
-              <span><i class="fas fa-plus-circle"></i></span> New post
+          <li class="border rounded text-secondary font-italic px-4 py-3 m-2">
+            <%= link_to  new_post_path, class: 'nav-link' do %>
+              <i class="fas fa-plus-circle"></i> 新規投稿
             <% end %>
           </li>
-          <li>
-            <%= link_to users_path, class: 'nav-link text-light' do %>
-              <span><i class="fas fa-user-friends"></i></span> Users (<%= @publish_user_all.count %>)
+          <li class="border rounded text-secondary font-italic px-4 py-3 m-2">
+            <%= link_to users_path, class: 'nav-link' do %>
+              <i class="fas fa-user-friends"></i> ユーザ一覧 (<%= @publish_user_all.count %>)
             <% end %>
           </li>
-          <li>
-            <%= link_to posts_path, class: 'nav-link text-light' do %>
-              <span><i class="far fa-images"></i></span> Posts (<%= @publish_post_all.count %>)
+          <li class="border rounded text-secondary font-italic px-4 py-3 m-2">
+            <%= link_to posts_path, class: 'nav-link' do %>
+              <i class="far fa-images"></i> 投稿一覧 (<%= @publish_post_all.count %>)
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'col mr-2 nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> Log out
+          <li class="border rounded text-secondary font-italic px-4 py-3 m-2">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'col mr-2 nav-link' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
-          <%= render 'public/searches/form' %>
-        <!--アドミンログイン時-->
-        <% elsif admin_signed_in? %>
-          <li><%= link_to 'Users', admin_users_path, class: 'nav-link text-light' %></li>
-          <li>
-            <%= link_to "Lot out", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-          </li>
-        <!--未ログイン時-->
-        <% else %>
-          <li>
-            <%= link_to "About", about_path, class: 'nav-link text-light' %>
-          </li>
-          <li>
-            <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
-          </li>
-          <li>
-            <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
-          </li>
-          <li>
-            <%= link_to "Admin Log in", admin_session_path, class: 'nav-link text-light' %>
-          </li>
-        <% end %>
-      </div>
+        </ul>
+      <!--アドミンログイン時-->
+      <% elsif admin_signed_in? %>
+        <li><%= link_to 'Users', admin_users_path, class: 'nav-link text-light' %></li>
+        <li>
+          <%= link_to "Lot out", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+        </li>
+      <!--未ログイン時-->
+      <% else %>
+        <li>
+          <%= link_to "About", about_path, class: 'nav-link text-light' %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+        </li>
+        <li>
+          <%= link_to "Admin Log in", admin_session_path, class: 'nav-link text-light' %>
+        </li>
+      <% end %>
     </div>
   </nav>
 </header>

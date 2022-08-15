@@ -58,6 +58,7 @@ class Public::PostsController < ApplicationController
     @post = @publish_post_all.search(@tag.name)
     users = User.where(status: false)
     @posts = current_user.posts.where(user_id: users, publish: true)
+    @page_posts = current_user.posts.where(user_id: users, publish: true).page(params[:page]).per(5)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
 
