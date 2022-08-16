@@ -8,16 +8,15 @@ class Public::CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_id = @post.id
-    comments = @post.comments.where(user_id: @publish_user_all)
-    @post_comments = comments.order(created_at: 'DESC')
-    @comment.save
-    # create失敗時もrender先は同じ
+    @post_comments = @post.comments.where(user_id: @publish_user_all).order(created_at: 'DESC')
+    comment = current_user.comments.new(comment_params)
+    comment.post_id = @post.id
+    comment.save
     render 'post_comments'
   end
 
   def destroy
+    @post_comments = @post.comments.where(user_id: @publish_user_all).order(created_at: 'DESC')
     Comment.find(params[:id]).destroy
     render 'post_comments'
   end

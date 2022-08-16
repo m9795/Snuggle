@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :info_count, only: [:posts, :show]
 
   def index
-    @users = @publish_user_all.page(params[:page]).per(10)
+    @users = @publish_user_all.page(params[:page])
   end
 
   def edit
@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(status: true)
     sign_out current_user
-    redirect_to root_path, notice: 'ご利用いただきありがとうございました！またのご利用をお待ちしております。'
+    redirect_to root_path, notice: 'ご利用いただきありがとうございました！', alert: 'またのご利用をお待ちしております。'
   end
 
   private

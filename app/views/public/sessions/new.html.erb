@@ -1,27 +1,27 @@
-<div class="container py-3">
+<div class="container py-3 px-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-5 mx-3 p-5 form-group border">
-      <h2 class="text-center">Log in <span><i class="fas fa-user-circle fa-xs"></i></span></h2>
+    <div class="col-lg-5 mx-3 p-5 form-group border bg-white shadow">
+      <h4 class="text-center">ログイン <span><i class="fas fa-user-circle fa-xs"></i></span></h4>
       <%= form_with model: resource, url: user_session_path do |f| %>
-        <div class="field mt-3">
+        <div class="field mt-4">
           <span><i class="fas fa-envelope"></i></span> <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control login-form-text" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control login-form-text shadow-sm" %>
         </div>
 
         <div class="field mt-3">
           <span><i class="fas fa-lock"></i></span> <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control login-form-text" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control login-form-text shadow-sm" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Log in", class: "form-control mt-4 btn btn-outline-primary" %>
+          <%= f.submit "ログイン", class: "form-control mt-4 btn btn-outline-primary shadow-sm" %>
         </div>
       <% end %>
     </div>
   </div>
   <div class="row d-flex justify-content-center text-center">
-    <div class="col-lg-5 form-group border mx-3 px-5 py-3">
-      <p>Don't have an account?</p>
+    <div class="col-lg-5 form-group border bg-white shadow mx-3 px-5 py-3">
+      <div>アカウントをお持ちでない方</div>
       <%= render "public/shared/links" %>
     </div>
   </div>

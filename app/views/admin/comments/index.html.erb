@@ -5,7 +5,7 @@
       <% if @comments.present? %>
         <% @comments.each do |comment| %>
           <div class="text-secondary">Post id：<%= comment.post.id %></div>
-          <div class="container border pb-2 mb-3">
+          <div class="container border bg-white pb-2 mb-3">
             <div class="row">
               <% if comment.post.publish == true %>
                 <b class="px-3 mb-2 bg-success text-white">公開中</b>
@@ -14,12 +14,12 @@
               <% end %>
               <div class="ml-2"><i class="fas fa-tag"></i> <%= comment.post.title %></div>
               <div class="ml-3"><i class="fas fa-user-circle"></i> by: <%= comment.post.user.name %></div>
-              <div class="ml-3">作成日時：<%= l comment.post.created_at %></div>
+              <div class="ml-3">投稿日時：<%= l comment.post.created_at %></div>
             </div>
             <div class="row d-flex justify-content-between border-bottom">
               <div class="col py-3">
                 <%= image_tag comment.post.get_image, class: "mr-3 mb-3 admin-userpost-image" %>
-                <p>コメント内容：<%= comment.comment %></p>
+                <p>コメント：<%= comment.comment %></p>
                 <div>コメント日時：<%= l comment.created_at %></div>
               </div>
             </div>

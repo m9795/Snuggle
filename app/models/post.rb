@@ -73,7 +73,7 @@ class Post < ApplicationRecord
     end
   end
 
-  # 投稿の公開・非公開設定
+  # 投稿の公開・非公開の絞り込み
   scope :publish,   -> {where(publish: true)}
   scope :unpublish, -> {where(publish: false)}
 end

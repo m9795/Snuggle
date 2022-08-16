@@ -3,10 +3,10 @@
     <div class="col-md-4 mb-3 d-none d-md-block">
       <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
-    <div class="col-md-7 offset-md-1">
+    <div class="col-md-6 offset-md-1">
       <h2 class="mb-4"><span><i class="fas fa-search fa-xs"></i></span> "# <%= @tag.name %>" search results (<%= @post.count %>)</h2>
       <% if @post.present? %>
-        <%= render 'public/posts/index', posts: @post, page_posts: @page_post %>
+        <%= render 'public/posts/index', page_posts: @page_posts %>
       <% else %>
         <p>現在、一致する投稿はありません。</p>
       <% end %>

@@ -3,7 +3,7 @@
     <div class="col-md-4 d-none d-md-block">
       <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
     </div>
-    <div class="col-md-7 offset-md-1">
+    <div class="col-md-6 offset-md-1">
       <% if @user == current_user %>
         <h2 class="mb-4"><span><i class="fas fa-heart fa-xs"></i></span> My like list (<%= @liked_post.count %>) </h2>
       <% else %>
@@ -11,7 +11,7 @@
       <% end %>
       <% if @page_liked_post.present? %>
         <% @page_liked_post.each do |post| %>
-          <div class="container border mb-3 py-2 ">
+          <div class="container border bg-white mb-3 py-2 ">
             <%= link_to user_path(post.post.user) do %>
               <%= image_tag post.post.user.get_image, class: 'post_user_image' %>
               <%= post.post.user.name %><br />
