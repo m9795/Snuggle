@@ -50,6 +50,15 @@ p {
   margin-bottom: 3rem;
 }
 
+a {
+  color: #212529;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #6c757d;
+}
+
 .post_image_wrapper {
   position: relative;
   padding-top: 96%;
