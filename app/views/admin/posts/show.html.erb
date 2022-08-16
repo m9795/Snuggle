@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4 my-3">
-      <h2 class="mb-4">Post detail <span><i class="far fa-image"></i></span></h2>
+      <h4 class="mb-4 text-center"><span><i class="far fa-image"></i></span> 投稿詳細</h4>
       <div class="container border bg-white mb-5 py-3">
         <%= image_tag @post.user.get_image, class: 'post_user_image' %>
         <p><%= @post.user.name %></p>
@@ -13,13 +13,13 @@
         作成日時：<%= l @post.created_at %><br />
         更新日時：<%= l @post.updated_at %>
       </div>
-
     </div>
     <div class="col-lg-7 offset-lg-1 mt-3 mb-5">
-      <h2 class="mb-4">To comment <span><i class="far fa-comment-alt fa-xs"></i></span></h2>
+      <h4 class="mb-4 text-center"><i class="far fa-comment-alt"></i> コメント</h4>
       <div id="users_comments_area">
         <%= render 'admin/comments/comments', comments: @comments %>
       </div>
+      <%= render 'admin/users/all-users.btn' %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s comments(<%= @comments.count %>) <span><i class="far fa-comment-alt fa-lg"></i></span></h2>
+      <h4 class="mb-4 text-center"><%= image_tag @user.get_image, class: "post_user_image" %><br /><%= @user.name %>さんのコメント一覧(<%= @comments.count %>件) <span><i class="far fa-comment-alt fa-lg"></i></span></h4>
       <% if @comments.present? %>
         <% @comments.each do |comment| %>
           <div class="text-secondary">Post id：<%= comment.post.id %></div>

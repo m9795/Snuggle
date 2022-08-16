@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h2 class="mb-4"><%= image_tag @user.get_image, class: "post_user_image" %> <%= @user.name %>'s posts(<%= @posts.count %>) <span><i class="far fa-images fa-xs"></i></span></h2>
+      <h2 class="mb-4 text-center"><%= image_tag @user.get_image, class: "post_user_image" %><br /><%= @user.name %>さんの投稿(<%= @posts.count %>件) <span><i class="far fa-images fa-xs"></i></span></h2>
       <% if @posts.present? %>
         <% @posts.each do |post| %>
           <div class="text-secondary">Post id：<%= post.id %></div>
