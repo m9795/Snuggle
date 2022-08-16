@@ -1,0 +1,34 @@
+<div class="border bg-white p-3">
+
+    <h2 class="mb-4">Profile
+    <!--編集ボタン(ゲストユーザー省く)-->
+      <% if user.name == 'guest user' %>
+      <% elsif user == current_user %>
+        <%= link_to edit_user_path(user), class: "btn btn-outline-dark" do %>
+          <i class="fas fa-user-edit fa-xs d-flex"></i>
+        <% end %>
+      <% end %>
+    </h2>
+
+  <%= image_tag user.get_image, class: 'user_image' %>
+  <div><i class="fas fa-user-circle"></i> <%= user.name %></div>
+
+  <!--自己紹介文-->
+  <p>ようこそマイページへ！ <br />ゆっくりしていってください☻</p>
+  <p><%= user.introduction %></p>
+  投稿数：<%= posts.count %><br />
+  <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+  <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="far fa-images fa-xs"></i> 投稿 (<%= posts.count %>)
+  <% end %>
+
+  <%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-heart"></i> お気に入り (<%= liked_post.count %>)
+  <% end %>
+
+  <% if user == current_user %>
+      <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
+        <i class="fas fa-lock"></i> 非公開 (<%= current_user.posts.unpublish.count %>)
+      <% end %>
+  <% end %>
+</div>

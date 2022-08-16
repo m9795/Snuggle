@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <h2 class="mb-4"><span><i class="far fa-address-card"></i></span> User detail</h2>
+      <div class="text-secondary">User id：<%= @user.id %></div>
+      <div class="container border bg-white pb-2 mb-3">
+        <div class="row">
+          <% if @user.status == false %>
+            <b class="px-3 mb-2 bg-success text-white">有効</b>
+          <% else %>
+            <b class="px-3 mb-2 bg-danger text-white">退会</b>
+          <% end %>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col py-3">
+            <%= image_tag @user.get_image, class: "mr-3 mb-3 user_image" %><br />
+            <i class="fas fa-user-circle"></i> 名前
+            <p><%= @user.name %></p>
+            <i class="far fa-file-alt"></i> 自己紹介文
+            <p><%= @user.introduction %></p>
+            <i class="fas fa-envelope"></i> メールアドレス
+            <p><%= @user.email %></p>
+          </div>
+        </div>
+        <div class="row pt-3 pb-2">
+          <div class="col">
+            <%= link_to admin_user_posts_path(@user), class: "btn btn-outline-dark btn-block" do %>
+              投稿一覧 (<%= @user.posts.count %>)
+            <% end %>
+            <%= link_to admin_user_comments_path(@user), class: "btn btn-outline-dark btn-block" do %>
+              コメント一覧 (<%= @user.comments.count %>)
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 mt-1">
+        <%= render 'admin/users/all-users.btn' %>
+      </div>
+    </div>
+  </div>
+</div>

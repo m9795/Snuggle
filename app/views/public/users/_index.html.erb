@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mb-3 d-flex flex-column">
+    <!--公開ユーザーがいるか確認-->
+    <% if users.present? %>
+      <!--公開ユーザー全員のデータを取り出す-->
+      <% users.each do |user| %>
+      <div class="text-secondary">User id：<%= user.id %></div>
+        <dif class="col border bg-white py-2 mb-3">
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_image, class: 'user_image' %>
+            <%= user.name %>
+          <% end %>
+          <!--ユーザーの公開投稿数を表示-->
+          <div class="text-secondary">投稿数：<%= user.posts.publish.count %></div>
+          <div class="text-secondary"><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</div>
+        </dif>
+      <% end %>
+      <%= paginate users %>
+    <% else %>
+      <p>現在、登録ユーザーはいません。</p>
+    <% end %>
+  </div>
+</div>

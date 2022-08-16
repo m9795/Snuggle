@@ -1,0 +1,13 @@
+<% if comments.present? %>
+  <div class="px-5 py-2 border bg-white">
+    <% comments.each do |comment| %>
+      <%= image_tag comment.user.get_image, class: 'post_user_image' %>
+      <p><i class="fas fa-user-circle "></i> <%= comment.user.name %></p>
+      <p><%= comment.comment %></p>
+      <div><%= l comment.created_at %>｜<%= link_to '削除', admin_user_comment_path(comment.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %></div>
+      <hr></hr>
+    <% end %>
+  </div>
+<% else %>
+  <p>現在、コメントはありません。</p>
+<% end %>

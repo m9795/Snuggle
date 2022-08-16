@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 my-3">
+      <h2 class="mb-4">Post detail <span><i class="fas fa-camera fa-xs"></i></span></h2>
+      <div class="container border bg-white mb-5 pb-3">
+        <%= image_tag @post.user.get_image, class: 'post_user_image' %>
+        <%= link_to @post.user.name, user_path(@post.user) %>
+        <div class="post_image_wrapper">
+          <%= link_to post_path(@post) do %>
+            <%= image_tag @post.get_image, class: 'img-fluid post_image' %>
+          <% end %>
+        </div>
+        <h5><%= link_to @post.title, post_path(@post) %></h5>
+        <p><%= render_with_tags(@post.content) %></p>
+        作成日時　<%= l @post.created_at %><br />
+        更新日時　<%= l @post.updated_at %>
+      </div>
+        <%= render 'public/posts/all-posts.btn' %>
+    </div>
+    <div class="col-lg-6 offset-lg-1 mt-3 mb-5">
+      <h2 class="mb-4">To comment <span><i class="far fa-comment-alt fa-xs"></i></span></h2>
+      <%= render 'public/comments/form', post: @post, comment: @comment %>
+      <div id="comments_area">
+        <%= render 'public/comments/post_comments', post_comments: @post_comments %>
+      </div>
+    </div>
+  </div>
+</div>
