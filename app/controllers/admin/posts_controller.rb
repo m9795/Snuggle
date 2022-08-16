@@ -4,11 +4,12 @@ class Admin::PostsController < ApplicationController
   before_action :post_choice, only: [:show, :destroy]
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: 'DESC')
   end
 
   def show
     @comments = @post.comments.order(created_at: 'DESC')
+    @page_comments = @comments.page(params[:page])
   end
 
   def destroy

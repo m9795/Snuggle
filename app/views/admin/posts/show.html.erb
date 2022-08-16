@@ -17,9 +17,13 @@
     <div class="col-lg-7 offset-lg-1 mt-3 mb-5">
       <h4 class="mb-4 text-center"><i class="far fa-comment-alt"></i> コメント</h4>
       <div id="users_comments_area">
-        <%= render 'admin/comments/comments', comments: @comments %>
+        <%= render 'admin/comments/comments', comments: @comments, page_comments: @page_comments %>
       </div>
-      <%= render 'admin/users/all-users.btn' %>
+      <div class="row d-flex justify-content-center">
+        <div>
+          <%= render 'admin/users/all-users.btn' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
