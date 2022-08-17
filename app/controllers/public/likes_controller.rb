@@ -10,7 +10,7 @@ class Public::LikesController < ApplicationController
     @liked_post = user.likes.where(post_id: posts)
     liked_post = user.likes.where(post_id: posts).order(post_created_at: 'DESC')
     @page_liked_post = liked_post.page(params[:page]).per(5)
-    @posts = current_user.posts.publish
+    @posts = user.posts.publish
     @user = User.find(params[:user_id])
   end
 

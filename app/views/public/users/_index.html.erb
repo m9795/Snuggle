@@ -5,19 +5,43 @@
       <!--公開ユーザー全員のデータを取り出す-->
       <% users.each do |user| %>
       <div class="text-secondary">User id：<%= user.id %></div>
-        <dif class="col border bg-white py-2 mb-3">
-          <%= link_to user_path(user) do %>
-            <%= image_tag user.get_image, class: 'user_image' %>
-            <%= user.name %>
-          <% end %>
-          <!--ユーザーの公開投稿数を表示-->
-          <div class="text-secondary">投稿数：<%= user.posts.publish.count %></div>
-          <div class="text-secondary"><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</div>
-        </dif>
+        <div class="col border bg-white py-2 mb-3">
+          <div class="row">
+            <div class="col-4">
+              <%= link_to user_path(user) do %>
+                <%= image_tag user.get_image, class: 'user_image' %>
+              <% end %>
+            </div>
+            <%= link_to "詳細", user_path(user), class: "col-2 btn btn-outline-secondary btn-sm mt-5 mb-4 ml-4" %>
+            <div class="col-5 mt-5">
+              <% if user != current_user %>
+                <%= render "public/relationships/btn", user: user %>
+              <% else %>
+              <% end %>
+            </div>
+          </div>
+          <p><i class="fas fa-user-circle"></i> <%= user.name %></p>
+          <hr></hr>
+          <div class="row text-center text-secondary d-flex">
+            <%= link_to user_posts_path(user), class: "col" do %>
+              投稿<br /><%= user.posts.publish.count %>
+            <% end %>
+            <%= link_to user_followings_path(user), class: "col" do %>
+              フォロー<br /><%= user.followings.where(id: @publish_user_all).count %>
+            <% end %>
+            <%= link_to user_followers_path(user), class: "col" do %>
+              フォロワー<br /><%= user.followers.where(id: @publish_user_all).count %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
       <%= paginate users %>
     <% else %>
-      <p>現在、登録ユーザーはいません。</p>
+      <% unless current_page?(users_path) %>
+        <p class="text-center"></p>
+      <% else %>
+        <p class="text-center">現在、登録ユーザーはいません。</p>
+      <% end %>
     <% end %>
   </div>
 </div>

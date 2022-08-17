@@ -8,7 +8,7 @@
       <% if @unpublish_posts.present? %>
         <%= render 'public/posts/index', posts: @unpublish_posts, page_posts: @page_unpublish_posts %>
       <% else %>
-        <p>現在、非公開での投稿はありません。</p>
+        <p class="text-center">現在、非公開での投稿はありません。</p>
       <% end %>
       <%= render 'public/users/mypage.btn', user: @user %>
     </div>

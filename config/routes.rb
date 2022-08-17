@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :users, except: [:new, :create, :destroy] do
+      # フォーロー機能
+      resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
       # ユーザーの投稿一覧
       get 'posts' => 'users#posts'
       # いいね一覧
@@ -42,7 +46,7 @@ Rails.application.routes.draw do
     get 'search' => 'searches#search'
     # タグ検索結果ページ
     get 'post/tag/:name' => 'posts#tag'
-    
+
     resources :posts do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]

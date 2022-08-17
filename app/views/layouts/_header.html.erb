@@ -25,13 +25,13 @@
             <% end %>
           </li>
           <li class="border bg-white rounded text-secondary px-3 py-2 m-1">
-            <%= link_to users_path, class: 'nav-link' do %>
-              <i class="fas fa-user-friends"></i> ユーザ一覧 (<%= @publish_user_all.count %>)
+            <%= link_to posts_path, class: 'nav-link' do %>
+              <i class="far fa-images"></i> 投稿一覧 (<%= @publish_post_all.count %>)
             <% end %>
           </li>
           <li class="border bg-white rounded text-secondary px-3 py-2 m-1">
-            <%= link_to posts_path, class: 'nav-link' do %>
-              <i class="far fa-images"></i> 投稿一覧 (<%= @publish_post_all.count %>)
+            <%= link_to users_path, class: 'nav-link' do %>
+              <i class="fas fa-user-friends"></i> ユーザ一覧 (<%= @publish_user_all.count %>)
             <% end %>
           </li>
           <li class="border bg-white rounded text-secondary px-3 py-2 m-1">
