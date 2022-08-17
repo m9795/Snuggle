@@ -58,6 +58,18 @@ a:hover {
   text-decoration: none;
 }
 
+.post-contents {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /*InternetExplorer対策*/
+  /*line-clampはIEに対応していないため*/
+  line-height: 1.5em;
+  max-height: 4.5em;
+}
+
 .post_image_wrapper {
   position: relative;
   padding-top: 96%;
