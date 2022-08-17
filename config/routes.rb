@@ -42,11 +42,15 @@ Rails.application.routes.draw do
     # ユーザの退会確認ページ
     get 'user/unsubscribe' => 'users#unsubscribe'
     get 'user/withdraw' => 'users#withdraw'
+    
+    # ユーザ検索結果ページ
+    get 'user_search' => 'searches#user_search'
     # キーワード検索結果ページ
     get 'search' => 'searches#search'
     # タグ検索結果ページ
     get 'post/tag/:name' => 'posts#tag'
 
+    # コメント・いいね機能
     resources :posts do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
