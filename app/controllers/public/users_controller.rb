@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
@@ -10,9 +12,9 @@ class Public::UsersController < ApplicationController
 
   def edit
     if @user == current_user
-      render 'edit'
+      render "edit"
     else
-      redirect_to user_path(@user), alert: '本人のみ編集可能です。'
+      redirect_to user_path(@user), alert: "本人のみ編集可能です。"
     end
   end
 
@@ -20,7 +22,7 @@ class Public::UsersController < ApplicationController
     if @user.update(usre_params)
       redirect_to user_path(@user), notice: "ユーザ情報を更新しました。"
     else
-      redirect_to edit_user_path(@user), alert: '編集内容をご確認ください。'
+      redirect_to edit_user_path(@user), alert: "編集内容をご確認ください。"
     end
   end
 
@@ -42,7 +44,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(status: true)
     sign_out current_user
-    redirect_to root_path, notice: 'ご利用いただきありがとうございました！', alert: 'またのご利用をお待ちしております。'
+    redirect_to root_path, notice: "ご利用いただきありがとうございました！", alert: "またのご利用をお待ちしております。"
   end
 
   private
@@ -52,8 +54,8 @@ class Public::UsersController < ApplicationController
 
     def ensure_guest_user
       @user = User.find(params[:id])
-      if @user.name == 'guest user'
-        redirect_to user_path(current_user), alert: 'ゲストユーザはプロフィール編集できません。'
+      if @user.name == "guest user"
+        redirect_to user_path(current_user), alert: "ゲストユーザはプロフィール編集できません。"
       end
     end
 

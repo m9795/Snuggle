@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action :publish_quantity
 
@@ -6,5 +8,4 @@ class ApplicationController < ActionController::Base
     @publish_user_all = User.where(status: false)
     @publish_post_all = Post.where(user_id: @publish_user_all, publish: true)
   end
-
 end

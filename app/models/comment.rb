@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -23,5 +25,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  validates :comment, presence: true, length: { minimum: 1 , maximum: 1000}
+  validates :comment, presence: true, length: { minimum: 1, maximum: 1000 }
 end
