@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :info_count, only: [:posts, :show]
 
   def index
-    @users = @publish_user_all.page(params[:page])
+    @users = @publish_user_all.order(created_at: "DESC").page(params[:page])
   end
 
   def edit
@@ -53,7 +53,7 @@ class Public::UsersController < ApplicationController
     def ensure_guest_user
       @user = User.find(params[:id])
       if @user.name == 'guest user'
-        redirect_to user_path(current_user), alert: 'プロフィール編集には新規登録が必要です。'
+        redirect_to user_path(current_user), alert: 'ゲストユーザはプロフィール編集できません。'
       end
     end
 

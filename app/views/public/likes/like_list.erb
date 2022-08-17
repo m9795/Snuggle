@@ -5,9 +5,9 @@
     </div>
     <div class="col-md-6 offset-md-1">
       <% if @user == current_user %>
-        <h2 class="mb-4"><span><i class="fas fa-heart fa-xs"></i></span> My like list (<%= @liked_post.count %>) </h2>
+        <h4 class="mb-4 text-center"><span><i class="fas fa-heart fa-xs"></i></span> お気に入り (<%= @liked_post.count %>件) </h4>
       <% else %>
-        <h2 class="mb-4"><span><i class="fas fa-heart"></i></span> <%= @user.name %>'s like list (<%= @liked_post.count %>)</h2>
+        <h4 class="mb-4 text-center"><span><i class="fas fa-heart"></i></span> <%= @user.name %>さんのお気に入り (<%= @liked_post.count %>件)</h4>
       <% end %>
       <% if @page_liked_post.present? %>
         <% @page_liked_post.each do |post| %>
@@ -52,7 +52,7 @@
         <% end %>
         <%= paginate @page_liked_post %>
       <% else %>
-        <p>現在、いいねした投稿はありません。</p>
+        <p class="text-center">現在、お気に入りはありません。</p>
       <% end %>
       <%= render 'public/users/mypage.btn', user: @user %>
     </div>

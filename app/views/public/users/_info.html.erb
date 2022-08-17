@@ -1,23 +1,55 @@
+<div class="ml-3 small text-secondary">
+  <% if user.name == "guest user" %>
+    ようこそゲストページへ！
+  <% elsif user == current_user %>
+    ようこそマイページへ！
+  <% else %>
+    ようこそ <%= user.name %>'s ページへ！
+  <% end %>
+  <br />ゆっくりしていってください☻
+</div>
 <div class="border bg-white p-3">
-
-    <h4 class="mb-4 text-center">プロフィール
+  <h4 class="mb-4 text-center">
+    プロフィール
     <!--編集ボタン(ゲストユーザー省く)-->
-      <% if user.name == 'guest user' %>
-      <% elsif user == current_user %>
-        <%= link_to edit_user_path(user), class: "btn btn-outline-dark" do %>
-          <i class="fas fa-user-edit fa-xs d-flex"></i>
-        <% end %>
+    <% if user.name == 'guest user' %>
+    <% elsif user == current_user %>
+      <%= link_to edit_user_path(user), class: "btn btn-outline-dark" do %>
+        <i class="fas fa-user-edit fa-xs d-flex"></i>
       <% end %>
-    </h4>
+    <% end %>
+  </h4>
 
-  <%= image_tag user.get_image, class: 'user_image' %>
+  <div class="row text-center">
+    <div class="col-4">
+      <%= image_tag user.get_image, class: 'user_image' %>
+    </div>
+    <div class="col-4 col-xl-4 col-md-12 col-lg-12 text-md-left text-xl-center my-auto small">
+      <%= link_to user_followings_path(user) do %>
+      フォロー<br /><%= user.followings.where(id: @publish_user_all).count %>
+      <% end %>
+    </div>
+    <div class="col-4 col-xl-4 col-md-12 col-lg-12 text-md-left text-xl-center my-auto small">
+      <%= link_to user_followers_path(user) do %>
+      フォロワー<br /><%= user.followers.where(id: @publish_user_all).count %>
+      <% end %>
+    </div>
+  </div>
+
   <div><i class="fas fa-user-circle"></i> <%= user.name %></div>
 
   <!--自己紹介文-->
-  <p>ようこそマイページへ！ <br />ゆっくりしていってください☻</p>
   <p><%= user.introduction %></p>
-  投稿数：<%= posts.count %><br />
-  <p><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+  <p class="mb-1 small"><%= user.created_at.strftime('%Y年%m月') %>よりSnuggleを利用しています。</p>
+
+  <!--フォローボタン-->
+  <% if user != current_user %>
+    <%= render "public/relationships/btn", user: user %>
+    <% if current_user.following?(user) %>
+      <p class="mb-1 text-secondary small">フォローしています。</p>
+    <% end %>
+  <% end %>
+
   <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="far fa-images fa-xs"></i> 投稿 (<%= posts.count %>)
   <% end %>

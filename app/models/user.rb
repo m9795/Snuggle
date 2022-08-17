@@ -29,6 +29,11 @@ class User < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
   validates :introduction, length: { maximum: 150 }
 
@@ -53,4 +58,18 @@ class User < ApplicationRecord
   # 有効・退会の絞り込み
   scope :publish, -> {where(statue: false)}
   scope :unpublish, -> {where(status: true)}
+  
+  # フォロー機能
+  # "フォローする"
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # "フォロー解除"
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # "フォローしているか判定"
+  def following?(user)
+    followings.include?(user)
+  end
 end

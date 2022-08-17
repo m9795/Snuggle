@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <h4 class="mb-4 text-center"><i class="fas fa-user-friends"></i>
+        <% if @user == current_user %>
+          Myフォロワー
+        <% else %>
+          <%= @user.name %> さんのフォロワー
+        <% end %>
+        (<%= @users.count %>人)
+      </h4>
+      <%= render "public/users/index" , users: @users %>
+    </div>
+  </div>
+</div>
