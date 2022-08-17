@@ -15,14 +15,14 @@
 <!--タイトルと内容の入力文字数表示用-->
 <script>
   document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group .title-input');
+    let t=e.target.closest('.title-input');
     if(t){
       t.closest('.form-group').querySelector('.title').textContent=t.value.length;
     }
   });
 
   document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group textarea');
+    let t=e.target.closest('textarea');
     if(t){
       t.closest('.form-group').querySelector('.content').textContent=t.value.length;
     }
