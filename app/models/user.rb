@@ -58,7 +58,7 @@ class User < ApplicationRecord
   # 有効・退会の絞り込み
   scope :publish, -> {where(statue: false)}
   scope :unpublish, -> {where(status: true)}
-  
+
   # フォロー機能
   # "フォローする"
   def follow(user_id)
@@ -71,5 +71,11 @@ class User < ApplicationRecord
   # "フォローしているか判定"
   def following?(user)
     followings.include?(user)
+  end
+
+  # ユーザ検索機能
+  def self.search_for(content)
+  # 名前検索 部分一致
+    User.where('name LIKE?', '%' + content + '%')
   end
 end

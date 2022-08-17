@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span> ユーザ検索結果 (<%= @users.count %>人)</h4>
+      <%= render 'public/searches/user_search_form' %>
+      <%= render 'public/users/index', users: @records %>
+    </div>
+  </div>
+</div>

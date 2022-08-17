@@ -11,4 +11,10 @@ class Public::SearchesController < ApplicationController
     @posts = current_user.posts.where(user_id: users, publish: true)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
   end
+
+  def user_search
+    content = params[:content]
+    @users = User.search_for(content)
+    @records = User.search_for(content).page(params[:page])
+  end
 end
