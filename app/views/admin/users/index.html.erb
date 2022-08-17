@@ -18,14 +18,16 @@
               <div class="col py-3">
                 <%= link_to admin_user_path(user) do %>
                   <%= image_tag user.get_image, class: "mr-3 mb-3 user_image" %>
-                  <%= user.name %><br />
+                  <i class="fas fa-user-circle"></i> <%= user.name %><br />
                 <% end %>
-                <p><%= user.introduction %></p>
               </div>
             </div>
             <div class="row pt-3 pb-2">
               <div class="col-xl-2 mt-1">
-                <%= link_to '編集', edit_admin_user_path(user), class: "btn btn-block btn-outline-success" %>
+                <!--ゲストユーザは編集ボタンを表示しない-->
+                <% if user.name != "guest user" %>
+                  <%= link_to '編集', edit_admin_user_path(user), class: "btn btn-block btn-outline-success" %>
+                <% end %>
               </div>
               <div class="col-xl-2 mt-1">
                 <%= link_to '詳細', admin_user_path(user), class: "btn btn-block btn-outline-dark" %>

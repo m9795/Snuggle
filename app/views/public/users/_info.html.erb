@@ -1,8 +1,13 @@
-<% if user == current_user %>
-  <p class="ml-3 small text-secondary">ようこそマイページへ！ <br />ゆっくりしていってください☻</p>
-<% else %>
-  <p class="ml-3 small text-secondary">ようこそ <%= user.name %>'s ページへ！ <br />ゆっくりしていってください☻</p>
-<% end %>
+<div class="ml-3 small text-secondary">
+  <% if user.name == "guest user" %>
+    ようこそゲストページへ！
+  <% elsif user == current_user %>
+    ようこそマイページへ！
+  <% else %>
+    ようこそ <%= user.name %>'s ページへ！
+  <% end %>
+  <br />ゆっくりしていってください☻
+</div>
 <div class="border bg-white p-3">
   <h4 class="mb-4 text-center">
     プロフィール
