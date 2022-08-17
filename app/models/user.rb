@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -41,23 +43,23 @@ class User < ApplicationRecord
   has_one_attached :image
   def get_image
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_icon.png')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join("app/assets/images/no_icon.png")
+      image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     image
   end
 
-# ゲストログイン機能
+  # ゲストログイン機能
   def self.guest
-    find_or_create_by!(name: 'guest user', email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guest user", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = 'guest user'
+      user.name = "guest user"
     end
   end
 
   # 有効・退会の絞り込み
-  scope :publish, -> {where(statue: false)}
-  scope :unpublish, -> {where(status: true)}
+  scope :publish, -> { where(statue: false) }
+  scope :unpublish, -> { where(status: true) }
 
   # フォロー機能
   # "フォローする"
@@ -77,10 +79,10 @@ class User < ApplicationRecord
   def self.search_for(content, method)
     if method == "name"
       # 名前から検索
-      User.where('name LIKE?', '%' + content + '%')
+      User.where("name LIKE?", "%" + content + "%")
     else
       # 紹介文から検索
-      User.where('introduction LIKE?', '%' + content + '%')
+      User.where("introduction LIKE?", "%" + content + "%")
     end
   end
 end
