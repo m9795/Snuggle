@@ -16,10 +16,10 @@ class Public::SearchesController < ApplicationController
     @method = params[:method]
     @content = params[:content]
     if @method == "name"
-      @users = User.search_for(@content, @method)
+      @users = @publish_user_all.search_for(@content, @method)
       @records = @users.page(params[:page])
     else
-      @users = User.search_for(@content, @method)
+      @users = @publish_user_all.search_for(@content, @method)
       @records = @users.page(params[:page])
     end
   end
