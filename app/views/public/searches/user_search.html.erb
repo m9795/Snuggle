@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span> 「<%= @content %>」のユーザ検索結果 (<%= @users.count %>人)</h4>
+      <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span>
+      <% if @method == "name" %>
+        名前に「<%= @content %>」を含むユーザ (<%= @users.count %>人)
+      <% else %>
+        紹介文に「<%= @content %>」を含むユーザ (<%= @users.count %>人)
+      <% end %>
+      </h4>
       <%= render 'public/searches/user_search_form', class: "row d-flex" %>
       <%= render 'public/users/index', users: @records %>
     </div>

@@ -1,6 +1,7 @@
 <div class="col justify-content-center mt-2 mr-3 form-inline">
   <%= form_with url: user_search_path, method: :get, local: true do |f| %>
-    <%= f.search_field :content, placeholder: '名前で検索', class: "search-form-group search-form-text", size: "22%" %>
+    <%= f.select :method, options_for_select({"名前" => "name", "紹介文" => "introduction"}), class: "text-center" %>
+    <%= f.search_field :content, placeholder: 'キーワードを入力', class: "search-form-group search-form-text", size: "22%" %>
     <button type="submit", class="search-btn btn btn-outline-secondary">
       <i class="fas fa-search fa-xs"></i>
     </button>

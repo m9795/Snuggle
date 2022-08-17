@@ -13,8 +13,14 @@ class Public::SearchesController < ApplicationController
   end
 
   def user_search
+    @method = params[:method]
     @content = params[:content]
-    @users = User.search_for(@content)
-    @records = User.search_for(@content).page(params[:page])
+    if @method == "name"
+      @users = User.search_for(@content, @method)
+      @records = @users.page(params[:page])
+    else
+      @users = User.search_for(@content, @method)
+      @records = @users.page(params[:page])
+    end
   end
 end
