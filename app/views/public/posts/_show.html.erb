@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
-  <%= link_to post.user.name, user_path(post.user) %>
+  <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
   <div class="post_image_wrapper">
     <%= link_to post_path(post) do %>
       <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
@@ -16,7 +16,7 @@
   <div id="likes_btn_<%= post.id %>">
     <%= render 'public/likes/btn', post: post %>
   </div>
-  <h5><%= link_to post.title, post_path(post) %></h5>
+  <h5><%= link_to post.title, post_path(post), class: "text-secondary" %></h5>
   <p><%= render_with_tags(post.content) %></p>
   作成日時：<%= l post.created_at %><br />
   更新日時：<%= l post.updated_at %><br />

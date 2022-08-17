@@ -22,14 +22,14 @@
           </div>
           <p><i class="fas fa-user-circle"></i> <%= user.name %></p>
           <hr></hr>
-          <div class="row text-center text-secondary d-flex">
-            <%= link_to user_posts_path(user), class: "col" do %>
+          <div class="row text-center d-flex">
+            <%= link_to user_posts_path(user), class: "col text-secondary" do %>
               投稿<br /><%= user.posts.publish.count %>
             <% end %>
-            <%= link_to user_followings_path(user), class: "col" do %>
+            <%= link_to user_followings_path(user), class: "col text-secondary" do %>
               フォロー<br /><%= user.followings.where(id: @publish_user_all).count %>
             <% end %>
-            <%= link_to user_followers_path(user), class: "col" do %>
+            <%= link_to user_followers_path(user), class: "col text-secondary" do %>
               フォロワー<br /><%= user.followers.where(id: @publish_user_all).count %>
             <% end %>
           </div>

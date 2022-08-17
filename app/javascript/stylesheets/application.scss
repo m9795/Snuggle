@@ -35,6 +35,10 @@ footer {
   box-sizing: border-box; /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
+main {
+  color: #6c757d; /*secondaryのカラーコード*/
+}
+
 h2 {
   word-break: break-all;
 }
@@ -50,13 +54,8 @@ p {
   margin-bottom: 3rem;
 }
 
-a {
-  color: #212529;
-}
-
 a:hover {
   text-decoration: none;
-  color: #6c757d;
 }
 
 .post_image_wrapper {
@@ -131,9 +130,7 @@ a:hover {
 }
 
 select {
-  padding: 0.375rem 0.75rem;
-  font-size: 10px;
-  text-align: center;
+  padding: 0.375rem;
   color: #495057;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;

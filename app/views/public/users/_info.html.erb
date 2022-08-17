@@ -25,12 +25,12 @@
       <%= image_tag user.get_image, class: 'user_image' %>
     </div>
     <div class="col-4 col-xl-4 col-md-12 col-lg-12 text-md-left text-xl-center my-auto small">
-      <%= link_to user_followings_path(user) do %>
+      <%= link_to user_followings_path(user), class: "text-secondary" do %>
       フォロー<br /><%= user.followings.where(id: @publish_user_all).count %>
       <% end %>
     </div>
     <div class="col-4 col-xl-4 col-md-12 col-lg-12 text-md-left text-xl-center my-auto small">
-      <%= link_to user_followers_path(user) do %>
+      <%= link_to user_followers_path(user), class: "text-secondary" do %>
       フォロワー<br /><%= user.followers.where(id: @publish_user_all).count %>
       <% end %>
     </div>

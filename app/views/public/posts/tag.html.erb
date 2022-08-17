@@ -4,7 +4,7 @@
       <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <h4 class="mb-4"><span><i class="fas fa-search fa-xs"></i></span> #<%= @tag.name %> の検索結果 (<%= @post.count %>件)</h4>
+      <h4 class="mb-4 text-center"><span><i class="fas fa-search fa-xs"></i></span> #<%= @tag.name %> の検索結果 (<%= @post.count %>件)</h4>
       <% if @post.present? %>
         <%= render 'public/posts/index', page_posts: @page_posts %>
       <% else %>
