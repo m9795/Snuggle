@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @users = User.page(params[:page])
+    users = User.all.order(created_at: 'DESC')
+    @users = users.page(params[:page])
   end
 
   def show

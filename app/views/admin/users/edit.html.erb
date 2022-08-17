@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-5">
-      <h2 class="mb-2"><span><i class="fas fa-user-cog"></i></span> User edit</h2>
+      <h4 class="mb-2 text-center"><span><i class="fas fa-user-cog"></i></span> ユーザ編集</h4>
       <div class="text-secondary">User id：<%= @user.id %></div>
       <div class="container border bg-white pb-2 mb-3">
         <div class="row">
@@ -31,7 +31,7 @@
         <div class="row pt-2 pb-2">
           <div class="col">
             <%= form_with model: @user, url: admin_user_path(@user), method: :PATCH do |f| %>
-              <i class="fas fa-cog"></i> <%= label :status , 'status' %><br />
+              <i class="fas fa-cog"></i> <%= label :status , '登録状態' %><br />
               <%= f.radio_button :status, "false" %>
               <%= f.label :status, "有効", value: false %>
               <%= f.radio_button :status, "true" %>
@@ -41,6 +41,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-lg-8 d-flex justify-content-center">
       <%= render 'admin/users/all-users.btn' %>
     </div>
   </div>

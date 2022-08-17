@@ -1,6 +1,6 @@
 <% if current_page?(edit_user_path(user)) %>
   <div class="col-lg-2">
-    <%= link_to '< My Page', user_path(user), class: "form-control mt-2 btn btn-outline-dark" %>
+    <%= link_to '< マイページへ', user_path(user), class: "form-control mt-2 btn btn-outline-dark" %>
   </div>
   <div class="col-lg-2">
     <%= link_to '退会する >', user_unsubscribe_path, class: "form-control mt-2 btn btn-outline-danger" %>
@@ -10,9 +10,9 @@
   <% unless current_page?(user_path(user)) %>
     <%= link_to  user_path(user), class: "form-control mt-2 btn btn-outline-dark" do %>
       <% if user == current_user %>
-        < My page
+        < マイページへ
       <% else %>
-        < <%= user.name %>'s page
+        < <%= user.name %>さんのページへ
       <% end  %>
     <% end %>
   <% end %>

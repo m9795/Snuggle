@@ -1,5 +1,5 @@
 <%= form_with model: post do |f| %>
-  <i class="far fa-image"></i> <%= f.label :image %><br />
+  <i class="far fa-image"></i> <%= f.label :image, '画像' %><br />
   <div class="col">
     <%= f.file_field :image, accept: 'image/*', class: "custom-file-input", id: "inputFile" %>
     <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
@@ -9,7 +9,7 @@
   <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大1000文字)' %> <span class="content"></span>
   <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "本文を入力(必須)", maxlength: 1000 %><br />
   <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
-  <%= f.submit class: "mt-4 btn btn-outline-success" %>
+  <%= f.submit submit, class: "mt-4 btn btn-outline-success" %>
 <% end %>
 
 <!--タイトルと内容の入力文字数表示用-->

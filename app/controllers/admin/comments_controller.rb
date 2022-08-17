@@ -2,7 +2,9 @@ class Admin::CommentsController < ApplicationController
   before_action :authenticate_admin!
   def index
     @user = User.find(params[:user_id])
-    @comments = @user.comments.order(created_at: 'DESC')
+    comments = @user.comments.order(created_at: 'DESC')
+    @comments = comments
+    @page_comments = comments.page(params[:page]).per(20)
   end
 
   def destroy
