@@ -58,12 +58,12 @@ a:hover {
   text-decoration: none;
 }
 
+/*投稿の本文を3行目末尾...で表示*/
 .post-contents {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
   /*InternetExplorer対策*/
   /*line-clampはIEに対応していないため*/
   line-height: 1.5em;
