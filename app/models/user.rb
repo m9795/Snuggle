@@ -73,12 +73,13 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  # ユーザ検索機能
+  # ユーザ検索機能（部分一致）
   def self.search_for(content, method)
     if method == "name"
-      # 名前検索 部分一致
+      # 名前から検索
       User.where('name LIKE?', '%' + content + '%')
     else
+      # 紹介文から検索
       User.where('introduction LIKE?', '%' + content + '%')
     end
   end
