@@ -26,7 +26,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggings
 
   validates :title,   presence: true, length: { minimum: 1 , maximum: 140 }
-  validates :content, presence: true, length: { minimum: 1 , maximum: 1000 }
+  validates :content, presence: true, correct_line_break: true
 
 # 投稿画像設定
   has_one_attached :image

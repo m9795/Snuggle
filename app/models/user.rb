@@ -35,7 +35,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
-  validates :introduction, length: { maximum: 150 }
+  validates :introduction, correct_line_break: true
 
   # アイコン画像設定
   has_one_attached :image

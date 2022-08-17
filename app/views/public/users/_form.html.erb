@@ -15,16 +15,16 @@
 <!--名前と紹介文の入力文字数表示用-->
 <script>
   document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group .name-input');
+    let t=e.target.closest('.name-input');
     if(t){
-      t.closest('.form-group').querySelector('span.name').textContent=t.value.length;
+      t.closest('.form-group').querySelector('.name').textContent=t.value.length;
     }
   });
 
   document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group textarea');
+    let t=e.target.closest('textarea');
     if(t){
-      t.closest('.form-group').querySelector('span.introduction').textContent=t.value.length;
+      t.closest('.form-group').querySelector('.introduction').textContent=t.value.length;
     }
   });
 </script>

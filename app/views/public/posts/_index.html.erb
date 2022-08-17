@@ -19,7 +19,7 @@
       <%= render 'public/likes/btn', post: post %>
     </div>
     <b><%= link_to post.title, post_path(post), class: "text-secondary" %></b>
-    <p><%= render_with_tags(post.content) %></p>
+    <p class="post-contents"><%= render_with_tags(post.content) %></p>
     <%= l post.created_at %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
     <% if post.user == current_user %>
