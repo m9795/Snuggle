@@ -13,8 +13,8 @@ class Public::SearchesController < ApplicationController
   end
 
   def user_search
-    content = params[:content]
-    @users = User.search_for(content)
-    @records = User.search_for(content).page(params[:page])
+    @content = params[:content]
+    @users = User.search_for(@content)
+    @records = User.search_for(@content).page(params[:page])
   end
 end
