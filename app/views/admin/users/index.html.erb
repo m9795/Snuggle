@@ -16,7 +16,7 @@
             </div>
             <div class="row d-flex justify-content-between border-bottom">
               <div class="col py-3">
-                <%= link_to admin_user_path(user) do %>
+                <%= link_to admin_user_path(user), class: "text-secondary" do %>
                   <%= image_tag user.get_image, class: "mr-3 mb-3 user_image" %>
                   <i class="fas fa-user-circle"></i> <%= user.name %><br />
                 <% end %>
