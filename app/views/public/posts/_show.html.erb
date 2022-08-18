@@ -18,6 +18,36 @@
   </div>
   <h5><%= link_to post.title, post_path(post), class: "text-secondary" %></h5>
   <p><%= render_with_tags(post.content) %></p>
+  <div id='map'></div>
+
+  <style>
+  #map {
+    height: 200px;
+    width: 100%;
+  }
+  </style>
+
+  <!-- js部分 -->
+  <script>
+  //初期マップの設定
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>},
+      map: map
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+
   作成日時：<%= l post.created_at %><br />
   更新日時：<%= l post.updated_at %><br />
   <!--編集/削除ボタン(本人のみ表示)-->

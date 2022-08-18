@@ -79,7 +79,7 @@ class Public::PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:image, :title, :content, :publish)
+    params.require(:post).permit(:image, :title, :content, :lat, :lng, :publish)
   end
 
   def post_choice

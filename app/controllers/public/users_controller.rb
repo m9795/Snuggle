@@ -68,7 +68,7 @@ class Public::UsersController < ApplicationController
     end
 
     def info_count
-      @posts = @user.posts.publish
+      @posts = @user.posts.order(created_at: "DESC").publish
       @page_posts = @posts.page(params[:page]).per(5)
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end
