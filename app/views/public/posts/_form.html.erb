@@ -7,8 +7,8 @@
     </div>
     <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="title"></span>
     <%= f.text_field :title, class: "title-input form-control", placeholder: "タイトルを入力(必須)", maxlength: 140 %><br />
-    <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大1000文字)' %> <span class="content"></span>
-    <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "本文を入力(必須)", maxlength: 1000 %><br />
+    <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="content"></span>
+    <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "本文を入力(必須)", maxlength: 500 %><br />
     <!--タイトルと内容の入力文字数表示用-->
     <script>
       window.onload = (e) => {
@@ -109,6 +109,14 @@
       <% end %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
     <br />
+
+    <!--編集画面では地図の表示のみ-->
+    <% unless current_page?(new_post_path) %>
+      <h5 class="mt-3"><i class="fas fa-map-marker-alt"></i> 現在の登録位置</h5>
+      <div class="small">※地図は編集は、投稿詳細ページの「地図を編集する」から行ってください。</div>
+      <!--登録した地図を表示-->
+      <%= render 'public/posts/map', post: post %>
+    <% end %>
     <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
     <!--新規投稿画面のみ地図情報を登録する-->
     <% if current_page?(new_post_path) %>
@@ -117,12 +125,4 @@
     <% end %>
     <%= f.submit submit, class: "mt-4 btn btn-outline-success" %>
   </div>
-<% end %>
-
-<!--編集画面では地図の表示のみ-->
-<% unless current_page?(new_post_path) %>
-  <h5 class="mt-3"><i class="fas fa-map-marker-alt"></i> 現在の登録位置</h5>
-  <div class="small">※地図は編集は、投稿詳細ページの「地図を編集する」から行ってください。</div>
-  <!--登録した地図を表示-->
-  <%= render 'public/posts/edit_form', post: post %>
 <% end %>

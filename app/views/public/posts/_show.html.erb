@@ -8,20 +8,18 @@
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
   <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
   <div class="post_image_wrapper">
-    <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
-    <% end %>
+    <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
   </div>
   <!--いいね・コメントの表示-->
   <div id="likes_btn_<%= post.id %>">
     <%= render 'public/likes/btn', post: post %>
   </div>
-  <h5><%= link_to post.title, post_path(post), class: "text-secondary" %></h5>
+  <b class="text-secondary"><%= post.title %></b>
   <p><%= render_with_tags(post.content) %></p>
+  <h5><i class="fas fa-map-marker-alt"></i> 地図情報</h5>
   <% if post.lat == 0.0 && post.lng == 0.0 %>
     <div class="small">※現在、地図情報は登録されていません。</div>
   <% end %>
-  <h5><i class="fas fa-map-marker-alt"></i> 地図情報</h5>
   <div id='map'></div>
   <!--マップサイズ設定-->
   <style>
