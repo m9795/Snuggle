@@ -18,8 +18,10 @@
     <div id="likes_btn_<%= post.id %>">
       <%= render 'public/likes/btn', post: post %>
     </div>
-    <b><%= link_to post.title, post_path(post), class: "text-secondary" %></b>
-    <p class="post-contents"><%= render_with_tags(post.content) %></p>
+    <%= link_to post, data: {"turbolinks" => false}, class: "text-secondary" do %>
+      <b><%= post.title %></b>
+      <p class="post-contents"><%= render_with_tags(post.content) %></p>
+    <% end %>
     <%= l post.created_at %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
     <% if post.user == current_user %>

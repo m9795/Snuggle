@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_18_103645) do
+ActiveRecord::Schema.define(version: 2022_08_19_135842) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,11 @@ ActiveRecord::Schema.define(version: 2022_08_18_103645) do
     t.boolean "publish", default: true, null: false
     t.float "lat"
     t.float "lng"
+    t.string "shop_name"
+    t.string "shop_detail"
+    t.string "shop_place"
+    t.text "shop_home_page"
+    t.string "shop_remarks"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
