@@ -9,9 +9,10 @@
     <%= f.text_field :title, class: "title-input form-control", placeholder: "タイトルを入力(必須)", maxlength: 140 %><br />
     <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大1000文字)' %> <span class="content"></span>
     <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "本文を入力(必須)", maxlength: 1000 %><br />
-    <%= f.hidden_field :lat,:value =>"緯度", id: :lat %>
-    <%= f.hidden_field :lng,:value =>"経度", id: :lng %>
-
+    <% if current_page?(new_post_path) %>
+      <%= f.hidden_field :lat,:value =>"緯度", id: :lat %>
+      <%= f.hidden_field :lng,:value =>"経度", id: :lng %>
+    <% end %>
     <!--タイトルと内容の入力文字数表示用-->
     <script>
       window.onload = (e) => {
@@ -36,12 +37,10 @@
         }
       });
     </script>
-    <h5><i class="fas fa-map-marker-alt"></i> 地図登録</h5>
-    <div>みんなが利用しやすいように位置情報を登録しよう！</div>
-    <div class="mt-3">①最寄りの場所を入力<br />②<i class="fas fa-map-marker-alt"></i>ピンを移動させ位置の調整ができます。</div>
-      <% unless current_page?(new_post_path) %>
-        <div class="small">※編集時は、再度最寄りを検索しピンを指定してください。</div>
-      <% end %>
+    <% if current_page?(new_post_path) %>
+      <h5><i class="fas fa-map-marker-alt"></i> 地図登録</h5>
+      <div>みんなが利用しやすいように位置情報を登録しよう！</div>
+      <div class="mt-3">①最寄りの場所を入力<br />②<i class="fas fa-map-marker-alt"></i>ピンを移動させ位置の調整ができます。</div>
       <div class="m-2 mb-3">
         <div>最寄り</div>
         <input id="address" type="textbox"  placeholder="駅名や地名を入力" class="search-form-group">
@@ -51,73 +50,76 @@
         <!--</button>-->
       </div>
 
-    <div id='map'></div>
-    <style>
-    #map {
-      height: 400px;
-      width: 100%;
-    }
-    </style>
+      <div id='map'></div>
+      <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+      </style>
 
-    <% if current_page?(new_post_path) %>
-      <script>
-        //初期マップの設定
-        let map
-        let marker
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
+        <script>
+          //初期マップの設定
+          let map
+          let marker
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center:  {lat: 35.6803997, lng:139.7690174},  //東京
-            zoom: 15,
-          });
-        }
+            map = new google.maps.Map(document.getElementById('map'), {
+              center:  {lat: 35.6803997, lng:139.7690174},  //東京
+              zoom: 15,
+            });
+          }
 
-        //検索後のマップ作成
-        let geocoder
-        let aft
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-              //マーカーが複数できないようにする
-              if (aft == true){
-                  marker.setMap(null);
-              }
+          //検索後のマップ作成
+          let geocoder
+          let aft
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                //マーカーが複数できないようにする
+                if (aft == true){
+                    marker.setMap(null);
+                }
 
-              //新しくマーカーを作成する
-              map.setCenter(results[0].geometry.location);
-                  marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location,
-                  draggable: true // ドラッグ可能にする
-              });
-
-              //二度目以降か判断
-              aft = true
-
-              //検索した時に緯度経度を入力する
-              document.getElementById('lat').value = results[0].geometry.location.lat();
-              document.getElementById('lng').value = results[0].geometry.location.lng();
-
-              // マーカーのドロップ（ドラッグ終了）時のイベント
-              google.maps.event.addListener( marker, 'dragend', function(ev){
-                  // イベントの引数evの、プロパティ.latLngが緯度経度
-                  document.getElementById('lat').value = ev.latLng.lat();
-                  document.getElementById('lng').value = ev.latLng.lng();
+                //新しくマーカーを作成する
+                map.setCenter(results[0].geometry.location);
+                    marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    draggable: true // ドラッグ可能にする
                 });
-            } else {
-              alert('該当する結果がありません。');
-            }
-          });
-        }
-      </script>
-    <% else %>
-      <%= render 'public/posts/edit_form', post: post %>
-    <% end %>
+
+                //二度目以降か判断
+                aft = true
+
+                //検索した時に緯度経度を入力する
+                document.getElementById('lat').value = results[0].geometry.location.lat();
+                document.getElementById('lng').value = results[0].geometry.location.lng();
+
+                // マーカーのドロップ（ドラッグ終了）時のイベント
+                google.maps.event.addListener( marker, 'dragend', function(ev){
+                    // イベントの引数evの、プロパティ.latLngが緯度経度
+                    document.getElementById('lat').value = ev.latLng.lat();
+                    document.getElementById('lng').value = ev.latLng.lng();
+                  });
+              } else {
+                alert('該当する結果がありません。');
+              }
+            });
+          }
+        </script>
+      <% end %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
     <br />
     <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
     <%= f.submit submit, class: "mt-4 btn btn-outline-success" %>
   </div>
+<% end %>
+<!--編集画面では地図の表示のみ-->
+<% unless current_page?(new_post_path) %>
+  <h5 class="mt-3"><i class="fas fa-map-marker-alt"></i> 現在の登録位置</h5>
+  <div class="small">※地図は編集は、投稿詳細ページの「地図を編集する」から行ってください。</div>
+  <%= render 'public/posts/edit_form', post: post %>
 <% end %>

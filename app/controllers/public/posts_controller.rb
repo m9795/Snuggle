@@ -2,7 +2,7 @@
 
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :post_choice, only: [:show, :edit, :update, :destroy]
+  before_action :post_choice, only: [:show, :edit, :map_edit, :update, :destroy]
   def new
     @post = Post.new
   end
@@ -41,9 +41,12 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def map_edit
+  end
+
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "投稿内容を更新しました。"
+      redirect_to post_path(@post), notice: "更新しました。"
     else
       redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
     end

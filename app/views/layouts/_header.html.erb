@@ -20,7 +20,7 @@
             <% end %>
           </li>
           <li class="border bg-white rounded text-secondary px-3 py-2 m-1">
-            <%= link_to  new_post_path, class: 'nav-link' do %>
+            <%= link_to  new_post_path, data: {"turbolinks" => false}, class: 'nav-link' do %>
               <i class="fas fa-edit"></i> 新規投稿
             <% end %>
           </li>
