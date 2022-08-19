@@ -41,13 +41,15 @@
                 <%= post.post.comments.where(user_id: @publish_user_all).count %><br />
               <% end %>
             </div>
+            <%= link_to post_path(post.post), data: {"turbolinks" => false}, class: "text-secondary" do %>
+              <b><%= post.post.title %></b>
+              <p class="post-contents"><%= render_with_tags(post.post.content) %></p>
+            <% end %>
+            <%= l post.post.created_at %><br />
             <% if post.post.user == current_user %>
               <%= link_to '編集', edit_post_path(post.post) %>
               ｜ <%= link_to '削除', post_path(post.post), method: :delete, data: { confirm: '本当に削除しますか？'} %><br />
             <% end %>
-            <b><%= link_to post.post.title, post_path(post.post), class: "text-secondary" %></b>
-            <p><%= render_with_tags(post.post.content) %></p>
-            <%= l post.post.created_at %><br />
           </div>
         <% end %>
         <%= paginate @page_liked_post %>
