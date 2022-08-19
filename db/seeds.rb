@@ -12,3 +12,14 @@ Admin.create!(
   email: "admin@com",
   password: "hogehoge"
 )
+
+ShopTag.create([
+  { name: "Wi-Fiあり" },
+  { name: "電源あり" },
+  { name: "30席以上" },
+  { name: "個室あり" },
+  { name: "落ち着いた雰囲気" },
+  { name: "にぎやかな雰囲気" },
+  { name: "キャッシュレス可" },
+  { name: "駐車場あり" }
+])

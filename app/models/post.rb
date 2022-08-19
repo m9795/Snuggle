@@ -33,6 +33,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :shop_taggings, dependent: :destroy
+  has_many :shop_tags, through: :shop_taggings, dependent: :destroy
 
   validates :title,   presence: true, length: { minimum: 1, maximum: 140 }
   validates :content, presence: true, correct_line_break: true

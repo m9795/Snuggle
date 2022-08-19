@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_19_135842) do
+ActiveRecord::Schema.define(version: 2022_08_19_173323) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -95,6 +95,21 @@ ActiveRecord::Schema.define(version: 2022_08_19_135842) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shop_taggings", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "shop_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_shop_taggings_on_post_id"
+    t.index ["shop_tag_id"], name: "index_shop_taggings_on_shop_tag_id"
+  end
+
+  create_table "shop_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "tag_id", null: false
@@ -132,6 +147,8 @@ ActiveRecord::Schema.define(version: 2022_08_19_135842) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "shop_taggings", "posts"
+  add_foreign_key "shop_taggings", "shop_tags"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
 end
