@@ -82,11 +82,7 @@
       </ul>
     </div>
   </nav>
-</header>
   <% if user_signed_in? %>
-    <% if %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
-      <div class="pb-2 d-flex justify-content-end bg-white"><%= render 'public/searches/form' %></div>
-    <% else %>
-      <div class="pb-2 d-flex justify-content-end bg-light"><%= render 'public/searches/form' %></div>
-    <% end %>
+    <div class="pb-2 d-flex justify-content-end bg-white"><%= render 'public/searches/form' %></div>
   <% end %>
+</header>
