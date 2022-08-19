@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row mb-3 d-flex justify-content-center">
+  <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
       <div class="m-3">
-        <h5 class="text-center"><i class="fas fa-cog"></i> 店舗の設備タグ管理画面</h5>
-        <%= form_with model: @shop_tag, url: admin_shop_tags_path, method: :post do |f| %>
+        <h5 class="text-center"><i class="fas fa-cog"></i> 設備タグ編集画面</h5>
+        <%= form_with model: @shop_tag, url: admin_shop_tag_path(@shop_tag), method: :patch do |f| %>
           <i class="fas fa-tag"></i> <%= f.label :name, "設備タグ名" %><br />
           <%= f.text_field :name, class: "search-form-group" %>
-          <%= f.submit "追加する", class: "btn btn-outline-secondary" %>
+          <%= f.submit "変更する", class: "btn btn-outline-secondary" %>
         <% end %>
       </div>
       <table class="table table-border">

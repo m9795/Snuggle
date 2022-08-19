@@ -47,6 +47,11 @@
             <% end %>
           </li>
           <li class="border bg-white rounded text-secondary small px-2 py-1 m-1">
+            <%= link_to new_admin_shop_tag_path, class: 'nav-link' do %>
+              <i class="fas fa-tags"></i> 設備タグ管理
+            <% end %>
+          </li>
+          <li class="border bg-white rounded text-secondary small px-2 py-1 m-1">
             <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
