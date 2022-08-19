@@ -6,7 +6,7 @@
     <div class="col">
       <%= f.file_field :image, accept: 'image/*', class: "custom-file-input", id: "inputFile" %>
       <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
-    </div>qgit
+    </div>
     <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="title"></span>
     <%= f.text_field :title, class: "title-input form-control", placeholder: "タイトルを入力(必須)", maxlength: 140 %><br />
     <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="content"></span>
