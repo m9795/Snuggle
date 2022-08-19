@@ -17,7 +17,7 @@
               <%= post.post.user.name %><br />
             <% end %>
             <div class="post_image_wrapper">
-              <%= link_to post_path(post.post) do %>
+              <%= link_to post_path(post.post), data: {"turbolinks" => false} do %>
                 <%= image_tag post.post.get_image, class: 'img-fluid post_image' %><br />
               <% end %>
             </div>
