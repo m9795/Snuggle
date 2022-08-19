@@ -50,7 +50,7 @@
       <tr><td><%= post.shop_remarks %></td></tr>
     <% end %>
     <tr><th>設備情報</th></tr>
-    <% if post.shop_tags == "" %>
+    <% unless post.shop_tags.present? %>
       <tr><td>-</td></tr>
     <% else %>
       <tr><td>
