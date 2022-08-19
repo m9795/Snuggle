@@ -3,6 +3,9 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :post_choice, only: [:show, :edit, :map_edit, :update, :destroy]
+  before_action :info_count, only: [:index, :tag, :private_post]
+  before_action :show_user, only: [:show, :edit]
+
   def new
     @post = Post.new
   end
@@ -19,21 +22,15 @@ class Public::PostsController < ApplicationController
 
   # 退会ユーザーと非公開記事を省いて取得
   def index
-    @posts = @publish_post_all
-    posts = @posts.order(created_at: "DESC")
-    @page_posts = posts.page(params[:page]).per(5)
-    @current_user_posts = current_user.posts.where(id: @publish_post_all)
-    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    @page_posts = @publish_post_all.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   def show
-    @user = @post.user
-    @posts = @user.posts.publish
-    @liked_post = @user.likes.where(post_id: @publish_post_all)
+    @posts = @user.posts.publish # post.userのinfoカウント用
+    @liked_post = @user.likes.where(post_id: @publish_post_all) # post.userのinfoカウント用
   end
 
   def edit
-    @user = @post.user
     if @user == current_user
       render "edit"
     else
@@ -58,38 +55,33 @@ class Public::PostsController < ApplicationController
   end
 
   # タグ検索結果ページ
-  # 退会ユーザー投稿と非公開投稿を省いて取得
   def tag
-    @tag = Tag.find_by(name: params[:name])
-    @post = @publish_post_all.search(@tag.name)
-    post = @post.order(created_at: "DESC")
-    @page_posts = post.page(params[:page]).per(5)
-    users = User.where(status: false)
-    @posts = current_user.posts.where(user_id: users, publish: true)
-    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    @tag = Tag.find_by(name: params[:name]) # タグ名を検索タイトル用
+    @post = @tag.posts.publish # 検索結果の件数表示用
+    @page_posts = @post.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   # 非公開投稿ページ
   def private_post
-    @user = current_user
-    @unpublish_posts = @user.posts.unpublish
-    unpublish_posts = @unpublish_posts.order(created_at: "DESC")
-    @page_unpublish_posts = unpublish_posts.page(params[:page]).per(5)
-    users = User.where(status: false)
-    @posts = current_user.posts.where(user_id: users, publish: true)
-    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    @page_unpublish_posts = current_user.posts.unpublish.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
-private
-  def post_params
-    params.require(:post).permit(:image, :title, :content, :lat, :lng, :publish)
-  end
-
-  def post_choice
-    if (params[:id]).present?
-      @post = Post.find(params[:id])
-    else
-      @post = Post.find(params[:post_id])
+  private
+    def post_params
+      params.require(:post).permit(:image, :title, :content, :lat, :lng, :publish)
     end
-  end
+
+    def show_user
+      @user = @post.user
+    end
+
+    def post_choice
+      @post = Post.find(params[:id])
+    end
+
+    # current_userのinfo 件数用
+    def info_count
+      @posts = current_user.posts.publish
+      @liked_post = current_user.likes.where(post_id: @publish_post_all)
+    end
 end

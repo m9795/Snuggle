@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mb-3 d-none d-md-block">
-      <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @current_user_posts %>
+      <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-md-6 offset-md-1">
       <h4 class="mb-4 text-center"><span><i class="far fa-images fa-xs"></i></span> みんなの投稿一覧 (<%= @publish_post_all.count %>件)</h4>
       <% if @publish_post_all.present? %>
-        <%= render 'index', posts: @posts, page_posts: @page_posts %>
+        <%= render 'index', posts: @publish_post_all, page_posts: @page_posts %>
       <% else %>
         <p class="text-center">現在、投稿はありません。</p>
       <% end %>
