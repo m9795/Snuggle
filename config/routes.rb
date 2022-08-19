@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
     # コメント・いいね機能
     resources :posts do
-      get "/map/edit" => "posts#map_edit"
+      get "map/edit" => "posts#map_edit"
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
