@@ -3,7 +3,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
-  before_action :user_choice, only: [:post_choice, :posts, :show, :update]
+  before_action :user_choice, only: [:posts, :show, :update]
   before_action :info_count, only: [:posts, :show]
 
   def index
@@ -27,12 +27,10 @@ class Public::UsersController < ApplicationController
   end
 
   # レスポンシブ時の表示を変えるためshowとpostsで分けています
-  # レスポンシブ時ユーザー情報のみ表示
-  def show
+  def show # レスポンシブ時ユーザー情報のみ表示
   end
 
-  # レスポンシブ時ユーザーの投稿一覧のみ表示
-  def posts
+  def posts # レスポンシブ時ユーザーの投稿一覧のみ表示
   end
 
   # 退会確認ページ
@@ -41,8 +39,7 @@ class Public::UsersController < ApplicationController
 
   # 退会処理（論理削除）
   def withdraw
-    @user = current_user
-    @user.update(status: true)
+    current_user.update(status: true)
     sign_out current_user
     redirect_to root_path, notice: "ご利用いただきありがとうございました！", alert: "またのご利用をお待ちしております。"
   end
@@ -68,7 +65,7 @@ class Public::UsersController < ApplicationController
     end
 
     def info_count
-      @posts = @user.posts.publish
+      @posts = @user.posts.order(created_at: "DESC").publish
       @page_posts = @posts.page(params[:page]).per(5)
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end

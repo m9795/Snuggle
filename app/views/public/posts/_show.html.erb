@@ -18,11 +18,46 @@
   </div>
   <h5><%= link_to post.title, post_path(post), class: "text-secondary" %></h5>
   <p><%= render_with_tags(post.content) %></p>
+  <% if post.lat == 0.0 && post.lng == 0.0 %>
+    <div class="small">※現在、地図情報は登録されていません。</div>
+  <% end %>
+  <h5><i class="fas fa-map-marker-alt"></i> 地図情報</h5>
+  <div id='map'></div>
+  <!--マップサイズ設定-->
+  <style>
+    #map {
+      height: 200px;
+      width: 100%;
+    }
+  </style>
+  <script>
+  //表示するマップの設定
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+    // 投稿したマップの位置
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>}, //投稿した場所
+      zoom: 15,
+    });
+    // 投稿したピンの位置
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>}, //投稿した場所
+      map: map
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+
+  <% if post.user == current_user %>
+    <p class="text-right"><%= link_to "地図を編集する", post_map_edit_path(post), data: {"turbolinks" => false} %></p>
+  <% end %>
   作成日時：<%= l post.created_at %><br />
   更新日時：<%= l post.updated_at %><br />
   <!--編集/削除ボタン(本人のみ表示)-->
   <% if post.user == current_user %>
-    <%= link_to '編集', edit_post_path(post) %>
+    <%= link_to '編集', edit_post_path(post), data: {"turbolinks" => false} %>
     ｜ <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？'} %><br />
   <% end %>
 </div>
