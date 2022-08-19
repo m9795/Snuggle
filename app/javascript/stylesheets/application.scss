@@ -58,6 +58,11 @@ a:hover {
   text-decoration: none;
 }
 
+th {
+  text-align: center;
+  background-color: #dee2e6;
+}
+
 /*投稿の本文を3行目末尾...で表示*/
 .post-contents {
   display: -webkit-box;

@@ -16,7 +16,42 @@
   </div>
   <b class="text-secondary"><%= post.title %></b>
   <p><%= render_with_tags(post.content) %></p>
-  <h5><i class="fas fa-map-marker-alt"></i> 地図情報</h5>
+
+  <h4 class="mt-5 mb-3 text-center"><i class="fas fa-store"></i> 店舗詳細</h4>
+  <table class="table table-bordered text-center">
+    <tr><th><i class="fas fa-coffee"></i> 店名</th></tr>
+    <% if post.shop_name == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_name %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-comment-alt"></i> 紹介文</th></tr>
+    <% if post.shop_detail == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_detail %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-map-marker-alt"></i> 場所</th></tr>
+    <% if post.shop_place == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_place %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-globe-asia"></i> HP</th></tr>
+    <% if post.shop_home_page == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= link_to post.shop_home_page, post.shop_home_page, target: :_blank, rel: "noopener noreferrer" %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-info-circle"></i> 備考</th></tr>
+    <% if post.shop_remarks == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_remarks %></td></tr>
+    <% end %>
+  </table>
+
+  <h5 class="my-3 text-center"><i class="fas fa-map-marked-alt"></i>  地図情報</h5>
   <% if post.lat == 0.0 && post.lng == 0.0 %>
     <div class="small">※現在、地図情報は登録されていません。</div>
   <% end %>
