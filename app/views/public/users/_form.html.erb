@@ -6,32 +6,46 @@
       <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
     <% end %>
   </div>
-  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %> <span class="name"></span>
-  <%= f.text_field :name, class: "name-input form-control", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
-  <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %> <span class="introduction"></span>
+
+  <!--変更したアイコンの表示用-->
+  <script>
+    window.addEventListener('load', () => {
+        const uploader = document.querySelector('.uploader');
+        uploader.addEventListener('change', (e) => {
+          const file = uploader.files[0];
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            const image = reader.result;
+            document.querySelector('.avatar').setAttribute('src', image);
+          }
+        });
+    });
+  </script>
+
+  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %> <span class="name-count"></span>
+  <%= f.text_field :name, class: "form-control", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
+  <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %> <span class="introduction-count"></span>
   <%= f.text_area :introduction, class: "form-control", placeholder: "自己紹介を入力", maxlength: "150", rows: "4" %>
   <%= f.submit  class: "mt-4 form-control btn btn-outline-success" %>
 <% end %>
 
-<!--変更したアイコンの表示用-->
-<script>
-  window.addEventListener('load', () => {
-      const uploader = document.querySelector('.uploader');
-      uploader.addEventListener('change', (e) => {
-        const file = uploader.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          const image = reader.result;
-          document.querySelector('.avatar').setAttribute('src', image);
-        }
-      });
-  });
-</script>
-
-
 <!--名前と紹介文の入力文字数表示用-->
 <script>
+  // ページ開いた瞬間の文字数を表示
+  window.onload = (e) => {
+    let user_name = document.getElementById('user_name'); //user_name == フォームのid名
+    user_name.closest('.form-group') //.form-group == 親のクラス名
+    .querySelector('.name-count') //.name-count == 表示させたいspanのクラス名
+    .textContent=user_name.value.length; //user_name == 変数名 //文字の長さ
+
+    let user_introduction = document.getElementById('user_introduction');
+    user_introduction.closest('.form-group')
+    .querySelector('.introduction-count')
+    .textContent=user_introduction.value.length;
+  };
+
+  // フォームに入力した際の文字数表示
   document.addEventListener('input',e=>{
     let t=e.target.closest('.name-input');
     if(t){

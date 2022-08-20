@@ -5,7 +5,7 @@
         <%= image_tag @user.get_image, class: "user_image avatar" %><br />
         <div class="my-3"><i class="far fa-address-card"></i> ユーザ情報編集</div>
       </h4>
-      <div class="pt-5 pb-4 px-5 border bg-white">
+      <div class="form-group pt-5 pb-4 px-5 border bg-white">
         <%= render 'public/users/form', user: @user %>
       </div>
     </div>
