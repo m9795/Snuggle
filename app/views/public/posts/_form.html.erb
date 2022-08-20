@@ -4,7 +4,10 @@
 
   <!--投稿の内容入力欄-->
   <div class="actions mt-4">
-    <i class="far fa-image"></i> <%= f.label :image, '画像' %> （ファイルから投稿画像を選択してください）<br />
+    <i class="far fa-image"></i> <%= f.label :image, '画像' %>
+    <% if current_page?(new_post_path)  %>
+      （投稿画像を選択してください
+    <% end %>
 
     <!--画像のプレビュー表示-->
     <div class="post_image_wrapper">
@@ -12,7 +15,7 @@
         <% if current_page?(new_post_path) %>
           <%= image_tag "no_image.png", class: 'img-fluid post_image phot' %>
         <% else %>
-          <%= image_tag @post.get_image, class: "img-fluid post_image phot" %>
+          <%= image_tag post.get_image, class: "img-fluid post_image phot" %>
         <% end %>
         <%= f.file_field :image, class: 'uploader', style: 'display:none' %>
       <% end %>
@@ -43,6 +46,7 @@
     <!--タイトルと内容の入力文字数表示用-->
     <script>
       // ページ開いた瞬間の文字数を表示
+      // title form
       window.onload = (e) => {
         let post_title = document.getElementById('post_title');
         post_title
@@ -50,6 +54,7 @@
         .querySelector('.title-count')
         .textContent=post_title.value.length;
 
+        // content form
         let post_content = document.getElementById('post_content');
         post_content
         .closest('.form-group')
@@ -57,7 +62,7 @@
         .textContent=post_content.value.length;
       };
 
-      // フォームに入力した際の文字数表示
+      // フォームに入力した際の文字数を表示
       // title form
       document.addEventListener('input',e=>{
         let t=e.target.closest('.title-input');
