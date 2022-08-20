@@ -49,6 +49,20 @@
     <% else %>
       <tr><td><%= post.shop_remarks %></td></tr>
     <% end %>
+    <tr><th>設備情報</th></tr>
+    <% unless post.shop_tags.present? %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td>
+        <% post.shop_tags.each do |tag| %>
+          <span class="btn btn-outline-secondary m-2">
+            <%#= link_to posts_path, class: "text-white" do %>
+              <%= tag.name %>
+            <%# end %>
+            </span>
+        <% end %>
+      </td></tr>
+    <% end %>
   </table>
 
   <h5 class="my-3 text-center"><i class="fas fa-map-marked-alt"></i>  地図情報</h5>

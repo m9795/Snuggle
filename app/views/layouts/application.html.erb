@@ -11,8 +11,12 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body class="bg-light">
-    <div class="wrapper">
-      <%= render 'layouts/header' %>
+    <% if  %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
+      <div class="wrapper bg-white">
+    <% else %>
+      <div class="wrapper">
+    <% end %>
+    <%= render 'layouts/header' %>
       <main>
         <% if %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
           <div class="flash-messages pt-2 bg-white">

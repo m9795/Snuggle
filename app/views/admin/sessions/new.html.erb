@@ -1,15 +1,15 @@
 <div class="container py-3 px-5">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-5 mx-3 p-5 form-group border bg-white shadow">
-      <h4 class="text-center"><span><i class="fas fa-cog"></i></span> 管理者ログイン</h4>
+      <h4 class="text-center"><i class="fas fa-cog"></i> 管理者ログイン</h4>
       <%= form_with model: resource, url: admin_session_path do |f| %>
         <div class="field mt-4">
-          <span><i class="fas fa-envelope"></i></span> <%= f.label :email, "メールアドレス" %>
+          <i class="fas fa-envelope"></i> <%= f.label :email, "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力", class: "form-control admin-login-form-text shadow-sm" %>
         </div>
 
         <div class="field mt-3">
-          <span><i class="fas fa-lock"></i></span> <%= f.label :password, "パスワード" %>
+          <i class="fas fa-lock"></i> <%= f.label :password, "パスワード" %>
           <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力", class: "form-control admin-login-form-text shadow-sm" %>
         </div>
 
