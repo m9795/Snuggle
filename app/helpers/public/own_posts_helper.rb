@@ -1,0 +1,2 @@
+module Public::OwnPostsHelper
+end

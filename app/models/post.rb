@@ -36,7 +36,7 @@ class Post < ApplicationRecord
   has_many :shop_taggings, dependent: :destroy
   has_many :shop_tags, through: :shop_taggings, dependent: :destroy
 
-  validates :title,   presence: true, length: { minimum: 1, maximum: 140 }
+  validates :title,   presence: true, length: { maximum: 140 }
   validates :content, presence: true, correct_line_break: true
   validates :shop_home_page, length: { maximum: 2000 }
 

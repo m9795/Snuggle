@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  
   # 管理者　ログイン
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -41,6 +42,8 @@ Rails.application.routes.draw do
       get "like_list" => "likes#like_list"
       # 非公開記事一覧ページ
       get "private_post" => "posts#private_post"
+      # ひとりごと投稿機能
+      resources :own_posts, only: [:new, :create, :index, :destroy]
     end
     # ユーザの退会確認ページ
     get "user/unsubscribe" => "users#unsubscribe"
@@ -53,11 +56,14 @@ Rails.application.routes.draw do
     # タグ検索結果ページ
     get "post/tag/:name" => "posts#tag"
 
-    # コメント・いいね機能
+    # 投稿機能
     resources :posts do
+      # 地図編集ページ
       get "map/edit" => "posts#map_edit"
+      # コメント・お気に入り機能
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    
   end
 end
