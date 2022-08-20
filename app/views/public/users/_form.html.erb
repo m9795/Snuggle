@@ -2,7 +2,7 @@
   <i class="far fa-image"></i> <%= f.label :image %>
   <div class="col">
     <%= f.label :image do %>
-      <%= f.file_field :image, class: "custom-file-input uploader", id: "inputFile" %>
+      <%= f.file_field :image, accept: 'image/*', class: "custom-file-input uploader", id: "inputFile" %>
       <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
     <% end %>
   </div>
