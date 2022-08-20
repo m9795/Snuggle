@@ -1,16 +1,10 @@
-<div class="ml-3 small text-secondary">
-  <% if user.name == "guest user" %>
-    ようこそゲストページへ！
-  <% elsif user == current_user %>
-    ようこそマイページへ！
-  <% else %>
-    ようこそ <%= user.name %>'s ページへ！
-  <% end %>
-  <br />ゆっくりしていってください☻
-</div>
-<div class="border bg-white p-3">
+<div class="p-3">
   <h4 class="mb-4 text-center">
-    プロフィール
+  <% if user == current_user %>
+    マイページ
+  <% else %>
+    <%= user.name %>さんのページ
+  <% end %>
     <!--編集ボタン(ゲストユーザー省く)-->
     <% if user.name == 'guest user' %>
     <% elsif user == current_user %>

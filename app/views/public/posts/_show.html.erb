@@ -55,17 +55,17 @@
     <% else %>
       <tr><td>
         <% post.shop_tags.each do |tag| %>
-          <span class="btn btn-outline-secondary m-2">
-            <%#= link_to posts_path, class: "text-white" do %>
+          <span class="text-secondary">
+            <%= link_to  "/post/shop_tag/#{tag.name}", class: "btn btn-outline-secondary m-2" do %>
               <%= tag.name %>
-            <%# end %>
+            <% end %>
             </span>
         <% end %>
       </td></tr>
     <% end %>
   </table>
 
-  <h5 class="my-3 text-center"><i class="fas fa-map-marked-alt"></i>  地図情報</h5>
+  <h5 class="my-3 text-center"><i class="fas fa-map-marked-alt"></i> 地図情報</h5>
   <% if post.lat == 0.0 && post.lng == 0.0 %>
     <div class="small">※現在、地図情報は登録されていません。</div>
   <% end %>
