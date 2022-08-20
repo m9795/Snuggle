@@ -11,7 +11,7 @@ class Public::OwnPostsController < ApplicationController
     if own_post.save
       redirect_to user_own_posts_path(@user), notice: "つぶやきました。"
     else
-      redirect_to request.referer, alert: "つぶやけませんでしした。"
+      redirect_to request.referer, alert: "つぶやけませんでした。"
     end
   end
 

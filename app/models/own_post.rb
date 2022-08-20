@@ -18,5 +18,5 @@
 #
 class OwnPost < ApplicationRecord
   belongs_to :user
-  validates :content, presence: true, length: { maximum: 200 }
+  validates :content, presence: true
 end

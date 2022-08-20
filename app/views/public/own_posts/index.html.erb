@@ -12,7 +12,7 @@
       <% if @own_posts.present? %>
         <% @own_posts.each do |own_post| %>
           <hr></hr>
-          <%= own_post.content %>
+          <p><%= own_post.content %></p>
           <div class="small text-right">
             <%= l own_post.created_at %>
             <% if @user == current_user %>

@@ -8,7 +8,7 @@
     <!--編集ボタン(ゲストユーザー省く)-->
     <% if user.name == 'guest user' %>
     <% elsif user == current_user %>
-      <%= link_to edit_user_path(user), class: "ml-2 btn btn-outline-secondary edit-btn" do %>
+      <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: "ml-2 btn btn-outline-secondary edit-btn" do %>
         <i class="fas fa-user-edit fa-xs d-flex"></i>
       <% end %>
     <% end %>
