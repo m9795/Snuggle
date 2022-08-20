@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :user_choice, only: [:posts, :show, :update]
   before_action :info_count, only: [:posts, :show]
+  before_action :user_status_check, only: [:posts, :show]
 
   def index
     @users = @publish_user_all.order(created_at: "DESC").page(params[:page])
@@ -28,9 +29,15 @@ class Public::UsersController < ApplicationController
 
   # レスポンシブ時の表示を変えるためshowとpostsで分けています
   def show # レスポンシブ時ユーザー情報のみ表示
+    if @user.status == true
+      redirect_to users_path, alert: "退会済みユーザのため閲覧できません。"
+    end
   end
 
   def posts # レスポンシブ時ユーザーの投稿一覧のみ表示
+    if @user.status == true
+      redirect_to users_path, alert: "退会済みユーザのため閲覧できません。"
+    end
   end
 
   # 退会確認ページ
@@ -68,5 +75,11 @@ class Public::UsersController < ApplicationController
       @posts = @user.posts.order(created_at: "DESC").publish
       @page_posts = @posts.page(params[:page]).per(5)
       @liked_post = @user.likes.where(post_id: @publish_post_all)
+    end
+
+    def user_status_check
+      if @user.status == true
+        redirect_to users_path, alert: "退会済みユーザのため閲覧できません。"
+      end
     end
 end
