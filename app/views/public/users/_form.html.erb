@@ -1,23 +1,19 @@
-
 <%= form_with model: user do |f| %>
-
-  <%= f.label :image do %>
-    <%= image_tag user.get_image, class: "user_image avatar" %><br />
-    <i class="far fa-image"></i> <%= f.label :image %><br />
+  <i class="far fa-image"></i> <%= f.label :image %>
   <div class="col">
-    <%= f.file_field :image, class: "custom-file-input uploader", id: "inputFile" %>
-    <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
-    <%#= f.file_field :image, class: 'uploader' %>
-  <% end %>
+    <%= f.label :image do %>
+      <%= f.file_field :image, class: "custom-file-input uploader", id: "inputFile" %>
+      <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
+    <% end %>
   </div>
-  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-4" %> <span class="name"></span>
+  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %> <span class="name"></span>
   <%= f.text_field :name, class: "name-input form-control", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
   <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %> <span class="introduction"></span>
   <%= f.text_area :introduction, class: "form-control", placeholder: "自己紹介を入力", maxlength: "150", rows: "4" %>
   <%= f.submit  class: "mt-4 form-control btn btn-outline-success" %>
 <% end %>
 
-
+<!--変更したアイコンの表示用-->
 <script>
   window.addEventListener('load', () => {
       const uploader = document.querySelector('.uploader');
