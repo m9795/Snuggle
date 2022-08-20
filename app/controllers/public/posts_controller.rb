@@ -26,8 +26,16 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.publish # post.userのinfoカウント用
-    @liked_post = @user.likes.where(post_id: @publish_post_all) # post.userのinfoカウント用
+    # ↓post.userのサイドバーの件数表示用
+    @posts = @user.posts.publish
+    @liked_post = @user.likes.where(post_id: @publish_post_all)
+    # ↓公開記事は全員閲覧可
+    if @post.publish
+    # ↓非公開記は投稿ユーザのみ閲覧可
+    elsif @post.publish == false && @post.user == current_user
+    else
+      redirect_to posts_path, alert: "お探しの投稿は見つかりません。"
+    end
   end
 
   def edit
@@ -42,16 +50,24 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to post_path(@post), notice: "更新しました。"
+    if current_user == @post.user
+      if @post.update(post_params)
+        redirect_to post_path(@post), notice: "更新しました。"
+      else
+        redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
+      end
     else
-      redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
+      redirect_to posts_path, alert: "本人以外更新できません。"
     end
   end
 
   def destroy
-    @post.destroy
-    redirect_to user_path(current_user), notice: "投稿を削除しました。"
+    if current_user == @post.user
+      @post.destroy
+      redirect_to user_path(current_user), notice: "投稿を削除しました。"
+    else
+      redirect_to posts_path, alert: "本人以外は投稿を削除できません。"
+    end
   end
 
   # タグ検索結果ページ
@@ -63,7 +79,11 @@ class Public::PostsController < ApplicationController
 
   # 非公開投稿ページ
   def private_post
-    @page_unpublish_posts = current_user.posts.unpublish.order(created_at: "DESC").page(params[:page]).per(5)
+    if current_user == User.find(params[:user_id])
+      @page_unpublish_posts = current_user.posts.unpublish.order(created_at: "DESC").page(params[:page]).per(5)
+    else
+      redirect_to posts_path, alert: "非公開投稿は本人以外閲覧できません。"
+    end
   end
 
   private
@@ -83,7 +103,7 @@ class Public::PostsController < ApplicationController
       end
     end
 
-    # current_userのinfo 件数用
+    # current_userサイドバーの件数表示用
     def info_count
       @posts = current_user.posts.publish
       @liked_post = current_user.likes.where(post_id: @publish_post_all)
