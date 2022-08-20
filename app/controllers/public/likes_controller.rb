@@ -7,8 +7,16 @@ class Public::LikesController < ApplicationController
   # お気に入り一覧ページ
   def like_list
     @user = User.find(params[:user_id])
-    @liked_post = @user.likes.where(post_id: @publish_post_all) # お気に入り件数用
-    @page_liked_post = @liked_post.where(post_id: @publish_post_all).order(created_at: "DESC").page(params[:page]).per(5) # お気に入りした順に表示
+    # ↓お気に入り件数表示用
+    @liked_post = @user.likes
+    .where(post_id: @publish_post_all)
+    # ↓投稿をお気に入りした順に表示
+    @page_liked_post = Post.joins(:likes)
+    .where(likes: {user_id: @user})
+    .where(id: @publish_post_all)
+    .merge(Like.order(created_at: "DESC"))
+    .page(params[:page])
+    .per(5)
     @posts = @user.posts.publish
   end
 
@@ -23,7 +31,7 @@ class Public::LikesController < ApplicationController
     like.destroy
     render "replace"
   end
-  
+
   private
     def post_choice
       @post = Post.find(params[:post_id])
