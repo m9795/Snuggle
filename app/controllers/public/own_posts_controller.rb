@@ -21,7 +21,7 @@ class Public::OwnPostsController < ApplicationController
 
   def destroy
     own_post = OwnPost.find(params[:id])
-    if own_post.user_id == current_user
+    if own_post.user_id == current_user.id
       own_post.destroy
       redirect_to request.referer, notice: "つぶやきを削除しました。"
     else
