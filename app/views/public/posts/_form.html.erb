@@ -1,8 +1,10 @@
 <%= form_with model: post do |f| %>
+  <h4 class="mt-3 text-center"><i class="fas fa-camera"></i> 投稿内容</h4>
+  <hr></hr>
 
   <!--投稿の内容入力欄-->
-  <div class="actions mt-2">
-    <i class="far fa-image"></i> <%= f.label :image, '画像' %><br />
+  <div class="actions mt-4">
+    <i class="far fa-image"></i> <%= f.label :image, '画像' %> （ファイルから投稿画像を選択してください）<br />
 
     <!--画像のプレビュー表示-->
     <div class="post_image_wrapper">
@@ -76,12 +78,13 @@
     </script>
 
     <!--お店の情報入力欄-->
-    <h4 class="mt-3 text-center"><i class="fas fa-store"></i> お店情報</h4>
+    <h4 class="mt-5 text-center"><i class="fas fa-store"></i> お店情報</h4>
+    <hr></hr>
 
     <!--新規投稿のみ投稿フォームから地図登録できる-->
     <% if current_page?(new_post_path) %>
-      <h5><i class="fas fa-map-marked-alt"></i> 地図登録</h5>
-      <div>みんなが利用しやすいように位置情報を登録しよう！</div>
+      <h5 class="mt-4"><i class="fas fa-map-marked-alt"></i> 地図登録</h5>
+      <div>みんなが利用しやすいよう、位置情報を登録しよう！</div>
       <div class="my-3">
         ①最寄りや店名を入力<br />
         ②<i class="fas fa-map-marker-alt"></i>
@@ -170,15 +173,15 @@
     <!--店舗紹介フォーム-->
     <i class="fas fa-coffee"></i> <%= f.label :shop_name, "店名" %>
     <%= f.text_field :shop_name, class: "form-control", placeholder: "（例）Snuggleカフェ 渋谷店" %><br />
-    <i class="fas fa-comment-alt"></i> <%= f.label :shop_detail, "紹介文（お店の紹介、雰囲気など感想を記入してみんなと共有しよう！）" %>
-    <%= f.text_area :shop_detail, class: "form-control", rows: 4, placeholder: "（例）落ち着いた雰囲気のカフェで長時間ゆっくりできました。" %><br />
     <i class="fas fa-map-marker-alt"></i> <%= f.label :shop_place, "場所（都道府県名や最寄り駅など）" %>
     <%= f.text_field :shop_place, class: "form-control", placeholder: "（例）東京都 渋谷区 神宮前X丁目X−X" %><br />
+    <i class="fas fa-comment-alt"></i> <%= f.label :shop_detail, "紹介文（お店の紹介や雰囲気など、みんなと共有しよう！）" %>
+    <%= f.text_area :shop_detail, class: "form-control", rows: 4, placeholder: "（例）落ち着いた雰囲気のカフェで長時間ゆっくりできました。" %><br />
     <i class="fas fa-globe-asia"></i> <%= f.label :shop_home_page, "HP" %>
     <%= f.text_field :shop_home_page, class: "form-control", placeholder: "（例）https://www.xxx.com" %><br />
     <i class="fas fa-info-circle"></i> <%= f.label :shop_remarks, '備考' %>
     <%= f.text_area :shop_remarks, class: "form-control", rows: 2, placeholder: "（例）コーヒーおかわり無料でした。ランチは少し混んでいます。" %><br />
-
+    【設備情報】
     <div class='form-group'>
       <%= f.collection_check_boxes(:shop_tag_ids, ShopTag.all, :id, :name) do |tag| %>
         <div class='form-check'>
