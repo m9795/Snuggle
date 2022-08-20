@@ -2,7 +2,7 @@
   <%= form_with model: [post, comment], local: false do |f| %>
     <div class="form-group">
       <%= f.label :comment, "コメント(最大1000文字)" %>
-      <%= f.text_area :comment, placeholder: 'コメントを入力', class: "js-text form-control", rows: '3', maxlength: "1000" %>
+      <%= f.text_area :comment, placeholder: 'コメントを入力', class: "comment form-control", rows: '3', maxlength: "1000" %>
       <div id="form-count">
         <%= render "public/comments/count" %>
       </div>
@@ -12,6 +12,11 @@
 </div>
 
 <script>
+  window.onload = (e) => {
+    let comment = document.getElementById('comment_comment');
+    comment.closest('.form-group').querySelector('span').textContent=comment.value.length;
+  };
+
   document.addEventListener('input',e=>{
     let t=e.target.closest('.form-group textarea');
     if(t){
