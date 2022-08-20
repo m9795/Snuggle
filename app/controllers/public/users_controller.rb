@@ -29,15 +29,9 @@ class Public::UsersController < ApplicationController
 
   # レスポンシブ時の表示を変えるためshowとpostsで分けています
   def show # レスポンシブ時ユーザー情報のみ表示
-    if @user.status == true
-      redirect_to users_path, alert: "退会済みユーザのため閲覧できません。"
-    end
   end
 
   def posts # レスポンシブ時ユーザーの投稿一覧のみ表示
-    if @user.status == true
-      redirect_to users_path, alert: "退会済みユーザのため閲覧できません。"
-    end
   end
 
   # 退会確認ページ
