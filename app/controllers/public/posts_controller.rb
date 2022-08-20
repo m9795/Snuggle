@@ -3,7 +3,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :post_choice, only: [:show, :edit, :map_edit, :update, :destroy]
-  before_action :info_count, only: [:index, :tag, :private_post]
+  before_action :info_count, only: [:index, :tag, :shop_tag, :private_post]
   before_action :show_user, only: [:show, :edit]
 
   def new
@@ -29,6 +29,7 @@ class Public::PostsController < ApplicationController
     # ↓post.userのサイドバーの件数表示用
     @posts = @user.posts.publish
     @liked_post = @user.likes.where(post_id: @publish_post_all)
+
     # ↓公開記事は全員閲覧可
     if @post.publish
     # ↓非公開記は投稿ユーザのみ閲覧可
@@ -72,8 +73,15 @@ class Public::PostsController < ApplicationController
 
   # タグ検索結果ページ
   def tag
-    @tag = Tag.find_by(name: params[:name]) # タグ名を検索タイトル用
+    @tag = Tag.find_by(name: params[:name]) # タグ名の検索タイトル用
     @post = @tag.posts.publish # 検索結果の件数表示用
+    @page_posts = @post.order(created_at: "DESC").page(params[:page]).per(5)
+  end
+
+  # 店舗設備タグ検索結果ページ
+  def shop_tag
+    @shop_tag = ShopTag.find_by(name: params[:name]) # 店舗設備タグ名の検索タイトル用
+    @post = @shop_tag.posts.publish # 検索結果の件数表示用
     @page_posts = @post.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
