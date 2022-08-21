@@ -2,16 +2,24 @@
   <%= form_with model: [post, comment], local: false do |f| %>
     <div class="form-group">
       <%= f.label :comment, "コメント(最大1000文字)" %>
-      <%= f.text_area :comment, placeholder: 'コメントを入力', class: "js-text form-control", rows: '3', maxlength: "1000" %>
+      <%= f.text_area :comment, placeholder: 'コメントを入力', class: "form-control", rows: '3', maxlength: "1000" %>
       <div id="form-count">
         <%= render "public/comments/count" %>
       </div>
-      <%= f.submit class: 'mt-3 btn btn-outline-dark' %>
+      <%= f.submit 'コメントする', class: 'mt-3 btn btn-outline-dark' %>
     </div>
   <% end %>
 </div>
 
+<!--入力文字数表示用-->
 <script>
+  // ページ開いた瞬間の文字数を表示
+  window.onload = (e) => {
+    let comment = document.getElementById('comment_comment');
+    comment.closest('.form-group').querySelector('span').textContent=comment.value.length;
+  };
+
+  // フォームに入力した際の文字数を表示
   document.addEventListener('input',e=>{
     let t=e.target.closest('.form-group textarea');
     if(t){

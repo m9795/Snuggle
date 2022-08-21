@@ -1,3 +1,13 @@
-<footer class="mt-5">
-  <p class="small">© 2022 m9795</p>
+<footer class="mt-5 pt-5 bg-white">
+  <div class="pt-3 bg-white">
+    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="text-dark"><i class="fab fa-twitter-square fa-lg"></i></a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://ja-jp.facebook.com/" target="_blank" rel="noopener noreferrer" class="text-dark"><i class="fab fa-facebook-square fa-lg"></i></a>
+  </div>
+  <div class="small bg-white">© 2022 m9795
+  <% unless user_signed_in? || admin_signed_in? %>
+    <%= link_to admin_session_path, class: 'text-dark' do %>
+      <i class="fas fa-cog fax-xs"></i></div>
+    <% end %>
+  <% end %>
 </footer>

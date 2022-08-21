@@ -1,9 +1,12 @@
 <div class="container py-3">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-5 pt-5 pb-4 px-5 form-group border bg-white">
-      <h2 class="text-center">Post edit</h2>
-      <%= render 'form', post: @post %>
+    <div class="col-lg-7">
+      <h4 class="text-center mb-5"><i class="far fa-file-alt"></i> 投稿編集</h4>
+      <div class="form-group pt-5 pb-4 px-5 border bg-white">
+        <%= render 'form', submit: '更新する', post: @post %>
+      </div>
+      <!--↓リンク先が地図表示のためターボリンクス無効化にした戻るボタン-->
+      <%= render "form.back.btn" %>
     </div>
   </div>
-  <div class="row d-flex justify-content-center">
 </div>

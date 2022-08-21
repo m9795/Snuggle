@@ -24,7 +24,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to user_path(user), notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(user), notice: "ゲストユーザーとしてログインしました。"
   end
 
   protected
@@ -32,7 +32,7 @@ class Public::SessionsController < Devise::SessionsController
       @user = User.find_by(email: params[:user][:email])
       return if !@user
       if @user .valid_password?(params[:user][:password]) && @user.status == true
-        redirect_to new_user_registration_path
+        redirect_to new_user_registration_path, notice: "退会済みのためログインできません。", alert: "再度新規登録が必要です。"
       end
     end
   # If you have extra params to permit, append them to the sanitizer.

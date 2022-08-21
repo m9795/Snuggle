@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h2 class="mb-4"><span><i class="fas fa-users-cog fas-xs"></i></span> All Users (<%= User.all.count %>人)
-      <span class="h4">(有効<%= @publish_user_all.count %>人/退会<%= User.unpublish.count %>人)</span></h2>
+      <h4 class="mb-4 text-center"><span><i class="fas fa-users-cog fas-xs"></i></span> ユーザ一覧 (<%= User.all.count %>人)</h4>
+      <h5 class="text-center">(有効<%= @publish_user_all.count %>人/退会<%= User.unpublish.count %>人)</h5>
       <% if @users.present? %>
         <% @users.each do |user| %>
           <div class="text-secondary">User id：<%= user.id %></div>
@@ -16,16 +16,18 @@
             </div>
             <div class="row d-flex justify-content-between border-bottom">
               <div class="col py-3">
-                <%= link_to admin_user_path(user) do %>
+                <%= link_to admin_user_path(user), class: "text-secondary" do %>
                   <%= image_tag user.get_image, class: "mr-3 mb-3 user_image" %>
-                  <%= user.name %><br />
+                  <i class="fas fa-user-circle"></i> <%= user.name %><br />
                 <% end %>
-                <p><%= user.introduction %></p>
               </div>
             </div>
             <div class="row pt-3 pb-2">
               <div class="col-xl-2 mt-1">
-                <%= link_to '編集', edit_admin_user_path(user), class: "btn btn-block btn-outline-success" %>
+                <!--ゲストユーザは編集ボタンを表示しない-->
+                <% if user.name != "guest user" %>
+                  <%= link_to '編集', edit_admin_user_path(user), class: "btn btn-block btn-outline-success" %>
+                <% end %>
               </div>
               <div class="col-xl-2 mt-1">
                 <%= link_to '詳細', admin_user_path(user), class: "btn btn-block btn-outline-dark" %>
@@ -45,7 +47,7 @@
         <% end %>
         <%= paginate @users %>
       <% else %>
-        現在、登録ユーザーはいません。
+        <p class="text-center">現在、登録ユーザーはいません。</p>
       <% end %>
     </div>
   </div>

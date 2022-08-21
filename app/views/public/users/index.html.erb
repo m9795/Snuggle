@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h2 class="mb-4"><span><i class="fas fa-user-friends fa-xs"></i></span> All Users (<%= @publish_user_all.count %>)</h2>
+      <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span> ユーザ一覧 (<%= @publish_user_all.count %>人)</h4>
+      <%= render 'public/searches/user_search_form' %>
       <%= render 'index', users: @users %>
     </div>
   </div>

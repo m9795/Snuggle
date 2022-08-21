@@ -25,7 +25,7 @@ footer {
   text-align: center;
   line-height: 50px;
   background-color: #fff;
-  border-top: 1px solid #545b64;
+  border-top: 1px solid #949799;
 }
 
 .wrapper {
@@ -33,6 +33,10 @@ footer {
   position: relative;/* 相対位置 */
   padding-bottom: 50px; /* フッター分の余白持たせることで、要素がめり込むのを防ぐ */
   box-sizing: border-box; /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+}
+
+main {
+  color: #6c757d; /*secondaryのカラーコード*/
 }
 
 h2 {
@@ -50,13 +54,24 @@ p {
   margin-bottom: 3rem;
 }
 
-a {
-  color: #212529;
-}
-
 a:hover {
   text-decoration: none;
-  color: #6c757d;
+}
+
+th {
+  background-color: #dee2e6;
+}
+
+/*投稿の本文を3行目末尾...で表示*/
+.post-contents {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /*InternetExplorer対策*/
+  /*line-clampはIEに対応していないため*/
+  line-height: 1.5em;
+  max-height: 4.5em;
 }
 
 .post_image_wrapper {
@@ -95,6 +110,10 @@ a:hover {
   object-fit: cover;
 }
 
+.edit-btn {
+  margin-bottom: 5px;
+}
+
 .search-form-text {
   font-size: 10px;
 }
@@ -120,4 +139,24 @@ a:hover {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.custom-file-label::after {
+  content: "参照";
+}
+
+.pagination {
+  justify-content: center;
+}
+
+select {
+  padding: 0.375rem;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.radio-btn {
+  width: 10px;
+  height: 10px;
 }

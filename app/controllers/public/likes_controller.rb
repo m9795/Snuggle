@@ -1,29 +1,39 @@
+# frozen_string_literal: true
+
 class Public::LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :post_choice, only: [:create, :destroy]
 
-  # いいね一覧ページ
-  # 退会ユーザーの非公開投稿を省いて取得
+  # お気に入り一覧ページ
   def like_list
-    users = User.where(status: false)
-    posts = Post.where(user_id: users, publish: true)
-    user = User.find(params[:user_id])
-    @liked_post = user.likes.where(post_id: posts)
-    @page_liked_post = user.likes.where(post_id: posts).page(params[:page]).per(5)
-    @posts = current_user.posts.publish
     @user = User.find(params[:user_id])
+    # ↓お気に入り件数表示用
+    @liked_post = @user.likes
+    .where(post_id: @publish_post_all)
+    # ↓投稿をお気に入りした順に表示
+    @page_liked_post = Post.joins(:likes)
+    .where(likes: { user_id: @user })
+    .where(id: @publish_post_all)
+    .merge(Like.order(created_at: "DESC"))
+    .page(params[:page])
+    .per(5)
+    @posts = @user.posts.publish
   end
 
   def create
-    @post = Post.find(params[:post_id])
     like = current_user.likes.new(post_id: @post.id)
     like.save
-    render 'replace'
+    render "replace"
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     like = current_user.likes.find_by(post_id: @post.id)
     like.destroy
-    render 'replace'
+    render "replace"
   end
+
+  private
+    def post_choice
+      @post = Post.find(params[:post_id])
+    end
 end

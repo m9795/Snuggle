@@ -2,7 +2,7 @@
   <div class="px-5 py-2 border bg-white">
     <% post_comments.each do |post_comment| %>
       <div class="row px-3">
-        <%= link_to user_path(post_comment.user_id) do %>
+        <%= link_to user_path(post_comment.user_id), class: "text-secondary" do %>
           <%= image_tag post_comment.user.get_image, class: 'post_user_image' %>
           <%= post_comment.user.name %>
         <% end %>
@@ -22,5 +22,5 @@
     <% end %>
   </div>
 <% else %>
-  <p>現在、コメントはありません。</p>
+  <p class="text-center">現在、コメントはありません。</p>
 <% end %>

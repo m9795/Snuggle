@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /><i class="fas fa-comment-dots"></i> ひとりごと一覧</h5>
+      <% if @user == current_user %>
+      <p class="text-right">
+        <%= link_to new_user_own_post_path(@user) do %>
+          つぶやく <i class="fas fa-edit"></i>
+        <% end %>
+      </p>
+      <% end %>
+      <% if @own_posts.present? %>
+        <% @own_posts.each do |own_post| %>
+          <hr></hr>
+          <p><%= own_post.content %></p>
+          <div class="small text-right">
+            <%= l own_post.created_at %>
+            <% if @user == current_user %>
+              <%= link_to user_own_post_path(@user, own_post), class: "text-secondary", method: :delete, data: { confirm: "本当に削除しますか" } do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="mt-5">
+          <%= paginate @own_posts %>
+        </div>
+      <% else %>
+        <p class="text-center">現在、ひとりごとはありません。</p>
+      <% end %>
+    </div>
+      <%= render "public/users/mypage.btn", user: @user %>
+  </div>
+</div>

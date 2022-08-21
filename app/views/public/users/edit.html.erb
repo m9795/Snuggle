@@ -1,8 +1,13 @@
 <div class="container py-3">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-5 pt-5 pb-4 px-5 form-group border bg-white">
-      <h2 class="text-center">User edit <span><i class="far fa-address-card fa-xs"></i></span></h2>
-      <%= render 'public/users/form', user: @user %>
+    <div class="col-lg-6 m-2 form-group">
+      <h4 class="text-center">
+        <%= image_tag @user.get_image, class: "user_image avatar" %><br />
+        <div class="my-3"><i class="far fa-address-card"></i> ユーザ情報編集</div>
+      </h4>
+      <div class="form-group pt-5 pb-4 px-5 border bg-white">
+        <%= render 'public/users/form', user: @user %>
+      </div>
     </div>
   </div>
   <div class="row d-flex justify-content-center">

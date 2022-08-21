@@ -1,30 +1,108 @@
-<%= form_with model: @user do |f| %>
-  <i class="far fa-image"></i> <%= f.label :image %><br />
+<%= form_with model: user do |f| %>
+  <h4 class="text-center"><i class="fas fa-dove"></i> Basic information</h4>
+  <div class="small text-center">基本情報を入力してみんなに知ってもらおう！</div>
+  <hr></hr>
+  <i class="far fa-image"></i> <%= f.label :image %>
+  <div class="small">アイコンを設定しよう。あなたをイメージで伝えよう。</div>
   <div class="col">
-    <%= f.file_field :image, class: "custom-file-input", id: "inputFile" %>
-    <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
+    <%= f.label :image do %>
+      <%= f.file_field :image, accept: 'image/*', class: "custom-file-input uploader", id: "inputFile" %>
+      <%= f.label :image, 'ファイルを選択', class: "custom-file-label", for: "inputFile" %>
+    <% end %>
   </div>
 
-  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-4" %> <span class="name"></span>
-  <%= f.text_field :name, class: "name-input form-control", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
-  <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %> <span class="introduction"></span>
+  <!--変更したアイコン画像のプレビュー表示用-->
+  <script>
+    window.addEventListener('load', () => {
+        const uploader = document.querySelector('.uploader');
+        uploader.addEventListener('change', (e) => {
+          const file = uploader.files[0];
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            const image = reader.result;
+            document.querySelector('.avatar').setAttribute('src', image);
+          }
+        });
+    });
+  </script>
+
+  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %> <span class="name-count"></span>
+  <div class="small">ニックネームを決めよう。心理的距離を縮める効果があるよ！</div>
+  <%= f.text_field :name, class: "form-control name-input", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
+  <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %> <span class="introduction-count"></span>
+  <div class="small">あいさつやみんなに知ってもらいたいことを入力しよう！</div>
   <%= f.text_area :introduction, class: "form-control", placeholder: "自己紹介を入力", maxlength: "150", rows: "4" %>
   <%= f.submit  class: "mt-4 form-control btn btn-outline-success" %>
+  <div class="mt-3 small text-center"><i class="fas fa-caret-down"></i> もっと詳しく登録する</div>
+  <hr></hr>
+
+  <!--名前と紹介文の入力文字数表示用-->
+  <script>
+    // ページ開いた瞬間の文字数を表示
+    window.onload = (e) => {
+      let user_name = document.getElementById('user_name'); //user_name == フォームのid名
+      user_name.closest('.form-group') //.form-group == 親のクラス名
+      .querySelector('.name-count') //.name-count == 表示させたいspanのクラス名
+      .textContent=user_name.value.length; //user_name == 変数名 //文字の長さ
+
+      let user_introduction = document.getElementById('user_introduction');
+      user_introduction.closest('.form-group')
+      .querySelector('.introduction-count')
+      .textContent=user_introduction.value.length;
+    };
+
+    // フォームに入力した際の文字数表示
+    document.addEventListener('input',e=>{
+      let t=e.target.closest('.name-input');
+      if(t){
+        t.closest('.form-group').querySelector('.name-count').textContent=t.value.length;
+      }
+    });
+
+    document.addEventListener('input',e=>{
+      let t=e.target.closest('textarea');
+      if(t){
+        t.closest('.form-group').querySelector('.introduction-count').textContent=t.value.length;
+      }
+    });
+  </script>
+
+
+  <h4 class="mt-5 text-center"><i class="fas fa-kiwi-bird"></i> Look at yourself</h4>
+  <div class="small text-center">自分を見つめてみよう！</div>
+  <hr></hr>
+  <div class="text-center"><i class="fas fa-check-circle"></i> 全10項目</div>
+  <div class="small text-center">（全項目　最大200文字）</div>
+  <%= f.label :study_content, '①学習内容（取り組んでいること・関心のある分野など）', class: "mt-3" %>
+  <%= f.text_area :study_content, class: "form-control", placeholder: "（例）プログラミング　TOEIC600点", maxlength: "200", rows: "1" %>
+
+  <%= f.label :target, '②目標', class: "mt-3" %>
+  <%= f.text_area :target, class: "form-control", placeholder: "（例）エンジニア転職する！", maxlength: "200", rows: "1" %>
+
+  <%= f.label :sleeping_time, '③睡眠時間', class: "mt-3" %>
+  <%= f.text_area :sleeping_time, class: "form-control", placeholder: "（例）0:00~7:00（7h）", maxlength: "200", rows: "1" %>
+
+  <%= f.label :studying_time, '④学習時間', class: "mt-3" %>
+  <%= f.text_area :studying_time, class: "form-control", placeholder: "（例）9:00~18:30 (9.5h)", maxlength: "200", rows: "1" %>
+
+  <%= f.label :relax, '⑤リラックス方法', class: "mt-3" %>
+  <%= f.text_area :relax, class: "form-control", placeholder: "（例）いい香りの入浴剤でお風呂に浸かる", maxlength: "200", rows: "1" %>
+
+  <%= f.label :fighting, '⑥気合の入れ方', class: "mt-3" %>
+  <%= f.text_area :fighting, class: "form-control", placeholder: "（例）水分を摂って深呼吸する", maxlength: "200", rows: "1" %>
+
+  <%= f.label :favorite_color, '⑦好きな色', class: "mt-3" %>
+  <%= f.text_area :favorite_color, class: "form-control", placeholder: "（例）白色", maxlength: "200", rows: "1" %>
+
+  <%= f.label :favorite_cafe, '⑧好きなカフェ', class: "mt-3" %>
+  <%= f.text_area :favorite_cafe, class: "form-control", placeholder: "（例）Snuggleカフェ渋谷店　穴場なカフェ", maxlength: "200", rows: "1" %>
+
+  <%= f.label :favorite_drink, '⑨好きな飲み物', class: "mt-3" %>
+  <%= f.text_area :favorite_drink, class: "form-control", placeholder: "（例）水　カフェオレ（ミルク多め）", maxlength: "200", rows: "1" %>
+
+  <%= f.label :favorite_food, '⑩好きな食べ物', class: "mt-3" %>
+  <%= f.text_area :favorite_food, class: "form-control", placeholder: "（例）フィナンシェ　鰹節", maxlength: "200", rows: "1" %>
+  <div class="mt-3 small text-center"><i class="fas fa-caret-down"></i> たくさんの項目、入力お疲れ様でした！</div>
+  <%= f.submit  class: "mt-2 form-control btn btn-outline-success" %>
 <% end %>
-
-<!--名前と紹介文の入力文字数表示用-->
-<script>
-  document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group .name-input');
-    if(t){
-      t.closest('.form-group').querySelector('span.name').textContent=t.value.length;
-    }
-  });
-
-  document.addEventListener('input',e=>{
-    let t=e.target.closest('.form-group textarea');
-    if(t){
-      t.closest('.form-group').querySelector('span.introduction').textContent=t.value.length;
-    }
-  });
-</script>

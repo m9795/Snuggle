@@ -1,4 +1,4 @@
-<h2 class="mb-4"><span><i class="far fa-image"></i></span> Post detail</h2>
+<h4 class="mb-4 text-center"><span><i class="far fa-image"></i></span> 投稿詳細</h4>
 <div class="container border bg-white mb-3 pb-2">
   <div class="row">
     <% if post.publish == false %>
@@ -6,23 +6,105 @@
     <% end %>
   </div>
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
-  <%= link_to post.user.name, user_path(post.user) %>
+  <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
   <div class="post_image_wrapper">
-    <%= link_to post_path(post) do %>
-      <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
-    <% end %>
+    <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
   </div>
   <!--いいね・コメントの表示-->
   <div id="likes_btn_<%= post.id %>">
     <%= render 'public/likes/btn', post: post %>
   </div>
-  <h5><%= link_to post.title, post_path(post) %></h5>
+  <b class="text-secondary"><%= post.title %></b>
   <p><%= render_with_tags(post.content) %></p>
+
+  <h4 class="mt-5 mb-3 text-center"><i class="fas fa-store"></i> 店舗詳細</h4>
+  <table class="table table-bordered text-center">
+    <tr><th><i class="fas fa-coffee"></i> 店名</th></tr>
+    <% if post.shop_name == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_name %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-comment-alt"></i> 紹介文</th></tr>
+    <% if post.shop_detail == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_detail %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-map-marker-alt"></i> 場所</th></tr>
+    <% if post.shop_place == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_place %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-globe-asia"></i> HP</th></tr>
+    <% if post.shop_home_page == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= link_to post.shop_home_page, post.shop_home_page, target: :_blank, rel: "noopener noreferrer" %></td></tr>
+    <% end %>
+    <tr><th><i class="fas fa-info-circle"></i> 備考</th></tr>
+    <% if post.shop_remarks == "" %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td><%= post.shop_remarks %></td></tr>
+    <% end %>
+    <tr><th>設備情報</th></tr>
+    <% unless post.shop_tags.present? %>
+      <tr><td>-</td></tr>
+    <% else %>
+      <tr><td>
+        <% post.shop_tags.each do |tag| %>
+          <span class="text-secondary">
+            <%= link_to  "/post/shop_tag/#{tag.name}", class: "btn btn-outline-secondary m-2" do %>
+              <%= tag.name %>
+            <% end %>
+            </span>
+        <% end %>
+      </td></tr>
+    <% end %>
+  </table>
+
+  <h5 class="my-3 text-center"><i class="fas fa-map-marked-alt"></i> 地図情報</h5>
+  <% if post.lat == 0.0 && post.lng == 0.0 %>
+    <div class="small">※現在、地図情報は登録されていません。</div>
+  <% end %>
+  <div id='map'></div>
+  <!--マップサイズ設定-->
+  <style>
+    #map {
+      height: 200px;
+      width: 100%;
+    }
+  </style>
+  <script>
+  //表示するマップの設定
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+    // 投稿したマップの位置
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>}, //投稿した場所
+      zoom: 15,
+    });
+    // 投稿したピンの位置
+    marker = new google.maps.Marker({
+      position:  {lat: <%= @post.lat %>, lng: <%= @post.lng %>}, //投稿した場所
+      map: map
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+
+  <% if post.user == current_user %>
+    <p class="text-right"><%= link_to "地図を編集する", post_map_edit_path(post), data: {"turbolinks" => false} %></p>
+  <% end %>
   作成日時：<%= l post.created_at %><br />
   更新日時：<%= l post.updated_at %><br />
   <!--編集/削除ボタン(本人のみ表示)-->
   <% if post.user == current_user %>
-    <%= link_to '編集', edit_post_path(post) %>
+    <%= link_to '編集', edit_post_path(post), data: {"turbolinks" => false} %>
     ｜ <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか？'} %><br />
   <% end %>
 </div>

@@ -1,0 +1,18 @@
+<div class="row justify-content-center mt-2 mr-3">
+  <%= form_with url: user_search_path, method: :get, local: true do |f| %>
+    <div class="col text-center text-secondary small">
+      <div class="col-12">
+        <%= f.radio_button :method, "name", checked: true, class: "radio-btn" %>
+        <%= f.label :method, "名前", :value => "name" %>
+        <%= f.radio_button :method, "introduction", class: "radio-btn" %>
+        <%= f.label :method, "紹介文", :value => "introduction" %>
+      </div>
+      <div class="col-12">
+        <%= f.search_field :content, placeholder: 'キーワードを入力', class: "search-form-group search-form-text ml-2", size: "22%" %>
+        <button type="submit", class="search-btn btn btn-outline-secondary">
+          <i class="fas fa-search fa-xs"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>

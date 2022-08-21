@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 d-none d-md-block">
-      <%= render 'public/users/info', user: @user, liked_post: @liked_post, posts: @posts %>
+      <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <h2 class="mb-4"><span><i class="fas fa-lock fa-xs"></i></span> My private post (<%= current_user.posts.unpublish.count %>)</h2>
-      <% if @unpublish_posts.present? %>
-        <%= render 'public/posts/index', posts: @unpublish_posts, page_posts: @page_unpublish_posts %>
+      <h4 class="text-center mb-4"><span><i class="fas fa-lock fa-xs"></i></span> 非公開 (<%= current_user.posts.unpublish.count %>件)</h4>
+      <% if @page_unpublish_posts.present? %>
+        <%= render 'public/posts/index', posts: current_user.posts.unpublish, page_posts: @page_unpublish_posts %>
       <% else %>
-        <p>現在、非公開での投稿はありません。</p>
+        <p class="text-center">現在、非公開での投稿はありません。</p>
       <% end %>
-      <%= render 'public/users/mypage.btn', user: @user %>
+      <%= render 'public/users/mypage.btn', user: current_user %>
     </div>
   </div>
 </div>

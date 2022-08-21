@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -5,12 +7,22 @@
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  favorite_cafe          :string
+#  favorite_color         :string
+#  favorite_drink         :string
+#  favorite_food          :string
+#  fighting               :string
 #  introduction           :text
 #  name                   :string           not null
+#  relax                  :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  sleeping_time          :string
 #  status                 :boolean          default(FALSE), not null
+#  study_content          :string
+#  studying_time          :string
+#  target                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -29,28 +41,59 @@ class User < ApplicationRecord
   has_many :likes,    dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :own_posts
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
   validates :name, presence: true, length: { minimum: 1, maximum: 20 }
-  validates :introduction, length: { maximum: 150 }
+  validates :introduction, correct_line_break: true
 
   # アイコン画像設定
   has_one_attached :image
   def get_image
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_icon.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join("app/assets/images/no_icon.png")
+      image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     image
   end
 
-# ゲストログイン機能
+  # ゲストログイン機能
   def self.guest
-    find_or_create_by!(name: 'guest user', email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guest user", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = 'guest user'
+      user.name = "guest user"
     end
   end
 
   # 有効・退会の絞り込み
-  scope :publish, -> {where(statue: false)}
-  scope :unpublish, -> {where(status: true)}
+  scope :publish, -> { where(statue: false) }
+  scope :unpublish, -> { where(status: true) }
+
+  # フォロー機能
+  # "フォローする"
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # "フォロー解除"
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # "フォローしているか判定"
+  def following?(user)
+    followings.include?(user)
+  end
+
+  # ユーザ検索機能（部分一致）
+  def self.search_for(content, method)
+    if method == "name"
+      # 名前から検索
+      User.where("name LIKE?", "%" + content + "%")
+    else
+      # 紹介文から検索
+      User.where("introduction LIKE?", "%" + content + "%")
+    end
+  end
 end
