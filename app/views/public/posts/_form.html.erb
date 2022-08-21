@@ -39,9 +39,9 @@
 
     <!--投稿タイトル・内容入力-->
     <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="title-count"></span>
-    <%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力(必須)", maxlength: 140 %><br />
+    <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力(必須)", maxlength: 140 %><br />
     <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="content-count"></span>
-    <%= f.text_area :content, class: "form-control", rows: 4, placeholder: "本文を入力(必須)", maxlength: 500 %><br />
+    <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力(必須)", maxlength: 500 %><br />
 
     <!--タイトルと内容の入力文字数表示用-->
     <script>
@@ -68,7 +68,7 @@
         let t=e.target.closest('.title-input');
         if(t){
           t.closest('.form-group')
-          .querySelector('.title').textContent=t.value.length;
+          .querySelector('.title-count').textContent=t.value.length;
         }
       });
 
@@ -77,7 +77,7 @@
         let t=e.target.closest('.content-input');
         if(t){
           t.closest('.form-group')
-          .querySelector('.content').textContent=t.value.length;
+          .querySelector('.content-count').textContent=t.value.length;
         }
       });
     </script>
