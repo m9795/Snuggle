@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /><i class="fas fa-book-open"></i> ユーザ詳細</h5>
+      <% if @user == current_user %>
+      <% end %>
+      <p>名前<%= @user.name %></p>
+      自己紹介<%= @user.introduction %>
+      学習内容<%= @user.study_content %>
+      目標<%= @user.target %>
+      睡眠時間<%= @user.sleeping_time %>
+      学習時間<%= @user.studying_time %>
+      リラックス方法<%= @user.relax %>
+      気合の入れ方<%= @user.fighting %>
+      好きな色<%= @user.favorite_color %>
+      好きなカフェ<%= @user.favorite_cafe %>
+      好きな飲み物<%= @user.favorite_drink %>
+      好きな食べ物<%= @user.favorite_food %>
+    </div>
+      <%= render "public/users/mypage.btn", user: @user %>
+  </div>
+</div>
