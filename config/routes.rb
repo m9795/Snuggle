@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   # 管理者　ログイン
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -68,6 +67,5 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-
   end
 end

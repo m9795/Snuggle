@@ -37,7 +37,7 @@ class Admin::ShopTagsController < ApplicationController
     def shop_tag_params
       params.require(:shop_tag).permit(:name)
     end
-    
+
     def shop_tag_choice
       @shop_tag = ShopTag.find(params[:id])
     end

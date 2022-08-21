@@ -44,15 +44,15 @@ class Public::UsersController < ApplicationController
     sign_out current_user
     redirect_to root_path, notice: "ご利用いただきありがとうございました！", alert: "またのご利用をお待ちしております。"
   end
-  
+
   def detail
   end
-  
+
   private
     def usre_params
       params.require(:user).permit(:image, :name, :introduction, :status,
       :study_content, :target, :sleeping_time, :studying_time, :relax, :fighting,
-      :favorite_color, :favorite_cafe,:favorite_drink, :favorite_food )
+      :favorite_color, :favorite_cafe, :favorite_drink, :favorite_food)
     end
 
     def ensure_guest_user

@@ -12,7 +12,7 @@ class Public::LikesController < ApplicationController
     .where(post_id: @publish_post_all)
     # ↓投稿をお気に入りした順に表示
     @page_liked_post = Post.joins(:likes)
-    .where(likes: {user_id: @user})
+    .where(likes: { user_id: @user })
     .where(id: @publish_post_all)
     .merge(Like.order(created_at: "DESC"))
     .page(params[:page])
