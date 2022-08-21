@@ -1,21 +1,120 @@
 <div class="container">
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
-      <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /><i class="fas fa-book-open"></i> ユーザ詳細</h5>
-      <% if @user == current_user %>
-      <% end %>
-      <p>名前<%= @user.name %></p>
-      自己紹介<%= @user.introduction %>
-      学習内容<%= @user.study_content %>
-      目標<%= @user.target %>
-      睡眠時間<%= @user.sleeping_time %>
-      学習時間<%= @user.studying_time %>
-      リラックス方法<%= @user.relax %>
-      気合の入れ方<%= @user.fighting %>
-      好きな色<%= @user.favorite_color %>
-      好きなカフェ<%= @user.favorite_cafe %>
-      好きな飲み物<%= @user.favorite_drink %>
-      好きな食べ物<%= @user.favorite_food %>
+      <h5 class="text-center">
+        <%= image_tag @user.get_image, class: "mb-3 user_image" %><br />
+        <% if @user == current_user %>
+          <i class="fas fa-book-open"></i> 自分のこと
+        <% else %>
+          <i class="fas fa-book-open"></i> <%= @user.name %>さんの詳細
+        <% end %>
+      </h5>
+      <div class="mt-3 p-5 border bg-white">
+
+        <div class="col">
+          <p class="font-weight-bold border-bottom">名前（ニックネーム）</p>
+          <p><%= @user.name %></p>
+        </div>
+
+       <div class="col mt-5">
+          <p class="font-weight-bold border-bottom ">自己紹介</p>
+          <% if @user.introduction == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.introduction %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">学習内容</p>
+          <% if @user.study_content == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.study_content %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">目標</p>
+          <% if @user.target == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.target %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">学習時間</p>
+          <% if @user.studying_time == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.studying_time %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">睡眠時間</p>
+          <% if @user.sleeping_time == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.sleeping_time %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">リラックス方法</p>
+          <% if @user.relax == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.relax %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">気合を入れる方法</p>
+          <% if @user.fighting == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.fighting %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">好きな色</p>
+          <% if @user.favorite_color == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.favorite_color %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">好きなカフェ</p>
+          <% if @user.favorite_cafe == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.favorite_cafe %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">好きな飲み物</p>
+          <% if @user.favorite_drink == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.favorite_drink %></p>
+          <% end %>
+        </div>
+
+        <div class="col mt-5">
+          <p class="font-weight-bold border-bottom">好きな食べ物</p>
+          <% if @user.favorite_food == "" %>
+            <p>-</p>
+          <% else %>
+            <p><%= @user.favorite_food %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
       <%= render "public/users/mypage.btn", user: @user %>
   </div>
