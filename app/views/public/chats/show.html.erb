@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /> <%= @user.name %>さんとのチャットルーム <i class="far fa-comment"></i></h5>
+      <hr></hr>
+      <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= f.text_area :message, class: "form-control" %>
+        <%= f.hidden_field :room_id %>
+        <div class="row d-flex justify-content-end">
+          <button type="submit" class="m-3 chat-btn btn btn-outline-secondary">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      <% end %>
+      <% if @chats.present? %>
+        <div class="message">
+          <%= render "public/chats/chat", chats: @chats, user: @user %>
+        </div>
+        <div class="mt-5">
+          <%= paginate @chats %>
+        </div>
+      <% else %>
+        <p class="text-center"><%= @user.name %>さんと、チャットをはじめよう！</p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :public do
+    get 'chats/show'
+  end
   # 管理者　ログイン
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -58,6 +61,9 @@ Rails.application.routes.draw do
     get "post/tag/:name" => "posts#tag"
     # 店舗施設のタグ検索結果ページ
     get "post/shop_tag/:name" => "posts#shop_tag"
+    # チャット機能
+    resources :chats, only: [:show, :create]
+    
 
     # 投稿機能
     resources :posts do

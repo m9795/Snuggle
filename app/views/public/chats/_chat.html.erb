@@ -1,0 +1,18 @@
+<% chats.each do |chat| %>
+  <% if chat.user_id == current_user.id %>
+    <div class="mycomment text-right">
+      <p><%= chat.message %></p>
+      <div class="small"><%= l chat.created_at %></div>
+    </div>
+  <% else %>
+    <div class="balloon6">
+      <%= image_tag user.get_image, class: "faceicon" %>
+      <div class="chatting">
+        <div class="says">
+          <p style="text-align: left;"><%= chat.message %></p>
+        </div>
+      </div>
+    </div>
+    <div class="small"><%= l chat.created_at %></div>
+  <% end %>
+<% end %>
