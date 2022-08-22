@@ -4,7 +4,7 @@
     <div class="my-message mt-1 text-right">
       <!--↓文章折り返し時左揃えにするためのスタイル-->
       <p style="text-align: left;"><%= chat.message %></p>
-      <div class="small"><%= l chat.created_at %></div>
+      <div class="small my-message-time"><%= l chat.created_at %></div> <!--送信日時-->
     </div>
   <% else %>
     <!--相手のメッセージ（左側）-->
@@ -13,7 +13,7 @@
       <div class="user-message"> <!--相手の吹き出し-->
         <p><%= chat.message %></p> <!--相手のメッセージ-->
       </div>
-      <div class="small"><%= l chat.created_at %></div> <!--送信日時-->
+      <div class="user-message-time small"><%= l chat.created_at %></div> <!--送信日時-->
     </div>
   <% end %>
 <% end %>

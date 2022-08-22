@@ -68,7 +68,7 @@ th {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  /*↓InternetExplorer対策*/
+  /*InternetExplorer対策*/
   /*line-clampはIEに対応していないため*/
   line-height: 1.5em;
   max-height: 4.5em;
@@ -118,7 +118,7 @@ th {
   font-size: 10px;
 }
 
-.search-btn, .chat-btn {
+.search-btn {
   padding: 0 10px;
   margin-left: 3px;
 }
@@ -188,6 +188,10 @@ select {
   transform: rotate(-35deg);
 }
 
+.my-message-time {
+  margin-right: 10px;
+}
+
 // 相手のメッセージ表示欄
 // アイコン
 .user-chat-image{
@@ -223,6 +227,10 @@ select {
   // 傾きの調整
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
+}
+
+.user-message-time {
+  margin-left: 70px;
 }
 
 .user-message p {
