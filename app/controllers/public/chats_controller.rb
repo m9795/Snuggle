@@ -1,4 +1,5 @@
 class Public::ChatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :reject_non_related, only: [:show]
   def show
     @user = User.find(params[:id])
@@ -30,7 +31,7 @@ class Public::ChatsController < ApplicationController
   def reject_non_related
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
-      redirect_to posts_path, alert: "フォローされていないためチャットはできません。"
+      redirect_to posts_path, alert: "フォローされていないためチャットできません。"
     end
   end
 end
