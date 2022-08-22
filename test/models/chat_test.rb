@@ -9,14 +9,6 @@
 #  room_id    :integer          not null
 #  user_id    :bigint           not null
 #
-# Indexes
-#
-#  index_chats_on_room_id  (room_id)
-#
-# Foreign Keys
-#
-#  room_id  (room_id => rooms.id)
-#
 require "test_helper"
 
 class ChatTest < ActiveSupport::TestCase
