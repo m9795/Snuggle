@@ -1,7 +1,7 @@
 ja:
   time:
     formats:
-      default: "%Y/%m/%d/ %H:%M:%S"
+      default: "%Y/%m/%d/ %H:%M"
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

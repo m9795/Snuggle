@@ -1,0 +1,9 @@
+<%= form_with model: chat do |f| %>
+  <%= f.text_area :message, class: "form-control" %>
+  <%= f.hidden_field :room_id %>
+  <div class="row d-flex justify-content-end">
+    <button type="submit" class="m-3 chat-btn btn btn-outline-secondary">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+<% end %>

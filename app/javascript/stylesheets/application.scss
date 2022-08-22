@@ -68,7 +68,7 @@ th {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  /*InternetExplorer対策*/
+  /*↓InternetExplorer対策*/
   /*line-clampはIEに対応していないため*/
   line-height: 1.5em;
   max-height: 4.5em;
@@ -161,53 +161,36 @@ select {
   height: 10px;
 }
 
-/*以下、③右側の緑コメント*/
-.mycomment {
-  margin: 10px 0;
-}
-
-// 吹き出し
-.mycomment p {
+/*自分のメッセージ（右側）*/
+// メッセージと吹き出しの装飾
+.my-message p {
   display: inline-block;
   position: relative;
   margin: 0 10px 0 0;
   padding: 8px;
-  max-width: 250px;
   border-radius: 12px;
   background: #ecc6dd;
-  font-size: 15px;
-  white-space: inherit;
+  max-width: 250px; /*吹き出しの最大横幅,超えると折り返す*/
+  font-size: 14px;
 }
 
 // 吹き出しに使うの三角のパーツ
-.mycomment p:after {
+.my-message p:after {
   content: "";
   position: absolute;
   top: 3px;
   right: -19px;
-  border: 8px solid transparent;
-  border-left: 18px solid #ecc6dd;
+  border: 8px solid transparent; /*content: "";にボーダーをつけ一旦transparentで透明にする*/
+  border-left: 18px solid #ecc6dd; /*上記の左側のみカラーをつける*/
+  /*傾きの調整*/
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
 
-/*以下、②左側のコメント*/
-.balloon6 {
-  width: 100%;
-  margin: 10px 0;
-  overflow: hidden;
-}
-
-.balloon6 .faceicon {
+/*相手のメッセージ表示欄*/
+/*アイコン*/
+.user-chat-image{
   float: left;
-  margin-right: -30px;
-  width: 70px;
-  border-radius: 50%;
-  height: 70px;
-  object-fit: cover;
-}
-
-.balloon6 .faceicon img{
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -215,39 +198,38 @@ select {
   margin: 12px 5px 5px 0;
 }
 
-.balloon6 .chatting {
-  width: 100%;
-  text-align: left;
-}
-
-.says {
+/* 相手のメッセージ*/
+.user-message {
   display: inline-block;
   position: relative;
-  margin: 15px 0 0 50px;
+  margin: 15px 0 0 10px;
   padding: 10px;
   max-width: 250px;
   border-radius: 12px;
   background: #edf1ee;
 }
 
-.says:after {
+/*afterでメッセージに装飾をつける*/
+.user-message:after {
   content: "";
   display: inline-block;
   position: absolute;
   top: 3px;
-  left: -19px;
+  left: -19px; /*マイナス値にすることで左側に寄せている*/
   border: 8px solid transparent;
   border-right: 18px solid #edf1ee;
+  /*傾きの調整*/
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }
-.says p {
+
+.user-message p {
   margin: 0;
-  padding: 0;
+  font-size: 14px;
 }
 
+/*チャットフォーム*/
 textarea.form-control {
   height: auto;
   margin: auto;
 }
-

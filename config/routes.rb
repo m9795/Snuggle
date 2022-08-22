@@ -62,8 +62,8 @@ Rails.application.routes.draw do
     # 店舗施設のタグ検索結果ページ
     get "post/shop_tag/:name" => "posts#shop_tag"
     # チャット機能
-    resources :chats, only: [:show, :create]
-    
+    get "chat/:id" => "chats#show", as: "chat"
+    resources :chats, only: [:create]
 
     # 投稿機能
     resources :posts do

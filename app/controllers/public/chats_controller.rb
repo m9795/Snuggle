@@ -12,13 +12,14 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats.order(created_at: "DESC").page(params[:page])
+    @chats = @room.chats.order(created_at: "DESC").page(params[:page]).per(20)
     @chat = Chat.new(room_id: @room.id)
   end
 
   def create
-    @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    chat = current_user.chats.new(chat_params)
+    chat.save
+    redirect_to request.referer, notice: "メッセージを送信しました。"
   end
 
   private

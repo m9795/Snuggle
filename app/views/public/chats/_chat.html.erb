@@ -1,18 +1,19 @@
 <% chats.each do |chat| %>
   <% if chat.user_id == current_user.id %>
-    <div class="mycomment text-right">
-      <p><%= chat.message %></p>
+    <!--自分のメッセージ（右側）-->
+    <div class="my-message mt-1 text-right">
+      <!--↓文章折り返し時左揃えにするためのスタイル-->
+      <p style="text-align: left;"><%= chat.message %></p>
       <div class="small"><%= l chat.created_at %></div>
     </div>
   <% else %>
-    <div class="balloon6">
-      <%= image_tag user.get_image, class: "faceicon" %>
-      <div class="chatting">
-        <div class="says">
-          <p style="text-align: left;"><%= chat.message %></p>
-        </div>
+    <!--相手のメッセージ（左側）-->
+    <div class="mt-1">
+      <%= image_tag user.get_image, class: "user-chat-image" %>
+      <div class="user-message"> <!--相手の吹き出し-->
+        <p><%= chat.message %></p> <!--相手のメッセージ-->
       </div>
+      <div class="small"><%= l chat.created_at %></div> <!--送信日時-->
     </div>
-    <div class="small"><%= l chat.created_at %></div>
   <% end %>
 <% end %>
