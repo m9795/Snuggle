@@ -24,14 +24,14 @@ class Public::ChatsController < ApplicationController
   end
 
   private
-  def chat_params
-    params.require(:chat).permit(:message, :room_id)
-  end
-
-  def reject_non_related
-    user = User.find(params[:id])
-    unless current_user.following?(user) && user.following?(current_user)
-      redirect_to posts_path, alert: "フォローされていないためチャットできません。"
+    def chat_params
+      params.require(:chat).permit(:message, :room_id)
     end
-  end
+
+    def reject_non_related
+      user = User.find(params[:id])
+      unless current_user.following?(user) && user.following?(current_user)
+        redirect_to posts_path, alert: "フォローされていないためチャットできません。"
+      end
+    end
 end

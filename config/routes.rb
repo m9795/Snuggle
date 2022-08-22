@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :public do
-    get 'chats/show'
-  end
   # 管理者　ログイン
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
