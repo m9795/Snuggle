@@ -62,7 +62,7 @@ th {
   background-color: #dee2e6;
 }
 
-/*投稿の本文を3行目末尾...で表示*/
+// 投稿の本文を3行目末尾...で表示
 .post-contents {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -159,4 +159,87 @@ select {
 .radio-btn {
   width: 10px;
   height: 10px;
+}
+
+/*自分のメッセージ（右側）*/
+// メッセージの装飾
+.my-message p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  border-radius: 12px;
+  background: #ecc6dd;
+  max-width: 250px; /*吹き出しの最大横幅,超えると折り返す*/
+  font-size: 14px;
+}
+
+// 吹き出しに使うの三角のパーツ
+// afterでメッセージに装飾をつける
+.my-message p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent; /*content: "";にボーダーをつけ一旦transparentで透明にする*/
+  border-left: 18px solid #ecc6dd; /*上記の左側のみカラーをつける*/
+  // 傾きの調整
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.my-message-time {
+  margin-right: 10px;
+}
+
+// 相手のメッセージ表示欄
+// アイコン
+.user-chat-image{
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 12px 5px 5px 0;
+}
+
+// 相手のメッセージの装飾
+.user-message {
+  display: inline-block;
+  position: relative;
+  margin: 15px 0 0 10px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+// 吹き出しに使うの三角のパーツ
+// afterでメッセージに装飾をつける
+.user-message:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px; /*マイナス値にすることで左側に寄せている*/
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  // 傾きの調整
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.user-message-time {
+  margin-left: 70px;
+}
+
+.user-message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+// チャットフォーム
+textarea.form-control {
+  height: auto;
+  margin: auto;
 }

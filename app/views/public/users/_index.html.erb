@@ -12,15 +12,21 @@
                 <%= image_tag user.get_image, class: 'user_image' %>
               <% end %>
             </div>
-            <%= link_to "詳細", user_path(user), class: "col-2 btn btn-outline-secondary btn-sm mt-5 mb-4 ml-4" %>
-            <div class="col-5 mt-5">
+            <%= link_to "詳細", user_path(user), class: "btn btn-outline-secondary btn-sm mt-5 mb-4 ml-2 mr-3" %>
+            <div class="mt-5">
               <% if user != current_user %>
                 <%= render "public/relationships/btn", user: user %>
               <% else %>
               <% end %>
             </div>
           </div>
+            <div class="row d-flex justify-content-center">
+              <% if user.following?(current_user) %>
+                <p class="mt-2 mb-1 text-secondary small">フォローされています。</p>
+              <% end %>
+            </div>
           <p><i class="fas fa-user-circle"></i> <%= user.name %></p>
+
           <hr></hr>
           <div class="row text-center d-flex">
             <%= link_to user_posts_path(user), class: "col text-secondary" do %>

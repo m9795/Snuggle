@@ -1,5 +1,7 @@
 class Public::OwnPostsController < ApplicationController
   before_action :user_choice, only: [:new, :create, :index, :destroy]
+  before_action :user_status_check, only: [:index]
+  before_action :current_user_chesk, only: [:new, :create, :destroy]
 
   def new
     @own_post = OwnPost.new
@@ -40,5 +42,17 @@ class Public::OwnPostsController < ApplicationController
 
     def user_choice
       @user = User.find(params[:user_id])
+    end
+
+    def user_status_check
+      if @user.status == true
+        redirect_to user_path(current_user), alert: "退会済みユーザのため閲覧できません。"
+      end
+    end
+
+    def current_user_chesk
+      unless @user == current_user
+        redirect_to user_path(current_user), alert: "本人以外、権限がありません。"
+      end
     end
 end
