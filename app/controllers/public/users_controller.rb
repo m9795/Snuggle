@@ -21,7 +21,7 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(usre_params)
-      redirect_to user_path(@user), notice: "ユーザ情報を更新しました。"
+      redirect_to user_detail_path(@user), notice: "ユーザ情報を更新しました。"
     else
       redirect_to edit_user_path(@user), alert: "編集内容をご確認ください。"
     end
