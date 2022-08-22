@@ -6,7 +6,7 @@
 
 <!--相互フォロー時のみチャットボタン表示-->
 <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-  <%= link_to chat_path(user.id), class: "ml-2 chat-btn btn btn-sm btn-outline-secondary" do %>
+  <%= link_to chat_path(user.id), class: "ml-2 btn btn-sm btn-outline-secondary" do %>
     <i class="far fa-envelope"></i>
   <% end %>
 <% end %>
