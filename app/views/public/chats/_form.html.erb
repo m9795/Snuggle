@@ -1,9 +1,21 @@
 <%= form_with model: chat do |f| %>
-  <%= f.text_area :message, class: "form-control" %>
+  <%= f.text_area :message, rows: 4, autofocus: true, maxlength: 200, class: "form-control" %>
   <%= f.hidden_field :room_id %>
+  <div class="text-secondary text-right">　<span>0</span>/200</div>
   <div class="row d-flex justify-content-end">
     <button type="submit" class="m-3 chat-btn btn btn-outline-secondary">
       <i class="fas fa-paper-plane"></i>
     </button>
   </div>
 <% end %>
+
+<!--入力文字数表示用-->
+<script>
+  // フォームに入力した際の文字数表示
+  document.addEventListener('input',e=>{
+    let t=e.target.closest('textarea');
+    if(t){
+      t.closest('.form-group').querySelector('span').textContent=t.value.length;
+    }
+  });
+</script>

@@ -3,7 +3,9 @@
     <div class="col-lg-8">
       <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /> <%= @user.name %>さんとのチャットルーム <i class="far fa-comment"></i></h5>
       <hr></hr>
-      <%= render "public/chats/form", chat: @chat %>
+      <div class="form-group">
+        <%= render "public/chats/form", chat: @chat %>
+      </div>
       <% if @chats.present? %>
         <div class="message-area">
           <%= render "public/chats/chat", chats: @chats, user: @user %>
