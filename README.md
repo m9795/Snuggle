@@ -1,8 +1,8 @@
-# すなぐる　-Snuggle-
+# ![logo2](https://user-images.githubusercontent.com/106650955/186106765-ef446621-e77c-448a-b9ab-e534e2b1f50a.svg) -すなぐる-
 
 ## サイト概要
 ### サイトテーマ
-カフェ×学習のコミュニティサイト
+#### カフェ×学習のコミュニティサイト
 * 学習におすすめのカフェを投稿・閲覧できる
 * 学習について投稿し共有ができる
 * 学習中のリラックス方法などを投稿・閲覧できる
@@ -28,7 +28,14 @@
 * リラックスや息抜きをして効率よく学習したい時
 
 ## 設計書
-<...>
+- ER図：[ER図.pdf](https://github.com/m9795/Snuggle/files/9399619/ER.pdf)
+- テーブル定義書：[テーブル提議書_Snuggle.pdf](https://github.com/m9795/Snuggle/files/9400606/_Snuggle.pdf)
+- 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
+- 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
+
+![image](https://user-images.githubusercontent.com/106650955/186106482-6d2870c2-4f24-4b84-8f39-cd81a0d89491.png)
+
+
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -38,5 +45,11 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 検討中です。
+- ロゴ　Canva：https://www.canva.com/
+- アイコン　Fontawsome：https://fontawesome.com/
+- API：Maps JavaScript API
+
+（テストデータに使用）
+- サンプル画像　O-DAN：https://o-dan.net/ja/
+- 絵文字　fromkato.com：https://fromkato.com/
 
