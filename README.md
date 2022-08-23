@@ -33,9 +33,8 @@
 - 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
 - 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
 
+## ER図
 ![image](https://user-images.githubusercontent.com/106650955/186106482-6d2870c2-4f24-4b84-8f39-cd81a0d89491.png)
-
-
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -49,7 +48,6 @@
 - アイコン　Fontawsome：https://fontawesome.com/
 - API：Maps JavaScript API
 
-（テストデータに使用）
+#### 下記テストデータに使用
 - サンプル画像　O-DAN：https://o-dan.net/ja/
 - 絵文字　fromkato.com：https://fromkato.com/
-
