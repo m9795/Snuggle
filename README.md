@@ -28,7 +28,8 @@
 * リラックスや息抜きをして効率よく学習したい時
 
 ## 設計書
-<...>
+- ER図：[Snuggle_ER図.pdf](https://github.com/m9795/Snuggle/files/9399471/Snuggle_ER.pdf)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
