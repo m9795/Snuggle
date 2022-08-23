@@ -28,7 +28,9 @@
 * リラックスや息抜きをして効率よく学習したい時
 
 ## 設計書
-- ER図：[Snuggle_ER図.pdf](https://github.com/m9795/Snuggle/files/9399471/Snuggle_ER.pdf)
+- ER図：[ER図.pdf](https://github.com/m9795/Snuggle/files/9399608/ER.pdf)
+- 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
+- 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
 
 
 ## 開発環境
