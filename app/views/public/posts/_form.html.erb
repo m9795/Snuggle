@@ -38,11 +38,11 @@
     </script>
 
     <!--投稿タイトル・内容入力-->
-    <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %>
-    <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力(必須)", maxlength: 140 %>
+    <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="small text-danger">*必須</span>
+    <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力", maxlength: 140 %>
     <div class="text-secondary text-right"><span class="title-count"></span>/140</div>
-    <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %>
-    <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力(必須)", maxlength: 500 %>
+    <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="small text-danger">*必須</span>
+    <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力", maxlength: 500 %>
     <div class="text-secondary text-right"><span class="content-count"></span>/500</div>
 
     <!--タイトルと内容の入力文字数表示用-->
@@ -187,7 +187,7 @@
     <%= f.text_field :shop_home_page, class: "form-control", maxlength: 2000, placeholder: "(例) https://www.xxx.com" %><br />
     <i class="fas fa-info-circle"></i> <%= f.label :shop_remarks, '備考' %>
     <%= f.text_area :shop_remarks, class: "form-control", rows: 2, maxlength: 200, placeholder: "(例) コーヒーおかわり無料でした。ランチは少し混んでいます。" %><br />
-    【設備情報】
+    <i class="fas fa-tags"></i> 設備情報
     <div class='form-group'>
       <%= f.collection_check_boxes(:shop_tag_ids, ShopTag.all, :id, :name) do |tag| %>
         <div class='form-check'>

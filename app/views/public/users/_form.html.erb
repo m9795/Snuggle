@@ -27,9 +27,9 @@
     });
   </script>
 
-  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %>
+  <i class="fas fa-user-circle"></i> <%= f.label :name, 'ニックネーム(最大20文字)', class: "mt-3" %> <span class="small text-danger">*必須</span>
   <div class="small">ニックネームを決めよう。心理的距離を縮める効果があるよ！</div>
-  <%= f.text_field :name, class: "form-control name-input", placeholder: "ニックネームを入力(必須)", maxlength: "20" %>
+  <%= f.text_field :name, class: "form-control name-input", placeholder: "ニックネームを入力", maxlength: "20" %>
   <div class="text-secondary text-right"><span class="name-count"></span>/20</div>
   <i class="far fa-file-alt"></i> <%= f.label :introduction, '自己紹介(最大150文字)', class: "mt-4" %>
   <div class="small">あいさつやみんなに知ってもらいたいことを入力しよう！</div>

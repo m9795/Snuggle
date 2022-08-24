@@ -19,8 +19,11 @@ class Public::ChatsController < ApplicationController
 
   def create
     chat = current_user.chats.new(chat_params)
-    chat.save
-    redirect_to request.referer, notice: "メッセージを送信しました。"
+    if chat.save
+      redirect_to request.referer, notice: "メッセージを送信しました。"
+    else
+      redirect_to request.referer, notice: "メッセージを送信できませんでした。", alert: "入力内容をご確認ください。"
+    end
   end
 
   private
