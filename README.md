@@ -47,7 +47,5 @@
 - ロゴ　Canva：https://www.canva.com/
 - アイコン　Fontawsome：https://fontawesome.com/
 - API：Maps JavaScript API
-
-#### 下記テストデータに使用
 - サンプル画像　O-DAN：https://o-dan.net/ja/
 - 絵文字　fromkato.com：https://fromkato.com/

@@ -1,7 +1,6 @@
 <div class="contaier pt-2 px-5 bg-white">
-  <%= render "public/homes/top" %>
-  <h3 class="mt-5 d-flex justify-content-center text-secondary">Snuggleでは以下のことができます。</h3>
-  <div class="row mt-3 pt-2 justify-content-center">
+  <h3 class="mt-5 d-flex justify-content-center text-secondary">Snuggleで出来ること</h3>
+  <div class="row m-5 pt-2 justify-content-center">
     <div class="col-lg-3 mx-3 p-xl-5 col-md-3 p-md-3 mx-md-1 p-5 form-group border bg-white">
       <b>学習の仲間作り</b>
       <p>学習を頑張りたい！<br />そんなあなたの思いを応援します。</p>
@@ -18,6 +17,15 @@
       <b>学習の息抜きやリラックスに</b>
       <p>学習に息詰まったな...<br />そんな時はSnuggleでみんなのおすすめのカフェを見て癒されませんか？</p>
       <%= link_to 'みんなの投稿一覧を見る', posts_path, class: "btn btn-outline-info" %>
+    </div>
+  </div>
+  <h3 class="my-5 d-flex justify-content-center text-secondary">Snuggleの使い方</h3>
+  <div class="row my-5 d-flex justify-content-center">
+    <div class="col-10">
+      <%= image_tag 'step1.png', class: "about-image"%>
+      <%= image_tag 'step2.png', class: "about-image"%>
+      <%= image_tag 'step3.png', class: "about-image"%>
+      <%= image_tag 'other.png', class: "about-image"%>
     </div>
   </div>
 </div>
