@@ -39,18 +39,18 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
       end
-      it '確認用パスワードが空のとき' do
+      it 'password_confirmationが空のとき' do
         @user.password_confirmation=""
         @user.valid?
         expect(@user.errors.full_messages).to include("確認用パスワードとパスワードの入力が一致しません")
       end
-      it '確認用パスワードが6文字以下のとき' do
+      it 'password_confirmationが6文字以下のとき' do
         @user.password_confirmation="12345"
         @user.valid?
         expect(@user.errors.full_messages).to include("確認用パスワードとパスワードの入力が一致しません")
       end
-      it '確認用パスワードがパスワードと異なるとき' do
-        # @userのパスワードは123456で作成している
+      it 'password_confirmationがパスワードと異なるとき' do
+        # @userのpasswordは123456で作成している
         @user.password_confirmation="123457"
         @user.valid?
         expect(@user.errors.full_messages).to include("確認用パスワードとパスワードの入力が一致しません")
