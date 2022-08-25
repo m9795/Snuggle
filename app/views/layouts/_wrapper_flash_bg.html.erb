@@ -1,0 +1,11 @@
+<%= render "wrapper" %>
+<!--背景色をトップとアバウトのみ分ける-->
+<% if %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
+  <div class="flash-messages pt-2 bg-white">
+    <%= render "flash" %>
+  </div>
+<% else %>
+  <div class="flash-messages pt-2 bg-light">
+    <%= render "flash" %>
+  </div>
+<% end %>

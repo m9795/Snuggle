@@ -1,0 +1,6 @@
+<!--warppaerの背景色をトップとアバウトページのみ分ける-->
+<% if  %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
+  <div class="wrapper bg-white">
+<% else %>
+  <div class="wrapper">
+<% end %>

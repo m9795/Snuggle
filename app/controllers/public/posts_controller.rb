@@ -11,12 +11,12 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
-    if post.save
-      redirect_to post_path(post), notice: "投稿しました。"
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
-      redirect_to new_post_path(post), alert: "入力内容をご確認ください。"
+      render 'new'
     end
   end
 
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
       if @post.update(post_params)
         redirect_to post_path(@post), notice: "更新しました。"
       else
-        redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
+        render 'edit'
       end
     else
       redirect_to posts_path, alert: "本人以外更新できません。"
