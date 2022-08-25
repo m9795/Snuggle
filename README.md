@@ -22,19 +22,18 @@
 
 ### 主な利用シーン
 * 学習におすすめのカフェなどを共有したい時
-* 情報共有し学習意欲を向上させたい時
 * 同じような目標を持つ学習仲間を作りたい時
-* 息詰まったり疲労感がある時
+* 情報共有し学習意欲を向上させたい時
 * リラックスや息抜きをして効率よく学習したい時
+* 息詰まったり疲労感がある時　など
 
 ## 設計書
-- ER図：[ER図.pdf](https://github.com/m9795/Snuggle/files/9399619/ER.pdf)
+### ER図
+![image](https://user-images.githubusercontent.com/106650955/186106482-6d2870c2-4f24-4b84-8f39-cd81a0d89491.png)
+
 - テーブル定義書：[テーブル提議書_Snuggle.pdf](https://github.com/m9795/Snuggle/files/9400606/_Snuggle.pdf)
 - 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
 - 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
-
-## ER図
-![image](https://user-images.githubusercontent.com/106650955/186106482-6d2870c2-4f24-4b84-8f39-cd81a0d89491.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,9 +42,31 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 開発効率向上
+- devise
+- rails-i18n
+- bootstrap
+- kaminari
+- annotate
+- Rubocop
+- dotenv-rails
+
+#### デバッグツール
+- pry-rails
+- pry-byebug
+- better_errors
+- binding_of_caller
+
+## UI/UX
+- レスポンシブ対応
+
+## 外部API
+#### 地図利用
+- Maps JavaScript API
+- Geocoding API
+
 ## 使用素材
-- ロゴ　Canva：https://www.canva.com/
-- アイコン　Fontawsome：https://fontawesome.com/
-- API：Maps JavaScript API
-- サンプル画像　O-DAN：https://o-dan.net/ja/
-- 絵文字　fromkato.com：https://fromkato.com/
+- ロゴ：Canva(https://www.canva.com/)
+- アイコン：Fontawsome(https://fontawesome.com/)
+- サンプル画像：O-DAN(https://o-dan.net/ja/)
+- 絵文字：fromkato.com(https://fromkato.com/)
