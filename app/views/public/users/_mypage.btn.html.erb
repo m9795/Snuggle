@@ -16,7 +16,7 @@
 <% elsif current_page?(user_detail_path(user)) %>
   <div class="col-lg-5">
 <% elsif current_page?(chat_path(user)) %>
-  <div class="col-lg-5">
+  <div class="col-lg-8">
 <%else %>
   <div class="col-lg-7 mb-3 d-md-none">
 <% end %>
@@ -29,12 +29,14 @@
       <% end  %>
     <% end %>
   <% end %>
+    </div>
 <% end %>
 
 <!--現在のページがチャットならマイページへを表示-->
 <% if current_page?(chat_path(user)) %>
-  <%= link_to  user_path(current_user), class: "form-control mt-2 btn btn-outline-dark" do %>
-      < マイページへ
-  <% end %>
+  <div class="col-lg-8">
+    <%= link_to  user_path(current_user), class: "form-control mt-2 btn btn-outline-dark" do %>
+        < マイページへ
+    <% end %>
+  </div>
 <% end %>
-</div>

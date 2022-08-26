@@ -4,6 +4,7 @@
       <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span> ユーザ一覧 (<%= @publish_user_all.count %>人)</h4>
       <%= render 'public/searches/user_search_form' %>
       <%= render 'index', users: @users %>
+      <%= render 'public/users/mypage.btn', user: current_user %>
     </div>
   </div>
 </div>
