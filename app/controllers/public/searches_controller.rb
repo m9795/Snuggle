@@ -20,10 +20,10 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     if @method == "name"
       @users = @publish_user_all.search_for(@content, @method)
-      @records = @users.page(params[:page])
+      @records = @users.order(created_at: "DESC").page(params[:page])
     else
       @users = @publish_user_all.search_for(@content, @method)
-      @records = @users.page(params[:page])
+      @records = @users.order(created_at: "DESC").page(params[:page])
     end
   end
 end

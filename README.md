@@ -35,7 +35,7 @@
 - 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
 - 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
 - テスト仕様書(管理者側)：[テスト仕様書①_admin.pdf](https://github.com/m9795/Snuggle/files/9433908/_admin.pdf)
-- テスト仕様書(ユーザ側)：作成中
+- テスト仕様書(ユーザ側)：[テスト仕様書②_user.pdf](https://github.com/m9795/Snuggle/files/9436620/_user.pdf)
 
 ## 開発環境
 - OS：Linux(CentOS)
