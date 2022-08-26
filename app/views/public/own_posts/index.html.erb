@@ -16,7 +16,7 @@
           <div class="small text-right">
             <i class="far fa-clock"></i> <%= l own_post.created_at %>
             <% if @user == current_user %>
-              <%= link_to user_own_post_path(@user, own_post), class: "text-secondary", method: :delete, data: { confirm: "本当に削除しますか" } do %>
+              <%= link_to user_own_post_path(@user, own_post), class: "text-secondary", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
             <% end %>
