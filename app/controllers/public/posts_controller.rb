@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "投稿しました。"
     else
-      render 'new'
+      redirect_to new_post_path(@post), alert: "入力内容をご確認ください。"
     end
   end
 
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
       if @post.update(post_params)
         redirect_to post_path(@post), notice: "更新しました。"
       else
-        render 'edit'
+        redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
       end
     else
       redirect_to posts_path, alert: "本人以外更新できません。"

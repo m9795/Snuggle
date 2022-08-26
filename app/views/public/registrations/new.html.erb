@@ -1,6 +1,6 @@
 <div class="container py-3 px-5">
   <div class="row d-flex flex-column align-content-center">
-    <div class="col-lg-5 ml-5">
+    <div class="col-lg-5 mx-3">
       <%= render "public/shared/error_messages", resource: resource %>
     </div>
     <div class="col-lg-5 mx-3 p-5 form-group border bg-white shadow bg-white">
@@ -8,7 +8,7 @@
       <%= form_with model: resource, url: user_registration_path do |f| %>
         <div class="field mt-4">
           <span><i class="fas fa-user-circle"></i></span> <%= f.label :name %>(20文字以内)<span class="small text-danger"> *必須</span>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネームを入力", class: "form-control signin-form-text shadow-sm", minilength: "1", maxlength: "20"  %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ニックネームを入力", class: "form-control signin-form-text shadow-sm", maxlength: "20"  %>
         </div>
         <div class="field mt-2">
           <span><i class="fas fa-envelope"></i></span> <%= f.label :email %><span class="small text-danger"> *必須</span>

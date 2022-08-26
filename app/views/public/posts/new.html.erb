@@ -2,16 +2,7 @@
   <div class="row d-flex justify-content-center">
     <div class="col-lg-7">
       <h4 class="text-center mb-5"><i class="fas fa-edit"></i> 新規投稿</h4>
-      <%= render "public/shared/error_messages", resource: @post %>
-      <div class="pt-5 pb-4 px-5 form-group border bg-white">
-        <%= render 'form', submit: '投稿する', post: @post %>
-        <div class="mt-3 small text-center shop_form_btn"><i class="fas fa-caret-down"></i> お店情報も入力する</div>
-      </div>
-      <div class="pt-5 pb-4 px-5 form-group border bg-white shop_form" style="display: none;">
-        <%= render 'shop_form', submit: '投稿する', post: @post %>
-      </div>
+      <%= render 'form', submit: '投稿する', post: @post %>
     </div>
   </div>
 </div>
-
-<%= render "public/posts/script/shop_form_script" %>

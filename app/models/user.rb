@@ -51,7 +51,7 @@ class User < ApplicationRecord
   has_many :chats
   has_many :rooms, through: :user_rooms
 
-  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :name, presence: true, length: { maximum: 20 }
   validates :introduction, correct_line_break: true
 
   # アイコン画像設定
