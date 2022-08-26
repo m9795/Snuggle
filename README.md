@@ -29,7 +29,7 @@
 
 ## 設計書
 ### ER図
-![image](https://user-images.githubusercontent.com/106650955/186106482-6d2870c2-4f24-4b84-8f39-cd81a0d89491.png)
+![image](https://user-images.githubusercontent.com/106650955/186998490-cf03c6b1-6a4e-430a-8660-dfa9627886f8.png)
 
 - テーブル定義書：[テーブル提議書_Snuggle.pdf](https://github.com/m9795/Snuggle/files/9400606/_Snuggle.pdf)
 - 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
