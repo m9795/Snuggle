@@ -1,212 +1,183 @@
 <%= form_with model: post do |f| %>
-  <h4 class="mt-3 text-center"><i class="fas fa-camera"></i> 投稿内容</h4>
-  <hr></hr>
-
-  <!--投稿の内容入力欄-->
-  <div class="actions mt-4">
-    <i class="far fa-image"></i> <%= f.label :image, '画像' %>
-    <% if current_page?(new_post_path)  %>
-      （投稿画像を選択してください
-    <% end %>
-
-    <!--画像のプレビュー表示-->
-    <div class="post_image_wrapper">
-      <%= f.label :image do %>
-        <% if current_page?(new_post_path) %>
-          <%= image_tag "no_image.png", class: 'img-fluid post_image phot' %>
-        <% else %>
-          <%= image_tag post.get_image, class: "img-fluid post_image phot" %>
-        <% end %>
-        <%= f.file_field :image, class: 'uploader', style: 'display:none' %>
-      <% end %>
-    </div>
-
-    <!--画像プレビュー表示用-->
-    <script>
-      window.addEventListener('load', () => {
-          const uploader = document.querySelector('.uploader');
-          uploader.addEventListener('change', (e) => {
-            const file = uploader.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-              const image = reader.result;
-              document.querySelector('.phot').setAttribute('src', image);
-            }
-          });
-      });
-    </script>
-
-    <!--投稿タイトル・内容入力-->
-    <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="small text-danger">*必須</span>
-    <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力", maxlength: 140 %>
-    <div class="text-secondary text-right"><span class="title-count"></span>/140</div>
-    <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="small text-danger">*必須</span>
-    <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力", maxlength: 500 %>
-    <div class="text-secondary text-right"><span class="content-count"></span>/500</div>
-
-    <!--タイトルと内容の入力文字数表示用-->
-    <script>
-      // ページ開いた瞬間の文字数を表示
-      // title form
-      window.onload = (e) => {
-        let post_title = document.getElementById('post_title');
-        post_title
-        .closest('.form-group')
-        .querySelector('.title-count')
-        .textContent=post_title.value.length;
-
-        // content form
-        let post_content = document.getElementById('post_content');
-        post_content
-        .closest('.form-group')
-        .querySelector('.content-count')
-        .textContent=post_content.value.length;
-      };
-
-      // フォームに入力した際の文字数を表示
-      // title form
-      document.addEventListener('input',e=>{
-        let t=e.target.closest('.title-input');
-        if(t){
-          t.closest('.form-group')
-          .querySelector('.title-count').textContent=t.value.length;
-        }
-      });
-
-      // content form
-      document.addEventListener('input',e=>{
-        let t=e.target.closest('.content-input');
-        if(t){
-          t.closest('.form-group')
-          .querySelector('.content-count').textContent=t.value.length;
-        }
-      });
-    </script>
-
-    <!--お店の情報入力欄-->
-    <h4 class="mt-5 text-center"><i class="fas fa-store"></i> お店情報</h4>
+  <div class="form-group pt-lg-5 pt-2 pb-4 px-lg-5 px-2 border bg-white">
+    <h4 class="mt-3 text-center"><i class="fas fa-camera"></i> 投稿内容</h4>
     <hr></hr>
 
-    <!--新規投稿のみ投稿フォームから地図登録できる-->
-    <% if current_page?(new_post_path) %>
-      <h5 class="mt-4"><i class="fas fa-map-marked-alt"></i> 地図登録</h5>
-      <div>みんなが利用しやすいよう、位置情報を登録しよう！</div>
-      <div class="my-3">
-        ①最寄りや店名を入力<br />
-        ② <i class="fas fa-map-marker-alt"></i> ピンを移動させ位置の調整ができます。
-      </div>
-      <div class="m-2 mb-3">
-        <div>最寄り駅や店名を検索</div>
-        <input id="address" type="textbox"  placeholder="(例) 渋谷駅" class="search-form-group">
-        <input type="button" value="検索" onclick="codeAddress()" class="btn btn-outline-secondary">
-      </div>
-      <div id='map'></div>
-
-      <!--表示するマップのサイズ-->
-      <style>
-        #map {
-          height: 400px;
-          width: 100%;
-        }
-      </style>
-      <script>
-
-        //初期マップの設定
-        let map
-        let marker
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
-
-          map = new google.maps.Map(document.getElementById('map'), {
-            center:  {lat: 35.6803997, lng:139.7690174},  //東京
-            zoom: 15,
-          });
-        }
-
-        //検索後のマップ作成
-        let geocoder
-        let aft
-        function codeAddress(){
-          let inputAddress = document.getElementById('address').value;
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-              //マーカーが複数できないようにする
-              if (aft == true){
-                  marker.setMap(null);
-              }
-
-              //新しくマーカーを作成する
-              map.setCenter(results[0].geometry.location);
-                  marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location,
-                  draggable: true // ドラッグ可能にする
-              });
-
-              //二度目以降か判断
-              aft = true
-
-              //検索した時に緯度経度を入力する
-              document.getElementById('lat').value = results[0].geometry.location.lat();
-              document.getElementById('lng').value = results[0].geometry.location.lng();
-
-              // マーカーのドロップ（ドラッグ終了）時のイベント
-              google.maps.event.addListener( marker, 'dragend', function(ev){
-                  // イベントの引数evの、プロパティ.latLngが緯度経度
-                  document.getElementById('lat').value = ev.latLng.lat();
-                  document.getElementById('lng').value = ev.latLng.lng();
-                });
-            } else {
-              alert('該当する結果がありません。');
-            }
-          });
-        }
-      </script>
-    <% end %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
-    <br />
-
-    <!--編集画面では地図の表示のみ-->
-    <% unless current_page?(new_post_path) %>
-      <h5 class="mt-3"><i class="fas fa-map-marked-alt"></i> 現在の登録位置</h5>
-      <div class="small">※地図は編集は、投稿詳細ページの「地図を編集する」から行ってください。</div>
-
-      <!--登録した地図を表示-->
-      <%= render 'public/posts/map', post: post %>
-    <% end %>
-
-    <!--店舗紹介フォーム-->
-    <i class="fas fa-coffee"></i> <%= f.label :shop_name, "店名" %>
-    <%= f.text_field :shop_name, class: "form-control", maxlength: 200, placeholder: "(例) Snuggleカフェ 渋谷店" %><br />
-    <i class="fas fa-map-marker-alt"></i> <%= f.label :shop_place, "場所（都道府県名や最寄り駅など）" %>
-    <%= f.text_field :shop_place, class: "form-control", maxlength: 200, placeholder: "(例) 東京都 渋谷区 神宮前X丁目X−X" %><br />
-    <i class="fas fa-comment-alt"></i> <%= f.label :shop_detail, "紹介文（お店の紹介や雰囲気など、みんなと共有しよう！）" %>
-    <%= f.text_area :shop_detail, class: "form-control", rows: 4, maxlength: 200, placeholder: "(例) 落ち着いた雰囲気のカフェで長時間ゆっくりできました。" %><br />
-    <i class="fas fa-globe-asia"></i> <%= f.label :shop_home_page, "HP" %>
-    <%= f.text_field :shop_home_page, class: "form-control", maxlength: 2000, placeholder: "(例) https://www.xxx.com" %><br />
-    <i class="fas fa-info-circle"></i> <%= f.label :shop_remarks, '備考' %>
-    <%= f.text_area :shop_remarks, class: "form-control", rows: 2, maxlength: 200, placeholder: "(例) コーヒーおかわり無料でした。ランチは少し混んでいます。" %><br />
-    <i class="fas fa-tags"></i> 設備情報
-    <div class='form-group'>
-      <%= f.collection_check_boxes(:shop_tag_ids, ShopTag.all, :id, :name) do |tag| %>
-        <div class='form-check'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
-        </div>
+    <!--投稿の内容入力欄-->
+    <div class="actions mt-4">
+      <i class="far fa-image"></i> <%= f.label :image, '画像' %>
+      <% if current_page?(new_post_path)  %>
+        （投稿画像を選択してください）
       <% end %>
+
+      <!--画像のプレビュー表示-->
+      <div class="post_image_wrapper">
+        <%= f.label :image do %>
+          <% if current_page?(new_post_path) %>
+            <%= image_tag "no_image.png", class: 'img-fluid post_image phot' %>
+          <% else %>
+            <%= image_tag post.get_image, class: "img-fluid post_image phot" %>
+          <% end %>
+          <%= f.file_field :image, class: 'uploader', style: 'display:none' %>
+        <% end %>
+      </div>
+
+      <!--画像プレビュー表示用 js-->
+      <%= render "public/posts/script/previw" %>
+
+      <!--投稿タイトル・内容入力-->
+      <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="small text-danger">*必須</span>
+      <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力", maxlength: 140 %>
+      <div class="text-secondary text-right"><span class="title-count"></span>/140</div>
+      <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="small text-danger">*必須</span>
+      <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力", maxlength: 500 %>
+      <div class="text-secondary text-right"><span class="content-count"></span>/500</div>
+      <%= f.submit submit, class: "mt-4 btn btn-outline-success btn-block" %>
+      <div class="mt-3 text-center shop_form_btn"><i class="fas fa-caret-down"></i> お店情報も編集する</div>
     </div>
+  </div>
+  <div class="form-group pt-lg-5 pt-2 pb-4 px-lg-5 px-2 border bg-white shop_form" style="display: none;">
+    <!--お店の情報入力欄-->
+    <div class="actions mt-4">
+      <h4 class="text-center"><i class="fas fa-store"></i> お店情報</h4>
+      <hr></hr>
 
-    <!--公開・非公開設定ボタン-->
-    <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
+      <!--新規投稿のみ投稿フォームから地図登録できる-->
+      <% if current_page?(new_post_path) %>
+        <h5 class="mt-4"><i class="fas fa-map-marked-alt"></i> 地図登録</h5>
+        <div>みんなが利用しやすいよう、位置情報を登録しよう！</div>
+        <div class="my-3">
+          ①最寄りや店名を入力<br />
+          ② <i class="fas fa-map-marker-alt"></i> ピンを移動させ位置の調整ができます。
+        </div>
+        <div class="m-2 mb-3">
+          <div>最寄り駅や店名を検索</div>
+          <input id="address" type="textbox"  placeholder="(例) 渋谷駅" class="search-form-group">
+          <input type="button" value="検索" onclick="codeAddress()" class="btn btn-outline-secondary">
+        </div>
+        <div id='map'></div>
 
-    <!--新規投稿画面のみ地図情報（経度・緯度）を送信-->
-    <% if current_page?(new_post_path) %>
-      <%= f.hidden_field :lat,:value =>"緯度", id: :lat %>
-      <%= f.hidden_field :lng,:value =>"経度", id: :lng %>
-    <% end %>
-    <%= f.submit submit, class: "mt-4 btn btn-outline-success" %>
+        <!--表示するマップのサイズ-->
+        <style>
+          #map {
+            height: 400px;
+            width: 100%;
+          }
+        </style>
+        <script>
+
+          //初期マップの設定
+          let map
+          let marker
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center:  {lat: 35.6803997, lng:139.7690174},  //東京
+              zoom: 15,
+            });
+          }
+
+          //検索後のマップ作成
+          let geocoder
+          let aft
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                //マーカーが複数できないようにする
+                if (aft == true){
+                    marker.setMap(null);
+                }
+
+                //新しくマーカーを作成する
+                map.setCenter(results[0].geometry.location);
+                    marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    draggable: true // ドラッグ可能にする
+                });
+
+                //二度目以降か判断
+                aft = true
+
+                //検索した時に緯度経度を入力する
+                document.getElementById('lat').value = results[0].geometry.location.lat();
+                document.getElementById('lng').value = results[0].geometry.location.lng();
+
+                // マーカーのドロップ（ドラッグ終了）時のイベント
+                google.maps.event.addListener( marker, 'dragend', function(ev){
+                    // イベントの引数evの、プロパティ.latLngが緯度経度
+                    document.getElementById('lat').value = ev.latLng.lat();
+                    document.getElementById('lng').value = ev.latLng.lng();
+                  });
+              } else {
+                alert('該当する結果がありません。');
+              }
+            });
+          }
+        </script>
+      <% end %>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+      <br />
+
+      <!--編集画面では地図の表示のみ-->
+      <% unless current_page?(new_post_path) %>
+        <h5 class="mt-3"><i class="fas fa-map-marked-alt"></i> 現在の登録位置</h5>
+        <div class="small text-danger">※地図は編集は、投稿詳細ページの「地図を編集する」から行ってください。</div>
+        <% if post.lat == 0.0 && post.lng == 0.0 %>
+          <p>現在、地図情報は登録されていません。</p>
+        <% end %>
+
+        <!--登録した地図を表示-->
+        <%= render 'public/posts/map', post: post %>
+      <% end %>
+
+      <!--店舗紹介フォーム-->
+      <i class="fas fa-coffee"></i> <%= f.label :shop_name, "店名" %>
+      <%= f.text_field :shop_name, class: "form-control", maxlength: 200, placeholder: "(例) Snuggleカフェ 渋谷店" %><br />
+      <i class="fas fa-map-marker-alt"></i> <%= f.label :shop_place, "場所" %>
+      <div class="small">（都道府県名や最寄り駅など）</div>
+      <%= f.text_field :shop_place, class: "form-control", maxlength: 200, placeholder: "(例) 東京都 渋谷区 神宮前X丁目X−X" %><br />
+      <i class="fas fa-comment-alt"></i> <%= f.label :shop_detail, "紹介文" %>
+      <div class="small">(お店の紹介や雰囲気など、みんなと共有しよう！)</div>
+      <%= f.text_area :shop_detail, class: "form-control", rows: 4, maxlength: 200, placeholder: "(例) 落ち着いた雰囲気のカフェで長時間ゆっくりできました。" %><br />
+      <i class="fas fa-globe-asia"></i> <%= f.label :shop_home_page, "HP" %>
+      <%= f.text_field :shop_home_page, class: "form-control", maxlength: 2000, placeholder: "(例) https://www.xxx.com" %><br />
+      <i class="fas fa-info-circle"></i> <%= f.label :shop_remarks, '備考' %>
+      <%= f.text_area :shop_remarks, class: "form-control", rows: 2, maxlength: 200, placeholder: "(例) コーヒーおかわり無料でした。ランチは少し混んでいます。" %><br />
+      <i class="fas fa-tags"></i> 設備情報
+      <div class='form-group'>
+        <%= f.collection_check_boxes(:shop_tag_ids, ShopTag.all, :id, :name) do |tag| %>
+          <div class='form-check'>
+            <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <!--公開・非公開設定ボタン-->
+      <i class="fas fa-share-alt"></i> <%= f.select :publish, {'公開': true, '非公開': false}, {class: "mt-3"} %><br />
+
+      <!--新規投稿画面のみ地図情報（経度・緯度）を送信-->
+      <% if current_page?(new_post_path) %>
+        <%= f.hidden_field :lat,:value =>"緯度", id: :lat %>
+        <%= f.hidden_field :lng,:value =>"経度", id: :lng %>
+      <% end %>
+      <%= f.submit submit, class: "mt-4 btn btn-outline-success btn-block" %>
+    </div>
+    <!--タイトルと内容の入力文字数表示用-->
+    <%= render "public/posts/script/form_count" %>
+    <div class="mt-3 text-center shop_form_btn"><i class="fas fa-caret-up"></i> お店情報入力フォームを閉じる</div>
+  <!--表示・非表示用-->
+  <script>
+  $(function() {
+    $(".shop_form_btn").click(function() {
+        $(".shop_form").slideToggle("");
+    });
+  });
+  </script>
   </div>
 <% end %>

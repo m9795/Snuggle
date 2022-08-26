@@ -1,0 +1,37 @@
+<script>
+  // ページ開いた瞬間の文字数を表示
+  // title form
+  window.onload = (e) => {
+    let post_title = document.getElementById('post_title');
+    post_title
+    .closest('.form-group')
+    .querySelector('.title-count')
+    .textContent=post_title.value.length;
+
+    // content form
+    let post_content = document.getElementById('post_content');
+    post_content
+    .closest('.form-group')
+    .querySelector('.content-count')
+    .textContent=post_content.value.length;
+  };
+
+  // フォームに入力した際の文字数を表示
+  // title form
+  document.addEventListener('input',e=>{
+    let t=e.target.closest('.title-input');
+    if(t){
+      t.closest('.form-group')
+      .querySelector('.title-count').textContent=t.value.length;
+    }
+  });
+
+  // content form
+  document.addEventListener('input',e=>{
+    let t=e.target.closest('.content-input');
+    if(t){
+      t.closest('.form-group')
+      .querySelector('.content-count').textContent=t.value.length;
+    }
+  });
+</script>

@@ -6,6 +6,7 @@ ja:
         introduction: 自己紹介
         email: メールアドレス
         password: パスワード
+        password_confirmation: 確認用パスワード
       post:
         title: タイトル
         content: 本文

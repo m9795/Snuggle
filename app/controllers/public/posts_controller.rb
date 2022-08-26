@@ -11,12 +11,12 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
-    if post.save
-      redirect_to post_path(post), notice: "投稿しました。"
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
-      redirect_to new_post_path(post), alert: "入力内容をご確認ください。"
+      redirect_to new_post_path(@post), alert: "入力内容をご確認ください。"
     end
   end
 
@@ -96,7 +96,9 @@ class Public::PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:image, :title, :content, :shop_name, :shop_detail, :shop_place, :shop_home_page, :shop_remarks,  :lat, :lng, :publish, shop_tag_ids: [])
+      params.require(:post).permit(:image, :title, :content,
+      :shop_name, :shop_detail, :shop_place, :shop_home_page,
+      :shop_remarks, :lat, :lng, :publish, shop_tag_ids: [])
     end
 
     def show_user
