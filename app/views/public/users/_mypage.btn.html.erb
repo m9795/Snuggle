@@ -10,6 +10,8 @@
     <div class="col-lg-5">
   <% elsif current_page?(user_detail_path(user)) %>
     <div class="col-lg-5">
+  <% elsif current_page?(chat_path(user)) %>
+    <div class="col-lg-5">
   <%else %>
     <div class="col-lg-7 mb-3 d-md-none">
   <% end %>

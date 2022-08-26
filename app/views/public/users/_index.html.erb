@@ -12,7 +12,11 @@
                 <%= image_tag user.get_image, class: 'user_image' %>
               <% end %>
             </div>
-            <%= link_to "詳細", user_path(user), class: "btn btn-outline-secondary btn-sm mt-5 mb-4 ml-2 mr-3" %>
+            <% if user == current_user %>
+              <%= link_to "マイページへ", user_path(current_user), class: "btn btn-outline-info btn-sm mt-5 mb-4 ml-2 mr-3" %>
+            <% else %>
+              <%= link_to "詳細", user_path(user), class: "btn btn-outline-secondary btn-sm mt-5 mb-4 ml-2 mr-3" %>
+            <% end %>
             <div class="mt-5">
               <% if user != current_user %>
                 <%= render "public/relationships/btn", user: user %>
