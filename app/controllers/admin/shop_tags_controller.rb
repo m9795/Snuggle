@@ -17,7 +17,6 @@ class Admin::ShopTagsController < ApplicationController
   end
 
   def edit
-    @shop_tags = ShopTag.all.order(created_at: "DESC").page(params[:page]).per(20)
   end
 
   def update

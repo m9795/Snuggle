@@ -1,6 +1,7 @@
 <%= form_with model: post do |f| %>
   <div class="form-group pt-lg-5 pt-2 pb-4 px-lg-5 px-2 border bg-white">
     <h4 class="mt-3 text-center"><i class="fas fa-camera"></i> 投稿内容</h4>
+    <div class="ml-2 text-center small">(タイトルと本文のみ入力必須)</div>
     <hr></hr>
 
     <!--投稿の内容入力欄-->
@@ -26,14 +27,14 @@
       <%= render "public/posts/script/previw" %>
 
       <!--投稿タイトル・内容入力-->
-      <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル(最大140文字)', class: "mt-3" %> <span class="small text-danger">*必須</span>
+      <i class="fas fa-tag"></i> <%= f.label :title, 'タイトル', class: "mt-3" %> <span class="small text-danger">*必須</span>
       <%= f.text_field :title, class: "form-control title-input", placeholder: "タイトルを入力", maxlength: 140 %>
       <div class="text-secondary text-right"><span class="title-count"></span>/140</div>
-      <i class="far fa-file-alt"></i> <%= f.label :content, '本文(最大500文字)' %> <span class="small text-danger">*必須</span>
+      <i class="far fa-file-alt"></i> <%= f.label :content, '本文' %> <span class="small text-danger">*必須</span>
       <%= f.text_area :content, class: "form-control content-input", rows: 4, placeholder: "本文を入力", maxlength: 500 %>
       <div class="text-secondary text-right"><span class="content-count"></span>/500</div>
       <%= f.submit submit, class: "mt-4 btn btn-outline-success btn-block" %>
-      <div class="mt-3 text-center shop_form_btn"><i class="fas fa-caret-down"></i> お店情報も編集する</div>
+      <div class="mt-3 text-center shop_form_btn"><i class="fas fa-caret-down"></i> お店情報も<%= obj %>する</div>
     </div>
   </div>
   <div class="form-group pt-lg-5 pt-2 pb-4 px-lg-5 px-2 border bg-white shop_form" style="display: none;">

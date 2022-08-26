@@ -11,5 +11,5 @@ class ShopTag < ApplicationRecord
   has_many :shop_taggings, dependent: :destroy
   has_many :posts, through: :shop_taggings, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 15 }
 end
