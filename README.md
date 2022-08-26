@@ -32,6 +32,8 @@
 ![image](https://user-images.githubusercontent.com/106650955/186998490-cf03c6b1-6a4e-430a-8660-dfa9627886f8.png)
 
 - テーブル定義書：[テーブル提議書_Snuggle.pdf](https://github.com/m9795/Snuggle/files/9400606/_Snuggle.pdf)
+- アプリケーション詳細設計書：[アプリケーション詳細設計書.pdf](https://github.com/m9795/Snuggle/files/9436838/default.pdf)
+
 - 画面遷移(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf)
 - 画面遷移(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf)
 - テスト仕様書(管理者側)：[テスト仕様書①_admin.pdf](https://github.com/m9795/Snuggle/files/9436636/_admin.pdf)
