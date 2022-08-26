@@ -9,7 +9,9 @@
   <% else %>
     <!--相手のメッセージ（左側）-->
     <div class="mt-1">
-      <%= image_tag user.get_image, class: "user-chat-image" %>
+      <%= link_to user_path(user) do %>
+        <%= image_tag user.get_image, class: "user-chat-image" %>
+      <% end %>
       <div class="user-message"> <!--相手の吹き出し-->
         <p><%= chat.message %></p> <!--相手のメッセージ-->
       </div>

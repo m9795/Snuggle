@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
-      <h5 class="text-center"><%= image_tag @user.get_image, class: "mt-3 user_image" %><br /><%= @user.name %><br /> <%= @user.name %>さんとのチャットルーム <i class="far fa-comment"></i></h5>
+      <h5 class="text-center">
+        <%= link_to user_path(@user), class: "text-secondary" do %>
+          <%= image_tag @user.get_image, class: "mt-3 user_image" %><br />
+          <%= @user.name %><br />
+        <% end %>
+          <%= @user.name %>さんとのチャットルーム <i class="far fa-comment"></i>
+      </h5>
       <hr></hr>
       <div class="form-group">
         <%= render "public/chats/form", chat: @chat %>
