@@ -1,5 +1,36 @@
 <div class="row d-flex justify-content-center text-secondary">
-  <div class="col-sm-6 h1 text-sm-center">ようこそ、Snuggleへ！</div>
-  <div class="col-12 h3 mt-5 text-sm-center">カフェ　X　学習のコミュニティサイト</div>
-  <div class="col-12 h3 mt-3 text-sm-center">カフェに立ち寄るように、仲間と気軽に集まれる場所に</div>
+  <h1 class="col-sm-6 text-sm-center top-text">ようこそ、Snuggleへ！</h1>
+    <div class="col-12 h3 mt-5 text-sm-center sub-text">カフェ　X　学習のコミュニティサイト</div>
+    <div class="col-12 h3 mt-3 text-sm-center sub-text">カフェに立ち寄るように、仲間と気軽に集まれる場所に</div>
 </div>
+
+<!--<p class="an2-fadeup">アニメーション2（フェードアップ）</p>-->
+
+<style>
+.top-text {
+  margin-top: 100px;
+  animation-name: fadeup;
+  animation-duration: 2s;
+  animation-iteration-count:1;
+}
+
+.sub-text {
+  opacity: 0;
+  animation-name: fadeup;
+  animation-duration: 1.5s;
+  animation-iteration-count:1;
+  animation-delay:1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeup {
+from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+</style>
