@@ -253,10 +253,19 @@ Chat.create!(
 OwnPost.create!(
   [
     { user_id: 1,
-      content: "昨日は少しさぼっちゃったから、今日こそ２時間学習するぞ！！"
+      content: "【生活の記録】23:00就寝、6:30起床"
     },
     { user_id: 1,
       content: "明日は友人とランチだから、そのためにも頑張ろう😆"
+    },
+    { user_id: 1,
+      content: "昨日は少しさぼっちゃったから、今日こそ２時間学習するぞ！！"
+    },
+    { user_id: 1,
+      content: "【今日の学習内容】\r\n・2時間HTML＆CSSの学習をした\r\n【明日の目標】\r\n・HPのレイアウトを考える"
+    },
+    { user_id: 1,
+      content: "おやすみなさい🧸"
     }
   ]
 )
