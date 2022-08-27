@@ -1,0 +1,52 @@
+.top-text {
+  font-size: 50px;
+  margin-top: 30px;
+  animation-name: fadeup; /* フェードアップ */
+  animation-duration: 2s; /* 間隔 */
+  animation-iteration-count: 1; /* 再生回数 */
+}
+
+.sub-text {
+  opacity: 0; /* 透明化 */
+  animation-name: fadeup;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-delay: 1s; /* 遅延 */
+  animation-fill-mode: forwards; /* アニメーション後の状態を保持 */
+}
+
+.box-container {
+  margin-bottom: 50px;
+}
+
+.signup-box, .login-box, .guest-login-box {
+  border-radius: 30px;
+  opacity: 0;
+  animation-name: fadeup;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.signup-box {
+  animation-delay: 1.5s;
+}
+
+.login-box {
+  animation-delay: 2s;
+}
+.guest-login-box {
+  animation-delay: 2.5s;
+}
+
+/*フェードアップ*/
+@keyframes fadeup {
+from {
+  opacity: 0;
+  transform: translateY(50px); /* フェードアップの縦幅 */
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}

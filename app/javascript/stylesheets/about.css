@@ -1,0 +1,53 @@
+.about-text {
+  font-size: 50px;
+  margin: 60px 0 90px 0;
+  animation-name: fadeup; /* フェードアップ */
+  animation-duration: 2s; /* 間隔 */
+  animation-iteration-count: 1; /* 再生回数 */
+}
+
+.about-sub-text {
+  font-size: 50px;
+  margin: 100px 0 90px 0;
+}
+
+.about-sub-text, .image-content {
+  opacity: 0; /* 透明化 */
+  animation-name: fadeup;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-delay: 3s; /* 遅延 */
+  animation-fill-mode: forwards; /* アニメーション後の状態を保持 */
+}
+
+.users-box, .newpost-box, .posts-box {
+  border-radius: 30px;
+  opacity: 0;
+  animation-name: fadeup;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.users-box {
+  animation-delay: 1s;
+}
+
+.newpost-box {
+  animation-delay: 1.5s;
+}
+.posts-box {
+  animation-delay: 2s;
+}
+
+/*フェードアップ*/
+@keyframes fadeup {
+from {
+  opacity: 0;
+  transform: translateY(50px); /* フェードアップの縦幅 */
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}

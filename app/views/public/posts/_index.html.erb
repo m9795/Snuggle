@@ -19,7 +19,7 @@
       <%= render 'public/likes/btn', post: post %>
     </div>
     <%= link_to post, data: {"turbolinks" => false}, class: "text-secondary" do %>
-      <b><%= post.title %></b>
+      <p class="font-weight-bold text-secondary"><%= post.title %></p>
       <p class="post-contents"><%= render_with_tags(post.content) %></p>
     <% end %>
     <%= l post.created_at %><br />

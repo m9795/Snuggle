@@ -16,7 +16,7 @@
     <% else %>
       <div class="wrapper">
     <% end %>
-    <%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>
       <main>
         <% if %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
           <div class="flash-messages pt-2 bg-white">

@@ -14,46 +14,46 @@
   <div id="likes_btn_<%= post.id %>">
     <%= render 'public/likes/btn', post: post %>
   </div>
-  <b class="text-secondary"><%= post.title %></b>
+  <p class="font-weight-bold text-secondary"><%= post.title %></p>
   <p><%= render_with_tags(post.content) %></p>
 
   <h4 class="mt-5 mb-3 text-center"><i class="fas fa-store"></i> お店情報</h4>
   <table class="table table-bordered text-center">
     <tr><th><i class="fas fa-coffee"></i> 店名</th></tr>
     <% if post.shop_name == "" %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td><%= post.shop_name %></td></tr>
+      <tr><td style="word-break:break-all"><%= post.shop_name %></td></tr>
     <% end %>
     <tr><th><i class="fas fa-comment-alt"></i> 紹介文</th></tr>
     <% if post.shop_detail == "" %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td><%= post.shop_detail %></td></tr>
+      <tr><td style="word-break:break-all"><%= post.shop_detail %></td></tr>
     <% end %>
     <tr><th><i class="fas fa-map-marker-alt"></i> 場所</th></tr>
     <% if post.shop_place == "" %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td><%= post.shop_place %></td></tr>
+      <tr><td style="word-break:break-all"><%= post.shop_place %></td></tr>
     <% end %>
     <tr><th><i class="fas fa-globe-asia"></i> HP</th></tr>
     <% if post.shop_home_page == "" %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td><%= link_to post.shop_home_page, post.shop_home_page, target: :_blank, rel: "noopener noreferrer" %></td></tr>
+      <tr><td style="word-break:break-all"><%= link_to post.shop_home_page, post.shop_home_page, target: :_blank, rel: "noopener noreferrer" %></td></tr>
     <% end %>
     <tr><th><i class="fas fa-info-circle"></i> 備考</th></tr>
     <% if post.shop_remarks == "" %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td><%= post.shop_remarks %></td></tr>
+      <tr><td style="word-break:break-all"><%= post.shop_remarks %></td></tr>
     <% end %>
     <tr><th>設備情報</th></tr>
     <% unless post.shop_tags.present? %>
-      <tr><td>-</td></tr>
+      <tr><td style="word-break:break-all">-</td></tr>
     <% else %>
-      <tr><td>
+      <tr><td style="word-break:break-all">
         <% post.shop_tags.each do |tag| %>
           <span class="text-secondary">
             <%= link_to  "/post/shop_tag/#{tag.name}", class: "btn btn-outline-secondary m-2" do %>

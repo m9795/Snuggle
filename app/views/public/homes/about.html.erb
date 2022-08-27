@@ -1,27 +1,27 @@
 <div class="contaier pt-2 px-5 bg-white">
-  <h3 class="mt-5 d-flex justify-content-center text-secondary">Snuggleで出来ること</h3>
-  <div class="row m-lg-5 pt-2 justify-content-center">
-    <div class="col-lg-3 mx-3 p-xl-5 col-md-3 p-md-3 mx-md-1 p-5 form-group border bg-white">
+  <h3 class="text-center text-secondary about-text">Snuggleで出来ること</h3>
+  <div class="row pt-2 justify-content-center">
+    <div class="col-lg-3 mx-3 p-5 form-group shadow bg-white users-box">
       <b>学習の仲間作り</b>
-      <p>学習を頑張りたい！<br />そんなあなたの思いを応援します。</p>
+      <p>学習を頑張りたい！そんなあなたの思いを応援します。</p>
       <p class="small">Snuggleで高めあえる仲間を見つけよう！</p>
-      <%= link_to 'Snuggleの登録ユーザーを見る', users_path, class: "btn btn-outline-primary" %>
+      <%= link_to '登録ユーザーを見る', users_path, class: "btn btn-outline-primary" %>
     </div>
-    <div class="col-lg-3 mx-3 p-xl-5 col-md-3 p-md-3 mx-md-1 p-5 form-group border bg-white">
+    <div class="col-lg-3 mx-3 p-5 form-group shadow bg-white newpost-box">
       <b>学習におすすめのカフェを共有</b>
       <p>学習にぴったりなカフェが見つかるかも？</p>
       <p class="small">あなたのおすすめカフェを共有してみよう！</p>
-      <%= link_to 'お気に入りのカフェを投稿する', new_post_path, class: "btn btn-outline-success" %>
+      <%= link_to 'お気に入りカフェを投稿する', new_post_path, class: "btn btn-outline-success" %>
     </div>
-    <div class="col-lg-3 mx-3 p-xl-5 col-md-3 p-md-3 mx-md-1 p-5 form-group border bg-white">
+    <div class="col-lg-3 mx-3 p-5 form-group shadow bg-white posts-box">
       <b>学習の息抜きやリラックスに</b>
       <p>学習に息詰まったな...<br />そんな時はSnuggleでみんなのおすすめのカフェを見て癒されませんか？</p>
       <%= link_to 'みんなの投稿一覧を見る', posts_path, class: "btn btn-outline-info" %>
     </div>
   </div>
-  <h3 class="my-5 d-flex justify-content-center text-secondary">Snuggleの使い方</h3>
+  <h3 class="text-center text-secondary about-sub-text">Snuggleの使い方</h3>
   <div class="row my-5 d-flex justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-8 image-content">
       <%= image_tag 'step1.png', class: "about-image"%>
       <%= image_tag 'step2.png', class: "about-image"%>
       <%= image_tag 'step3.png', class: "about-image"%>
