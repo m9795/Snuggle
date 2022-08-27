@@ -8,10 +8,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%#= favicon_link_tag 'favicon.ico' %>
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png">
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body class="bg-light">
     <% if  %w[root about].any? {|name| current_page?(send("#{name}_path"))} %>
