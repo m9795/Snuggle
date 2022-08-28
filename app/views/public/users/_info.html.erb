@@ -44,9 +44,9 @@
     <% end %>
   <% end %>
 
-  <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> 投稿</div>
+  <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> 投稿のこと</div>
   <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="far fa-images fa-xs"></i> 投稿 (<%= posts.count %>)
+    <i class="far fa-images fa-xs"></i> 投稿済 (<%= posts.count %>)
   <% end %>
 
   <%= link_to user_like_list_path(user), class: "btn btn-outline-secondary btn-block" do %>
@@ -56,6 +56,9 @@
   <% if user == current_user %>
       <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
         <i class="fas fa-lock"></i> 非公開 (<%= current_user.posts.unpublish.count %>)
+      <% end %>
+      <%= link_to root_path, class: "btn btn-outline-secondary btn-block"  do %>
+        <i class="fas fa-door-open"></i> フリートークルームへ行く
       <% end %>
   <% end %>
 
