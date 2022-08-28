@@ -22,7 +22,7 @@ users = User.create!(
       name: "Olivia",
       password: "password",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"),
-      filename:"sample-user1.jpg"),
+      filename: "sample-user1.jpg"),
       introduction: "はじめまして！よろしくお願いします。",
       study_content: "プログラミング",
       target: "自身のHPを作る",
@@ -33,13 +33,13 @@ users = User.create!(
       favorite_color: "オレンジ　ピンク",
       favorite_cafe: "メニューが豊富なカフェ　流行りのカフェ",
       favorite_drink: "フラペチーノ全般　カプチーノ",
-      favorite_food: "パスタ　マカロン"},
+      favorite_food: "パスタ　マカロン" },
 
     { email: "james@test.com",
       name: "James",
       password: "password",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"),
-      filename:"sample-user2.jpg"),
+      filename: "sample-user2.jpg"),
       introduction: "はじめまして！穴場なカフェが好きです。おすすめがあれば教えてください。よろしくお願いします！！",
       study_content: "英語",
       target: "留学すること",
@@ -50,13 +50,13 @@ users = User.create!(
       favorite_color: "黒　シルバー",
       favorite_cafe: "落ち着いた雰囲気のカフェ",
       favorite_drink: "ブラックコーヒー（無糖）",
-      favorite_food: "ラーメン"},
+      favorite_food: "ラーメン" },
 
     { email: "lucas@test.com",
       name: "Lucas",
       password: "password",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"),
-      filename:"sample-user3.jpg"),
+      filename: "sample-user3.jpg"),
       introduction: "はじめまして。現在大学3年生です。仲良くしてください。",
       study_content: "タイピング",
       target: "タイピング検定3級",
@@ -67,7 +67,7 @@ users = User.create!(
       favorite_color: "緑",
       favorite_cafe: "コーヒー豆の種類が多いカフェ",
       favorite_drink: "エスプレッソ",
-      favorite_food: "アメリカンワッフル"}
+      favorite_food: "アメリカンワッフル" }
   ]
 )
 
@@ -80,7 +80,7 @@ ShopTag.create!(
     { name: "個室あり" },           #  4
     { name: "予約可" },             #  5
     { name: "BGMあり" },            #  6
-    { name: "メニュー豊富"},        #  7
+    { name: "メニュー豊富" },        #  7
     { name: "落ち着いた雰囲気" },   #  8
     { name: "にぎやかな雰囲気" },   #  9
     { name: "キャッシュレス可" },   # 10
@@ -94,7 +94,7 @@ Post.create!(
     # ユーザ1の投稿
     { title: "流行りのカフェ",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"),
-      filename:"sample-post1.jpg"),
+      filename: "sample-post1.jpg"),
       content: "大人気のカフェに友人と行ってきました！\r\nテスト勉強もはかどってよかったです😊\r\n\r\n#cafe#Cavello#ランチ#テスト勉強",
       user_id: users[0].id,
       lat: "35.6896067",
@@ -103,12 +103,12 @@ Post.create!(
       shop_detail: "今話題の大人気カフェです。",
       shop_place: "新宿駅",
       shop_home_page: "/",
-      shop_remarks: "ランチタイムに行きましたが、３組ほど並んでいました。"},
+      shop_remarks: "ランチタイムに行きましたが、３組ほど並んでいました。" },
 
     # ユーザ2の投稿
     { title: "落ち着くお気に入りのカフェ",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"),
-      filename:"sample-post2.jpg"),
+      filename: "sample-post2.jpg"),
       content: "落ち着いた雰囲気のカフェです。 #cafe #カフェ #学習におすすめ",
       user_id: users[1].id,
       lat: "35.68123620000001",
@@ -117,12 +117,12 @@ Post.create!(
       shop_detail: "おしゃれな店内で、長時間営業なので学習にもおすすめです。",
       shop_place: "東京駅",
       shop_home_page: "/",
-      shop_remarks: "学習で利用している人が多く、居心地がよかったです。"},
+      shop_remarks: "学習で利用している人が多く、居心地がよかったです。" },
 
     # ユーザ3の投稿
     { title: "メニューが多いカフェ",
       image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"),
-      filename:"sample-post3.jpg"),
+      filename: "sample-post3.jpg"),
       content: "コーヒー豆の種類がたくさんあるので、コーヒー好きの方におすすめです！\r\nフードメニューもたくさんありました。おすすめはカフェラテとパンケーキです。\r\n\r\n#coffe#コーヒー#cafe#カフェ",
       user_id: users[2].id,
       lat: "35.6580339",
@@ -147,7 +147,7 @@ Post.create!(
 ShopTagging.create!(
   [
     # 投稿1のタグ付け
-    #（Wi-Fiあり・30席以上・にぎやかな雰囲気・キャッシュレス可）
+    # （Wi-Fiあり・30席以上・にぎやかな雰囲気・キャッシュレス可）
     { post_id: 1,
       shop_tag_id: 1
     },
@@ -162,7 +162,7 @@ ShopTagging.create!(
     },
 
     # 投稿2のタグ付け
-    #（Wi-Fiあり・電源あり・BGMあり・落ち着いた雰囲気・キャッシュレス可・駐車場あり）
+    # （Wi-Fiあり・電源あり・BGMあり・落ち着いた雰囲気・キャッシュレス可・駐車場あり）
     { post_id: 2,
       shop_tag_id: 1
     },
@@ -183,7 +183,7 @@ ShopTagging.create!(
     },
 
     # 投稿3のタグ付け
-    #（30席以上・メニュー豊富・にぎやかな雰囲気・キャッシュレス可・駐車場あり）
+    # （30席以上・メニュー豊富・にぎやかな雰囲気・キャッシュレス可・駐車場あり）
     { post_id: 3,
      shop_tag_id: 3
     },
@@ -221,7 +221,7 @@ Relationship.create!(
 )
 
 # ユーザ1と2のチャットルーム作成
-#（ユーザ1と2は相互フォロー）
+# （ユーザ1と2は相互フォロー）
 Room.create!()
 
 UserRoom.create!(
