@@ -41,9 +41,9 @@
       <% else %>
         <p class="text-center">現在、<%= @user.name %>さんの投稿はありません。</p>
       <% end %>
-    </div>
-    <div class="col-lg-8 d-flex justify-content-center">
-      <%= render 'admin/users/all-users.btn' %>
+      <div class="row px-5 d-flex justify-content-center">
+        <%= render 'admin/users/all-users.btn' %>
+      </div>
     </div>
   </div>
 </div>

@@ -19,10 +19,11 @@
       <div id="users_comments_area">
         <%= render 'admin/comments/comments', comments: @comments, page_comments: @page_comments %>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div>
-          <%= render 'admin/users/all-users.btn' %>
-        </div>
+      <div class="row px-5 d-flex justify-content-center">
+        <%= render 'admin/users/all-users.btn' %>
+        <% if current_page?(admin_user_post_path) %>
+          <%= link_to "< 戻る", :back, class: "col-12 my-3 btn btn-outline-dark" %>
+        <% end %>
       </div>
     </div>
   </div>
