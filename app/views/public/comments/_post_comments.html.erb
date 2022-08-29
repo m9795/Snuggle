@@ -1,5 +1,5 @@
 <% if @post_comments.present? %>
-  <div class="px-5 py-2 border bg-white">
+  <div class="px-5 py-2 customize-border shadow bg-white">
     <% post_comments.each do |post_comment| %>
       <div class="row px-3">
         <%= link_to user_path(post_comment.user_id), class: "text-secondary" do %>

@@ -5,7 +5,7 @@
       <% if @posts.present? %>
         <% @posts.each do |post| %>
           <div class="text-secondary">Post id：<%= post.id %></div>
-          <div class="container border bg-white pb-2 mb-3">
+          <div class="container customize-border shadow bg-white pb-2 mb-3">
             <div class="row">
               <% if post.publish == true %>
                 <b class="px-3 mb-2 bg-success text-white">公開中</b>

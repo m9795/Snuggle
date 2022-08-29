@@ -1,3 +1,8 @@
+.about-image {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 .about-text {
   font-size: 50px;
   margin: 60px 0 90px 0;
@@ -22,6 +27,7 @@
 
 .users-box, .newpost-box, .posts-box {
   border-radius: 30px;
+  border: solid 1px #cfd9e2;
   opacity: 0;
   animation-name: fadeup;
   animation-duration: 0.8s;

@@ -1,5 +1,5 @@
 <% if comments.present? %>
-  <div class="px-5 py-2 border bg-white">
+  <div class="px-5 py-2 customize-border shadow bg-white">
     <% comments.each do |comment| %>
       <%= image_tag comment.user.get_image, class: 'post_user_image' %>
       <p><i class="fas fa-user-circle "></i> <%= comment.user.name %></p>
