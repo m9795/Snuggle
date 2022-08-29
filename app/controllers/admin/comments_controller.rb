@@ -13,6 +13,6 @@ class Admin::CommentsController < ApplicationController
     @comments = @user.comments.order(created_at: "DESC")
     @page_comments = @comments.page(params[:page]).per(20)
     Comment.find(params[:id]).destroy
-    render "admin/comments/comments"q
+    render "admin/comments/comments"
   end
 end
