@@ -24,15 +24,12 @@
               </div>
             </div>
             <div class="row pt-3 pb-2">
-              <div class="col-xl-4 mt-1">
-                いいね数　 <i class="fas fa-heart fa-lg" style="color: #dc3545;"></i><%= comment.post.likes.count %><br />
-                コメント数 <i class="far fa-comment-alt fa-lg"></i><%= comment.post.comments.count %>
+              <div class="col-xl-7 mt-1">
+                <span>いいね数 <i class="fas fa-heart fa-lg" style="color: #dc3545;"></i><%= comment.post.likes.count %></span>
+                <span class="mx-3">コメント数 <i class="far fa-comment-alt fa-lg"></i><%= comment.post.comments.count %></span>
               </div>
               <div class="col-xl-4 mt-1">
-                <%= link_to '詳細', admin_user_post_path(comment.post.user, comment.post), class: "col-auto btn btn-block btn-outline-dark"  %>
-              </div>
-              <div class="col-xl-4 mt-1">
-                <%= link_to '削除', admin_user_comment_path(comment.user, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "col-auto btn btn-block btn-outline-danger" %>
+                <%= link_to '詳細', admin_user_post_path(comment.post.user, comment.post), class: "btn btn-block btn-outline-dark"  %>
               </div>
             </div>
           </div>
