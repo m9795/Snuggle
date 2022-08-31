@@ -37,7 +37,7 @@
     <%= f.text_area :introduction, class: "form-control", placeholder: "自己紹介を入力", maxlength: "150", rows: "4" %>
     <div class="text-secondary text-right"><span class="introduction-count"></span>/150</div>
     <%= f.submit  class: "mt-4 form-control btn btn-outline-success" %>
-    <div class="mt-3 small text-center user_form_btn"><i class="fas fa-caret-down"></i> もっと詳しく登録する</div>
+    <div class="mt-3 user_form_btn btn btn-block btn-outline-secondary"><i class="fas fa-caret-down"></i> もっと詳しく登録する</div>
 
     <!--名前と紹介文の入力文字数表示用-->
     <script>
@@ -118,7 +118,7 @@
       <%= f.text_area :favorite_food, class: "form-control", placeholder: "(例) フィナンシェ　かつお節", maxlength: "200", rows: "2" %>
       <div class="mt-3 small text-center">たくさんの項目、入力お疲れ様でした！</div>
       <%= f.submit  class: "mt-2 form-control btn btn-outline-success" %>
-      <div class="mt-5 small text-center user_form_btn"><i class="fas fa-caret-up"></i> 詳細情報入力フォームを閉じる</div>
+      <div class="mt-3 user_form_btn user_form_btn btn btn-block btn-outline-secondary"><i class="fas fa-caret-up"></i> 詳細情報入力フォームを閉じる</div>
     </div>
   <% end %>
 
