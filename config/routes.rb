@@ -70,5 +70,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:new, :create, :destroy]
       resource :likes, only: [:create, :destroy]
     end
+    resources :free_posts, only: [:new, :create, :index, :destroy]
   end
 end

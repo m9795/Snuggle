@@ -6,7 +6,7 @@
       <% if @users.present? %>
         <% @users.each do |user| %>
           <div class="text-secondary">User id：<%= user.id %></div>
-          <div class="container bg-white border bg-white pb-2 mb-3">
+          <div class="container bg-white customize-border shadow bg-white pb-2 mb-3">
             <div class="row">
               <% if user.status == false %>
                 <b class="px-3 mb-2 bg-success text-white">有効</b>

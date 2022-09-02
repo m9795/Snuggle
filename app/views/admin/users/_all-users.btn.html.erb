@@ -1,1 +1,4 @@
-<%= link_to "< ユーザ一覧へ戻る", admin_users_path, class: "my-3 btn btn-outline-dark" %>
+<%= link_to admin_user_path(@user), class: "col-12 mt-3 btn btn-outline-dark" do %>
+  < <%= @user.name %>さんのページへ
+<% end %>
+<%= link_to "< ユーザ一覧へ戻る", admin_users_path, class: "col-12 my-3 btn btn-outline-dark" %>

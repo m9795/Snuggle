@@ -57,7 +57,7 @@
       <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
         <i class="fas fa-lock"></i> 非公開 (<%= current_user.posts.unpublish.count %>)
       <% end %>
-      <%= link_to root_path, class: "btn btn-outline-secondary btn-block"  do %>
+      <%= link_to free_posts_path, class: "btn btn-outline-secondary btn-block"  do %>
         <i class="fas fa-child"></i> フリートークルームへ行く
       <% end %>
   <% end %>

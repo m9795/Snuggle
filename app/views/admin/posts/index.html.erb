@@ -5,7 +5,7 @@
       <% if @posts.present? %>
         <% @posts.each do |post| %>
           <div class="text-secondary">Post id：<%= post.id %></div>
-          <div class="container border bg-white pb-2 mb-3">
+          <div class="container customize-border shadow bg-white pb-2 mb-3">
             <div class="row">
               <% if post.publish == true %>
                 <b class="px-3 mb-2 bg-success text-white">公開中</b>
@@ -41,9 +41,9 @@
       <% else %>
         <p class="text-center">現在、<%= @user.name %>さんの投稿はありません。</p>
       <% end %>
-    </div>
-    <div class="col-lg-8 d-flex justify-content-center">
-      <%= render 'admin/users/all-users.btn' %>
+      <div class="row px-5 d-flex justify-content-center">
+        <%= render 'admin/users/all-users.btn' %>
+      </div>
     </div>
   </div>
 </div>

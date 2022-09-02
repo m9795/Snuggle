@@ -35,13 +35,12 @@ footer {
   box-sizing: border-box; /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
-.about-image {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
 main {
   color: #6c757d; /*secondaryのカラーコード*/
+}
+
+.customize-border {
+  border: solid 2px #cfd9e2;
 }
 
 h2 {
@@ -216,7 +215,7 @@ select {
   padding: 10px;
   max-width: 250px;
   border-radius: 12px;
-  background: #edf1ee;
+  background: #cfd9e2;
 }
 
 // 吹き出しに使うの三角のパーツ
@@ -228,7 +227,7 @@ select {
   top: 3px;
   left: -19px; /*マイナス値にすることで左側に寄せている*/
   border: 8px solid transparent;
-  border-right: 18px solid #edf1ee;
+  border-right: 18px solid #cfd9e2;
   // 傾きの調整
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
