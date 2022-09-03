@@ -1,4 +1,21 @@
-<h1>Public::FreePosts#index</h1>
-<p>Find me in app/views/public/free_posts/index.html.erb</p>
-
-<%= link_to "投稿する", new_free_post_path %>
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center">フリートークルーム</h5>
+      <p class="text-right">
+        <%= link_to new_free_post_path do %>
+          + 投稿する
+        <% end %>
+      </p>
+      <% if @free_posts.present? %>
+        <% @free_posts.each do |free_post| %>
+          <%= free_post.user_id %>
+          <%= free_post.content %>
+          <%= l free_post.created_at %>
+        <% end %>
+      <% else %>
+        <p class="text-center">投稿して、みんなでフリートークしよう！</p>
+      <% end %>
+    </div>
+  </div>
+</div>

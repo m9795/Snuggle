@@ -5,7 +5,7 @@
       <div class="col-lg-7 form-group">
         <%= form_with model: @free_post, url: free_posts_path, method: :post do |f| %>
           <%= f.text_area :content, rows: 5, autofocus: true,
-              maxlength: 200, placeholder: "みんなで気軽に会話しよう！",
+              maxlength: 200, placeholder: "学習のことや趣味のことなど自由に投稿しよう！",
               class: "form-control content-input" %>
           <div class="text-secondary text-right">　<span>0</span>/200</div>
           <div class="row d-flex justify-content-end">
@@ -19,3 +19,14 @@
     </div>
   </div>
 </div>
+
+<!--入力文字数表示用-->
+<script>
+  // フォームに入力した際の文字数表示
+  document.addEventListener('input',e=>{
+    let t=e.target.closest('.content-input');
+    if(t){
+      t.closest('.form-group').querySelector('span').textContent=t.value.length;
+    }
+  });
+</script>
