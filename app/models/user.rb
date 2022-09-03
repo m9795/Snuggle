@@ -51,6 +51,8 @@ class User < ApplicationRecord
   has_many :chats
   has_many :rooms, through: :user_rooms
 
+  has_many :free_posts
+
   validates :name, presence: true, length: { maximum: 20 }
   validates :introduction, correct_line_break: true
 

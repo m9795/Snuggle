@@ -9,7 +9,7 @@
       </p>
       <% if @free_posts.present? %>
         <% @free_posts.each do |free_post| %>
-          <%= free_post.user_id %>
+          <%= free_post.user.name %>
           <%= free_post.content %>
           <%= l free_post.created_at %>
         <% end %>
