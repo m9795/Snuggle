@@ -5,7 +5,7 @@
       <div class="col-lg-7 form-group">
         <%= form_with model: @free_post, url: free_posts_path, method: :post do |f| %>
           <%= f.text_area :content, rows: 5, autofocus: true,
-              maxlength: 200, placeholder: "学習のことや趣味のことなど自由に投稿しよう！",
+              maxlength: 200, placeholder: "内容を入力",
               class: "form-control content-input" %>
           <div class="text-secondary text-right">　<span>0</span>/200</div>
           <div class="row d-flex justify-content-end">

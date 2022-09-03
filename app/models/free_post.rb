@@ -17,5 +17,7 @@
 #  user_id  (user_id => users.id)
 #
 class FreePost < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
+
+  validates :content, presence: true
 end

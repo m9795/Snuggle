@@ -15,10 +15,17 @@ class Public::FreePostsController < ApplicationController
   end
 
   def index
-    @free_posts = FreePost.all
+    @free_posts = FreePost.all.order(created_at: "DESC")
   end
 
   def destroy
+    @free_post = FreePost.find(params[:id])
+    if current_user == @free_post.user
+      @free_post.destroy
+      redirect_to free_posts_path, notice: "投稿を削除しました。"
+    else
+      redirect_to free_posts_path, alert: "本人以外は投稿を削除できません。"
+    end
   end
 
   private
