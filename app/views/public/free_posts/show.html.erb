@@ -1,0 +1,3 @@
+<% if free_post.user == current_user %>
+  <%= link_to '削除', free_post_path(free_post), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "small" %>
+<% end %>
