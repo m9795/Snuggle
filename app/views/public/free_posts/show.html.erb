@@ -1,3 +1,28 @@
-<% if free_post.user == current_user %>
-  <%= link_to '削除', free_post_path(free_post), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "small" %>
-<% end %>
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center"><i class="fas fa-child"></i> 雑談ルーム</h5>
+      <div class="mt-5 mx-1 pt-1 bg-white">
+        <div class="row mx-2 mt-3 pt-2 d-flex justify-content-center">
+          <div class="col-1 mr-3">
+            <%= image_tag @free_post.user.get_image, class: "free_posts_user_image" %>
+          </div>
+          <div class="col-9 ml-3">
+            <div class="row">
+              <p class="col mb-0 font-weight-bold small"><%= @free_post.user.name %></p>
+              <!--通報機能など作成時に利用予定-->
+              <!--<span class="col text-right ellipsis-v"><i class="fas fa-ellipsis-v fa-xs"></i></span>-->
+            </div>
+            <p class="small"><%= @free_post.content %></p>
+            <div class="small text-right">
+              <%= l @free_post.created_at %><br />
+              <% if @free_post.user == current_user %>
+                <%= link_to '削除', free_post_path(@free_post), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "small" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
