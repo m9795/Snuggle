@@ -15,7 +15,7 @@ class Public::FreePostsController < ApplicationController
   end
 
   def index
-    @free_posts = FreePost.all.order(created_at: "DESC")
+    @free_posts = FreePost.all.where(user_id: @publish_user_all).order(created_at: "DESC")
   end
 
   def destroy
