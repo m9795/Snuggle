@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h5 class="text-center"><i class="fas fa-child"></i> 雑談ルーム</h5>
+      <p class="text-right">
+        <%= link_to new_free_post_path do %>
+          + 投稿する
+        <% end %>
+      </p>
+      <% if @free_posts.present? %>
+        <div class="mx-1 pt-1 bg-white">
+          <% @free_posts.each do |free_post| %>
+            <%= link_to free_post_path(free_post), class: "text-secondary" do %>
+              <div class="row mx-2 mt-3 pt-2 border-bottom d-flex justify-content-center">
+                <div class="col-1 mr-3">
+                  <%= image_tag free_post.user.get_image, class: "free_posts_user_image" %>
+                </div>
+                <div class="col-9 ml-3">
+                  <div class="row">
+                    <p class="col mb-0 font-weight-bold small"><%= free_post.user.name %></p>
+                    <!--通報機能など作成時に利用予定-->
+                    <!--<span class="col text-right ellipsis-v"><i class="fas fa-ellipsis-v fa-xs"></i></span>-->
+                  </div>
+                  <p class="small"><%= free_post.content %></p>
+                  <div class="mb-3 small text-right">
+                    <%= l free_post.created_at %><br />
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-center">投稿して、雑談を始めよう！</p>
+      <% end %>
+    </div>
+  </div>
+</div>

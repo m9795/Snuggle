@@ -101,14 +101,15 @@ th {
 }
 
 .post_user_image {
-  height: 50px;
-  width: 50px;
   border-radius: 50%;
-  object-fit: cover;
   margin: 12px 5px 5px 0;
 }
 
-.admin-userpost-image {
+.free_posts_user_image {
+  border-radius: 50%;
+}
+
+.post_user_image, .admin-userpost-image, .free_posts_user_image {
   height: 50px;
   width: 50px;
   object-fit: cover;
