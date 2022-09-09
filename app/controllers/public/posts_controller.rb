@@ -29,6 +29,8 @@ class Public::PostsController < ApplicationController
     # ↓post.userのサイドバーの件数表示用
     @posts = @user.posts.publish
     @liked_post = @user.likes.where(post_id: @publish_post_all)
+    # 参照先のS3オブジェクトURLを作成
+    @post_url = "https://#{ ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/#{@post.image.key}"
 
     # ↓公開記事は全員閲覧可
     if @post.publish
@@ -53,6 +55,7 @@ class Public::PostsController < ApplicationController
   def update
     if current_user == @post.user
       if @post.update(post_params)
+        sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
         redirect_to post_path(@post), notice: "更新しました。"
       else
         redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"

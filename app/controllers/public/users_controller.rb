@@ -21,6 +21,7 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(usre_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to user_detail_path(@user), notice: "ユーザ情報を更新しました。"
     else
       redirect_to edit_user_path(@user), alert: "編集内容をご確認ください。"

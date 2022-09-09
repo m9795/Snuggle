@@ -91,5 +91,5 @@ group :production do
   gem "mysql2"
 end
 
-gem 'image_processing', '~> 1.2'
+# s3
 gem "aws-sdk-s3", require: false
