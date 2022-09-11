@@ -29,8 +29,6 @@ class Public::PostsController < ApplicationController
     # ↓post.userのサイドバーの件数表示用
     @posts = @user.posts.publish
     @liked_post = @user.likes.where(post_id: @publish_post_all)
-    # 参照先のS3オブジェクトURLを作成
-    @post_url = "https://#{ ENV['AWS_S3_BUCKET_NAME']}.s3-ap-northeast-1.amazonaws.com/#{@post.image.key}"
 
     # ↓公開記事は全員閲覧可
     if @post.publish
