@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
   def destroy
     if current_user == @post.user
       @post.destroy
-      redirect_to user_path(current_user), notice: "投稿を削除しました。"
+      redirect_to user_posts_path(current_user), notice: "投稿を削除しました。"
     else
       redirect_to posts_path, alert: "本人以外は投稿を削除できません。"
     end

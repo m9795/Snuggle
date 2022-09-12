@@ -8,7 +8,7 @@
         <% end %>
       </p>
       <% if @free_posts.present? %>
-        <div class="mx-1 pt-1 bg-white">
+        <div class="mx-1 pt-1 mb-4 bg-white">
           <% @free_posts.each do |free_post| %>
             <%= link_to free_post_path(free_post), class: "text-secondary" do %>
               <div class="row mx-2 mt-3 pt-2 border-bottom d-flex justify-content-center">
@@ -30,6 +30,7 @@
             <% end %>
           <% end %>
         </div>
+        <%= paginate @free_posts %>
       <% else %>
         <p class="text-center">投稿して、雑談を始めよう！</p>
       <% end %>
