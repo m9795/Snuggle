@@ -22,7 +22,7 @@
       <p class="font-weight-bold text-secondary"><%= post.title %></p>
       <p class="post-contents"><%= render_with_tags(post.content) %></p>
     <% end %>
-    <%= l post.created_at %><br />
+    <%= l post.created_at, format: :short %><br />
     <!--編集/削除ボタン(本人のみ表示)-->
     <% if post.user == current_user %>
       <%= link_to '編集', edit_post_path(post), data: {"turbolinks" => false} %>
