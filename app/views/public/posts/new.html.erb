@@ -1,7 +1,8 @@
 <div class="container py-3">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-7">
-      <h4 class="text-center mb-5"><i class="fas fa-edit"></i> 新規投稿</h4>
+      <h4 class="text-center"><i class="fas fa-edit"></i> 新規投稿</h4>
+      <div class="ml-2 mb-5 text-center small">(タイトルと本文のみ入力必須)</div>
       <%= render 'form', submit: "投稿する", post: @post, obj: "登録" %>
     </div>
   </div>
