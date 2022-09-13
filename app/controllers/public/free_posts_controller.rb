@@ -10,7 +10,7 @@ class Public::FreePostsController < ApplicationController
     if @free_post.save
       redirect_to free_posts_path, notice: "投稿しました。"
     else
-      redirect_to request.referer, alert: "入力内容をご確認ください。"
+      render "new"
     end
   end
 

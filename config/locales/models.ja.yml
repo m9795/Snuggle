@@ -10,3 +10,6 @@ ja:
       admin:
         email: メールアドレス
         password: パスワード
+      free_post:
+        content: 本文
+        images: 画像

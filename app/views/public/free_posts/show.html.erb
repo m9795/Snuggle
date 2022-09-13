@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
-      <h5 class="text-center"><i class="fas fa-child"></i> 雑談ルーム</h5>
-      <div class="mt-5 mx-1 pt-1 pb-4 border bg-white shadow">
+      <h5 class="text-center"><i class="fas fa-child"></i> 投稿詳細</h5>
+      <p class="text-right">
+        <%= link_to new_free_post_path do %>
+          + 投稿する
+        <% end %>
+      </p>
+      <div class="mx-1 pt-1 pb-4 border bg-white shadow">
         <div class="row mx-2 mt-3 pt-2 d-flex justify-content-center">
           <div class="col-1 mr-3">
             <%= link_to user_path(@free_post.user), class: "text-secondary" do %>
@@ -29,7 +34,7 @@
         <% if @free_post.images.attached? %>
           <% @free_post.images.each do |image| %>
             <%= link_to image, target: :_blank do %>
-              <%= image_tag image, class: "free_post_image mr-3 mt-1" %>
+              <%= image_tag image, class: "free_post_image mr-3 mt-3" %>
             <% end %>
           <% end %>
         <% end %>
