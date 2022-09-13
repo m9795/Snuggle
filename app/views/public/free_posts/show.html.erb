@@ -25,9 +25,18 @@
           </div>
         </div>
       </div>
+      <div class="row p-4">
+        <% if @free_post.images.attached? %>
+          <% @free_post.images.each do |image| %>
+            <%= link_to image, target: :_blank do %>
+              <%= image_tag image, class: "free_post_image mr-3 mt-1" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render "public/posts/back.btn" %>
       <div>
         <!--コメントフォーム作成-->
-        
       </div>
     </div>
   </div>

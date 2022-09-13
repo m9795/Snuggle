@@ -34,6 +34,6 @@ class Public::FreePostsController < ApplicationController
 
   private
     def free_post_params
-      params.require(:free_post).permit(:content)
+      params.require(:free_post).permit(:content, images: [])
     end
 end

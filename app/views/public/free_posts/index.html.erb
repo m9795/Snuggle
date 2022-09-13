@@ -22,6 +22,9 @@
                     <!--<span class="col text-right ellipsis-v"><i class="fas fa-ellipsis-v fa-xs"></i></span>-->
                   </div>
                   <p class="small"><%= free_post.content %></p>
+                  <% if free_post.images.attached? %>
+                    <p class="text-right"><i class="far fa-image"></i> <%= free_post.images.count %></p>
+                  <% end %>
                   <div class="mb-3 small text-right">
                     <%= l free_post.created_at %><br />
                   </div>

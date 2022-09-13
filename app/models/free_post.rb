@@ -20,4 +20,6 @@ class FreePost < ApplicationRecord
   belongs_to :user
 
   validates :content, presence: true
+
+  has_many_attached :images
 end

@@ -8,7 +8,9 @@
   <%= image_tag post.user.get_image, class: 'post_user_image' %>
   <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
   <div class="post_image_wrapper">
-    <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
+    <%= link_to post.image, target: :_blank do %>
+      <%= image_tag post.get_image, class: 'mb-2 img-fluid post_image' %>
+    <% end %>
   </div>
   <!--いいね・コメントの表示-->
   <div id="likes_btn_<%= post.id %>">
