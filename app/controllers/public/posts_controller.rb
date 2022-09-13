@@ -93,6 +93,9 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, alert: "非公開投稿は本人以外閲覧できません。"
     end
   end
+  
+  def about
+  end
 
   private
     def post_params

@@ -71,5 +71,6 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
     end
     resources :free_posts, only: [:new, :create, :index, :show, :destroy]
+    get "post/about" => "posts#about", as: "post_about"
   end
 end
