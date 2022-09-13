@@ -16,7 +16,9 @@
 
   <div class="row text-center">
     <div class="col-4">
-      <%= image_tag user.get_image, class: 'user_image' %>
+      <%= link_to user.image, target: :_blank do %>
+        <%= image_tag user.get_image, class: 'user_image' %>
+      <% end %>
     </div>
     <div class="col-4 col-xl-4 col-md-12 col-lg-12 text-md-left text-xl-center my-auto small">
       <%= link_to user_followings_path(user), class: "text-secondary" do %>

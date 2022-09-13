@@ -2,7 +2,9 @@
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8 mb-4">
       <h5 class="text-center">
-        <%= image_tag @user.get_image, class: "mb-3 user_image" %><br />
+        <%= link_to @user.image, target: :_blank do %>
+          <%= image_tag @user.get_image, class: "mb-3 user_image" %><br />
+        <% end %>
         <% if @user == current_user %>
           <i class="fas fa-book-open"></i> 自分のこと
           <%= link_to edit_user_path(@user), data: {"turbolinks" => false}, class: "ml-2" do %>
