@@ -39,7 +39,7 @@
 * 息詰まったり疲労感がある時　など
 
 ## インフラ構成図
-作成中です。
+![image](https://user-images.githubusercontent.com/106650955/190065100-22ce6f51-e970-41f8-bdc7-399ad73062b2.png)
 
 ## 設計書
 ### ER図
