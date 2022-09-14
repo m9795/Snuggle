@@ -20,32 +20,52 @@
             <% end %>
           </li>
           <li>
-            <div class="dropdown px-2 py-1 m-1 nav-link nav-text">
+            <div class="dropdown px-2 py-1 m-1 mx-3 nav-link nav-text">
               <div id="btnOpenMenu" data-toggle="dropdown">
-                <i class="fas fa-edit"></i> 投稿
+                <i class="fas fa-pen-nib"></i> 投稿する
               </div>
               <div class="py-0 dropdown-menu" aria-labelledby="btnOpenMenu">
                 <%= link_to new_post_path, class: "text-secondary", data: {"turbolinks" => false} do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">カフェを投稿</a>
+                  <button class="dropdown-item border-bottom text-center" type="button">
+                    <i class="fas fa-coffee"></i> カフェを投稿
+                  </a>
                 <% end %>
                 <%= link_to new_free_post_path, class: "text-secondary" do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">雑談を投稿</a>
+                  <button class="dropdown-item border-bottom text-center" type="button">
+                    <i class="fas fa-comments"></i> 雑談を投稿
+                  </a>
                 <% end %>
                 <%= link_to new_user_own_post_path(current_user), class: "text-secondary" do %>
-                  <button class="dropdown-item text-center" type="button">ひとりごとを投稿</a>
+                  <button class="dropdown-item text-center" type="button">
+                    <i class="fas fa-comment-dots"></i> ひとりごとを投稿
+                  </a>
                 <% end %>
               </div>
             </div>
           </li>
-          <li class="bg-white rounded text-secondary px-2 py-1 m-1">
-            <%= link_to posts_path, class: 'nav-link' do %>
-              <i class="far fa-images"></i> みんなの投稿 (<%= @publish_post_all.count %>)
-            <% end %>
-          </li>
-          <li class="bg-white rounded text-secondary px-2 py-1 m-1">
-            <%= link_to users_path, class: 'nav-link' do %>
-              <i class="fas fa-user-friends"></i> ユーザ一覧 (<%= @publish_user_all.count %>)
-            <% end %>
+          <li>
+            <div class="dropdown px-2 py-1 my-1 mx-3 nav-link nav-text">
+              <div id="btnOpenMenu" data-toggle="dropdown">
+                <i class="fas fa-bookmark"></i> 見る
+              </div>
+              <div class="py-0 dropdown-menu" aria-labelledby="btnOpenMenu">
+                <%= link_to users_path, class: "text-secondary" do %>
+                  <button class="dropdown-item border-bottom text-center" type="button">
+                    <i class="fas fa-user-friends"></i> ユーザ一覧を見る
+                  </a>
+                <% end %>
+                <%= link_to posts_path, class: "text-secondary" do %>
+                  <button class="dropdown-item border-bottom text-center" type="button">
+                    <i class="fas fa-images"></i> みんなの投稿カフェを見る
+                  </a>
+                <% end %>
+                <%= link_to free_posts_path, class: "text-secondary" do %>
+                  <button class="dropdown-item text-center" type="button">
+                    <i class="fas fa-child"></i> 雑談ルームを見に行く
+                  </a>
+                <% end %>
+              </div>
+            </div>
           </li>
           <li class="bg-white rounded text-secondary px-2 py-1 m-1">
             <%= link_to destroy_user_session_path, method: :delete, class: 'mr-2 nav-link' do %>

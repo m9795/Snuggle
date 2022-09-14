@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row m-2 mb-3 d-flex flex-column">
-    <h5 class="text-center"><i class="fas fa-comment-dots"></i> ひとりごと</h5>
+    <h5 class="text-center"><i class="fas fa-comment-dots"></i> ひとりごとを投稿</h5>
     <p class="text-center small">（ひとりごとはみんなが閲覧できます）</p>
     <div class="row mt-3 d-flec justify-content-center">
       <div class="col-lg-7 form-group">
@@ -10,8 +10,11 @@
               class: "form-control content-input" %>
           <div class="text-secondary text-right">　<span>0</span>/200</div>
           <div class="row d-flex justify-content-end">
-            <%= f.submit "つぶやく", class: "col-lg-3 m-2 mr-3 btn btn-outline-secondary" %>
+            <%= f.submit "つぶやく", class: "mx-5 col-lg-3 m-2 mr-3 btn btn-outline-secondary" %>
           </div>
+        <% end %>
+        <%= link_to user_own_posts_path(@user), class: "my-3 btn btn-outline-dark" do %>
+          < 自分のひとりごと へ
         <% end %>
         <div class="text-right">
           <span class="content"></span>

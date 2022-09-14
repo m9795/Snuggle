@@ -13,6 +13,11 @@ ul.navbar-nav.ml-auto {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.dropdown-item:active {
+  color: #6c757d;
+  background-color: #fff;
+}
+
 .flash-messages {
   height: 50px;
 }
