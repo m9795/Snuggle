@@ -5,6 +5,14 @@ ul.navbar-nav.ml-auto {
   font-size: 14px;
 }
 
+.nav-text {
+  cursor : pointer;
+}
+
+.nav-text:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
 .flash-messages {
   height: 50px;
 }
