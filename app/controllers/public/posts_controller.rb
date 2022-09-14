@@ -94,9 +94,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  def about
-  end
-
   private
     def post_params
       params.require(:post).permit(:image, :title, :content,
