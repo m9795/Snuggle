@@ -1,0 +1,34 @@
+<%= form_with model: @inquiry, url: user_inquiry_confirm_path(user_id: current_user) do |f| %>
+  <div class="page-header">
+    <h1>お問い合わせ</h1>
+  </div>
+
+  <% if @inquiry.errors.any? %>
+    <div class="alert" role="alert">
+      <strong>入力内容をご確認ください</strong>
+      <ul>
+        <% @inquiry.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table">
+    <tr>
+      <th>名前<span class="text-danger">（必須）</span></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス<span class="text-danger">（必須）</span></th>
+      <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+      <th>お問い合わせ</th>
+      <td><%= f.text_area :message %></td>
+    </tr>
+  </table>
+  <%= f.hidden_field :user_name, :value => @user.name %>
+  <%= f.hidden_field :user_email, :value => @user.email %>
+  <%= f.submit '確認', class: 'btn btn-primary' %>
+<% end %>
