@@ -36,7 +36,7 @@ class Post < ApplicationRecord
   has_many :shop_taggings, dependent: :destroy
   has_many :shop_tags, through: :shop_taggings, dependent: :destroy
 
-  validates :title,   presence: true, length: { maximum: 140 }
+  validates :title, presence: true, length: { maximum: 140 }
 
   # contentやその他カラムはフォームでmaxlengthの指定のみしています。
   # (改行2文字扱いに対するカスタムバリデーションをかけようとしたが発火しなかったため。)
