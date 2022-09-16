@@ -39,7 +39,7 @@
 * 息詰まったり疲労感がある時　など
 
 ## AWS構成図
-![image](https://user-images.githubusercontent.com/106650955/190065100-22ce6f51-e970-41f8-bdc7-399ad73062b2.png)
+![AWS構成図](https://user-images.githubusercontent.com/106650955/190701896-64f5b55e-5656-4bf3-92a1-f110acb2355a.png)
 
 ## 設計書
 ### ER図

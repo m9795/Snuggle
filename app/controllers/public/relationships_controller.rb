@@ -13,11 +13,11 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings.where(id: @publish_user_all).page(params[:page])
+    @users = @user.followings.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
   end
 
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers.where(id: @publish_user_all).page(params[:page])
+    @users = @user.followers.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
   end
 end

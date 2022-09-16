@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row m-2 mb-3 d-flex flex-column">
     <h4 class="text-center"><i class="fas fa-envelope"></i> お問い合わせ</h4>
-    <p class="mt-1 text-center small">ご利用中に感じたことや、要望などお気軽にご連絡ください。</p>
+    <div class="mt-1 text-center small">
+      ご利用中に感じたことや、要望などお気軽にご連絡ください。
+    </div>
     <div class="row d-flex justify-content-center">
       <div class="col-lg-7 form-group">
         <hr></hr>
@@ -21,7 +23,7 @@
           <%= f.label :message, value="お問い合わせ内容" %><span class="text-danger"> *</span><br />
           <%= f.text_area :message, required: true, maxlength: 1000, rows: 5, class: "form-control" %><br />
 
-          <%= f.submit '確認', class: 'btn btn-block btn-outline-primary', data: {"turbolinks" => false} %><br />
+          <%= f.submit '確認', class: 'btn btn-block btn-outline-primary', data: { "turbolinks" => false } %><br />
         <% end %>
       </div>
     </div>

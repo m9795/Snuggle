@@ -14,5 +14,5 @@
 <!--コメントボタン-->
 <%= link_to new_post_comment_path(post), class: "text-secondary", data: {"turbolinks" => false} do %>
   　<i class="far fa-comment-alt fa-lg"></i>
-  <%= post.comments.where(user_id: @publish_user_all).count %><br />
+  <%= post.comments.where(user_id: @publish_user_all).count %> <span class="small">コメントを見る</span><br />
 <% end %>
