@@ -28,6 +28,9 @@
               </td>
             </tr>
           </table>
+          
+          <!--不適切なお問い合わせをしているユーザーを管理者側で特定できるようにするため-->
+          <%= f.hidden_field :user_id, :value => @user.id %>
           <%= f.hidden_field :user_name, :value => @user.name %>
           <%= f.hidden_field :user_email, :value => @user.email %>
           <%= f.submit '送信', class: 'mt-4 btn btn-outline-primary btn-block' %>
