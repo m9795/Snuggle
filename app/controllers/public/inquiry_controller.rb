@@ -16,7 +16,7 @@ class Public::InquiryController < ApplicationController
   end
 
   def thanks
-    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message, :user_name, :user_email))
+    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message, :user_id, :user_name, :user_email))
     InquiryMailer.received_email(@inquiry).deliver
     InquiryMailer.received_admin_email(@inquiry).deliver
     render :action => 'thanks'
