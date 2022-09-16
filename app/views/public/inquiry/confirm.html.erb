@@ -1,33 +1,39 @@
-<div class="page-header">
-  <h1>お問い合わせ</h1>
+<div class="container">
+  <div class="row m-2 mb-3 d-flex flex-column">
+    <h4 class="text-center"><i class="fas fa-envelope"></i> 確認画面</h4>
+    <p class="mt-1 text-center text-danger small">お問い合わせ内容をご確認ください。</p>
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-7 form-group text-center">
+        <%= form_with model: @inquiry, url: user_inquiry_thanks_path(user_id: current_user) do |f| %>
+          <table class="mt-3 table table-bordered">
+            <tr><th>お名前</th></tr>
+            <tr>
+              <td>
+                <%= f.hidden_field :name %>
+                <%= @inquiry.name %>
+              </td>
+            </tr>
+            <tr><th>メールアドレス</th></tr>
+            <tr>
+              <td>
+                <%= f.hidden_field :email %>
+                <%= @inquiry.email %>
+              </td>
+            </tr>
+            <tr><th>お問い合わせ内容</th></tr>
+            <tr>
+              <td>
+                <%= f.hidden_field :message %>
+                <%= simple_format(@inquiry.message) %>
+              </td>
+            </tr>
+          </table>
+          <%= f.hidden_field :user_name, :value => @user.name %>
+          <%= f.hidden_field :user_email, :value => @user.email %>
+          <%= f.submit '送信', class: 'mt-4 btn btn-outline-primary btn-block' %>
+        <% end %>
+        <p class="mt-1 text-right small">※送信には数秒、お時間がかかります。</p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= form_with model: @inquiry, url: user_inquiry_thanks_path(user_id: current_user) do |f| %>
-  <table class="table">
-    <tr>
-      <th>名前</th>
-      <td>
-        <%= f.hidden_field :name %>
-        <%= @inquiry.name %>
-      </td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td>
-        <%= f.hidden_field :email %>
-        <%= @inquiry.email %>
-      </td>
-    </tr>
-    <tr>
-      <th>お問い合わせ内容</th>
-      <td>
-        <%= f.hidden_field :message %>
-        <%= simple_format(@inquiry.message) %>
-      </td>
-    </tr>
-  </table>
-  <%= f.hidden_field :user_name, :value => @user.name %>
-  <%= f.hidden_field :user_email, :value => @user.email %>
-  <%= f.submit '送信', class: 'btn btn-primary' %>
-<% end %>
-<p>※送信には数秒ほど、お時間がかかります。</p>

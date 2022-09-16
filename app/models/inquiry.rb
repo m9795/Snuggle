@@ -2,8 +2,8 @@ class Inquiry
   include ActiveModel::Model
   attr_accessor :name, :email, :message, :user_name, :user_email
 
-  validates :name, :presence => { :message => '名前を入力してください' }
-  validates :email, :presence => { :message => 'メールアドレスを入力してください' }
-  validates :message, :presence => { :message => 'お問い合わせ内容を入力してください。' }
+  validates :name, length: { maximum: 20 }
+  validates :email, presence: true
+  validates :message, length: { maximum: 1000 }
 
 end
