@@ -24,7 +24,9 @@
             <div class="small text-right">
               <%= l @free_post.created_at %><br />
               <% if @free_post.user == current_user %>
-                <%= link_to '削除', free_post_path(@free_post), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "small" %>
+                <%= link_to free_post_path(@free_post), method: :delete, data: { confirm: '本当に削除しますか？'} do %>
+                  <i class="fas fa-trash-alt"></i> 削除
+                <% end %>
               <% end %>
             </div>
           </div>

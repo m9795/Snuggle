@@ -25,20 +25,14 @@
                 <i class="fas fa-pen-nib"></i> 投稿する
               </div>
               <div class="py-0 dropdown-menu" aria-labelledby="btnOpenMenu">
-                <%= link_to new_post_path, class: "text-secondary", data: {"turbolinks" => false} do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">
-                    <i class="fas fa-coffee"></i> カフェを投稿
-                  </a>
+                <%= link_to new_post_path, class: "text-secondary dropdown-item border-bottom text-center", data: {"turbolinks" => false} do %>
+                  <i class="fas fa-coffee"></i> カフェを投稿
                 <% end %>
-                <%= link_to new_free_post_path, class: "text-secondary" do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">
-                    <i class="fas fa-comments"></i> 雑談を投稿
-                  </a>
+                <%= link_to new_free_post_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
+                  <i class="fas fa-comments"></i> 雑談を投稿
                 <% end %>
-                <%= link_to new_user_own_post_path(current_user), class: "text-secondary" do %>
-                  <button class="dropdown-item text-center" type="button">
-                    <i class="fas fa-comment-dots"></i> ひとりごとを投稿
-                  </a>
+                <%= link_to new_user_own_post_path(current_user), class: "text-secondary dropdown-item text-center" do %>
+                  <i class="fas fa-comment-dots"></i> ひとりごとを投稿
                 <% end %>
               </div>
             </div>
@@ -49,20 +43,14 @@
                 <i class="fas fa-bookmark"></i> 見る
               </div>
               <div class="py-0 dropdown-menu" aria-labelledby="btnOpenMenu">
-                <%= link_to users_path, class: "text-secondary" do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">
-                    <i class="fas fa-user-friends"></i> ユーザ一覧を見る
-                  </a>
+                <%= link_to users_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
+                  <i class="fas fa-user-friends"></i> ユーザ一覧を見る
                 <% end %>
-                <%= link_to posts_path, class: "text-secondary" do %>
-                  <button class="dropdown-item border-bottom text-center" type="button">
-                    <i class="fas fa-images"></i> みんなの投稿カフェを見る
-                  </a>
+                <%= link_to posts_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
+                  <i class="fas fa-images"></i> みんなの投稿カフェを見る
                 <% end %>
-                <%= link_to free_posts_path, class: "text-secondary" do %>
-                  <button class="dropdown-item text-center" type="button">
-                    <i class="fas fa-child"></i> 雑談ルームを見に行く
-                  </a>
+                <%= link_to free_posts_path, class: "text-secondary dropdown-item text-center" do %>
+                  <i class="fas fa-child"></i> 雑談ルームを見に行く
                 <% end %>
               </div>
             </div>
