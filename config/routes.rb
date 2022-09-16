@@ -49,7 +49,6 @@ Rails.application.routes.draw do
       get  'inquiry' => 'inquiry#index'
       post 'inquiry/confirm'
       post 'inquiry/thanks'
-      get 'inquiry/confirm'
     end
     # ユーザの退会確認ページ
     get "user/unsubscribe" => "users#unsubscribe"
