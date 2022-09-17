@@ -61,7 +61,8 @@
 ![チャット機能](https://user-images.githubusercontent.com/106650955/190839704-1088677b-067e-490e-97fc-2f508f3b7ce0.gif)
 
 ### お問い合わせ機能(Mailer)
-![お問い合わせ機能](https://user-images.githubusercontent.com/106650955/190839307-914d00dc-5673-4ae4-8917-dbe34aae1a8c.gif)
+![お問い合わせ機能](https://user-images.githubusercontent.com/106650955/190841004-15c02e9a-2b82-48ca-83e8-bf9251f1eac4.gif)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
