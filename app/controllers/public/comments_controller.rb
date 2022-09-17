@@ -30,5 +30,8 @@ class Public::CommentsController < ApplicationController
 
     def post_choice
       @post = Post.find(params[:post_id])
+      if @post.user.status == true
+        redirect_to posts_path,  alert: "お探しのページは見つかりませんでした。"
+      end
     end
 end
