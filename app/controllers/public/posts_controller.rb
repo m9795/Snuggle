@@ -39,7 +39,7 @@ class Public::PostsController < ApplicationController
     # ↓非公開記は投稿ユーザのみ閲覧可
     elsif @post.publish == false && @post.user == current_user
     else
-      redirect_to posts_path, alert: "お探しの投稿は見つかりません。"
+      redirect_to posts_path, alert: "お探しのページは見つかりませんでした。"
     end
   end
 

@@ -34,7 +34,7 @@ class Public::ChatsController < ApplicationController
     def reject_non_related
       user = User.find(params[:id])
       unless current_user.following?(user) && user.following?(current_user)
-        redirect_to posts_path, alert: "お探しのチャットルームは見つかりません。"
+        redirect_to posts_path, alert: "お探しのページは見つかりませんでした。"
       end
     end
 end
