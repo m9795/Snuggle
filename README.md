@@ -42,7 +42,7 @@
 ![AWS構成図](https://user-images.githubusercontent.com/106650955/190860192-699ff9e0-834f-4ab6-acf4-b9e6f0a6ddee.png)
 
 ### ER図
-![image](https://user-images.githubusercontent.com/106650955/186998490-cf03c6b1-6a4e-430a-8660-dfa9627886f8.png)
+![Snuggle_ER図](https://user-images.githubusercontent.com/106650955/190871712-3caf5327-4726-4fba-8721-75511a8fcf2c.png)
 
 ### その他設計書
 - テーブル定義書：[テーブル提議書_Snuggle.pdf](https://github.com/m9795/Snuggle/files/9400606/_Snuggle.pdf)
