@@ -1,7 +1,6 @@
 # ![logo2](https://user-images.githubusercontent.com/106650955/186106765-ef446621-e77c-448a-b9ab-e534e2b1f50a.svg) -すなぐる-
 
 ## サイト概要
-
 #### カフェ×学習のコミュニティサイトです。
 アプリケーション名のSnuggle(すなぐる)は「寄り添う」の意味があります。「利用者同士が程よく寄り添えたら」という想いと、「利用者に寄り添ったアプリケーションを作成できればいいな」という想いから決めました。
 
@@ -50,8 +49,6 @@
 - アプリケーション詳細設計書：[アプリケーション詳細設計書.pdf](https://github.com/m9795/Snuggle/files/9436838/default.pdf)
 - テスト仕様書(管理者側)：[テスト仕様書①_admin.pdf](https://github.com/m9795/Snuggle/files/9436636/_admin.pdf)
 - テスト仕様書(ユーザ側)：[テスト仕様書②_user.pdf](https://github.com/m9795/Snuggle/files/9436651/_user.pdf)
-<!-- - UI Flows(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf) -->
-<!-- - UI Flows(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf) -->
 
 ## 動作デモ
 ### 投稿機能(ActiveStorage・Google Maps API)
@@ -62,7 +59,6 @@
 
 ### お問い合わせ機能(Mailer)
 ![お問い合わせ機能](https://user-images.githubusercontent.com/106650955/190841004-15c02e9a-2b82-48ca-83e8-bf9251f1eac4.gif)
-
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -94,10 +90,14 @@
 - Maps JavaScript API
 - Geocoding API
 
-## 使用素材
+## 使用素材・ツール
 - ロゴ：Canva(https://www.canva.com/)
 - アイコン：Fontawsome(https://fontawesome.com/)
 - サンプル画像：O-DAN(https://o-dan.net/ja/)
 - 絵文字：fromkato.com(https://fromkato.com/)
-- favicon.ico作成：(https://ao-system.net/favicon/)
+- favicon.ico作成：(https://ao-system.net/favicon/
+
+#### README
+- ER図・AWS構成図：diagrams.net
+- 動画編集：Clipchamp
 - gif作成：Convertio(https://convertio.co/ja/)
