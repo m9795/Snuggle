@@ -3,7 +3,7 @@
   <% if user == current_user %>
     <i class="fas fa-home"></i> マイページ
   <% else %>
-    <i class="fab fa-pagelines"></i> <%= user.name %>さんのページ
+    <i class="fab fa-pagelines"></i> <%= user.name %> さんのページ
   <% end %>
     <!--編集ボタン(ゲストユーザー省く)-->
     <% if user.name == 'guest user' %>
@@ -72,7 +72,7 @@
   <% if user == current_user %>
     <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> マイメニュー</div>
   <% else %>
-    <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> <%= user.name %>さんについてもっと知る</div>
+    <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> <%= user.name %> さんについてもっと知る</div>
   <% end %>
 
   <%= link_to user_detail_path(user), class: "btn btn-outline-secondary btn-block" do %>

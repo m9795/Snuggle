@@ -14,7 +14,11 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path, notice: "投稿しました。"
+      if @post.publish == true
+        redirect_to posts_path, notice: "投稿しました。"
+      else
+        redirect_to posts_path, notice: "マイページの「非公開」に保存しました。"
+      end
     else
       redirect_to new_post_path(@post), alert: "入力内容をご確認ください。"
     end
@@ -53,7 +57,12 @@ class Public::PostsController < ApplicationController
   def update
     if current_user == @post.user
       if @post.update(post_params)
-        redirect_to posts_path, notice: "更新しました。"
+        if @post.publish == true
+          redirect_to posts_path, notice: "更新しました。"
+        else
+          redirect_to posts_path,
+          notice: "マイページの「非公開」に保存しました。"
+        end
       else
         redirect_to edit_post_path(@post), alert: "編集内容をご確認ください。"
       end

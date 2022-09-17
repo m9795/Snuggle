@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-6">
-      <h4 class="mb-4 text-center"><%= image_tag @user.get_image, class: "post_user_image" %><br /><%= @user.name %>さんのコメント一覧(<%= @comments.count %>件) <span><i class="far fa-comment-alt fa-lg"></i></span></h4>
+      <h4 class="mb-4 text-center">
+        <%= image_tag @user.get_image, class: "post_user_image" %><br />
+        <%= @user.name %> さんのコメント一覧(<%= @comments.count %>件) <i class="far fa-comment-alt fa-lg"></i>
+      </h4>
       <% if @comments.present? %>
         <% @page_comments.each do |comment| %>
           <div class="text-secondary">Post id：<%= comment.post.id %></div>
@@ -36,7 +39,7 @@
         <% end %>
         <%= paginate @page_comments %>
       <% else %>
-        <p class="text-center">現在、<%= @user.name %>さんのコメントはありません。</p>
+        <p class="text-center">現在、<%= @user.name %> さんのコメントはありません。</p>
       <% end %>
       <div class="row px-5 d-flex justify-content-center">
         <%= render 'admin/users/all-users.btn' %>

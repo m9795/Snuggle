@@ -11,7 +11,7 @@
             <i class="fas fa-edit fa-xs"></i>
           <% end %>
         <% else %>
-          <i class="fas fa-book-open"></i> <%= @user.name %>さんの詳細
+          <i class="fas fa-book-open"></i> <%= @user.name %> さんの詳細
         <% end %>
       </h5>
       <p class="text-right small mr-3">登録日時：<%= l @user.created_at %></p>
@@ -23,7 +23,7 @@
 
        <div class="col mt-5">
           <p class="font-weight-bold border-bottom "><i class="far fa-file-alt"></i> 自己紹介</p>
-          <!--新規登録時nilになるので、nilの場合もレイアウト崩れないように - を表示している-->
+          <!--新規登録時nilになるので、nilの場合もレイアウト崩れないように - を表示-->
           <% if @user.introduction == "" || @user.introduction == nil %>
             <p>-</p>
           <% else %>

@@ -5,9 +5,13 @@
     </div>
     <div class="col-md-6 offset-md-1">
       <% if @user == current_user %>
-        <h4 class="mb-4 text-center"><span><i class="fas fa-heart fa-xs"></i></span> お気に入り (<%= @liked_post.count %>件) </h4>
+        <h4 class="mb-4 text-center">
+          <i class="fas fa-heart fa-xs"></i> お気に入り (<%= @liked_post.count %>件)
+        </h4>
       <% else %>
-        <h4 class="mb-4 text-center"><span><i class="fas fa-heart"></i></span> <%= @user.name %>さんのお気に入り (<%= @liked_post.count %>件)</h4>
+        <h4 class="mb-4 text-center">
+          <i class="fas fa-heart"></i> <%= @user.name %> さんのお気に入り (<%= @liked_post.count %>件)
+        </h4>
       <% end %>
       <% if @page_liked_post.present? %>
         <%= render "public/posts/index", page_posts: @page_liked_post %>

@@ -4,7 +4,8 @@
       <%= render 'public/users/info', user: current_user, liked_post: @liked_post, posts: @posts %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <h4 class="text-center mb-4"><span><i class="fas fa-lock fa-xs"></i></span> 非公開 (<%= current_user.posts.unpublish.count %>件)</h4>
+      <h4 class="text-center"><span><i class="fas fa-lock fa-xs"></i></span> 非公開 (<%= current_user.posts.unpublish.count %>件)</h4>
+      <div class="small text-center mb-4">「非公開」はあなただけが閲覧できます。</div>
       <% if @page_unpublish_posts.present? %>
         <%= render 'public/posts/index', posts: current_user.posts.unpublish, page_posts: @page_unpublish_posts %>
       <% else %>
