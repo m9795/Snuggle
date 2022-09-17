@@ -57,6 +57,9 @@
 ### チャット機能
 <img src="https://user-images.githubusercontent.com/106650955/190839704-1088677b-067e-490e-97fc-2f508f3b7ce0.gif" width="70%">
 
+### 検索機能(設備タグ・ハッシュタグ・キーワード)
+<img src="https://user-images.githubusercontent.com/106650955/190866187-fad38b50-3fab-4461-a89e-feabca2e92d8.gif" width="70%">
+
 ### お問い合わせ機能(Action Mailer)
 <img src="https://user-images.githubusercontent.com/106650955/190862235-369a2cf5-bb30-4b73-aeb1-8c1051301473.gif" width="70%">
 
