@@ -58,9 +58,9 @@ class Public::PostsController < ApplicationController
     if current_user == @post.user
       if @post.update(post_params)
         if @post.publish == true
-          redirect_to posts_path, notice: "更新しました。"
+          redirect_to post_path(@post), notice: "更新しました。"
         else
-          redirect_to posts_path,
+          redirect_to post_path(@post),
           notice: "マイページの「非公開」に保存しました。"
         end
       else
