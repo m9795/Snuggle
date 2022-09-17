@@ -52,14 +52,13 @@
 
 ## 動作デモ
 ### 投稿機能(ActiveStorage・Google Maps API)
-![投稿機能](https://user-images.githubusercontent.com/106650955/190840110-c73afc5e-06bc-4fb2-baca-fff9d03463ed.gif)
+<img src="https://user-images.githubusercontent.com/106650955/190840110-c73afc5e-06bc-4fb2-baca-fff9d03463ed.gif" width="70%">
 
 ### チャット機能
-![チャット機能](https://user-images.githubusercontent.com/106650955/190839704-1088677b-067e-490e-97fc-2f508f3b7ce0.gif)
+<img src="https://user-images.githubusercontent.com/106650955/190839704-1088677b-067e-490e-97fc-2f508f3b7ce0.gif" width="70%">
 
 ### お問い合わせ機能(Action Mailer)
-![お問い合わせ機能](https://user-images.githubusercontent.com/106650955/190862235-369a2cf5-bb30-4b73-aeb1-8c1051301473.gif)
-
+<img src="https://user-images.githubusercontent.com/106650955/190862235-369a2cf5-bb30-4b73-aeb1-8c1051301473.gif" width="70%">
 
 ## 開発環境
 - OS：Linux(CentOS)
