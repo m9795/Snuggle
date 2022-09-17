@@ -39,7 +39,7 @@
 * 息詰まったり疲労感がある時　など
 
 ## 設計書
-## AWS構成図
+### AWS構成図
 ![AWS構成図](https://user-images.githubusercontent.com/106650955/190701896-64f5b55e-5656-4bf3-92a1-f110acb2355a.png)
 
 ### ER図
@@ -52,6 +52,16 @@
 - テスト仕様書(ユーザ側)：[テスト仕様書②_user.pdf](https://github.com/m9795/Snuggle/files/9436651/_user.pdf)
 <!-- - UI Flows(ユーザ側)：[user.pdf](https://github.com/m9795/Snuggle/files/9399592/user.pdf) -->
 <!-- - UI Flows(管理者側)：[admin.pdf](https://github.com/m9795/Snuggle/files/9399593/admin.pdf) -->
+
+## 動作デモ
+### 投稿機能(ActiveStorage・Google Maps API)
+![投稿機能](https://user-images.githubusercontent.com/106650955/190840110-c73afc5e-06bc-4fb2-baca-fff9d03463ed.gif)
+
+### チャット機能
+![チャット機能](https://user-images.githubusercontent.com/106650955/190839704-1088677b-067e-490e-97fc-2f508f3b7ce0.gif)
+
+### お問い合わせ機能(Mailer)
+![お問い合わせ機能](https://user-images.githubusercontent.com/106650955/190839307-914d00dc-5673-4ae4-8917-dbe34aae1a8c.gif)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -89,3 +99,4 @@
 - サンプル画像：O-DAN(https://o-dan.net/ja/)
 - 絵文字：fromkato.com(https://fromkato.com/)
 - favicon.ico作成：(https://ao-system.net/favicon/)
+- gif作成：Convertio(https://convertio.co/ja/)
