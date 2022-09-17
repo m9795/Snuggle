@@ -13,11 +13,19 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
+    if @user.status == false
+      @users = @user.followings.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
+    else
+      redirect_to user_path(current_user), alert: "お探しのページは見つかりませんでした。"
+    end
   end
 
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
+    if @user.status == false
+      @users = @user.followers.where(id: @publish_user_all).order(created_at: "DESC").page(params[:page])
+    else
+      redirect_to user_path(current_user), alert: "お探しのページは見つかりませんでした。"
+    end
   end
 end

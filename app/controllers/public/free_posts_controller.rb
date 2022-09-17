@@ -19,7 +19,13 @@ class Public::FreePostsController < ApplicationController
   end
 
   def show
-    @free_post = FreePost.find(params[:id])
+    user_free_post = FreePost.find(params[:id])
+    if user_free_post.user.status == false
+      @free_post = FreePost.find(params[:id])
+    else
+      redirect_to free_posts_path, alert: "お探しのページは見つかりませんでした。"
+    end
+    # @free_post = FreePost.find(params[:id])
   end
 
   def destroy

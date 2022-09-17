@@ -83,14 +83,14 @@ class Public::PostsController < ApplicationController
   # タグ検索結果ページ
   def tag
     @tag = Tag.find_by(name: params[:name]) # タグ名の検索タイトル用
-    @post = @tag.posts.publish # 検索結果の件数表示用
+    @post = @tag.posts.where(id: @publish_post_all) # 検索結果の件数表示用
     @page_posts = @post.order(created_at: "DESC").page(params[:page]).per(5)
   end
 
   # 店舗設備タグ検索結果ページ
   def shop_tag
     @shop_tag = ShopTag.find_by(name: params[:name]) # 店舗設備タグ名の検索タイトル用
-    @post = @shop_tag.posts.publish # 検索結果の件数表示用
+    @post = @shop_tag.posts.where(id: @publish_post_all) # 検索結果の件数表示用
     @page_posts = @post.order(created_at: "DESC").page(params[:page]).per(5)
   end
 

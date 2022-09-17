@@ -7,17 +7,22 @@ class Public::LikesController < ApplicationController
   # お気に入り一覧ページ
   def like_list
     @user = User.find(params[:user_id])
-    # ↓お気に入り件数表示用
-    @liked_post = @user.likes
-    .where(post_id: @publish_post_all)
-    # ↓投稿をお気に入りした順に表示
-    @page_liked_post = Post.joins(:likes)
-    .where(likes: { user_id: @user })
-    .where(id: @publish_post_all)
-    .merge(Like.order(created_at: "DESC"))
-    .page(params[:page])
-    .per(5)
-    @posts = @user.posts.publish
+    if @user.status == false
+      # ↓お気に入り件数表示用
+      @liked_post = @user.likes
+      .where(post_id: @publish_post_all)
+
+      # ↓投稿をお気に入りした順に表示
+      @page_liked_post = Post.joins(:likes)
+      .where(likes: { user_id: @user })
+      .where(id: @publish_post_all)
+      .merge(Like.order(created_at: "DESC"))
+      .page(params[:page])
+      .per(5)
+      @posts = @user.posts.publish
+    else
+      redirect_to user_path(current_user), alert: "お探しのページは見つかりませんでした。"
+    end
   end
 
   def create

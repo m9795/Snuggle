@@ -46,7 +46,7 @@ class Public::OwnPostsController < ApplicationController
 
     def user_status_check
       if @user.status == true
-        redirect_to user_path(current_user), alert: "退会済みユーザのため閲覧できません。"
+        redirect_to user_path(current_user), alert: "お探しのページは見つかりませんでした。"
       end
     end
 
