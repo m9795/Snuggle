@@ -90,3 +90,6 @@ gem "net-imap"
 group :production do
   gem "mysql2"
 end
+
+# S3用
+gem "aws-sdk-s3", require: false
