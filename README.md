@@ -39,7 +39,7 @@
 
 ## 設計書
 ### AWS構成図
-![AWS構成図](https://user-images.githubusercontent.com/106650955/190701896-64f5b55e-5656-4bf3-92a1-f110acb2355a.png)
+![AWS構成図](https://user-images.githubusercontent.com/106650955/190860192-699ff9e0-834f-4ab6-acf4-b9e6f0a6ddee.png)
 
 ### ER図
 ![image](https://user-images.githubusercontent.com/106650955/186998490-cf03c6b1-6a4e-430a-8660-dfa9627886f8.png)
