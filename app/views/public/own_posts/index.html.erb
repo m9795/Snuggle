@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
-      <h5 class="text-center"><%= image_tag @user.get_image, class: "user_image" %><br /><%= @user.name %><br /><i class="fas fa-comment-dots"></i> ひとりごと</h5>
+      <h5 class="text-center">
+        <%= link_to user_path(@user) do %>
+          <%= image_tag @user.get_image, class: "user_image" %><br />
+        <% end %>
+        <%= @user.name %><br />
+        <i class="fas fa-comment-dots"></i> ひとりごと
+      </h5>
       <% if @user == current_user %>
       <p class="text-right">
         <%= link_to new_user_own_post_path(@user) do %>

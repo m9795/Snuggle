@@ -26,13 +26,13 @@
               </div>
               <div class="py-0 dropdown-menu" aria-labelledby="btnOpenMenu">
                 <%= link_to posts_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
-                  <i class="fas fa-images"></i> みんなの投稿カフェ
+                  <i class="fas fa-coffee"></i>  みんなの投稿カフェ
                 <% end %>
-                <%= link_to free_posts_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
-                  <i class="fas fa-child"></i> 雑談ルーム
-                <% end %>
-                <%= link_to users_path, class: "text-secondary dropdown-item text-center" do %>
+                <%= link_to users_path, class: "text-secondary dropdown-item border-bottom text-center" do %>
                   <i class="fas fa-user-friends"></i> 登録ユーザー
+                <% end %>
+                <%= link_to free_posts_path, class: "text-secondary dropdown-item text-center" do %>
+                  <i class="fas fa-child"></i> 雑談ルーム <i class="fas fa-child"></i>
                 <% end %>
               </div>
             </div>

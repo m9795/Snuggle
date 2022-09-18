@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
-      <h5 class="text-center mb-5"><i class="fas fa-child"></i> 雑談詳細</h5>
+      <h5 class="text-center mb-5"><i class="fas fa-comments"></i> 雑談詳細</h5>
       <div class="text-right mb-2">
-        <%= link_to new_free_post_path do %>
-          + 投稿する
+        <%= link_to new_free_post_path, class: "mr-2" do %>
+          投稿する <i class="fas fa-edit"></i>
         <% end %>
       </div>
       <div class="mx-1 pt-1 pb-4 border bg-white shadow">
@@ -22,7 +22,7 @@
             </div>
             <p class="small"><%= @free_post.content %></p>
             <div class="small text-right">
-              <%= l @free_post.created_at %><br />
+              <i class="far fa-clock"></i> <%= l @free_post.created_at %><br />
               <% if @free_post.user == current_user %>
                 <%= link_to free_post_path(@free_post), method: :delete, data: { confirm: '本当に削除しますか？'} do %>
                   <i class="fas fa-trash-alt"></i> 削除
