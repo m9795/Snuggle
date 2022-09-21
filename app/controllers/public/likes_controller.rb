@@ -16,7 +16,7 @@ class Public::LikesController < ApplicationController
       @page_liked_post = Post.joins(:likes)
       .where(likes: { user_id: @user })
       .where(id: @publish_post_all)
-      .merge(Like.order(created_at: "DESC"))
+      .merge(Like.recent)
       .page(params[:page])
       .per(5)
       @posts = @user.posts.publish

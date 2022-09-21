@@ -18,7 +18,7 @@ class Public::OwnPostsController < ApplicationController
   end
 
   def index
-    @own_posts = @user.own_posts.order(created_at: "DESC").page(params[:page]).per(20)
+    @own_posts = @user.own_posts.recent.page(params[:page]).per(20)
   end
 
   def destroy

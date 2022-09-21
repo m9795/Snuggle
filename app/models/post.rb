@@ -90,4 +90,5 @@ class Post < ApplicationRecord
   # 投稿の公開・非公開の絞り込み
   scope :publish,   -> { where(publish: true) }
   scope :unpublish, -> { where(publish: false) }
+
 end

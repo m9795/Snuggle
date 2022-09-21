@@ -6,11 +6,11 @@ class Public::CommentsController < ApplicationController
   def new
     @comment = Comment.new
     comments = @post.comments.where(user_id: @publish_user_all)
-    @post_comments = comments.order(created_at: "DESC")
+    @post_comments = comments.recent
   end
 
   def create
-    @post_comments = @post.comments.where(user_id: @publish_user_all).order(created_at: "DESC")
+    @post_comments = @post.comments.where(user_id: @publish_user_all).recent
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
     comment.save
@@ -18,7 +18,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    @post_comments = @post.comments.where(user_id: @publish_user_all).order(created_at: "DESC")
+    @post_comments = @post.comments.where(user_id: @publish_user_all).recent
     Comment.find(params[:id]).destroy
     render "post_comments"
   end

@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
   before_action :user_status_check, only: [:posts, :show, :detail]
 
   def index
-    @users = @publish_user_all.order(created_at: "DESC").page(params[:page])
+    @users = @publish_user_all.recent.page(params[:page])
   end
 
   def edit
@@ -71,7 +71,7 @@ class Public::UsersController < ApplicationController
     end
 
     def info_count
-      @posts = @user.posts.order(created_at: "DESC").publish
+      @posts = @user.posts.recent.publish
       @page_posts = @posts.page(params[:page]).per(5)
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end
