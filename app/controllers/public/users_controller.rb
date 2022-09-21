@@ -8,22 +8,25 @@ class Public::UsersController < ApplicationController
   before_action :user_status_check, only: [:posts, :show, :detail]
 
   def index
-    @users = @publish_user_all.recent.page(params[:page])
+    @users = @publish_user_all.user_pagenation(params[:page])
   end
 
   def edit
     if @user == current_user
       render "edit"
     else
-      redirect_to user_path(@user), alert: "本人のみ編集可能です。"
+      redirect_to user_path(@user),
+      alert: "本人のみ編集可能です。"
     end
   end
 
   def update
     if @user.update(usre_params)
-      redirect_to user_detail_path(@user), notice: "ユーザ情報を更新しました。"
+      redirect_to user_detail_path(@user),
+      notice: "ユーザ情報を更新しました。"
     else
-      redirect_to edit_user_path(@user), alert: "編集内容をご確認ください。"
+      redirect_to edit_user_path(@user),
+      alert: "編集内容をご確認ください。"
     end
   end
 
@@ -42,7 +45,9 @@ class Public::UsersController < ApplicationController
   def withdraw
     current_user.update(status: true)
     sign_out current_user
-    redirect_to root_path, notice: "ご利用いただきありがとうございました！", alert: "またのご利用をお待ちしております。"
+    redirect_to root_path,
+    notice: "ご利用いただきありがとうございました！",
+    alert: "またのご利用をお待ちしております。"
   end
 
   def detail
@@ -72,7 +77,7 @@ class Public::UsersController < ApplicationController
 
     def info_count
       @posts = @user.posts.recent.publish
-      @page_posts = @posts.page(params[:page]).per(5)
+      @page_posts = @posts.post_pagenation(params[:page])
       @liked_post = @user.likes.where(post_id: @publish_post_all)
     end
 

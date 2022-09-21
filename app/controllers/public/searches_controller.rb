@@ -8,7 +8,7 @@ class Public::SearchesController < ApplicationController
     @keyword = params[:keyword]
     @post = @publish_post_all.search(@keyword)
     posts = @publish_post_all.recent
-    @page_posts = posts.search(@keyword).page(params[:page]).per(5)
+    @page_posts = posts.search(@keyword).post_pagenation(params[:page])
     users = User.where(status: false)
     @posts = current_user.posts.where(user_id: users, publish: true)
     @liked_post = current_user.likes.where(post_id: @publish_post_all)
@@ -20,10 +20,10 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     if @method == "name"
       @users = @publish_user_all.search_for(@content, @method)
-      @records = @users.recent.page(params[:page])
+      @records = @users.user_pagenation(params[:page])
     else
       @users = @publish_user_all.search_for(@content, @method)
-      @records = @users.recent.page(params[:page])
+      @records = @users.user_pagenation(params[:page])
     end
   end
 end

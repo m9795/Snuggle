@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
     users = User.all.recent
-    @users = users.page(params[:page])
+    @users = users.user_pagenation(params[:page])
   end
 
   def show

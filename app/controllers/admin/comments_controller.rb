@@ -5,7 +5,7 @@ class Admin::CommentsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @comments = @user.comments.recent
-    @page_comments = @comments.page(params[:page]).per(20)
+    @page_comments = @comments.other_pagenation(params[:page])
   end
 
   def destroy

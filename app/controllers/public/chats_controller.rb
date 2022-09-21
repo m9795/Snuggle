@@ -13,7 +13,7 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats.recent.page(params[:page]).per(20)
+    @chats = @room.chats.other_pagenation(params[:page])
     @chat = Chat.new(room_id: @room.id)
   end
 

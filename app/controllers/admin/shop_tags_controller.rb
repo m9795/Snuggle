@@ -4,7 +4,7 @@ class Admin::ShopTagsController < ApplicationController
 
   def new
     @shop_tag = ShopTag.new
-    @shop_tags = ShopTag.all.recent.page(params[:page]).per(20)
+    @shop_tags = ShopTag.all.other_pagenation(params[:page])
   end
 
   def create

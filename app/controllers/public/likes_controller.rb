@@ -17,8 +17,7 @@ class Public::LikesController < ApplicationController
       .where(likes: { user_id: @user })
       .where(id: @publish_post_all)
       .merge(Like.recent)
-      .page(params[:page])
-      .per(5)
+      .post_pagenation(params[:page])
       @posts = @user.posts.publish
     else
       redirect_to user_path(current_user), alert: "お探しのページは見つかりませんでした。"

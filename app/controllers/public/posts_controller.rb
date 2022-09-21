@@ -26,7 +26,8 @@ class Public::PostsController < ApplicationController
 
   # 退会ユーザーと非公開記事を省いて取得
   def index
-    @page_posts = @publish_post_all.recent.page(params[:page]).per(5)
+    # @page_posts = @publish_post_all.other_pagenation(params[:page]).per(5)
+    @page_posts = @publish_post_all.post_pagenation(params[:page])
   end
 
   def show
@@ -84,20 +85,20 @@ class Public::PostsController < ApplicationController
   def tag
     @tag = Tag.find_by(name: params[:name]) # タグ名の検索タイトル用
     @post = @tag.posts.where(id: @publish_post_all) # 検索結果の件数表示用
-    @page_posts = @post.recent.page(params[:page]).per(5)
+    @page_posts = @post.post_pagenation(params[:page])
   end
 
   # 店舗設備タグ検索結果ページ
   def shop_tag
     @shop_tag = ShopTag.find_by(name: params[:name]) # 店舗設備タグ名の検索タイトル用
     @post = @shop_tag.posts.where(id: @publish_post_all) # 検索結果の件数表示用
-    @page_posts = @post.recent.page(params[:page]).per(5)
+    @page_posts = @post.post_pagenation(params[:page])
   end
 
   # 非公開投稿ページ
   def private_post
     if current_user == User.find(params[:user_id])
-      @page_unpublish_posts = current_user.posts.unpublish.recent.page(params[:page]).per(5)
+      @page_unpublish_posts = current_user.posts.unpublish.post_pagenation(params[:page])
     else
       redirect_to posts_path, alert: "非公開投稿は本人以外閲覧できません。"
     end

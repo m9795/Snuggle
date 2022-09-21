@@ -11,7 +11,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @comments = @post.comments.recent
-    @page_comments = @comments.page(params[:page])
+    @page_comments = @comments.other_pagenation(params[:page])
   end
 
   def destroy

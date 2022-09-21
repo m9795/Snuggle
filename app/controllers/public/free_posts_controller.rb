@@ -15,7 +15,7 @@ class Public::FreePostsController < ApplicationController
   end
 
   def index
-    @free_posts = FreePost.where(user_id: @publish_user_all).recent.page(params[:page]).per(20)
+    @free_posts = FreePost.where(user_id: @publish_user_all).other_pagenation(params[:page])
   end
 
   def show
