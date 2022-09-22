@@ -2,14 +2,11 @@
 require 'rails_helper'
 
 describe '投稿のテスト', type: :system do
-  # let!(:user) { create(:user, name: 'ユーザーA', email: 'sample@com', password: 'password', status: false) }
-  # let!(:post) { create(:post, title: 'タイトル', content: '本文') }
-
+  
   describe 'トップ画面(root_path)のテスト' do
     before do
       visit root_path
     end
-
     context '表示の確認' do
       it 'トップ画面(root_path)に「ようこそ、Snuggleへ」が表示されているか' do
         expect(page).to have_content 'ようこそ、Snuggleへ'
@@ -23,40 +20,54 @@ describe '投稿のテスト', type: :system do
     end
   end
 
-  # 作成中
-  # describe 'ログインのテスト' do
-  #   before do
-  #     # @user = FactoryBot.create(:user)
-  #     # @user2 = FactoryBot.build(:user)
-  #     # @user2.email = "test2@test.com"
-  #     # @user2.create
-  #     @user = FactoryBot.create(:user, name: 'ユーザーA', email: 'test2@test.com', password: 'password')
-  #     byebug
-  #     visit new_user_session_path
-  #   end
-  #   it 'ログイン後の遷移先の確認' do
-  #     fill_in 'メールアドレス', with: @user.email
-  #     fill_in 'パスワード', with: @user.password
-  #     click_button 'ログイン'
-  #     expect(page).to have_current_path user_path(@user.id)
-  #   end
-  # end
-
   describe '投稿のテスト' do
     before do
       @user = FactoryBot.create(:user)
       sign_in(@user)
       visit new_post_path
     end
-    context '投稿処理のテスト' do
-      it '投稿後の遷移先と投稿の表示確認' do
-        user = @user
-        publish = true
-        fill_in 'タイトル', with: 'タイトル'
-        fill_in '本文', with: '本文'
-        click_button '投稿する'
-        expect(page).to have_current_path posts_path
-        expect(page).to have_content 'タイトル'
+    
+    describe '新規投稿処理のテスト' do
+      context '新規投稿画面へ遷移' do
+        it '遷移する' do
+          click_on 'カフェを投稿'
+          expect(page).to have_content 'カフェを投稿'
+          expect(current_path).to eq('/posts/new')
+        end
+      end
+      
+      context '表示の確認' do
+        before do
+          visit new_post_path
+        end
+        it 'タイトル入力フォームが表示される' do
+          expect(page).to have_field 'タイトル'
+        end
+        it '本文入力フォームが表示される' do
+          expect(page).to have_field '本文'
+        end
+        it '投稿するボタンが表示される' do
+          expect(page).to have_button '投稿する'
+        end
+
+        context '投稿処理' do
+          before do
+            visit new_post_path
+          end
+          it '投稿に成功' do
+            fill_in "タイトル", with: "タイトル"
+            fill_in "本文", with: "本文"
+            click_button "投稿する"
+            expect(page).to have_current_path posts_path
+            expect(page).to have_content 'タイトル'
+          end
+          it '投稿に失敗' do
+            fill_in 'タイトル', with: ""
+            fill_in '本文', with: ""
+            click_button "投稿する"
+            expect(page).to have_content "入力内容をご確認ください。"
+          end
+        end
       end
     end
   end
