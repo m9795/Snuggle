@@ -13,6 +13,10 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# RSpecでCapybaraを扱うために必要な機能を読み込む
+require 'capybara/rspec'
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test
