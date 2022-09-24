@@ -1,0 +1,10 @@
+<p>chat_rooms</p>
+<p>Active Room</p>
+<% @chat_room_users.each do |chat_room_user| %>
+  <%= chat_room_user.id %>
+<% end %>
+
+<p>チャットを始めよう</p>
+<% @users.each do |user| %>
+  <%= user.id %>
+<% end %>

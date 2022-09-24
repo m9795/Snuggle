@@ -67,6 +67,18 @@ class Public::UsersController < ApplicationController
     @page_posts = @following_posts.post_pagenation(params[:page])
   end
 
+  def chat_rooms
+    chat_rooms = current_user.rooms
+    @chat_room_users = User.joins(:rooms).where(rooms: { id: chat_rooms }).where(id: @publish_user_all).where.not(id: current_user)
+    mutual_follows = current_user.followings && current_user.followers
+    @users = mutual_follows.where.not(id: @chat_room_users)
+  end
+  # def chat_rooms
+  #   chat_rooms = current_user.rooms
+  #   @chat_room_users = @publish_user_all.rooms.where(id: chat_rooms)
+  #   @users = current_user.followings && current_user.followers
+  # end
+
   private
     def usre_params
       params.require(:user).permit(:image, :name, :introduction, :status,
