@@ -53,6 +53,20 @@ class Public::UsersController < ApplicationController
   def detail
   end
 
+  def followings_posts
+    # current_userサイドバーの件数表示用
+    @posts = current_user.posts.publish
+    @liked_post = current_user.likes.where(post_id: @publish_post_all)
+
+    # フォローユーザーと自身の投稿件数の取得
+    followings = current_user.followings.where(id: @publish_user_all)
+    @following_posts = @publish_post_all.where(user_id: followings)
+    .or(@publish_post_all.where(user_id: current_user))
+
+    # フォローユーザーと自身の投稿の表示用
+    @page_posts = @following_posts.post_pagenation(params[:page])
+  end
+
   private
     def usre_params
       params.require(:user).permit(:image, :name, :introduction, :status,

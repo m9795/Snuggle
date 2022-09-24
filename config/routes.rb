@@ -49,6 +49,8 @@ Rails.application.routes.draw do
       get  'inquiry' => 'inquiry#index'
       post 'inquiry/confirm'
       post 'inquiry/thanks'
+      # フォローユーザーの投稿一覧
+      get "followings_posts"
     end
     # ユーザの退会確認ページ
     get "user/unsubscribe" => "users#unsubscribe"
