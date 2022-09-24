@@ -1,10 +1,55 @@
-<p>chat_rooms</p>
-<p>Active Room</p>
-<% @chat_room_users.each do |chat_room_user| %>
-  <%= chat_room_user.id %>
-<% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6">
+      <h4 class="mb-4 text-center"><span><i class="fas fa-user-friends"></i></span> チャットルーム一覧</h4>
+      <%#= render 'public/searches/user_search_form' %>
+      <div class="mt-3 container">
+        <div class="row mb-3 d-flex flex-column">
+          <!--公開ユーザーがいるか確認-->
+          <% if @chat_room_users.present? %>
+            <% @chat_room_users.each do |user| %>
+              <div class="col customize-border shadow bg-white py-2 mb-3">
+                <div class="row">
+                  <div class="col-4">
+                    <%= link_to user_path(user) do %>
+                      <%= image_tag user.get_image, class: 'user_image' %>
+                    <% end %>
+                  </div>
+                </div>
+                <p><i class="fas fa-user-circle"></i> <%= user.name %></p>
+                <%= render "public/relationships/btn", user: user %>
+              </div>
+            <% end %>
+            <%= paginate @chat_room_users %>
+          <% else %>
+            <p class="text-center">現在、チャットルームはありません。</p>
+          <% end %>
+        </div>
+      </div>
 
-<p>チャットを始めよう</p>
-<% @users.each do |user| %>
-  <%= user.id %>
-<% end %>
+      <% if @users.present? %>
+        <div class="mt-3 container">
+        <p>チャットを始めよう</p>
+          <div class="row mb-3 d-flex flex-column">
+            <% @users.each do |user| %>
+              <div class="col customize-border shadow bg-white py-2 mb-3">
+                <div class="row">
+                  <div class="col-4">
+                    <%= link_to user_path(user) do %>
+                      <%= image_tag user.get_image, class: 'user_image' %>
+                    <% end %>
+                  </div>
+                </div>
+                <p><i class="fas fa-user-circle"></i> <%= user.name %></p>
+                <%= render "public/relationships/btn", user: user %>
+              </div>
+            <% end %>
+            <%= paginate @users %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render 'public/users/mypage.btn', user: current_user %>
+    </div>
+  </div>
+</div>
