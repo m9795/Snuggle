@@ -74,10 +74,6 @@ class Public::UsersController < ApplicationController
     .where(rooms: { id: user_rooms })
     .where(id: @publish_user_all)
     .where.not(id: current_user).user_pagenation(params[:page])
-
-    # フォローされていて現在チャットルームがないユーザー(未フォロー含む)
-    follow_users = current_user.followers.where(id: @publish_user_all)
-    @users = follow_users.where.not(id: @chat_room_users).user_pagenation(params[:page])
   end
 
   private
