@@ -70,7 +70,6 @@ class Public::UsersController < ApplicationController
   def chat_rooms
     # 現在チャットルームのあるユーザー
     user_rooms = current_user.rooms
-
     @chat_room_users = User.joins(:rooms)
     .where(rooms: { id: user_rooms })
     .where(id: @publish_user_all)
