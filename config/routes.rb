@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       post 'inquiry/thanks'
       # フォローユーザーの投稿一覧
       get "followings_posts"
+      # チャットルーム一覧
+      get "chat_rooms"
     end
     # ユーザの退会確認ページ
     get "user/unsubscribe" => "users#unsubscribe"

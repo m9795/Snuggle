@@ -51,8 +51,7 @@
     <% end %>
   <% end %>
 
-  <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> 投稿のこと</div>
-  <%= link_to user_posts_path(user), class: "btn btn-outline-secondary btn-block" do %>
+  <%= link_to user_posts_path(user), class: "mt-5 btn btn-outline-secondary btn-block" do %>
     <i class="far fa-images fa-xs"></i> 投稿済 (<%= posts.count %>)
   <% end %>
 
@@ -64,7 +63,11 @@
     <%= link_to  user_private_post_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
       <i class="fas fa-lock"></i> 非公開 (<%= current_user.posts.unpublish.count %>)
     <% end %>
-    <div class="mt-3 mb-1 small text-center"><i class="fas fa-caret-down"></i> 見る</div>
+    <%= link_to  user_chat_rooms_path(current_user), class: "btn btn-outline-secondary btn-block"  do %>
+      <i class="far fa-envelope"></i> チャットルーム一覧
+    <% end %>
+
+    <div class="mt-4 mb-1 small text-center"><i class="fas fa-caret-down"></i> 見る</div>
     <%= link_to free_posts_path, class: "btn btn-outline-secondary btn-block"  do %>
       <i class="fas fa-child"></i> 雑談ルーム
     <% end %>
@@ -74,9 +77,9 @@
   <% end %>
 
   <% if user == current_user %>
-    <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> マイメニュー</div>
+    <div class="mt-3 mb-1 small text-center"><i class="fas fa-caret-down"></i> マイメニュー</div>
   <% else %>
-    <div class="mt-5 mb-1 small text-center"><i class="fas fa-caret-down"></i> <%= user.name %> さんについてもっと知る</div>
+    <div class="mt-3 mb-1 small text-center"><i class="fas fa-caret-down"></i> <%= user.name %> さんについてもっと知る</div>
   <% end %>
 
   <%= link_to user_detail_path(user), class: "btn btn-outline-secondary btn-block" do %>

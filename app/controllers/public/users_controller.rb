@@ -67,6 +67,20 @@ class Public::UsersController < ApplicationController
     @page_posts = @following_posts.post_pagenation(params[:page])
   end
 
+  def chat_rooms
+    # 現在チャットルームのあるユーザー
+    user_rooms = current_user.rooms
+
+    @chat_room_users = User.joins(:rooms)
+    .where(rooms: { id: user_rooms })
+    .where(id: @publish_user_all)
+    .where.not(id: current_user).user_pagenation(params[:page])
+
+    # フォローされていて現在チャットルームがないユーザー(未フォロー含む)
+    follow_users = current_user.followers.where(id: @publish_user_all)
+    @users = follow_users.where.not(id: @chat_room_users).user_pagenation(params[:page])
+  end
+
   private
     def usre_params
       params.require(:user).permit(:image, :name, :introduction, :status,
