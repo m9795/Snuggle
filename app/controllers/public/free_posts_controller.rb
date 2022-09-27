@@ -1,5 +1,5 @@
 class Public::FreePostsController < ApplicationController
-
+  before_action :authenticate_user!
   def new
     @free_post = FreePost.new
   end

@@ -1,4 +1,5 @@
 class Public::OwnPostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :user_choice, only: [:new, :create, :index, :destroy]
   before_action :user_status_check, only: [:index]
   before_action :current_user_chesk, only: [:new, :create, :destroy]
