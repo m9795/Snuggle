@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :destroy]
     end
     resources :shop_tags, only: [:new, :create, :edit, :update, :destroy]
+    resources :news, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # ユーザ
