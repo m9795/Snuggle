@@ -24,10 +24,13 @@
         <%= link_to free_posts_path, class: "my-3 btn btn-outline-dark" do %>
           < 雑談ルームへ
         <% end %>
-        <div class="text-right">
-          <span class="content"></span>
-        </div>
       </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-7">
+      <h5 class="text-center mb-3">みんなの投稿</h5>
+      <%= render 'index', free_posts: @free_posts %>
     </div>
   </div>
 </div>

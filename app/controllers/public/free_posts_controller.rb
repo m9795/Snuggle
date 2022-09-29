@@ -2,6 +2,9 @@ class Public::FreePostsController < ApplicationController
   before_action :authenticate_user!
   def new
     @free_post = FreePost.new
+    @free_posts = FreePost
+    .where(user_id: @publish_user_all)
+    .other_pagenation(params[:page])
   end
 
   def create
@@ -15,7 +18,9 @@ class Public::FreePostsController < ApplicationController
   end
 
   def index
-    @free_posts = FreePost.where(user_id: @publish_user_all).other_pagenation(params[:page])
+    @free_posts = FreePost
+    .where(user_id: @publish_user_all)
+    .other_pagenation(params[:page])
   end
 
   def show

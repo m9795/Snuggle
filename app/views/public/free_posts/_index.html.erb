@@ -1,0 +1,24 @@
+<div class="mx-1 pt-1 mb-4 bg-white">
+  <% free_posts.each do |free_post| %>
+    <%= link_to free_post_path(free_post), class: "text-secondary", data: {"turbolinks" => false} do %>
+      <div class="row mx-2 mt-3 pt-2 border-bottom d-flex justify-content-center">
+        <div class="col-1 mr-3">
+          <%= image_tag free_post.user.get_image, class: "free_posts_user_image" %>
+        </div>
+        <div class="col-9 ml-3">
+          <div class="row">
+            <p class="col mb-0 font-weight-bold small"><%= free_post.user.name %></p>
+          </div>
+          <p class="small"><%= free_post.content %></p>
+          <% if free_post.images.attached? %>
+            <p class="text-right"><i class="far fa-image"></i> <%= free_post.images.count %></p>
+          <% end %>
+          <div class="mb-3 small text-right">
+            <i class="far fa-clock"></i> <%= l free_post.created_at %><br />
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%= paginate free_posts %>
