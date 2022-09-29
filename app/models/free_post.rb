@@ -26,9 +26,8 @@ class FreePost < ApplicationRecord
   has_many_attached :images
 
   private
-
-  def validate_number_of_files
-    return if images.length <= FILE_NUMBER_LIMIT
-    errors[:images] << "添付は#{FILE_NUMBER_LIMIT}枚までです"
-  end
+    def validate_number_of_files
+      return if images.length <= FILE_NUMBER_LIMIT
+      errors[:images] << "添付は#{FILE_NUMBER_LIMIT}枚までです"
+    end
 end

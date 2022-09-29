@@ -3,16 +3,16 @@ class Public::InquiryController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @inquiry = Inquiry.new
-    render 'index'
+    render "index"
   end
 
   def confirm
     @user = User.find(params[:user_id])
     @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     if @inquiry.valid?
-      render 'confirm'
+      render "confirm"
     else
-      render 'index'
+      render "index"
     end
   end
 
@@ -20,6 +20,6 @@ class Public::InquiryController < ApplicationController
     @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message, :user_id, :user_name, :user_email))
     InquiryMailer.received_email(@inquiry).deliver
     InquiryMailer.received_admin_email(@inquiry).deliver
-    render :action => 'thanks'
+    render action: "thanks"
   end
 end

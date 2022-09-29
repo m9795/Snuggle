@@ -46,9 +46,9 @@ Rails.application.routes.draw do
       # ユーザ詳細紹介ページ
       get "detail" => "users#detail"
       # お問い合わせ機能
-      get  'inquiry' => 'inquiry#index'
-      post 'inquiry/confirm'
-      post 'inquiry/thanks'
+      get  "inquiry" => "inquiry#index"
+      post "inquiry/confirm"
+      post "inquiry/thanks"
       # フォローユーザーの投稿一覧
       get "followings_posts"
       # チャットルーム一覧

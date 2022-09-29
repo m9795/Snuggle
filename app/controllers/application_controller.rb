@@ -8,5 +8,4 @@ class ApplicationController < ActionController::Base
     @publish_user_all = User.where(status: false) # 有効ユーザ
     @publish_post_all = Post.where(user_id: @publish_user_all, publish: true) # 有効ユーザの公開記事
   end
-
 end

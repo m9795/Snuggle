@@ -5,5 +5,4 @@ class Inquiry
   validates :name, length: { maximum: 20 }
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :message, length: { maximum: 1000 }
-
 end
