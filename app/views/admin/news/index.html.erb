@@ -2,7 +2,7 @@
   <div class="row mb-3 d-flex justify-content-center">
     <div class="col-lg-8">
       <div class="m-3">
-        <h5 class="text-center"><i class="fas fa-cog"></i> お知らせ作成</h5>
+        <h5 class="text-center"><i class="fas fa-cog"></i> おしらせ作成</h5>
         <%= form_with model: @news, url: admin_news_index_path, method: :post do |f| %>
           <%= f.label :title, "タイトル" %><br />
           <%= f.text_field :title, class: "form-control" %><br />
@@ -15,11 +15,17 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
+      <h5 class="text-center">おしらせ一覧</h5>
+      <hr></hr>
       <% if @newses.present? %>
         <% @newses.each do |news| %>
-          <%= news.title %>
-          <%= news.content %>
+          <p class="font-weight-bold mb-0"><%= news.title %></p><br />
+          <p class="small mb-0">　　<%= news.content %></p>
+          <div class="small text-right"><%= l news.created_at, format: :short %></div>
+          <hr></hr>
         <% end %>
+      <% else %>
+        <p class="mt-5 text-center">現在、おしらせはありません。</p>
       <% end %>
     </div>
   </div>
