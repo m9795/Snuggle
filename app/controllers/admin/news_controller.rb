@@ -1,7 +1,7 @@
 class Admin::NewsController < ApplicationController
   def index
     @news = News.new
-    @newses = News.all
+    @newses = News.post_pagenation(params[:page])
   end
 
   def create

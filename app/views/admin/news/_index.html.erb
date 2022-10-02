@@ -1,0 +1,16 @@
+<hr></hr>
+<% if newses.present? %>
+  <% newses.each do |news| %>
+      <div class="row">
+        <p class="font-weight-bold mb-0 mx-4"><%= news.title %></p><br />
+      <% if current_page? admin_news_index_path %>
+        <span class="col px-4 text-right ellipsis-v"><i class="fas fa-ellipsis-v fa-xs"></i></span>
+      <% end %>
+      </div>
+    <p class="small mt-2 mb-0 mx-4"><%= news.content %></p>
+    <div class="small text-right"><%= l news.created_at, format: :short %></div>
+    <hr></hr>
+  <% end %>
+<% else %>
+  <p class="mt-5 text-center">現在、おしらせはありません。</p>
+<% end %>

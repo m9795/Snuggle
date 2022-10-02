@@ -40,6 +40,16 @@
   animation-delay: 2.5s;
 }
 
+.news-content {
+  margin: 100px 0;
+  opacity: 0; /* 透明化 */
+  animation-name: fadeup;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-delay: 3s; /* 遅延 */
+  animation-fill-mode: forwards; /* アニメーション後の状態を保持 */
+}
+
 /*フェードアップ*/
 @keyframes fadeup {
 from {

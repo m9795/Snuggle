@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    get "news" => "homes#news"
     resources :users, except: [:new, :create, :destroy] do
       # フォーロー機能
       resource :relationships, only: [:create, :destroy]
