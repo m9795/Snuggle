@@ -9,7 +9,9 @@
           <%= f.text_field :title, class: "form-control" %><br />
           <%= f.label :content, "内容" %><br />
           <%= f.text_area :content, class: "form-control" %><br />
-          <%= f.submit class: "btn btn-outline-secondary" %>
+          <div class="d-flex justify-content-end">
+            <%= f.submit class: "btn btn-outline-primary" %>
+          </div>
         <% end %>
       </div>
     </div>
