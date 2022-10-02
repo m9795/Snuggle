@@ -4,7 +4,22 @@
       <div class="row">
         <p class="font-weight-bold mb-0 mx-4"><%= news.title %></p><br />
       <% if current_page? admin_news_index_path %>
-        <span class="col px-4 text-right ellipsis-v"><i class="fas fa-ellipsis-v fa-xs"></i></span>
+
+        <span class="col text-right ellipsis-v">
+          <span class="dropdown" data-toggle="dropdown">
+            <i class="fas fa-ellipsis-v fa-xs"></i>
+          </span>
+          <div class="dropdown-menu text-center py-0">
+            <%= link_to edit_admin_news_path(news), class: "dropdown-item border-bottom text-dark" do %>
+              <i class="fas fa-edit"></i> 編集する
+            <% end %>
+            <div class="dropdown-item px-0">
+              <%= link_to admin_news_path(news), class: "text-danger", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+                <i class="fas fa-trash-alt"></i> 削除する
+              <% end %>
+            </div>
+          </div>
+        </span>
       <% end %>
       </div>
     <p class="small mt-2 mb-0 mx-4"><%= news.content %></p>
