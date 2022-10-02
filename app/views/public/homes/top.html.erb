@@ -22,4 +22,13 @@
       <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info" %>
     </div>
   </div>
+  <div class="row d-flex justify-content-center news-content">
+    <div class="col-lg-8">
+      <h2 class="text-center">おしらせ</h2>
+      <%= render "admin/news/index", newses: @newses %>
+      <% if News.all.count > 3 %>
+        <p class="text-right"><%= link_to "おしらせ一覧を見る", news_path %></p>
+      <% end %>
+    </div>
+  </div>
 </div>

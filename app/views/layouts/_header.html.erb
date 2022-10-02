@@ -76,6 +76,11 @@
             <% end %>
           </li>
           <li class="text-secondary px-2 py-1 m-1">
+            <%= link_to admin_news_index_path, class: 'nav-link', data: {"turbolinks" => false} do %>
+              <i class="far fa-newspaper"></i> おしらせ作成
+            <% end %>
+          </li>
+          <li class="text-secondary px-2 py-1 m-1">
             <%= link_to new_admin_shop_tag_path, class: 'nav-link' do %>
               <i class="fas fa-tags"></i> 設備タグ管理
             <% end %>

@@ -1,0 +1,10 @@
+<div class="container my-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <h4 class="text-center">おしらせ一覧</h4>
+      <%= render "admin/news/index", newses: @newses %>
+      <%= paginate @newses %>
+      <%= link_to "< 戻る", root_path %>
+    </div>
+  </div>
+</div>

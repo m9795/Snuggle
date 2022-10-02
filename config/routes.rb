@@ -24,12 +24,14 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :destroy]
     end
     resources :shop_tags, only: [:new, :create, :edit, :update, :destroy]
+    resources :news, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # ユーザ
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    get "news" => "homes#news"
     resources :users, except: [:new, :create, :destroy] do
       # フォーロー機能
       resource :relationships, only: [:create, :destroy]
